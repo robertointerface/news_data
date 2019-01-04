@@ -8,9 +8,12 @@ https://docs.djangoproject.com/en/1.11/howto/deployment/wsgi/
 """
 
 import os
+import sys
+sys.path.insert(0, '/Users/robertoalvarez/Desktop/virtualEnv/news_refactor/lib/python2.7/site-packages')
 
-from django.core.wsgi import get_wsgi_application
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "backend.backend.settings")
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "backend.settings")
+import django.core.handlers.wsgi
+django.setup()
 
-application = get_wsgi_application()
+application = django.core.handlers.wsgi.WSGIHandler()
