@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/1.11/howto/deployment/wsgi/
 
 import os
 import sys
-sys.path.insert(0, '/Users/robertoalvarez/Desktop/VirtualEnv/News_refactor/lib/python2.7/site-packages')
+sys.path.insert(0, '/Users/robertoalvarez/Desktop/virtualEnv/news_refactor/lib/python2.7/site-packages')
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "backend.backend.settings")
 MakeMigration = False
