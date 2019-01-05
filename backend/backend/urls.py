@@ -18,12 +18,12 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 try:
-    from backend.backend import Migration
-except:
     from backend.backend.settings import Migration
+except:
+    from backend.settings import Migration
 
 urlpatterns = [
-    url(r'^admin/', include(admin.site.urls)),
+    url(r'^admin', include(admin.site.urls)),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if Migration:

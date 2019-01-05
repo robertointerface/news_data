@@ -15,3 +15,9 @@ class User(AbstractUser):
 
     def __str__(self):
         return self.username
+    #
+    # def clean(self, *args, **kwargs):
+    #
+    # def send_email(self):
+
+

@@ -158,9 +158,9 @@ AUTH_USER_MODEL = 'accounts.User'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 STATICFILES_DIRS = [
-    '/Users/robertoalvarez/Desktop/VirtualEnv/News_refactor/app/frontend/news/dist',
+    '/Users/robertoalvarez/Desktop/virtualEnv/news_refactor/app/frontend/dist',
 ]
 
 STATIC_URL = '/static/'
 #STATIC_ROOT = os.path.join(BASE_DIR, 'collectstatic/')
-STATIC_ROOT = '/Users/robertoalvarez/Desktop/VirtualEnv/News_refactor/app/frontend/news/dist'
+STATIC_ROOT = '/Users/robertoalvarez/Desktop/virtualEnv/news_refactor/app/frontend/dist'

@@ -67,12 +67,12 @@ export const SignUpContainer = connect(
         ({
              onChange(e){
                 e.preventDefault();
-                dispatch(handle_user_change(e))
+                dispatch(handle_user_change(e));
             },
 
             onSubmit(e){
                 e.preventDefault();
-                dispatch(handle_login())
+                dispatch(handle_login());
             }
         })
 )(SingUpForm)

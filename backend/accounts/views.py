@@ -9,7 +9,12 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .serializers import UserSerializer, UserSerializerWithToken
+import json
 
+def sign_up(request):
+    request_data = json.loads(request.body)
+    username = request_data['username']
+    password = request_data['password']
 
 
 
