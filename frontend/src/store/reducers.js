@@ -62,6 +62,11 @@ export const User_management = (state = {}, action) => {
                 username: '',
                 password: ''
             }
+        case C.ERROR_LOGIN:
+            return {
+                ...state,
+                error: action.error
+            }
         default:
             return state
     }

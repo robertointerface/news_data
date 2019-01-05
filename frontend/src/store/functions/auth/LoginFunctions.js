@@ -1,7 +1,10 @@
 import { fetching_data, logged_in, remove_user_data } from '../../../actions/actions'
 import {history} from '../../../App.js';
 import {getCookie} from "./Cookies";
-
+import {
+    validate,
+    onlyLettersNumbers
+} from './validation'
 export const handle_user_change = (e, prevstate) => {
     const name = e.target.name;
     const value = e.target.value;
@@ -21,7 +24,6 @@ export const handle_signup = () => {
         var csrftoken = getCookie('csrftoken');
         return fetch('http://127.0.0.1:8080/accounts/')
 
-
     }
 }
 
@@ -30,6 +32,15 @@ export const handle_login = () => {
     return (dispatch, getState) => {
         var username = getState().User_management.username;
         var password = getState().User_management.password;
+        var error = '';
+        try{
+            validate(username, [onlyLettersNumbers()]);
+            validate(password, [onlyLettersNumbers()]);
+        }
+        catch(error){
+            throw error
+        }
+
 
         dispatch(fetching_data());
          var data = {

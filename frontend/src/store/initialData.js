@@ -8,6 +8,7 @@ export const userData = {
     token: '',
     first_name: '',
     last_name: '',
+    error: '',
 }
 
 const DataBaseSelect = [

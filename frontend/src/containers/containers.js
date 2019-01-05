@@ -20,6 +20,7 @@ import {
     select_indicator,
     select_time,
     select_geo,
+    error_at_login
 } from '../actions/actions'
 
 import {
@@ -41,6 +42,7 @@ export const LogInContainer = connect(
             title: 'Log in form',
             username: state.User_management.username,
             password: state.User_management.password,
+            error: state.User_management.error,
         }),
     dispatch =>
         ({
@@ -50,7 +52,12 @@ export const LogInContainer = connect(
             },
             onSubmit(e){
                 e.preventDefault();
-                dispatch(handle_login())
+                try{
+                    dispatch(handle_login());
+                }
+                catch(error){
+                    dispatch(error_at_login(error));
+                }
             }
         })
 

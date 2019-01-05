@@ -23,6 +23,12 @@ export const handle_user_change = (e) =>
         e: e
     })
 
+export const error_at_login = (error) =>
+    ({
+        type: C.ERROR_LOGIN,
+        error: error
+    })
+
 export const fetching_data = () =>
     ({
         type: C.FETCHING_DATA
