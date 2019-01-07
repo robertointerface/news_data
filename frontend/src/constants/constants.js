@@ -1,4 +1,5 @@
 export const ActionsConstants = {
+    SET_FLASH_MESSAGE: 'SET_FLASH_MESSAGE',
     LOG_IN: 'LOG_IN',
     REMOVE_USER_DATA: 'REMOVE_USER_DATA',
     REGISTER: 'REGISTER',
@@ -28,3 +29,8 @@ export const DatabaseConstants = {
     UNESCO: 'UNESCO',
 }
 
+export const flashFlags = {
+    MESSAGE: 'MESSAGE',
+    WARNING: 'WARNING',
+    ALERT: 'ALERT'
+}

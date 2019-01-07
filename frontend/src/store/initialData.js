@@ -1,3 +1,11 @@
+import {flashFlags} from '../constants/constants'
+
+export const appStatus = {
+    flash: '',
+    flashFlag: flashFlags.MESSAGE,
+    isFetching: false,
+
+}
 
 export const userData = {
     isFetching: false,

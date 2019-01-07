@@ -39,6 +39,18 @@ const modify_user_data = (state = {}, action) => {
 
 }*/
 
+export const App_status = (state = {}, action) => {
+    switch (action.type) {
+        case C.SET_FLASH_MESSAGE:
+            return {
+                ...state,
+                flashFlag: action.message_type
+            }
+        default:
+            return state
+    }
+}
+
 export const User_management = (state = {}, action) => {
     switch (action.type){
         case C.HANDLE_USER_CHANGE:

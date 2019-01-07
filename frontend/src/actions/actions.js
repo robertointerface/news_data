@@ -7,6 +7,14 @@ import { ActionsConstants as C } from '../constants/constants'
         e: e
     })*/
 
+export const set_flash_message = ( message, message_type ) =>
+    ({
+        type: C.SET_FLASH_MESSAGE,
+        message: message,
+        message_type: message_type
+
+    })
+
 export const remove_user_data = () =>
     ({
         type: C.REMOVE_USER_DATA
@@ -119,7 +127,6 @@ export const set_query_map = (sector, topic) =>
         sector: sector,
         topic: topic
     })
-
 
 export const save_result = (result = {}) =>
     ({

@@ -25,7 +25,8 @@ import {
 
 import {
     handle_login,
-    handle_logout
+    handle_logout,
+    handle_signup
 } from '../store/functions/auth/LoginFunctions'
 
 import {
@@ -34,7 +35,17 @@ import {
     attach_reference
 } from '../store/functions/new_form/CreateNewFunctions'
 
-
+export const FlashContainer = connect(
+    state =>
+        ({
+            type: state.App_status.flashFlag,
+            message: state.App_status.flash
+        }),
+    dispatch =>
+        ({
+            
+        })
+)
 
 export const LogInContainer = connect(
     state =>
@@ -69,6 +80,7 @@ export const SignUpContainer = connect(
             title: 'Sign up form',
             username: state.User_management.username,
             email: state.User_management.email,
+            error: state.User_management.error,
         }),
     dispatch =>
         ({
@@ -79,7 +91,7 @@ export const SignUpContainer = connect(
 
             onSubmit(e){
                 e.preventDefault();
-                dispatch(handle_login());
+                dispatch(handle_signup());
             }
         })
 )(SingUpForm)
@@ -98,8 +110,6 @@ export const CreateNewContainer = connect(
                 e.preventDefault();
                 dispatch(handle_new_change(e))
             },
-
-
 
         })
 )(NewForm)
