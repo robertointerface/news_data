@@ -54,6 +54,7 @@ export const User_management = (state = {}, action) => {
                 ...state,
                 isFetching: false,
                 logged_in: true,
+                error: ''
             }
         case C.REMOVE_USER_DATA:
             return {

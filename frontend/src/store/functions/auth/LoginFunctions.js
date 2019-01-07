@@ -1,4 +1,10 @@
-import { fetching_data, logged_in, remove_user_data } from '../../../actions/actions'
+import {
+    error_at_login,
+    fetching_data,
+    logged_in,
+    remove_user_data
+} from '../../../actions/actions'
+
 import {history} from '../../../App.js';
 import {getCookie} from "./Cookies";
 import {
@@ -32,34 +38,38 @@ export const handle_login = () => {
     return (dispatch, getState) => {
         var username = getState().User_management.username;
         var password = getState().User_management.password;
-        var error = '';
-        try{
-            validate(username, [onlyLettersNumbers()]);
-            validate(password, [onlyLettersNumbers()]);
+        try {
+            validate(username, [onlyLettersNumbers]);
+            validate(password, [onlyLettersNumbers]);
         }
-        catch(error){
+        catch (error) {
             throw error
         }
 
-
         dispatch(fetching_data());
-         var data = {
-                username: username,
-                password: password,
-            }
+        var data = {
+            username: username,
+            password: password,
+        }
         fetch('http://127.0.0.1:8080/accounts/token-auth/', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            })
-                .then(res => res.json())
-                .then(json => {
-                    localStorage.setItem('token', json.token);
-                     dispatch(logged_in())
-                     history.push('/about')
-                })
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(res => res.json())
+        .then(json => {
+            if(typeof json.token == "undefined"){
+                throw 'username or password is not correct'
+            }
+            localStorage.setItem('token', json.token);
+            dispatch(logged_in())
+            history.push('/about')
+        })
+        .catch(error => {
+           dispatch(error_at_login(error));
+        })
     }
 };
 
