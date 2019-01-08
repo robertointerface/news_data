@@ -23,9 +23,9 @@ export const store =
     combineReducers({
         Current_search: Current_search, User_management: User_management,
         Create_new: Create_new, Results_management: Results_management,
-        App_status: appStatus}),
+        App_status: App_status}),
         {Current_search: initialStateCurrentSearch, User_management: userData,
-         Create_new: createNewForm, Results_management: results },
+         Create_new: createNewForm, Results_management: results, App_status: appStatus},
          window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
 

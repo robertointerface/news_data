@@ -46,14 +46,14 @@ export const handle_signup = () => {
         .then(res =>{
             console.log('returned: ' + JSON.stringify(res));
             if(res.status == 200){
-                return dispatch(set_flash_message(res['content'], flashFlags.MESSAGE ))
+                //return dispatch(set_flash_message(res['content'], flashFlags.MESSAGE ))
             }
             else{
                 throw res['content']
             }
         })
-        .catch({
-
+        .catch(err => {
+            console.log('error: ' + err);
         })
 
     }

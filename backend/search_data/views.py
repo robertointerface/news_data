@@ -2,7 +2,6 @@
 from __future__ import unicode_literals
 
 from google.appengine.api import urlfetch
-
 from django.shortcuts import render
 from decorators import ajax_required
 from django.views.decorators.csrf import csrf_exempt

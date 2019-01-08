@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import MainMenu from '../components/main/MainMenu'
+import FlashMessage from '../components/main/Flash'
 import NewForm from '../components/create_new/NewForm'
 import SearchBlock from '../components/search_data/SearchBlock'
 import SearchComponent from '../components/search_data/SearchComponent'
@@ -45,7 +46,7 @@ export const FlashContainer = connect(
         ({
             
         })
-)
+)(FlashMessage)
 
 export const LogInContainer = connect(
     state =>
@@ -120,6 +121,7 @@ export const MainMenuContainer = connect(
         ({
             token: localStorage.getItem('token'),
             loggedIn: state.User_management.logged_in,
+            flashMessage: state.App_status.flash,
         }),
     dispatch =>
         ({

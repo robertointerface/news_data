@@ -128,6 +128,7 @@ REST_FRAMEWORK = {
 }
 
 JWT_AUTH = {
+    'JWT_VERIFY': True,
     'JWT_RESPONSE_PAYLOAD_HANDLER': jwt_response_handler
 }
 
