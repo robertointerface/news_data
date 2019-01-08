@@ -24,27 +24,19 @@ import {
     push_result
 } from './functions/search_data/Results'
 
-/*
-const modify_user_data = (state = {}, action) => {
-     switch (action.type){
-        case C.LOG_IN:
-            handle_login(action.e, state).then(function(result) {
-                    return {
-                        ...state,
-                        logged_in: result
-                    }
-                })
-         default:
-             return state;
-
-}*/
 
 export const App_status = (state = {}, action) => {
     switch (action.type) {
         case C.SET_FLASH_MESSAGE:
             return {
                 ...state,
-                flashFlag: action.message_type
+                flashFlag: action.message_type,
+                flash: action.message,
+            }
+        case C.REMOVE_FLASH_MESSAGE:
+            return {
+                ...state,
+                flash: ''
             }
         default:
             return state

@@ -15,6 +15,12 @@ export const set_flash_message = ( message, message_type ) =>
 
     })
 
+export const remove_flash_message = () =>
+    ({
+        type: C.REMOVE_FLASH_MESSAGE
+
+    })
+
 export const remove_user_data = () =>
     ({
         type: C.REMOVE_USER_DATA

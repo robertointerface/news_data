@@ -10,6 +10,19 @@ body {
     margin: 0.25rem;
 }
 
+.message{
+    background-color:  rgba(2, 41, 104, 0.5);
+    border-style: solid;
+    border-radius: 10px;
+    text-align: center;
+    border-width: thin;
+    padding: 0.2rem;
+    margin-top: 0.3rem;
+    color: snow;
+    font-family: bitter;
+    font-weight: 600;
+}
+
 .padding0{
     padding: 0rem;
 }
@@ -30,7 +43,6 @@ a.searchOption:hover {
 .scroll_300::-webkit-scrollbar{
 	-webkit-appearance: none;
 }
-
 
 .scroll_300::-webkit-scrollbar:vertical {
     width: 12px;

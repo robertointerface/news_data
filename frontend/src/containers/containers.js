@@ -21,7 +21,8 @@ import {
     select_indicator,
     select_time,
     select_geo,
-    error_at_login
+    error_at_login,
+    remove_flash_message
 } from '../actions/actions'
 
 import {
@@ -44,7 +45,10 @@ export const FlashContainer = connect(
         }),
     dispatch =>
         ({
-            
+            onClick(e){
+                e.preventDefault();
+                dispatch(remove_flash_message());
+            }
         })
 )(FlashMessage)
 

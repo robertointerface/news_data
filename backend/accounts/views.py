@@ -26,7 +26,7 @@ if Migration:
 else:
     from backend.backend.constants import Constants
 
-@api_view(['POST'])
+#@api_view(['POST'])
 @permission_classes((AllowAny, ))
 def sign_up(request):
     try:
@@ -44,7 +44,7 @@ def sign_up(request):
         )
         return JsonResponse({
             'status': 200,
-            'content': 'ok'
+            'content': 'We have sent you an email, please follow the steps in order to finalize the process'
         })
     except django.db.DatabaseError:
         return JsonResponse({
