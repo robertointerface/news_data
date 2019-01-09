@@ -16,6 +16,7 @@ else:
     from backend.backend.constants import Constants
     from google.appengine.api import mail
 
+
 class User(AbstractUser):
     email = models.EmailField(unique=True)
     location = models.CharField(max_length=30, blank=True)
@@ -28,7 +29,8 @@ class User(AbstractUser):
         return self.username
 
     def save(self, *args, **kwargs):
-        self.send_verification_email()
+        if not self.email_confirmed:
+            self.send_verification_email()
         super(User, self).save(*args, **kwargs)
 
     def send_verification_email(self):
@@ -39,7 +41,7 @@ class User(AbstractUser):
             Thank you for joining tablenew.com, please click on the link below in order to verify you email account
             and you will be redirected in order to set up your password and user details.
 
-            {}.
+            {}
 
             regards.
             Tablenew.com team

@@ -15,6 +15,7 @@ import {
   Redirect,
   BrowserRouter
 } from 'react-router-dom'
+import Accounts from "./components/accounts/accounts";
 
 
 const App = () => {
@@ -23,7 +24,7 @@ const App = () => {
             <div>
                 <Route exact path="/" component={Home}/>
                 <Route path="/about" component={About}/>
-                <Route path="/login" component={Login}/>
+                <Route path="/accounts" component={Accounts}/>
                 <Route path='/publish' component={CreateLongNew}/>
             </div>
        </Router>

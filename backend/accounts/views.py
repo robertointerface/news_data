@@ -16,6 +16,9 @@ import hashlib
 import random
 from .models import User
 import django.db
+from django.http import RawPostDataException
+from django.shortcuts import get_object_or_404
+
 try:
     from backend.backend.settings import Migration
 except ImportError:
@@ -29,6 +32,11 @@ else:
 #@api_view(['POST'])
 @permission_classes((AllowAny, ))
 def sign_up(request):
+    """
+    Sign up new user given a valid username & email (username and email are verified previously on Frontend).
+    :param request: http.request object.
+    :return: Json response
+    """
     try:
         request_data = json.loads(request.body)
         username = request_data['username']
@@ -42,25 +50,53 @@ def sign_up(request):
             email=email,
             activation_key=activation_token
         )
-        return JsonResponse({
+        response = JsonResponse({
             'status': 200,
             'content': 'We have sent you an email, please follow the steps in order to finalize the process'
         })
     except django.db.DatabaseError:
-        return JsonResponse({
+        response = JsonResponse({
             'status': 400,
             'content':
                 """There has been an error, please verify that your email is the correct one. 
                 If the error persists please contact us.
                 """
         })
+    except RawPostDataException:
+        response = JsonResponse({
+            'status': 400,
+            'content':
+                """There has been an error, please verify that your email is the correct one. 
+                If the error persists please contact us.
+                """
+        })
+    finally:
+        return response
 
 
-
-
-
-
-
+@permission_classes((AllowAny, ))
+def verify_token(request, token):
+    try:
+        user = User.objects.get(activation_key=token)
+        if not user.email_confirmed:
+            user.email_confirmed = True
+            user.save()
+            response = JsonResponse({
+                'status': 200,
+                'content': """Your account has been verified correctly please set a password"""
+            })
+        else:
+            response = JsonResponse({
+                'status': 200,
+                'content': """Account was already confirmed """
+            })
+    except django.db.DatabaseError:
+            respnse = JsonResponse({
+                'status': 500,
+                'content': """There was a problem """
+            })
+    finally:
+        return response
 
 def create_activation_key(username):
     '''

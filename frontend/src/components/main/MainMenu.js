@@ -24,7 +24,7 @@ const MainMenu = ({loggedIn = false, token = '', log_out=f=>f, flashMessage=''})
                             <NavLink to='#' onClick={(e) => log_out(e)}>
                                 Logout
                             </NavLink> :
-                            <NavLink to='/login'>
+                            <NavLink to='/accounts/login/'>
                                 Log in
                             </NavLink>
                         }

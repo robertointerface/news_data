@@ -31,7 +31,7 @@ export const handle_signup = () => {
                 'email': email,
         }
         var csrftoken = getCookie('csrftoken');
-        fetch('http://127.0.0.1:8080/accounts/signup/', {
+        return fetch('http://127.0.0.1:8080/accounts/signup/', {
             method: 'POST',
             mode: 'same-origin',
             headers: {

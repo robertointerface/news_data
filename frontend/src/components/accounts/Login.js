@@ -5,7 +5,7 @@ import PageTemplate from '../main/PageTemplate'
 import { SignUpContainer, LogInContainer} from '../../containers/containers'
 const Login = ({title='Log in', onChange=f=>f, onSubmit=f=>f, username='', password=''}) => {
      return (
-         <PageTemplate>
+
             <div className='row'>
                 <div className='col-12'>
                     <ul className="nav nav-tabs" id='logInTab'>
@@ -30,7 +30,7 @@ const Login = ({title='Log in', onChange=f=>f, onSubmit=f=>f, username='', passw
                     </div>
                 </div>
             </div>
-         </PageTemplate>
+         
         )
 }
 

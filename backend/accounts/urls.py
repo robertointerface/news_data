@@ -18,6 +18,7 @@ urlpatterns = [
             url(r'^token-auth/', obtain_jwt_token),
             url(r'^current_user/$', views.current_user),
             url(r'^users/$', views.UserList.as_view()),
-            url(r'^signup/$', views.sign_up)
+            url(r'^signup/$', views.sign_up),
+            url(r'^verifyusertoken/(?P<token>[-\w]+)/', views.verify_token)
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
