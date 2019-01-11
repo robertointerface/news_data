@@ -11,10 +11,58 @@ import {history} from '../../../App.js';
 import {getCookie} from "./Cookies";
 import {
     validate,
-    onlyLettersNumbers
+    onlyLettersNumbers,
+    passwordSame
 } from './validation'
 
+export const handle_edit_first_time = (token) => {
+    return (dispatch, getState) => {
+        var { username } = getState().User_management;
+        var { password } = getState().User_management;
+        var { passwordRepeat } = getState().User_management;
+        try {
+             validate(username, [onlyLettersNumbers]);
+             passwordSame(password, passwordRepeat);
+        }
+        catch(error){
+            throw error;
+        }
+        var data = {
+            'username': username,
+            'password': password,
+            'token': token
+        }
+        var csrftoken = getCookie('csrftoken');
+        return fetch(`http://127.0.0.1:8080/accounts/edituserfirsttime/`, {
+            method: 'POST',
+            mode: 'same-origin',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrftoken
+            },
+            body: JSON.stringify(data)
+        })
+        .then(res => {
+            return res.json();
+        })
+        .then(res => {
+            if(res.status == 200){
+                return dispatch(handle_login());
+            }
+            else{
+                throw res['content']
+            }
+        })
+        .catch(error => {
+            return dispatch(set_flash_message(error, flashFlags.ERROR ))
+        })
+    }
+}
+
 export const handle_user_change = (e, prevstate) => {
+    /*
+        Modify state at App_status reducer, modification target is defined by e.target.name
+     */
     const name = e.target.name;
     const value = e.target.value;
     const newState = {...prevstate};
@@ -23,6 +71,9 @@ export const handle_user_change = (e, prevstate) => {
 }
 
 export const handle_signup = () => {
+    /*
+        Send new user username and email to backend in order to create a new user.
+     */
     return (dispatch, getState) => {
         var username = getState().User_management.username;
         var email = getState().User_management.email;
@@ -43,7 +94,7 @@ export const handle_signup = () => {
         .then(res => {
             return res.json()
         })
-        .then(res =>{
+        .then(res => {
             console.log('returned: ' + JSON.stringify(res));
             if(res.status == 200){
                 return dispatch(set_flash_message(res['content'], flashFlags.MESSAGE ))
@@ -60,7 +111,9 @@ export const handle_signup = () => {
 }
 
 export const handle_login = () => {
-
+    /*
+        Log In user by verifying user name and password
+     */
     return (dispatch, getState) => {
         var username = getState().User_management.username;
         var password = getState().User_management.password;
@@ -99,10 +152,10 @@ export const handle_login = () => {
     }
 };
 
-
-
 export const handle_logout = () => {
-
+    /*
+        Log out user by removing JWT (token) from localstorage and redirecting to main site.
+     */
     return (dispatch) => {
         localStorage.removeItem('token')
         dispatch(remove_user_data())

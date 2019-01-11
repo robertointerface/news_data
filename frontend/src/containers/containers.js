@@ -12,10 +12,13 @@ import DataDisplay from '../components/data_representation/dataDisplay'
 import AttachedReferences from '../components/create_new/attachedReferences'
 import LoginForm from '../components/accounts/forms/LogInForm'
 import SingUpForm from '../components/accounts/forms/SingUpForm'
+import VerifyTokenForm from '../components/accounts/forms/VerifyTokenForm'
+import VerifyToken from '../components/accounts/VerifyToken'
 
 import {
     handle_user_change,
     handle_new_change,
+    logged_in,
     select_database,
     select_sector,
     select_indicator,
@@ -28,7 +31,8 @@ import {
 import {
     handle_login,
     handle_logout,
-    handle_signup
+    handle_signup,
+    handle_edit_first_time
 } from '../store/functions/auth/LoginFunctions'
 
 import {
@@ -36,6 +40,8 @@ import {
     handle_data_request,
     attach_reference
 } from '../store/functions/new_form/CreateNewFunctions'
+import {history} from "../App";
+import {getCookie} from "../store/functions/auth/Cookies";
 
 export const FlashContainer = connect(
     state =>
@@ -52,7 +58,33 @@ export const FlashContainer = connect(
         })
 )(FlashMessage)
 
+export const VerifyTokenFormContainer = connect(
+    state =>
+        ({
+            username: state.User_management.username,
+            loggedIn : state.User_management.logged_in,
+            password: state.User_management.password,
+            passwordRepeat: state.User_management.passwordRepeat,
+            error: state.User_management.error
+        }),
+    dispatch =>
+        ({
+            onChange(e){
+                e.preventDefault();
+                dispatch(handle_user_change(e))
+            },
 
+            onLogIn(){
+                dispatch(logged_in());
+            },
+            onSubmit(e, token){
+                e.preventDefault();
+                dispatch(handle_edit_first_time(token));
+            }
+
+
+        })
+)(VerifyToken)
 
 export const LogInContainer = connect(
     state =>
@@ -76,6 +108,37 @@ export const LogInContainer = connect(
                 catch(error){
                     dispatch(error_at_login(error));
                 }
+            },
+            authSocial(response){
+                console.log('google auth '+  JSON.stringify(response));
+                var id_token = response['Zi']['id_token']
+                var data = {
+                    'id_token': id_token
+                }
+                var csrftoken = getCookie('csrftoken');
+                return fetch('http://localhost:8080/accounts/googleverify', {
+                    method: 'POST',
+                    mode: 'same-origin',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': csrftoken
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then(res => {
+                    return res.json()
+                })
+                .then(res =>{
+                    console.log('reply:' + JSON.stringify(res));
+                    if (res['status'] == 200){
+                        localStorage.setItem('token', res.token);
+                        dispatch(logged_in())
+                        history.push('/about')
+                    }
+                    else{
+
+                    }
+                })
             }
         })
 
@@ -96,7 +159,7 @@ export const SignUpContainer = connect(
                 dispatch(handle_user_change(e));
             },
 
-            onSubmit(e){
+            onSubmit(e){LoginForm
                 e.preventDefault();
                 dispatch(handle_signup());
             }
@@ -117,7 +180,6 @@ export const CreateNewContainer = connect(
                 e.preventDefault();
                 dispatch(handle_new_change(e))
             },
-
         })
 )(NewForm)
 

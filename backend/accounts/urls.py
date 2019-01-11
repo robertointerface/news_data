@@ -19,6 +19,8 @@ urlpatterns = [
             url(r'^current_user/$', views.current_user),
             url(r'^users/$', views.UserList.as_view()),
             url(r'^signup/$', views.sign_up),
-            url(r'^verifyusertoken/(?P<token>[-\w]+)/', views.verify_token)
+            url(r'^verifyusertoken/(?P<token>[-\w]+)/', views.verify_token),
+            url(r'^edituserfirsttime/', views.edit_user_first_time),
+            url(r'^googleverify', views.google_signin)
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

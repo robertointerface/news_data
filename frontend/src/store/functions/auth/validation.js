@@ -33,6 +33,16 @@ export const isEmail = (email) => {
     throw 'this is not a valid email format';
 }
 
+export const passwordSame = (password='', passwordRepeat= '') => {
+
+    if(password.length > 0){
+        if(password === passwordRepeat){
+            return true
+        }
+    }
+    throw 'passwords do not match, please check'
+}
+
 export const validate = (value='', validators=[]) => {
     /*
         @Func: validate a string by providing the validators.

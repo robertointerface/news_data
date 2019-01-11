@@ -23,7 +23,7 @@ const LogInNav = (user_id = 0) => {
                 </NavLink>
             </li>
             <li>
-                <NavLink to="/publish">
+                <NavLink to="/publish/:user_id">
                     publish
                 </NavLink>
             </li>

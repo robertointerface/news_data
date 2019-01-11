@@ -12,6 +12,8 @@ export const userData = {
     logged_in: false,
     username: '',
     password: '',
+    passwordRepeat: '',
+    location: '',
     email: '',
     token: '',
     first_name: '',

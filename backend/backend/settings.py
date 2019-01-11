@@ -30,6 +30,9 @@ ALLOWED_HOSTS = ['*']
 
 # Application definition
 
+# SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = 'jjlikesthed'
+# SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = ''
+
 
 INSTALLED_APPS = [
     'django.contrib.auth',
@@ -53,7 +56,6 @@ else:
     ROOT_URLCONF = 'backend.backend.urls'
 
 MIDDLEWARE = [
-
     'django.middleware.security.SecurityMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -63,7 +65,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
 
 TEMPLATES = [
     {
@@ -165,3 +166,7 @@ STATICFILES_DIRS = [
 STATIC_URL = '/static/'
 #STATIC_ROOT = os.path.join(BASE_DIR, 'collectstatic/')
 STATIC_ROOT = '/Users/robertoalvarez/Desktop/virtualEnv/news_refactor/app/frontend/dist'
+
+#Monkeypatch required to user requests at app engine
+from requests_toolbelt.adapters import appengine
+appengine.monkeypatch()

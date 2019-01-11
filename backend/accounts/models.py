@@ -24,13 +24,15 @@ class User(AbstractUser):
     email_confirmed = models.BooleanField(default=False)
     activation_key = models.CharField(max_length=40, null=True)
     key_expires = models.DateTimeField(null=True)
+    external_auth = models.BooleanField(default=False)
 
     def __str__(self):
         return self.username
 
     def save(self, *args, **kwargs):
-        if not self.email_confirmed:
-            self.send_verification_email()
+        if not self.external_auth:
+            if not self.email_confirmed:
+                self.send_verification_email()
         super(User, self).save(*args, **kwargs)
 
     def send_verification_email(self):
