@@ -159,6 +159,7 @@ export const handle_logout = () => {
      */
     return (dispatch) => {
         localStorage.removeItem('token')
+        localStorage.removeItem('user')
         dispatch(remove_user_data())
         history.push('/about')
     }
