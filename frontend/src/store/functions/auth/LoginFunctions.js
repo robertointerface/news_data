@@ -143,7 +143,8 @@ export const handle_login = () => {
                 throw 'username or password is not correct'
             }
             localStorage.setItem('token', json.token);
-            dispatch(logged_in())
+            localStorage.setItem('user', JSON.stringify(json['user']));
+            dispatch(logged_in(json['user']))
             history.push('/about')
         })
         .catch(error => {
@@ -160,7 +161,6 @@ export const handle_logout = () => {
         localStorage.removeItem('token')
         dispatch(remove_user_data())
         history.push('/about')
-
     }
 }
 

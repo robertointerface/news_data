@@ -58,6 +58,11 @@ export const FlashContainer = connect(
         })
 )(FlashMessage)
 
+/*export const nav = connect(
+    state
+
+)*/
+
 export const VerifyTokenFormContainer = connect(
     state =>
         ({
@@ -166,30 +171,15 @@ export const SignUpContainer = connect(
         })
 )(SingUpForm)
 
-export const CreateNewContainer = connect(
-    state =>
-        ({
-            headline1: state.Create_new.headline1,
-            headline2: state.Create_new.headline2,
-            headline3: state.Create_new.headline3,
-            content: state.Create_new.content
-        }),
-    dispatch =>
-        ({
-            onChange(e){
-                e.preventDefault();
-                dispatch(handle_new_change(e))
-            },
-        })
-)(NewForm)
+
 
 export const MainMenuContainer = connect(
-
     state =>
         ({
             token: localStorage.getItem('token'),
             loggedIn: state.User_management.logged_in,
             flashMessage: state.App_status.flash,
+            username: state.User_management.username,
         }),
     dispatch =>
         ({
@@ -200,19 +190,7 @@ export const MainMenuContainer = connect(
         })
 )(MainMenu)
 
-export const SearchDataContainer = connect(
-    state =>
-        ({
-            ThirdPartyAPI : state.Current_search.ThirdPartyAPI.id,
-            Sector: state.Current_search.Sector.id,
-            Topic: state.Current_search.Topic.id,
-            requestActive: state.Current_search.requestActive
-        }),
-    dispatch =>
-        ({
 
-        })
-)(SearchBlock)
 
 export const DatabaseContainer = connect(
     state =>
@@ -337,26 +315,7 @@ export const RequestButtonContainer = connect(
         })
 )(RequestButton)
 
-export const DataDisplayContainer = connect(
-    state =>
-        ({
-            list: [...state.Results_management.results],
-            resultLenght: state.Results_management.results.length,
-            //title:
-        }),
-    dispatch =>
-        ({
-            onAttach(e, id){
-                e.preventDefault();
-                console.log('foudn id: ' + id);
-                dispatch(attach_reference(id))
-            },
 
-            onChangeUnit(e){
-
-            }
-        })
-)(DataDisplay)
 
 export const AttachedReferencesContainer = connect(
     state =>

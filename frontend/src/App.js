@@ -15,8 +15,9 @@ import {
   Redirect,
   BrowserRouter
 } from 'react-router-dom'
-import Accounts from "./components/accounts/accounts";
 
+import Accounts from "./components/accounts/accounts";
+import CreateNew from "./components/create_new/createNew"
 
 const App = () => {
     return (
@@ -25,7 +26,7 @@ const App = () => {
                 <Route exact path="/" component={Home}/>
                 <Route path="/about" component={About}/>
                 <Route path="/accounts" component={Accounts}/>
-                <Route path='/publish' component={CreateLongNew}/>
+                <Route path='/publish' component={CreateNew}/>
             </div>
        </Router>
     )

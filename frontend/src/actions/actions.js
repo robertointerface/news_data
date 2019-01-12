@@ -48,9 +48,11 @@ export const fetching_data = () =>
         type: C.FETCHING_DATA
     })
 
-export const logged_in = () =>
+export const logged_in = (userData) =>
     ({
-        type: C.LOGGED_IN
+        type: C.LOGGED_IN,
+        userData: userData
+
     })
 
 export const handle_new_change = (e) =>

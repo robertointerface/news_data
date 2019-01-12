@@ -5,9 +5,9 @@ import {
     CreateNewContainer,
     SearchDataContainer,
     DataDisplayContainer
-} from '../../containers/containers'
+} from '../../containers/createNewContainers'
 
-const CreateLongNew = () => {
+const CreateLongNew = ({match}) => {
     return(
         <PageTemplate>
             <div className='row'>

@@ -5,7 +5,7 @@ import LogInNav from './LogInNav'
 import LogOutNav from './LogOutNav'
 import { FlashContainer } from '../../containers/containers'
 
-const MainMenu = ({loggedIn = false, token = '', log_out=f=>f, flashMessage=''}) => {
+const MainMenu = ({loggedIn = false, token = '', log_out=f=>f, flashMessage='', username=''}) => {
         return (
         <div>
             <nav className='navbar navbar-expand-lg navbar-dark bg-primary'>
@@ -15,7 +15,7 @@ const MainMenu = ({loggedIn = false, token = '', log_out=f=>f, flashMessage=''})
                 </button>
                 <div className="collapse navbar-collapse" id='LeftNavBar'>
                     {(token) ?
-                        <LogInNav/>:
+                        <LogInNav username={username}/>:
                         <LogOutNav/>
                     }
                     <ul className="nav navbar-right Font2Rem" id="rightHeaderNav">

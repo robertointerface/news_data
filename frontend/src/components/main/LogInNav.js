@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types'
 
 import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
-
-const LogInNav = (user_id = 0) => {
+const LogInNav = ({ username = '' }) => {
     return (
         <ul className='nav navbar-nav NavText'>
             <li>
@@ -23,7 +23,7 @@ const LogInNav = (user_id = 0) => {
                 </NavLink>
             </li>
             <li>
-                <NavLink to="/publish/:user_id">
+                <NavLink to={`/publish/longnew/${username}`}>
                     publish
                 </NavLink>
             </li>

@@ -23,7 +23,11 @@ export const ActionsConstants = {
     SET_QUERY_MAP: 'SET_QUERY_MAP',
     SAVE_RESULT: 'SAVE_RESULT',
 }
-
+export const urls = {
+    DEVELOP: 'http://localhost:8080',
+    MAKE_API_CALL: 'http://localhost:8080/search/makeapicall/',
+    GET_INDICATORS: 'http://localhost:8080/search/indicators'
+}
 export const DatabaseConstants = {
     EU: 'EU',
     OECD: 'OECD',

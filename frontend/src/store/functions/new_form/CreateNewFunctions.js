@@ -12,6 +12,7 @@ import {
 import EurostatDatabases from "../../../data/Eurostat/EurostatMap";
 import dataRequest from '../../classes/dataRequest'
 import {getCookie} from '../auth/Cookies'
+import {urls} from '../../../constants/constants'
 
 export const handle_new_change = (e, prevstate) => {
     /*
@@ -67,7 +68,7 @@ export const handle_indicator_request = (topicId='', topicName='') => {
         var csrftoken = getCookie('csrftoken'); //get saved cookie
         var Sector = getState().Current_search.Sector.id; //get sector id
         dispatch(fetching_data());
-        return fetch(`http://127.0.0.1:8080/search/indicators/${Sector}/${topicId}/`, {
+        return fetch(`${urls.GET_INDICATORS}/${Sector}/${topicId}/`, {
                 method: 'GET',
                 mode: 'same-origin',
                 headers: {

@@ -24,6 +24,7 @@ import {
     push_result
 } from './functions/search_data/Results'
 
+import { userData as emptyUserData }  from './initialData'
 
 export const App_status = (state = {}, action) => {
     switch (action.type) {
@@ -58,15 +59,15 @@ export const User_management = (state = {}, action) => {
                 ...state,
                 isFetching: false,
                 logged_in: true,
+                username: action.userData['username'],
+                email: action.userData['email'],
+                password: '',
+                passwordRepeat: '',
+                token: '',
                 error: ''
             }
         case C.REMOVE_USER_DATA:
-            return {
-                ...state,
-                logged_in: false,
-                username: '',
-                password: ''
-            }
+            return { ...emptyUserData}
         case C.ERROR_LOGIN:
             return {
                 ...state,

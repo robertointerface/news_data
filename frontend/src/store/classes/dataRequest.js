@@ -2,6 +2,8 @@ import {ThirdPartyIPIBaseAddress} from '../initialData'
 import {getCookie} from "../functions/auth/Cookies";
 import {save_result} from '../../actions/actions'
 import React from 'react';
+import {urls} from '../../constants/constants'
+
 export class dataRequest {
 
     constructor(requestObject){
@@ -47,7 +49,7 @@ export class dataRequest {
         /*
             @Func:
          */
-        var baseUrl = 'http://ec.europa.eu/eurostat/wdds/rest/data/v2.1/json/en';
+        var baseUrl = ThirdPartyIPIBaseAddress.EuroStatUrl;
         this.APIUrl = `${baseUrl}/${this.Topic.id}?`;
         var pathParameter;
         for (var i of this.pathArray){
@@ -157,7 +159,7 @@ export class dataRequest {
         var data = {
             'APIUrl': this.APIUrl
         }
-        return fetch(`http://127.0.0.1:8080/search/makeapicall/`, {
+        return fetch(`${urls.MAKE_API_CALL}`, {
                 method: 'POST',
                 mode: 'same-origin',
                 headers: {
