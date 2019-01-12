@@ -146,7 +146,6 @@ export const LogInContainer = connect(
                 })
             }
         })
-
 )(LoginForm)
 
 export const SignUpContainer = connect(

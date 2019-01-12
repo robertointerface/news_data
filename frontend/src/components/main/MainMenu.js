@@ -14,13 +14,13 @@ const MainMenu = ({loggedIn = false, token = '', log_out=f=>f, flashMessage='', 
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id='LeftNavBar'>
-                    {(token) ?
+                    {(loggedIn) ?
                         <LogInNav username={username}/>:
                         <LogOutNav/>
                     }
                     <ul className="nav navbar-right Font2Rem" id="rightHeaderNav">
                        <li>
-                        {(token) ?
+                        {(loggedIn) ?
                             <NavLink to='#' onClick={(e) => log_out(e)}>
                                 Logout
                             </NavLink> :
