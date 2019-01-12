@@ -86,8 +86,6 @@ export const VerifyTokenFormContainer = connect(
                 e.preventDefault();
                 dispatch(handle_edit_first_time(token));
             }
-
-
         })
 )(VerifyToken)
 

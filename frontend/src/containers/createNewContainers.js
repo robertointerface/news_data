@@ -7,8 +7,17 @@ import NewForm from "../components/create_new/NewForm";
 import SearchBlock from "../components/search_data/SearchBlock";
 import DataDisplay from "../components/data_representation/dataDisplay";
 import {attach_reference} from "../store/functions/new_form/CreateNewFunctions";
+import CreateLongNew from '../components/create_new/createLongNew'
 
-export const CreateNewContainer = connect(
+/*const isUserAuthorize = (name='', token='') => {
+    console.log('name to verify :' + name);
+
+}*/
+
+
+
+
+export const CreateNewFormContainer = connect(
     state =>
         ({
             headline1: state.Create_new.headline1,
@@ -59,3 +68,16 @@ export const DataDisplayContainer = connect(
             }
         })
 )(DataDisplay)
+
+
+export const CreateLongNewContainer = connect(
+    state =>
+        ({
+            headline1: state.Create_new.headline1,
+           // authorize: isUserAuthorize(this.props.match.params.name, localStorage.getItem('token'))
+        }),
+    dispatch =>
+        ({
+
+        })
+)(CreateLongNew)

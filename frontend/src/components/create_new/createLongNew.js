@@ -2,18 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import PageTemplate from '../main/PageTemplate'
 import {
-    CreateNewContainer,
+    CreateNewFormContainer,
     SearchDataContainer,
     DataDisplayContainer
 } from '../../containers/createNewContainers'
 
-const CreateLongNew = ({match}) => {
+const CreateLongNew = ({headline1=''}) => {
     return(
         <PageTemplate>
             <div className='row'>
                 <div className='col-8'>
                     <div className='row'>
-                        <CreateNewContainer/>
+                        <CreateNewFormContainer/>
                     </div>
                 </div>
                 <div className='col-4'>
@@ -25,7 +25,6 @@ const CreateLongNew = ({match}) => {
                     <DataDisplayContainer/>
                 </div>
             </div>
-
         </PageTemplate>
     )
 }
