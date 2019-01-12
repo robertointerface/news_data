@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux'
 import MainMenu from '../components/main/MainMenu'
 import FlashMessage from '../components/main/Flash'
-import NewForm from '../components/create_new/NewForm'
+import LongNewForm from '../components/create_new/create_long_new/LongNewForm'
 import SearchBlock from '../components/search_data/SearchBlock'
 import SearchComponent from '../components/search_data/SearchComponent'
 import TimeOptions from '../components/search_data/TimeOption'
@@ -14,6 +14,7 @@ import LoginForm from '../components/accounts/forms/LogInForm'
 import SingUpForm from '../components/accounts/forms/SingUpForm'
 import VerifyTokenForm from '../components/accounts/forms/VerifyTokenForm'
 import VerifyToken from '../components/accounts/VerifyToken'
+import CreateLongNewBlock from '../components/create_new/create_long_new/createLongNewBlock'
 
 import {
     handle_user_change,
@@ -42,6 +43,7 @@ import {
 } from '../store/functions/new_form/CreateNewFunctions'
 import {history} from "../App";
 import {getCookie} from "../store/functions/auth/Cookies";
+import CreateLongNew from "../components/create_new/create_long_new/createLongNewBlock";
 
 export const FlashContainer = connect(
     state =>
@@ -326,3 +328,15 @@ export const AttachedReferencesContainer = connect(
 )(AttachedReferences)
 
 
+
+/*
+export const CreateLongNewContainer = connect(
+    state =>
+        ({
+           authorize: isUserAuthorize(props.match.params.name, localStorage.getItem('token'))
+        }),
+    dispatch =>
+        ({
+
+        })
+)(CreateLongNewBlock)*/

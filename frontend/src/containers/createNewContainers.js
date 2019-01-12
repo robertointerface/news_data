@@ -3,16 +3,10 @@ import { connect } from 'react-redux'
 import {history} from "../App";
 import {getCookie} from "../store/functions/auth/Cookies";
 import {handle_new_change} from "../actions/actions";
-import NewForm from "../components/create_new/NewForm";
+import LongNewForm from "../components/create_new/create_long_new/LongNewForm";
 import SearchBlock from "../components/search_data/SearchBlock";
 import DataDisplay from "../components/data_representation/dataDisplay";
 import {attach_reference} from "../store/functions/new_form/CreateNewFunctions";
-import CreateLongNew from '../components/create_new/createLongNew'
-
-/*const isUserAuthorize = (name='', token='') => {
-    console.log('name to verify :' + name);
-
-}*/
 
 
 
@@ -32,7 +26,7 @@ export const CreateNewFormContainer = connect(
                 dispatch(handle_new_change(e))
             },
         })
-)(NewForm)
+)(LongNewForm)
 
 export const SearchDataContainer = connect(
     state =>
@@ -70,14 +64,3 @@ export const DataDisplayContainer = connect(
 )(DataDisplay)
 
 
-export const CreateLongNewContainer = connect(
-    state =>
-        ({
-            headline1: state.Create_new.headline1,
-           // authorize: isUserAuthorize(this.props.match.params.name, localStorage.getItem('token'))
-        }),
-    dispatch =>
-        ({
-
-        })
-)(CreateLongNew)

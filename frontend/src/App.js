@@ -3,7 +3,7 @@ import './App.css'
 import {About} from "./components/main/About";
 import {Home} from "./components/main/Home";
 import Login from './components/accounts/Login'
-import CreateLongNew from './components/create_new/createLongNew'
+import CreateLongNew from './components/create_new/create_long_new/createLongNewBlock'
 import createBrowserHistory from 'history/createBrowserHistory'
 export const history = createBrowserHistory()
 import { Router } from 'react-router'

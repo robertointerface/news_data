@@ -40,6 +40,11 @@ module.exports = {
 
       ]
   },
+    resolve: {
+        alias: {
+            root: path.resolve(__dirname, 'src/'),
+        }
+    },
   plugins: [
     new BundleTracker(
             {   path: '/Users/robertoalvarez/Desktop/virtualEnv/news_refactor/app/backend',

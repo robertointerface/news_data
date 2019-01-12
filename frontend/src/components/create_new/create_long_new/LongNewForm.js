@@ -3,16 +3,16 @@ import {
     NewTitleForm,
     NewHeadlineForm,
     NewContentForm
-} from '../ui/create_new/forms'
+} from '../../ui/create_new/forms'
 
 import {
     AttachedReferencesContainer
-} from '../../containers/containers'
+} from '../../../containers/containers'
 
-import CardCol12 from '../ui/common/cards/CardCol12'
-import {PrimaryButton} from '../ui/common/buttons/buttons'
+import CardCol12 from '../../ui/common/cards/CardCol12'
+import {PrimaryButton} from '../../ui/common/buttons/buttons'
 
-const NewForm = ({headline1='', headline2='', headline3='', content='', onSubmit=f=>f, onChange=f=>f}) => {
+const LongNewForm = ({headline1='', headline2='', headline3='', content='', onSubmit= f=>f, onChange= f=>f}) => {
     return (
         <CardCol12 Component={ <NewTitleForm/> }>
             <NewHeadlineForm onChange={onChange} name='headline1' value={headline1}/>
@@ -31,4 +31,4 @@ const NewForm = ({headline1='', headline2='', headline3='', content='', onSubmit
     )
 }
 
-export default NewForm
+export default LongNewForm
