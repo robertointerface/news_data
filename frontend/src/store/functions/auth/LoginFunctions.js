@@ -106,7 +106,6 @@ export const handle_signup = () => {
         .catch(err => {
              return dispatch(set_flash_message(err, flashFlags.ERROR ))
         })
-
     }
 }
 

@@ -5,7 +5,6 @@ import { NavLink } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 
 const LogInNav = ({ username = '' }) => {
-
     return (
         <ul className='nav navbar-nav NavText'>
             <li>
