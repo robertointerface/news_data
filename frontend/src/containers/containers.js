@@ -328,15 +328,3 @@ export const AttachedReferencesContainer = connect(
 )(AttachedReferences)
 
 
-
-/*
-export const CreateLongNewContainer = connect(
-    state =>
-        ({
-           authorize: isUserAuthorize(props.match.params.name, localStorage.getItem('token'))
-        }),
-    dispatch =>
-        ({
-
-        })
-)(CreateLongNewBlock)*/

@@ -26,7 +26,8 @@ export const ActionsConstants = {
 export const urls = {
     DEVELOP: 'http://localhost:8080',
     MAKE_API_CALL: 'http://localhost:8080/search/makeapicall/',
-    GET_INDICATORS: 'http://localhost:8080/search/indicators'
+    GET_INDICATORS: 'http://localhost:8080/search/indicators',
+    PUBLISH_LON_NEW: 'http://localhost:8080/createnew/publishlongnew/',
 }
 export const DatabaseConstants = {
     EU: 'EU',

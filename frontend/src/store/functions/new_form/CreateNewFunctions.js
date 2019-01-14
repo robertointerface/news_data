@@ -102,8 +102,6 @@ export const handle_indicator_request = (topicId='', topicName='') => {
 }
 
 
-
-
 var findSector = {
     [Symbol.iterator](sector){
         let x = 0;
@@ -275,6 +273,36 @@ function isEmpty(obj) {
     }
     return true;
 }
+
+
+export const handle_publish_long_new = () =>{
+
+    return (dispatch, getState) => {
+        var csrftoken = getCookie('csrftoken'); //get saved cookie
+        var title = getState().Create_new.title
+        var data = {
+            title: title
+        }
+        return fetch(`${urls.PUBLISH_LON_NEW}`, {
+            method: 'POST',
+            mode: 'same-origin',
+            headers: {
+                Authorization: `JWT ${localStorage.getItem('token')}`,
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrftoken
+            },
+            body: JSON.stringify(data)
+        })
+        .then(res => res.json())
+        .then(res =>{
+
+        })
+    }
+}
+
+
+
+
 /////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////// POSSIBLE DELETE ///////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////

@@ -7,9 +7,7 @@ import LongNewForm from "../components/create_new/create_long_new/LongNewForm";
 import SearchBlock from "../components/search_data/SearchBlock";
 import DataDisplay from "../components/data_representation/dataDisplay";
 import {attach_reference} from "../store/functions/new_form/CreateNewFunctions";
-
-
-
+import {handle_publish_long_new} from 'root/store/functions/new_form/CreateNewFunctions'
 
 export const CreateNewFormContainer = connect(
     state =>
@@ -25,6 +23,12 @@ export const CreateNewFormContainer = connect(
                 e.preventDefault();
                 dispatch(handle_new_change(e))
             },
+            onSubmit(e){
+                e.preventDefault();
+                dispatch(handle_publish_long_new());
+            }
+
+
         })
 )(LongNewForm)
 

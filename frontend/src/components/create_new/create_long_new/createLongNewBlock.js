@@ -30,7 +30,6 @@ class CreateLongNewBlock extends Component{
 
         return (
             <PageTemplate>
-            {(this.isAuthorize) ?
                 <div className='row'>
                     <div className='col-8'>
                         <div className='row'>
@@ -45,8 +44,7 @@ class CreateLongNewBlock extends Component{
                     <div className="col-12">
                             <DataDisplayContainer/>
                     </div>
-                </div> : null
-            }
+                </div>
             </PageTemplate>
         )
     }
