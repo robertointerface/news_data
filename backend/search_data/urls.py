@@ -14,6 +14,6 @@ else:
 
 urlpatterns = [
     url(r'^indicators/(?P<sector>[-\w]+)/(?P<topic>[-\w]+)/$', views.get_indicators),
-    url(r'^makeapicall/$', views.make_api_call),
+    url(r'^makeapicall/$', views.MakeApiCall.as_view()),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

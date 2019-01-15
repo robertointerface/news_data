@@ -11,6 +11,9 @@ from rest_framework.decorators import api_view
 import json
 from DataBasesModel.EurostatModel import Eurostat
 urlfetch.set_default_fetch_deadline(15) #set fetching time limit to 15 seconds,
+from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.views import APIView
 
 
 class IndicatorsDict(dict):
@@ -59,26 +62,29 @@ def get_indicators(request, sector, topic):
     })
 
 
-def make_api_call(request):
-    request_data = json.loads(request.body)
-    api_url = request_data['APIUrl']
-    try:
-        headers = {'Content-Type': 'application/json'}
-        result = urlfetch.fetch(
-            url=api_url,
-            method=urlfetch.GET,
-            headers=headers)
-        print('result: ' + result.content)
-        if result.status_code == 200:
+class MakeApiCall(APIView):
+    permission_classes = (AllowAny,)
+
+    def post(self, request, format=None):
+        request_data = json.loads(request.body)
+        api_url = request_data['APIUrl']
+        try:
+            headers = {'Content-Type': 'application/json'}
+            result = urlfetch.fetch(
+                url=api_url,
+                method=urlfetch.GET,
+                headers=headers)
+            print('result: ' + result.content)
+            if result.status_code == 200:
+                api_result = {
+                    'status': 200,
+                    'result': result.content
+                }
+        except urlfetch.Error:
+            print('urlfetch.Error: ' + urlfetch.Error)
             api_result = {
-                'status': 200,
-                'result': result.content
+                'status': 400
             }
-    except urlfetch.Error:
-        print('urlfetch.Error: ' + urlfetch.Error)
-        api_result = {
-            'status': 400
-        }
-    return JsonResponse(api_result)
+        return JsonResponse(api_result)
 
 

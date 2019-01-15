@@ -33,7 +33,7 @@ export const CreateNewFormContainer = connect(
 export const DataDisplayContainer = connect(
     state =>
         ({
-            list: [...state.Results_management.results],
+            list: state.Results_management.results,
             resultLenght: state.Results_management.results.length,
             //title:
         }),

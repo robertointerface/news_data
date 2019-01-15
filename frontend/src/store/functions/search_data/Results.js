@@ -1,6 +1,5 @@
 
-export const push_result = (id, list, newItem ) => {
-    newItem.id = id;
+export const push_result = (list, newItem ) => {
     list.push(newItem);
     return list;
 }

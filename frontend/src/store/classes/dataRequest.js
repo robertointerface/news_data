@@ -23,11 +23,15 @@ export class dataRequest {
     }
 
     createDisplayMessage(){
+        /*
+            @Fun: create short message that explains in a short sentence the data result.
+            @return (string): composed message
+         */
         var displayMessage = '';
         var orderArray = this.queryMap.UrlStructure.DisplayMessageOrder;
-        for (var item of orderArray){
+        for (var item of orderArray){ //iterate over array DisplayMessageOrder to find out the order the message should
+                                        //be displayed.
             if (this[item]){
-                console.log('is here: ' + JSON.stringify(this[item]));
                 displayMessage = displayMessage.concat(this[item].name, ' ');
             }
             else{
@@ -47,8 +51,10 @@ export class dataRequest {
     }
     createAPIRequest(){
         /*
-            @Func:
+            @Func: Create API Request url.
+            @Return true if successful.
          */
+
         var baseUrl = ThirdPartyIPIBaseAddress.EuroStatUrl;
         this.APIUrl = `${baseUrl}/${this.Topic.id}?`;
         var pathParameter;
@@ -64,9 +70,8 @@ export class dataRequest {
     createEUpath(){
         /*
             @Func: Create Array of objects with syntax { name: "", value: "" }, each object represent a parameter that
-             is used to create a Url path with systax name=value.
+             is used to create a Url path with syntax name=value.
          */
-
         this.addToPathArray(this.Indicator.id, this.queryMap.UrlStructure.IndicatorName);
         this.addToPathArray(this.Unit.id, this.queryMap.UrlStructure.UnitName);
         this.addToPathArray('1', 'precision');
@@ -88,22 +93,26 @@ export class dataRequest {
                 item (string or array).
                 name (string).
          */
-        if(Array.isArray(item)){
-            var it = this.urlOptionsIter();
-            it.name = name;
-            it.array = item;
-            var iterator = it[Symbol.iterator]();
-            for (var item of iterator){
-                this.pathArray.push(item);
+        if((Array.isArray(item)) || (typeof item === 'string')) {
+            if (Array.isArray(item)) {
+                var it = this.urlOptionsIter();
+                it.name = name;
+                it.array = item;
+                var iterator = it[Symbol.iterator]();
+                for (var item of iterator) {
+                    this.pathArray.push(item);
+                }
+            }
+            else {
+                var item = {
+                    name: name,
+                    value: item
+                }
+                this.pathArray.push(item)
             }
         }
-        else{
-            var item = {
-                name: name,
-                value: item
-            }
-            this.pathArray.push(item)
-        }
+
+
         return true;
     }
 
@@ -153,6 +162,7 @@ export class dataRequest {
 
     makeAPIcall(){
         /*
+            @Func: Make API call to get data. Call server and pass the composed url.
 
          */
         var csrftoken = getCookie('csrftoken');
@@ -175,19 +185,25 @@ export class dataRequest {
                 console.log('response after json: ' + JSON.stringify(response));
                 if(response['status'] == 200){
                     var jsonResult = JSON.parse(response['result'])
-                    this.result = JSON.parse(JSON.stringify(jsonResult));
+                    this.result = JSON.parse(JSON.stringify(jsonResult)); //Save API call result on this.result
                     return this.createSaveObject();
                 }
                 else{
-
+                    throw ('Could not get data, please try again. If error persists please contact us and let us know.')
                 }
             })
             .catch(err => {
-                console.log('error at making api call: ' + err);
+                throw (err)
             })
     }
 
     createSaveObject(){
+        /*
+            @Func: Create object with filtered result obtained from API call and details of made request.
+            Data is saved so the user has the possibility of saving the data.
+            Details of made request is saved so user can request the same data in different format.
+
+         */
         var searchObject = {};
         ({
             Sector: searchObject.Sector,
@@ -200,7 +216,7 @@ export class dataRequest {
             queryMap: searchObject.queryMap,
             requestDate: searchObject.requestDate,
             displayMessage: searchObject.displayMessage,
-        } = this)
+        } = this) //copy parameters for this.
 
         var filterResult = [...this.filterResult()]
         var resultObject = {
@@ -209,6 +225,7 @@ export class dataRequest {
         };
 
         var saveObject = {
+            id: Date.now(),
             resultObject: {...resultObject},
             searchObject: {...searchObject},
             attached: false
@@ -218,7 +235,10 @@ export class dataRequest {
     }
 
     filterResult(){
-
+        /*
+            @Func: Organize given API result in format {name: GeoLocation (i.e UK), values: [](Array of values ordered chronologically)}
+            @Return: (array of objects): each object is geoObject.
+         */
         var timeLength = this.Times.length;
         var TimeIndexes = {};
         var values = this.result['value'];

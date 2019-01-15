@@ -229,7 +229,7 @@ const Modify_result_management = (state={}, action) => {
             return {
                 ...state,
                 numberResults: state.numberResults + 1,
-                results: [...push_result(state.numberResults, state.results, action.result)],
+                results: [...push_result(state.results, action.result)],
 
             }
         default:

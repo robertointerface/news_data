@@ -13,7 +13,7 @@ class DataDisplay extends Component{
             <div className='row'>
                 {(resultLenght > 0) ?
                     list.map((result, i) =>
-                        <div className='col-6' key={i}>
+                        <div className='col-6' key={result.id}>
                             <div className='card'>
                                 <div className='row'>
                                     <div className='col-12'>
@@ -25,7 +25,10 @@ class DataDisplay extends Component{
                                         />
                                     </div>
                                     <div className='col-12'>
-                                        <AttachDataRequest onClick={(e) => onAttach(e, i)}/>
+                                        <AttachDataRequest onClick={(e) => onAttach(e, result.id)}/>
+                                    </div>
+                                    <div className='col-12'>
+
                                     </div>
                                 </div>
                             </div>

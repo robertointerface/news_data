@@ -5,7 +5,8 @@ import {
     set_timeGeo,
     set_units,
     set_query_map,
-    select_unit, save_result,
+    select_unit,
+    save_result,
     save_reference
 } from "actions/actions";
 
@@ -34,8 +35,7 @@ export const attach_reference = (id) => {
     return (dispatch, getState) => {
 
         try {
-
-            var searchResults = getState().Results_management.results[id]
+            var searchResults = getState().Results_management.results.find(item => item.id == id)
             if(searchResults.attached){
                 throw 'already attached'
             }
@@ -218,6 +218,9 @@ export const setUnitSelected = (list=[], id='') => {
 
 
 export const handle_data_request = () => {
+    /*
+        @Func: Use State.Current_search to create class object dataRequest
+     */
     return (dispatch, getState) => {
         var requestObject = prepareRequestData(JSON.parse(JSON.stringify(getState().Current_search)))
         var dataRequestItem = new dataRequest(requestObject);
@@ -234,7 +237,7 @@ export const handle_data_request = () => {
 
 const prepareRequestData = CurrentSearch => {
     /*
-        @Func: create an object with some arguments from state.Current_search in order to save it.
+        @Func: creates an JSON object with some arguments from state.Current_search.
         @Arg:
             state.Current_search.
         @Return (object):
