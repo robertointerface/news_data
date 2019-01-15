@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { NavLink } from 'react-router-dom'
 import LogInNav from './LogInNav'
 import LogOutNav from './LogOutNav'
-import { FlashContainer } from '../../containers/containers'
+import { FlashContainer } from 'containers/containers'
 
 const MainMenu = ({loggedIn = false, token = '', log_out=f=>f, flashMessage='', username=''}) => {
         return (

@@ -4,11 +4,12 @@ import {
     logged_in,
     remove_user_data,
     set_flash_message
-} from '../../../actions/actions'
+} from 'actions/actions'
 
-import {flashFlags} from '../../../constants/constants'
-import {history} from '../../../App.js';
+import {flashFlags} from 'constants/constants'
+import {history} from 'root/App.js';
 import {getCookie} from "./Cookies";
+
 import {
     validate,
     onlyLettersNumbers,

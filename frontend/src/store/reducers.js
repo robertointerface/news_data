@@ -1,6 +1,6 @@
 import React from 'react'
-import { ActionsConstants as C } from '../constants/constants'
-import { handle_user_change, handle_logout } from './functions/auth/LoginFunctions'
+import { ActionsConstants as C } from 'constants/constants'
+import { handle_user_change, handle_logout } from 'functions/auth/LoginFunctions'
 import {
     handle_new_change,
     pushItemToArray,
@@ -9,7 +9,7 @@ import {
     markItemSelected,
     setUnitSelected,
     attach_reference
-} from './functions/new_form/CreateNewFunctions'
+} from 'functions/new_form/CreateNewFunctions'
 
 import {
     getSectorsByDatabase,
@@ -18,11 +18,11 @@ import {
     findQueryOptions,
     createTimeList,
     createGeoList
-} from './functions/search_data/SearchIterGen'
+} from 'functions/search_data/SearchIterGen'
 
 import {
     push_result
-} from './functions/search_data/Results'
+} from 'functions/search_data/Results'
 
 import { userData as emptyUserData }  from './initialData'
 

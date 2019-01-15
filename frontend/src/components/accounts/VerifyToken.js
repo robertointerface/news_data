@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Component } from 'react'
-import {getCookie} from "../../store/functions/auth/Cookies";
-import {VerifyTokenFormContainer} from '../../containers/containers'
-import CardCol6 from '../ui/common/cards/CardCol6'
+import {getCookie} from "functions/auth/Cookies";
+import {VerifyTokenFormContainer} from 'containers/containers'
+import CardCol6 from 'ui/common/cards/CardCol6'
 
 class VerifyToken extends Component {
     constructor(props){

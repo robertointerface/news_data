@@ -1,8 +1,8 @@
 import {ThirdPartyIPIBaseAddress} from '../initialData'
-import {getCookie} from "../functions/auth/Cookies";
-import {save_result} from '../../actions/actions'
+import {getCookie} from "functions/auth/Cookies";
+import {save_result} from 'actions/actions'
 import React from 'react';
-import {urls} from '../../constants/constants'
+import {urls} from 'constants/constants'
 
 export class dataRequest {
 

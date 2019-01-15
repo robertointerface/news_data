@@ -29,20 +29,28 @@ module.exports = {
 
           },
           {
-                test: /\.svg$/,
-                loader: 'svg-inline-loader'
+            test: /\.svg$/,
+            loader: 'svg-inline-loader'
           },
           { test: /\.html$/i, loader: 'html-loader' },
           {
             test: /\.css$/,
             use: ["style-loader", "css-loader"]
-          }
+          },
 
       ]
   },
     resolve: {
         alias: {
-            root: path.resolve(__dirname, 'src/'),
+            'root': path.resolve(__dirname, 'src/'),
+            'containers': path.resolve(__dirname, 'src/containers/'),
+            'components': path.resolve(__dirname, 'src/components/'),
+            'constants': path.resolve(__dirname, 'src/constants/'),
+            'actions': path.resolve(__dirname, 'src/actions/'),
+            'functions': path.resolve(__dirname, 'src/store/functions/'),
+            'ui': path.resolve(__dirname, 'src/components/ui/'),
+            'data': path.resolve(__dirname, 'src/data/'),
+            'classes': path.resolve(__dirname, 'src/store/classes'),
         }
     },
   plugins: [

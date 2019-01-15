@@ -1,13 +1,14 @@
 import React from 'react';
 import {Component} from 'react'
 import PropTypes from 'prop-types';
-import PageTemplate from 'root/components/main/PageTemplate'
+import PageTemplate from 'components/main/PageTemplate'
 
 import {
     CreateNewFormContainer,
-    SearchDataContainer,
     DataDisplayContainer
-} from 'root/containers/createNewContainers'
+} from 'containers/createNewContainers'
+
+import {SearchDataContainer} from 'containers/searchDataContainers'
 
 const isUserAuthorize = (username='', token='') => {
     var saveUser = JSON.parse(localStorage.getItem('user'));

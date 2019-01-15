@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Component } from 'react';
 import Table from "./table";
-import DataTitle from '../ui/search_data/dataTitle'
+import DataTitle from 'ui/search_data/dataTitle'
 import {AttachDataRequest} from './attachData'
 
 class DataDisplay extends Component{

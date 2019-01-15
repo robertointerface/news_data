@@ -3,14 +3,14 @@ import {
     NewTitleForm,
     NewHeadlineForm,
     NewContentForm
-} from '../../ui/create_new/forms'
+} from 'ui/create_new/forms'
 
 import {
     AttachedReferencesContainer
-} from '../../../containers/containers'
+} from 'containers/containers'
 
-import CardCol12 from '../../ui/common/cards/CardCol12'
-import {PrimaryButton} from '../../ui/common/buttons/buttons'
+import CardCol12 from 'ui/common/cards/CardCol12'
+import {PrimaryButton} from 'ui/common/buttons/buttons'
 
 const LongNewForm = ({headline1='', headline2='', headline3='', content='', onSubmit= f=>f, onChange= f=>f}) => {
     return (

@@ -6,7 +6,7 @@ export const SelectList = ({list=[], onSelect=f=>f}) =>
         {list.map((x, i) => <a onClick={(e) => onSelect(e, x.id, x.name)}
                                href='#'
                                className={'list-group-item list-group-item-action searchOption ' + (x.select ? 'itemSelect' : '')}
-                               key={i}>{x.name}
+                               key={x.id}>{x.name}
                                </a>
         )}
     </div>

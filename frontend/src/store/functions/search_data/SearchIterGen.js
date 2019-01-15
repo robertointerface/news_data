@@ -1,5 +1,5 @@
-import EurostatDatabases from '../../../data/Eurostat/EurostatMap'
-import {ModelGeo} from '../../../data/Geo/Geo'
+import EurostatDatabases from 'data/Eurostat/EurostatMap'
+import {ModelGeo} from 'data/Geo/Geo'
 
 function isEmpty(obj) {
     for(var key in obj) {

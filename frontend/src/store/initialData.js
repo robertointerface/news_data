@@ -1,4 +1,4 @@
-import {flashFlags} from '../constants/constants'
+import {flashFlags} from 'constants/constants'
 
 export const appStatus = {
     flash: '',

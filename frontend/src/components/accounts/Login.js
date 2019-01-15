@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CardCol6 from '../ui/common/cards/CardCol6'
-import PageTemplate from '../main/PageTemplate'
-import { SignUpContainer, LogInContainer} from '../../containers/containers'
+import CardCol6 from 'ui/common/cards/CardCol6'
+import PageTemplate from 'components/main/PageTemplate'
+import { SignUpContainer, LogInContainer} from 'containers/containers'
 const Login = ({title='Log in', onChange=f=>f, onSubmit=f=>f, username='', password=''}) => {
      return (
 

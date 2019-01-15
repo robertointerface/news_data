@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {DropDownMenu} from '../ui/common/dropdowns/dropdown'
+import {DropDownMenu} from 'ui/common/dropdowns/dropdown'
 
 const AttachedReferences = ({list=[]}) => {
     var cleanList = getAttachedRefList(list)

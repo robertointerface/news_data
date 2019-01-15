@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CardCol6 from '../../ui/common/cards/CardCol6'
-import {googleLogin} from '../google_sign'
+import CardCol6 from 'ui/common/cards/CardCol6'
+
 
 
 import {GoogleLogin} from 'react-google-login';

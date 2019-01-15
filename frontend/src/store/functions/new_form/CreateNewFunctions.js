@@ -7,12 +7,12 @@ import {
     set_query_map,
     select_unit, save_result,
     save_reference
-} from "../../../actions/actions";
+} from "actions/actions";
 
-import EurostatDatabases from "../../../data/Eurostat/EurostatMap";
-import dataRequest from '../../classes/dataRequest'
-import {getCookie} from '../auth/Cookies'
-import {urls} from '../../../constants/constants'
+import EurostatDatabases from "data/Eurostat/EurostatMap";
+import dataRequest from 'classes/dataRequest'
+import {getCookie} from 'functions/auth/Cookies'
+import {urls} from 'constants/constants'
 
 export const handle_new_change = (e, prevstate) => {
     /*

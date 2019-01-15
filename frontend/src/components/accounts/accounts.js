@@ -1,8 +1,8 @@
 import React from 'react';
-import PageTemplate from '../main/PageTemplate'
+import PageTemplate from 'components/main/PageTemplate'
 import { Route } from 'react-router-dom'
 import Login from './Login'
-import {VerifyTokenFormContainer} from '../../containers/containers'
+import {VerifyTokenFormContainer} from 'containers/containers'
 
 const Accounts = ({ match }) =>
     <PageTemplate>

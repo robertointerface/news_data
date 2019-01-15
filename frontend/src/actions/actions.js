@@ -1,5 +1,5 @@
 import React from 'react';
-import { ActionsConstants as C } from '../constants/constants'
+import { ActionsConstants as C } from 'constants/constants'
 
 /*export const handle_login = (e) =>
     ({

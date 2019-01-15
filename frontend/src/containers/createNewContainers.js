@@ -1,13 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import {history} from "../App";
-import {getCookie} from "../store/functions/auth/Cookies";
-import {handle_new_change} from "../actions/actions";
-import LongNewForm from "../components/create_new/create_long_new/LongNewForm";
-import SearchBlock from "../components/search_data/SearchBlock";
-import DataDisplay from "../components/data_representation/dataDisplay";
-import {attach_reference} from "../store/functions/new_form/CreateNewFunctions";
-import {handle_publish_long_new} from 'root/store/functions/new_form/CreateNewFunctions'
+import {handle_new_change} from "actions/actions";
+import LongNewForm from "components/create_new/create_long_new/LongNewForm";
+import DataDisplay from "components/data_representation/dataDisplay";
+import {attach_reference} from "functions/new_form/CreateNewFunctions";
+import {handle_publish_long_new} from 'functions/new_form/CreateNewFunctions'
 
 export const CreateNewFormContainer = connect(
     state =>
@@ -32,19 +29,6 @@ export const CreateNewFormContainer = connect(
         })
 )(LongNewForm)
 
-export const SearchDataContainer = connect(
-    state =>
-        ({
-            ThirdPartyAPI : state.Current_search.ThirdPartyAPI.id,
-            Sector: state.Current_search.Sector.id,
-            Topic: state.Current_search.Topic.id,
-            requestActive: state.Current_search.requestActive
-        }),
-    dispatch =>
-        ({
-
-        })
-)(SearchBlock)
 
 export const DataDisplayContainer = connect(
     state =>

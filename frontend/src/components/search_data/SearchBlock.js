@@ -1,7 +1,7 @@
 import React from 'react';
 import { Component } from 'react'
 import PropTypes from 'prop-types'
-import CardCol12 from '../ui/common/cards/CardCol12'
+import CardCol12 from 'ui/common/cards/CardCol12'
 import {
     DatabaseContainer,
     SectorContainer,
@@ -11,9 +11,9 @@ import {
     GeoContainer,
     ProgressContainer,
     RequestButtonContainer
-} from '../../containers/containers'
-import OptionsCardTitle from '../ui/search_data/optionsCardTitle'
+} from 'containers/searchDataContainers'
 
+import OptionsCardTitle from 'ui/search_data/optionsCardTitle'
 
 class SearchBlock extends Component {
     render() {
@@ -37,7 +37,7 @@ class SearchBlock extends Component {
                                        <TimeContainer/>
                                     </div>
                                     <div className='col-6'>
-                                        <GeoContainer/>
+
                                     </div>
                                 </div>
                             </div>
