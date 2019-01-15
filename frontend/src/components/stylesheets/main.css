@@ -4,6 +4,13 @@ body {
     padding-bottom: 5rem;
 }
 
+.btn span.glyphicon {
+	opacity: 0;
+}
+.btn.active span.glyphicon {
+	opacity: 1;
+}
+
 .NavText > li > a{
     font-size: 2rem;
     color: snow;
@@ -32,9 +39,14 @@ body {
     font-weight: bold;
 }
 
-a.searchOption:hover {
+.itemSelect:hover {
     background-color: rgba(2, 41, 104, 0.6);
+    color: #FEF9FF;
+    font-weight: bold;
 }
+/*a.searchOption:hover {
+    background-color: rgba(2, 41, 104, 0.6);
+}*/
 .scroll_300 {
     height:200px;
     overflow-y: scroll;

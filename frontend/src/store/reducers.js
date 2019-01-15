@@ -183,7 +183,7 @@ export const Modify_current_search = (state = {}, action) =>{
         case C.SELECT_TIME:
             return {
                 ...state,
-                Times: [...markItemSelected(state.Times, action.time)],
+                Times: markItemSelected(state.Times, action.time),
                 SelectedTimes: [...pushItemToArray(state.SelectedTimes, action.time)],
                 requestActive: canMakeRequest(state.Times, state.Geo)
             }

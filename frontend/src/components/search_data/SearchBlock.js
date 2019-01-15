@@ -37,7 +37,7 @@ class SearchBlock extends Component {
                                        <TimeContainer/>
                                     </div>
                                     <div className='col-6'>
-
+                                        <GeoContainer/>
                                     </div>
                                 </div>
                             </div>

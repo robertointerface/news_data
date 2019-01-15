@@ -86,9 +86,9 @@ export const handle_indicator_request = (topicId='', topicName='') => {
                         dispatch(set_query_map(Sector, topicId)),
                         dispatch(set_timeGeo()),
                         dispatch(set_units(response['data']['units'])),
-                        dispatch(select_unit()),
                         dispatch(set_indicators(response['data']['indicators'])),
                         dispatch(select_topic(topicId, topicName)),
+                        dispatch(select_unit()),
                                         ])
                 }
                 else{
@@ -138,10 +138,10 @@ export const getSectorTopics = sector => {
 }
 
 export const markItemSelected = (list, newItem) => {
-    var clickedItem = list.find(item => item['id'] == newItem)
+    var newList = JSON.parse(JSON.stringify(list));
+    var clickedItem = newList.find(item => item['id'] == newItem);
     clickedItem.checked = true;
-    clickedItem.name += 'mod'
-    return list;
+    return newList;
 }
 
 export const canMakeRequest = ( timeList, geoList ) => {

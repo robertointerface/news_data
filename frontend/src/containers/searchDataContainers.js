@@ -13,6 +13,7 @@ import {RequestButton} from "components/search_data/RequestButton";
 import {handle_indicator_request} from "functions/new_form/CreateNewFunctions";
 import Progress from "components/search_data/progressBar";
 import TimeOptions from "components/search_data/TimeOption";
+import {handle_data_request} from 'functions/new_form/CreateNewFunctions'
 
 export const SearchDataContainer = connect(
     state =>
@@ -31,7 +32,7 @@ export const SearchDataContainer = connect(
 export const DatabaseContainer = connect(
     state =>
         ({
-            list: [...state.Current_search.PossibleThirdPartyAPI],
+            list: state.Current_search.PossibleThirdPartyAPI,
             title: 'Databases'
         }),
     dispatch =>
@@ -47,7 +48,7 @@ export const DatabaseContainer = connect(
 export const SectorContainer = connect(
     state =>
         ({
-            list: [...state.Current_search.PossibleSectors],
+            list: state.Current_search.PossibleSectors,
             title: 'Sectors'
         }),
     dispatch =>
@@ -63,7 +64,7 @@ export const SectorContainer = connect(
 export const TopicContainer = connect(
     state =>
         ({
-            list: [...state.Current_search.PossibleTopics],
+            list: state.Current_search.PossibleTopics,
             title: 'Topics'
         }),
     dispatch =>
@@ -79,7 +80,7 @@ export const TopicContainer = connect(
 export const IndicatorContainer = connect(
     state =>
         ({
-            list: [...state.Current_search.PossibleIndicators],
+            list: state.Current_search.PossibleIndicators,
             title: 'Indicators'
         }),
     dispatch =>
@@ -95,15 +96,13 @@ export const IndicatorContainer = connect(
 export const TimeContainer = connect(
     state =>
         ({
-            list: state.Current_search.Times
+            list: state.Current_search.Times,
 
         }),
     dispatch =>
         ({
-            onClick(e, id){
+            onChange(e, id){
                 e.preventDefault();
-                const isChecked = e.target.checked;
-                e.target.setAttribute('checked', true)
                 dispatch(select_time(id))
             }
 
@@ -113,13 +112,12 @@ export const TimeContainer = connect(
 export const GeoContainer = connect(
     state =>
         ({
-            list: [...state.Current_search.Geo]
+            list: state.Current_search.Geo
         }),
     dispatch =>
         ({
              onChange(e, id){
                 e.preventDefault();
-                const isChecked = e.target.checked;
                 dispatch(select_geo(id))
             }
 
@@ -146,7 +144,6 @@ export const RequestButtonContainer = connect(
         ({
             onClick(e){
                 e.preventDefault()
-                //var requestObject = prepareRequestData(store.getState().Current_search)
                 dispatch(handle_data_request());
             }
         })

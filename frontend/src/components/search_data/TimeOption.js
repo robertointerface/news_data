@@ -6,8 +6,8 @@ import { Component } from 'react'
         <CheckBoxList list={list} onChange={onChange}/>
     )
 }*/
-
-class TimeOptions extends Component {
+import {FormGroup, Checkbox} from 'react-bootstrap'
+/*class TimeOptions extends Component {
     constructor(props) {
         super(props);
     }
@@ -15,33 +15,38 @@ class TimeOptions extends Component {
         return (
              <div className={'list-group' + (this.props.list.length > 4 ? ' scroll_300' : '' )}>
                 {this.props.list.map((x, i) =>
-                    <div className='form-check' key={'time'+ i.toString()}>
-                        <TimeInput onClick={this.props.onClick} checked={x.checked} name={x.name} id={x.id}/>
-                        <label className='form-check-label'>{x.name}</label>
-                    </div>
+                        <FormGroup>
+                            <TimeInput onChange={this.props.onChange} checked={x.checked} name={x.name} id={x.id}/>
+                        </FormGroup>
                 )}
             </div>
         )
     }
+}*/
+
+
+const TimeOptions = (props) =>{
+
+    return(
+        <div className={'list-group' + (props.list.length > 4 ? ' scroll_300' : '' )}>
+                {props.list.map((x, i) =>
+
+                        <FormGroup>
+                            <TimeInput onChange={props.onChange} checked={x.checked} name={x.name} id={x.id}/>
+                        </FormGroup>
+                )}
+        </div>
+    )
 }
-
-class TimeInput extends Component {
-
-    constructor(props){
-        super(props)
-
-    }
-    render() {
-        let {onClick, checked, id, name} = this.props
-            return(
-                <input type='checkbox'
-                               className='form-check-input'
-                               onClick={(e) => onClick(e, id)}
-                               checked={checked ? true: false}
-                               key={id}
-                               value={name}/>
-            )
-    }
+const TimeInput = (props) => {
+    let {onChange, checked, id, name} = props
+    return(
+        <Checkbox
+               onChange={(e) => onChange(e, id)}
+               checked={checked}
+               key={name}
+               value={name}>{name}</Checkbox>
+    )
 }
 
 
