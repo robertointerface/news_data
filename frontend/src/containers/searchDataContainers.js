@@ -14,6 +14,8 @@ import {handle_indicator_request} from "functions/new_form/CreateNewFunctions";
 import Progress from "components/search_data/progressBar";
 import TimeOptions from "components/search_data/TimeOption";
 import {handle_data_request} from 'functions/new_form/CreateNewFunctions'
+import ChangeUnitMeasure from 'components/data_representation/changeUnitMeasure'
+import {handle_change_unit} from 'functions/search_data/Results'
 
 export const SearchDataContainer = connect(
     state =>
@@ -150,14 +152,28 @@ export const RequestButtonContainer = connect(
 )(RequestButton)
 
 export const ChangeUnitMeasureContainer = connect(
-    state =>
+    (state, props) =>
         ({
-            list:
+            list: [...findChangeUnitMeasure(props.props, state.Results_management.results)],
+            resultId: props.props
         }),
-    dispatch=>
+    (dispatch, props) =>
         ({
+            onClick(e, unitId){
+                e.preventDefault();
+                var resultId = props.props
+                dispatch(handle_change_unit(resultId, unitId));
 
+            }
         })
-)
+)(ChangeUnitMeasure)
+
+const findChangeUnitMeasure = (id, list=[]) => {
+
+    if(id && (list.length > 0)){
+        var result = list.find(item => item['id'] == id);
+        return result.searchObject.PossibleUnitMeasure;
+    }
+}
 
 

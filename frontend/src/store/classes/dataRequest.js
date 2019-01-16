@@ -7,13 +7,14 @@ import {urls} from 'constants/constants'
 export class dataRequest {
 
     constructor(requestObject){
+        this.ThirdPartyAPI = requestObject.ThirdPartyAPI;
         this.Sector = requestObject.Sector;
         this.Topic = requestObject.Topic;
         this.Indicator = requestObject.Indicator;
         this.Unit = requestObject.Unit;
-        this.ChangeUnits = requestObject.PossibleUnitMeasure;
-        this.Times = requestObject.SelectedTimes;
-        this.Geo = requestObject.SelectedGeo;
+        this.PossibleUnitMeasure = requestObject.PossibleUnitMeasure;
+        this.SelectedTimes = requestObject.SelectedTimes;
+        this.SelectedGeo = requestObject.SelectedGeo;
         this.queryMap = requestObject.queryMap;
         this.pathArray = [];
         this.result = {};
@@ -75,8 +76,8 @@ export class dataRequest {
         this.addToPathArray(this.Indicator.id, this.queryMap.UrlStructure.IndicatorName);
         this.addToPathArray(this.Unit.id, this.queryMap.UrlStructure.UnitName);
         this.addToPathArray('1', 'precision');
-        this.addToPathArray(this.Times, 'time');
-        this.addToPathArray(this.Geo, 'geo');
+        this.addToPathArray(this.SelectedTimes, 'time');
+        this.addToPathArray(this.SelectedGeo, 'geo');
 
         for (let key of Object.keys(this.queryMap.UrlStructure.extras)){
             this.addToPathArray(this.queryMap.UrlStructure.extras[key], key)
@@ -182,7 +183,7 @@ export class dataRequest {
                 return response.json()
             })
             .then(response => {
-                console.log('response after json: ' + JSON.stringify(response));
+                //console.log('response after json: ' + JSON.stringify(response));
                 if(response['status'] == 200){
                     var jsonResult = JSON.parse(response['result'])
                     this.result = JSON.parse(JSON.stringify(jsonResult)); //Save API call result on this.result
@@ -206,13 +207,15 @@ export class dataRequest {
          */
         var searchObject = {};
         ({
+            ThirdPartyAPI: searchObject.ThirdPartyAPI,
             Sector: searchObject.Sector,
+            Topic: searchObject.Topic,
             APIUrl: searchObject.APIUrl,
             Indicator: searchObject.Indicator,
             Unit: searchObject.Unit,
-            ChangeUnits: searchObject.ChangeUnits,
-            Times: searchObject.Times,
-            Geo: searchObject.Geo,
+            PossibleUnitMeasure: searchObject.PossibleUnitMeasure,
+            SelectedTimes: searchObject.SelectedTimes,
+            SelectedGeo: searchObject.SelectedGeo,
             queryMap: searchObject.queryMap,
             requestDate: searchObject.requestDate,
             displayMessage: searchObject.displayMessage,
@@ -239,16 +242,16 @@ export class dataRequest {
             @Func: Organize given API result in format {name: GeoLocation (i.e UK), values: [](Array of values ordered chronologically)}
             @Return: (array of objects): each object is geoObject.
          */
-        var timeLength = this.Times.length;
+        var timeLength = this.SelectedTimes.length;
         var TimeIndexes = {};
         var values = this.result['value'];
         var finalValue = [];
 
-        for (var time of this.Times){
+        for (var time of this.SelectedTimes){
             TimeIndexes[time] = this.getIndex('time', time);
         }
 
-        for(var geo of this.Geo){
+        for(var geo of this.SelectedGeo){
             let geoIndex = this.getIndex('geo', geo);
             let geoObject = {
                 name: geo,

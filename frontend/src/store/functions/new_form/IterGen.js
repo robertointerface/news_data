@@ -25,7 +25,4 @@ const timeIterator = {
     }
 }
 
-/*
-const attachedRefIter = {
-    []
-}*/
+

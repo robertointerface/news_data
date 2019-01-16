@@ -235,7 +235,7 @@ export const handle_data_request = () => {
     }
 }
 
-const prepareRequestData = CurrentSearch => {
+export const prepareRequestData = CurrentSearch => {
     /*
         @Func: creates an JSON object with some arguments from state.Current_search.
         @Arg:
