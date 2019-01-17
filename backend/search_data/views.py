@@ -10,6 +10,7 @@ from rest_framework.views import APIView
 from rest_framework.decorators import api_view
 import json
 from DataBasesModel.EurostatModel import Eurostat
+from DataBasesModel.OECDModel import OECD
 urlfetch.set_default_fetch_deadline(15) #set fetching time limit to 15 seconds,
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes
@@ -30,16 +31,16 @@ class IndicatorsDict(dict):
         except KeyError:
             return default
 
-    def get_indicators(self, sector_key, topic_key, default=None):
+    def get_indicators(self, sector_key, topic_key, version, default=None):
         try:
-            indicators = self[sector_key][topic_key]['indicators']
+            indicators = self[sector_key][topic_key][version]['indicators']
             return indicators
         except KeyError:
             return default
 
-    def get_units(self, sector_key, topic_key, default=None):
+    def get_units(self, sector_key, topic_key, version, default=None):
         try:
-            units = self[sector_key][topic_key]['units']
+            units = self[sector_key][topic_key][version]['units']
             return units
         except KeyError:
             return default
@@ -48,18 +49,44 @@ class IndicatorsDict(dict):
         return sector_key in self.keys() or str(sector_key) in self.keys()
 
 
-def get_indicators(request, sector, topic):
-    response = {
-        'indicators': {},
-        'units': {}
-    }
-    eurostat_dict = IndicatorsDict(Eurostat)
-    response['indicators'] = eurostat_dict.get_indicators(sector, topic)
-    response['units'] = eurostat_dict.get_units(sector, topic)
-    return JsonResponse({
-        'status': 'ok',
-        'data': response
-    })
+class GetIndicators(APIView):
+    permission_classes = (AllowAny,)
+
+    def post(self, request, format=None):
+        try:
+            request_data = json.loads(request.body)
+            sector = request_data['sector']
+            topic = request_data['topic']
+            third_party = request_data['ThirdPartyAPI']
+            version = request_data['version']
+            response = {
+                'indicators': {},
+                'units': {}
+            }
+            indicator_dict = self.get_api(third_party)
+            response['indicators'] = indicator_dict.get_indicators(sector, topic, version)
+            response['units'] = indicator_dict.get_units(sector, topic, version)
+            if (response['indicators'] and response['units']) is not None:
+                return JsonResponse({
+                    'status': 'ok',
+                    'data': response
+                })
+            else:
+                raise KeyError
+
+        except KeyError:
+            print 'puto'
+
+    def get_api(self, third_party):
+        if third_party == 'EU':
+            return IndicatorsDict(Eurostat)
+        elif third_party == 'OECD':
+            return IndicatorsDict(OECD)
+        else:
+            raise KeyError
+
+
+
 
 
 class MakeApiCall(APIView):

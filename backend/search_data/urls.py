@@ -13,7 +13,7 @@ else:
     from backend.search_data import views
 
 urlpatterns = [
-    url(r'^indicators/(?P<sector>[-\w]+)/(?P<topic>[-\w]+)/$', views.get_indicators),
+    url(r'^indicators', views.GetIndicators.as_view()),
     url(r'^makeapicall/$', views.MakeApiCall.as_view()),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
