@@ -7,7 +7,7 @@ var EurostatDatabases = [
     Topics:[{
     	TopicName: "Gross value added by sector (% del GDP)",
 		id: 'nama_10_a10',
-		rev: '1',
+		rev: 1,
 		Geo: 'EU',
 		Time: {
 			Type: 'A',
@@ -27,7 +27,7 @@ var EurostatDatabases = [
        {
     	   TopicName: "Exports & Imports of goods",
            id: 'ext_lt_intertrd',
-           rev: '1',
+           rev: 1,
            Geo: 'EU',
            Time: {
             	Type: 'A',
@@ -49,7 +49,7 @@ var EurostatDatabases = [
        {
     	   TopicName: "Number of enterprises by sector",
            id: 'sbs_sc_sca_r2',
-           rev: '1',
+           rev: 1,
            Geo: 'EU',
            Time: {
             	Type: 'A',
@@ -70,7 +70,7 @@ var EurostatDatabases = [
        {
     	   TopicName: "Employment by major industry sectors",
            id: 'nama_10_a10_e',
-           rev: '1',
+           rev: 1,
            Geo: 'EU',
 
            Time: {
@@ -93,7 +93,7 @@ var EurostatDatabases = [
        {
     	   TopicName: "Wages & salaries",
            id: 'lc_lci_r2_a',
-           rev: '1',
+           rev: 1,
            Geo: 'EU',
 
            Time: {
@@ -114,7 +114,7 @@ var EurostatDatabases = [
        {
     	   TopicName: "Exports & imports by EU Member States to UE or Non-EU countries",
            id: 'namq_10_exi',
-           rev: '1',
+           rev: 1,
            Geo: 'EU',
 
            Time: {
@@ -136,7 +136,7 @@ var EurostatDatabases = [
        {
     	   TopicName: "Gross fixed capital formation by asset type",
            id: 'nama_10_an6',
-           rev: '1',
+           rev: 1,
            Geo: 'EU',
            Time: {
             	Type: 'A',
@@ -153,7 +153,7 @@ var EurostatDatabases = [
        {
     	   TopicName: "Interest rates (bond yields)",
            id: 'irt_lt_mcby_q',
-           rev: '1',
+           rev: 1,
            Geo: 'EU',
            ExtraMessage : 'long-term interest rates (central government bond yields on the secondary market, with around 10 years residual maturity).',
            Time: {
@@ -171,7 +171,7 @@ var EurostatDatabases = [
        {
     	   TopicName: "Consumption expenditure of households",
            id: 'nama_10_co3_p3',
-           rev: '1',
+           rev: 1,
            Geo: 'EU',
            Time: {
             	Type: 'A',
@@ -196,7 +196,7 @@ var EurostatDatabases = [
         	    {
         	    	  TopicName: "Sentiment indicators",
         	          id: 'ei_bssi_m_r2',
-        	          rev: '1',
+        	          rev: 1,
         	          ExtraMessage : 'Seasonally adjusted data',
         	          Time: {
         	          	Type: 'M',
@@ -217,7 +217,7 @@ var EurostatDatabases = [
         	    {
                 	TopicName:"GDP and main components (output, expenditure and income)",
                 	id:"nama_10_gdp",
-                	rev: '1',
+                	rev: 1,
                 	 Time: {
                       	Type: 'A',
                       	Start: 1990,
@@ -234,7 +234,7 @@ var EurostatDatabases = [
                 {
             	TopicName:"GDP per capita",
             	id:"nama_10_pc",
-            	rev: '1',
+            	rev: 1,
             	 Time: {
                   	Type: 'A',
                   	Start: 1995,
@@ -251,7 +251,7 @@ var EurostatDatabases = [
                 {
                 	TopicName:"Key indicators (Households)",
                 	id:"nasa_10_ki",
-                	rev: '1',
+                	rev: 1,
                 	 Time: {
                       	Type: 'A',
                       	Start: 1996,
@@ -271,7 +271,7 @@ var EurostatDatabases = [
                   {
                   	TopicName:"debt-to-income ratio for non financial corporations",
                   	id:"nasa_10_ki",
-                  	rev: '2',
+                  	rev: 2,
                   	 Time: {
                         	Type: 'A',
                         	Start: 1996,

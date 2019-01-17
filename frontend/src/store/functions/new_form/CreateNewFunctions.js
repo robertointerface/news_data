@@ -1,6 +1,7 @@
 import {
     fetching_data,
     select_topic,
+    select_version,
     set_indicators,
     set_timeGeo,
     set_units,
@@ -9,6 +10,10 @@ import {
     save_result,
     save_reference
 } from "actions/actions";
+
+import {
+    getVersion
+} from 'functions/search_data/SearchIterGen'
 
 import EurostatDatabases from "data/Eurostat/EurostatMap";
 import dataRequest from 'classes/dataRequest'
@@ -67,14 +72,23 @@ export const handle_indicator_request = (topicId='', topicName='') => {
     return (dispatch, getState) => {
         var csrftoken = getCookie('csrftoken'); //get saved cookie
         var Sector = getState().Current_search.Sector.id; //get sector id
+        var ThirdPartyAPI = getState().Current_search.ThirdPartyAPI.id;
+        var version = getVersion(Sector, topicId);
+        var data = {
+            'sector': Sector,
+            'topic': topicId,
+            'version': version,
+            'ThirdPartyAPI': ThirdPartyAPI
+        }
         dispatch(fetching_data());
-        return fetch(`${urls.GET_INDICATORS}/${Sector}/${topicId}/`, {
-                method: 'GET',
+        return fetch(`${urls.GET_INDICATORS}`, {
+                method: 'POST',
                 mode: 'same-origin',
                 headers: {
                   'Content-Type': 'application/json',
                   'X-CSRFToken': csrftoken
                 },
+                body: JSON.stringify(data)
             })
             .then(response => {
 
@@ -88,6 +102,7 @@ export const handle_indicator_request = (topicId='', topicName='') => {
                         dispatch(set_units(response['data']['units'])),
                         dispatch(set_indicators(response['data']['indicators'])),
                         dispatch(select_topic(topicId, topicName)),
+                        dispatch(select_version(version)),
                         dispatch(select_unit()),
                                         ])
                 }

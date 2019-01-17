@@ -1,4 +1,5 @@
 import EurostatDatabases from 'data/Eurostat/EurostatMap'
+import OECDDatabases from 'data/OECD/OECDMap'
 import {ModelGeo} from 'data/Geo/Geo'
 
 function isEmpty(obj) {
@@ -8,6 +9,40 @@ function isEmpty(obj) {
     }
     return true;
 }
+
+
+
+const getSectors = {
+    [Symbol.iterator](database){
+        let item = 0;
+        var steps = database.length;
+        return {
+            [Symbol.iterator](){return this;},
+
+            next() {
+                if(item < steps) {
+                     var CurrentValue = {
+                         name: database[item].SectorName,
+                         id: database[item].id,
+                         select: false
+                     };
+                     item = item + 1;
+                     return { value: CurrentValue, done:false};
+                }
+                else{
+                    return { done: true }
+                }
+
+            },
+            return(v){
+                console.log('finished iterator');
+                return{value: v, done: true};
+            }
+        }
+    },
+}
+
+
 
 const getEUSectors = {
     /*
@@ -42,7 +77,8 @@ const getEUSectors = {
                 return{value: v, done: true};
             }
         }
-    }
+    },
+
 };
 
 const timeIterator = {
@@ -83,12 +119,25 @@ const timeIterator = {
 
 export const getSectorsByDatabase = database => {
     /*
-        @Func:
+        @Func:Create array of objects by passing
      */
-    var sectorArray = []
-    for(var v of getEUSectors){
+    var sectorArray = [];
+    var iterator;
+
+    switch (database) {
+        case 'EU':
+            iterator = getSectors[Symbol.iterator](EurostatDatabases)
+            break;
+        case 'OECD':
+            iterator = getSectors[Symbol.iterator](OECDDatabases)
+            break;
+        default:
+            console.log('puto')
+            break;
+    }
+
+    for(var v of iterator){
         sectorArray.push(v);
-        console.log(JSON.stringify(v));
     }
 
     return sectorArray;
@@ -217,6 +266,23 @@ export const findQueryOptions = (sectorId, topicId) => {
     }
     finally {
         return queryOptions
+    }
+}
+
+export const getVersion = (sectorId, topicId) => {
+
+    try {
+        var sector = {...EurostatDatabases.find(sector => sector['id'] == sectorId)}
+        var sectorTopics = [...sector['Topics']]
+        var topic = {...sectorTopics.find(topic => topic['id'] == topicId)}
+        var version = topic['rev']
+    }
+    catch(e){
+        var version = 1;
+    }
+
+    finally{
+        return version;
     }
 }
 

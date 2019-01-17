@@ -88,6 +88,12 @@ export const select_topic = (id, name) =>
         name: name
     })
 
+export const select_version = version =>
+    ({
+        type: C.SELECT_VERSION,
+        version: version
+    })
+
 export const select_indicator = (id, name) =>
     ({
         type: C.SELECT_INDICATOR,

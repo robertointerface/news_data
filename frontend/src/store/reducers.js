@@ -17,7 +17,8 @@ import {
     createIndicatorUnitList,
     findQueryOptions,
     createTimeList,
-    createGeoList
+    createGeoList,
+    getVersion
 } from 'functions/search_data/SearchIterGen'
 
 import {
@@ -103,6 +104,8 @@ export const Current_search = (state = {}, action) => {
             return Modify_current_search(state, action)
         case C.SELECT_TOPIC:
             return Modify_current_search(state, action)
+        case C.SELECT_VERSION:
+            return Modify_current_search(state, action)
         case C.SELECT_INDICATOR:
             return Modify_current_search(state, action)
         case C.SELECT_UNIT:
@@ -145,6 +148,7 @@ export const Modify_current_search = (state = {}, action) =>{
                     name: action.name
                 },
                 PossibleSectors: [...setItemSelected(state.PossibleSectors, action.sector)],
+
                 PossibleTopics: getTopicsBySector(action.sector),
                 progress: 40
             }
@@ -158,6 +162,11 @@ export const Modify_current_search = (state = {}, action) =>{
                  PossibleTopics: [...setItemSelected(state.PossibleTopics, action.topic)],
                  progress: 60
              }
+        case C.SELECT_VERSION:
+            return {
+                ...state,
+                version: action.version
+            }
         case C.SELECT_INDICATOR:
             return {
                 ...state,
