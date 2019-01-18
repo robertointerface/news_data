@@ -1176,7 +1176,7 @@ export const ModelGeo = {
                  },
                  ],
 
-	OCDECountries:[
+	OECD:[
                {
             	   Countryname: 'Spain',
 				   CountryCode: 'ESP'
@@ -1463,103 +1463,4 @@ export const ModelGeo = {
 				}
 ],
 
-	SpainRegions :[
-               {
-              	 Countryname: 'Noroeste (ES)',
-              	 CountryCode: 'ES1'
-               },
-               {
-              	 Countryname:'Galicia',
-              	 CountryCode: 'ES11'
-               },
-               {
-              	 Countryname:'Principado de Asturias',
-              	 CountryCode: 'ES12'
-               },
-               {
-              	 Countryname:'Cantabria',
-              	 CountryCode: 'ES13'
-               },
-               {
-              	 Countryname: 'Noreste (ES)',
-              	 CountryCode: 'ES2'
-               },
-               {
-              	 Countryname: 'País Vasco',
-              	 CountryCode: 'ES21'
-               },
-               {
-              	 Countryname:'La Rioja',
-              	 CountryCode: 'ES23'
-               },
-               {
-              	 Countryname: 'Comunidad Foral de Navarra',
-              	 CountryCode: 'ES22'
-               },
-               {
-              	 Countryname: 'Aragón',
-              	 CountryCode: 'ES24'
-               },
-               {
-              	 Countryname:'Comunidad de Madrid',
-              	 CountryCode: 'ES3'
-               },
-               {
-              	 Countryname: 'Centro (ES)',
-              	 CountryCode: 'ES4'
-               },
-               {
-              	 Countryname: 'Castilla y León',
-              	 CountryCode: 'ES41'
-               },
-               {
-              	 Countryname: 'Castilla-la Mancha',
-              	 CountryCode: 'ES42'
-               },
-               {
-              	 Countryname:'Extremadura',
-              	 CountryCode: 'ES43'
-               },
-               {
-              	 Countryname:'Este (ES)',
-              	 CountryCode: 'ES5'
-               },
-               {
-              	 Countryname: 'Cataluña',
-              	 CountryCode: 'ES51'
-               },
-               {
-              	 Countryname: 'Comunidad Valenciana',
-              	 CountryCode: 'ES52'
-               },
-               {
-              	 Countryname: 'Islas Baleares',
-              	 CountryCode: 'ES53'
-               },
-               {
-              	 Countryname: 'Sur (ES)',
-              	 CountryCode: 'ES6'
-               },
-               {
-              	 Countryname: 'Andalucía',
-              	 CountryCode: 'ES61'
-               },
-               {
-              	 Countryname: 'Región de Murcia',
-              	 CountryCode: 'ES62'
-               },
-               {
-              	 Countryname: 'Ciudad Autónoma de Ceuta (ES)',
-              	 CountryCode: 'ES63'
-               },
-               {
-              	 Countryname: 'Ciudad Autónoma de Melilla (ES)',
-              	 CountryCode: 'ES64'
-               },
-               {
-              	 Countryname: 'Canarias (ES)',
-              	 CountryCode: 'ES7'
-               },
-
-],
 };

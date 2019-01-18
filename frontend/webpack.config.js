@@ -2,6 +2,8 @@ const path = require("path");
 
 var BundleTracker = require('webpack-bundle-tracker')
 
+require("@babel/polyfill");
+
 module.exports = {
   mode: 'development',
   context: __dirname,
@@ -11,7 +13,9 @@ module.exports = {
         contentBase: './dist',
         port: 3000
     },
-  entry: './src/index.js', // entry point of our app. assets/js/index.js should require other js modules and dependencies it needs
+
+
+  entry: ['babel-polyfill', './src/index.js'], // entry point of our app. assets/js/index.js should require other js modules and dependencies it needs
   output: {
       path: path.join(__dirname, '/dist', '/bundle'),
       filename: "main.js",
@@ -60,6 +64,7 @@ module.exports = {
         ),
 
   ],
+
 }
 
 

@@ -26,6 +26,7 @@ import {
 } from 'functions/search_data/Results'
 
 import { userData as emptyUserData }  from './initialData'
+import {getTopicMap} from 'functions/new_form/CreateNewFunctions'
 
 export const App_status = (state = {}, action) => {
     switch (action.type) {
@@ -148,8 +149,7 @@ export const Modify_current_search = (state = {}, action) =>{
                     name: action.name
                 },
                 PossibleSectors: [...setItemSelected(state.PossibleSectors, action.sector)],
-
-                PossibleTopics: getTopicsBySector(action.sector),
+                PossibleTopics: getTopicsBySector(state.ThirdPartyAPI.id, action.sector),
                 progress: 40
             }
         case C.SELECT_TOPIC:
@@ -160,12 +160,13 @@ export const Modify_current_search = (state = {}, action) =>{
                      name: action.name,
                  },
                  PossibleTopics: [...setItemSelected(state.PossibleTopics, action.topic)],
+                 TopicMap: getTopicMap(state.ThirdPartyAPI.id, state.Sector.id, action.topic),
                  progress: 60
              }
         case C.SELECT_VERSION:
             return {
                 ...state,
-                version: action.version
+                version: {...state.TopicMap.rev},
             }
         case C.SELECT_INDICATOR:
             return {
@@ -209,13 +210,13 @@ export const Modify_current_search = (state = {}, action) =>{
         case C.SET_QUERY_MAP:
             return {
                 ...state,
-                queryMap: findQueryOptions(action.sector, action.topic),
+                queryMap: {...state.TopicMap.UrlStructure},
             }
         case C.SET_TIMES_GEO:
             return {
                 ...state,
-                Times: createTimeList(state.queryMap.Time.Start, state.queryMap.Time.End),
-                Geo: createGeoList('EU')
+                Times: createTimeList(state.TopicMap.Time.Start, state.TopicMap.Time.End),
+                Geo: createGeoList(state.ThirdPartyAPI.id)
             }
 
         default :

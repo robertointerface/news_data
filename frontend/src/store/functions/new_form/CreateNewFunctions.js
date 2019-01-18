@@ -11,6 +11,7 @@ import {
     save_reference
 } from "actions/actions";
 
+import {getDatabase} from 'functions/search_data/SearchIterGen'
 import {
     getVersion
 } from 'functions/search_data/SearchIterGen'
@@ -56,7 +57,25 @@ export const attach_reference = (id) => {
     }
 }
 
-
+export const getTopicMap = (thirdPartyAPI, sectorId, topicId) => {
+    /*
+        @func: Given a sector id and Topic id, it finds the corresponding queryOptions object and returns it.
+        @Args: SectorId (string), topiId (string).
+        @Returns: queryOptions Object.
+     */
+    var database = getDatabase(thirdPartyAPI)
+    try {
+        var sector = database.find(sector => sector['id'] == sectorId)
+        var sectorTopics = sector['Topics']
+        var topic = sectorTopics.find(topic => topic['id'] == topicId)
+    }
+    catch (e) {
+       var topic = {}
+    }
+    finally {
+        return topic
+    }
+}
 
 export const handle_indicator_request = (topicId='', topicName='') => {
     /*
@@ -97,12 +116,12 @@ export const handle_indicator_request = (topicId='', topicName='') => {
             .then(response => {
                 if(response.status == 'ok'){
                     return Promise.all([
+                        dispatch(select_topic(topicId, topicName)),
                         dispatch(set_query_map(Sector, topicId)),
+                        dispatch(select_version(version)),//DELETE VERSION NUMBER TO PASS
                         dispatch(set_timeGeo()),
                         dispatch(set_units(response['data']['units'])),
                         dispatch(set_indicators(response['data']['indicators'])),
-                        dispatch(select_topic(topicId, topicName)),
-                        dispatch(select_version(version)),
                         dispatch(select_unit()),
                                         ])
                 }
@@ -115,8 +134,10 @@ export const handle_indicator_request = (topicId='', topicName='') => {
             })
     }
 }
+////////////////////////////////////////////////////////////////
 
 
+////////////////////////////////////////////////////////////////
 var findSector = {
     [Symbol.iterator](sector){
         let x = 0;
@@ -160,6 +181,11 @@ export const markItemSelected = (list, newItem) => {
 }
 
 export const canMakeRequest = ( timeList, geoList ) => {
+    /*
+        @Func: Verify if user has selected a minimum of one time and one geo.
+        @Return: False if a minimum of 1 item is selected on timeList and geo List
+            otherwise return true
+     */
     var timeSelected = timeList.find(time => time['checked'] == true)
     var geoSelected = geoList.find(geo => geo['checked'] == true)
     if(timeSelected && geoSelected){
@@ -282,14 +308,6 @@ function getObjectFromArray(array, objectKey){
             return foundItem.name;
         }
         return array[0];
-}
-
-function isEmpty(obj) {
-    for(var key in obj) {
-        if(obj.hasOwnProperty(key))
-            return false;
-    }
-    return true;
 }
 
 

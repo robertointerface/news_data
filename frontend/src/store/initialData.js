@@ -44,6 +44,7 @@ export const initialStateCurrentSearch = {
         Sector: {},
         PossibleTopics: [],
         Topic: {},
+        TopicMap: {},
         version: 1,
         PossibleIndicators: [],
         Indicator: {},

@@ -5,11 +5,10 @@ const OECDDatabases = [
 	    SectorName: "Economy",
 	    id: 'EC',
 	    Topics:[
-
 	               {
 	            	   TopicName: "GDP growth",
 	                   id: 'PDB_GR',
-	                   rev: '1',
+	                   rev: 1,
 	                   Geo: 'OCDE',
 	                   RemoveGeo: [],
 
@@ -31,7 +30,7 @@ const OECDDatabases = [
 	               {
 	            	   TopicName: "Labour productivity",
 	                   id: 'PDB_LV',
-	                   rev: '1',
+	                   rev: 1,
 	                   Geo: 'OCDE',
 	                   Time: {
 	                    	Type: 'A',
@@ -50,7 +49,7 @@ const OECDDatabases = [
 	               {
 	            	   TopicName: "Income, expenditure & debt of households",
 	                   id: 'HH_DASH',
-	                   rev: '1',
+	                   rev: 1,
 	                   Geo: 'OCDE',
 
 	                   Time: {
@@ -71,7 +70,7 @@ const OECDDatabases = [
 	               {
 	            	   TopicName: "Consumer prices growth",
 	                   id: 'MEI_PRICES',
-	                   rev: '1',
+	                   rev: 1,
 	                   Geo: 'OCDE',
 	                   Time: {
 	                    	Type: 'A',
@@ -92,7 +91,7 @@ const OECDDatabases = [
 	               {
 	            	   TopicName: "Gross value Added by sector",
 	                   id: 'PDBI_I4',
-	                   rev: '1',
+	                   rev: 1,
 	                   Geo: 'OCDE',
 
 	                   Time: {
@@ -116,7 +115,7 @@ const OECDDatabases = [
 	               {
 	            	   TopicName: "Employment growth by sectors",
 	                   id: 'PDBI_I4',
-	                   rev: '2',
+	                   rev: 2,
 	                   Geo: 'OCDE',
 	                   Time: {
 	                    	Type: 'A',
@@ -139,7 +138,7 @@ const OECDDatabases = [
 	               {
 	            	   TopicName: "Growth in hours worked by sectors",
 	                   id: 'PDBI_I4',
-	                   rev: '3',
+	                   rev: 3,
 	                   Geo: 'OCDE',
 	                   Time: {
 	                    	Type: 'A',
@@ -162,7 +161,7 @@ const OECDDatabases = [
 	               {
 	            	   TopicName: "Salaries growth by sector",
 	                   id: 'PDBI_I4',
-	                   rev: '4',
+	                   rev: 4,
 	                   Geo: 'OCDE',
 	                   Time: {
 	                    	Type: 'A',
@@ -373,7 +372,6 @@ const OECDDatabases = [
 	                   id: 'RMW',
 	                   rev: '1',
 	                   Geo: 'OCDE',
-	                   RemoveGeo: ['FIN','ITA','DNK','AUT','NOR','SWE','CHE','ISL'],
 	                   Time: {
 	                    	Type: 'A',
 	                    	Start: 1990,

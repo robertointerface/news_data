@@ -116,7 +116,6 @@ var EurostatDatabases = [
            id: 'namq_10_exi',
            rev: 1,
            Geo: 'EU',
-
            Time: {
             	Type: 'Q',
             	Start: 2001,
