@@ -30,7 +30,7 @@ const DataBaseSelect = [
 export const ThirdPartyIPIBaseAddress = {
     EuroStatUrl : 'http://ec.europa.eu/eurostat/wdds/rest/data/v2.1/json/en',
     OCDE : 'http://stats.oecd.org/SDMX-JSON/data',
-    Unesco: 'https://api.uis.unesco.org/sdmx//data/UNESCO',
+    Unesco: 'https://api.uis.unesco.org/sdmx/data/UNESCO',
     censuscs1: 'https://api.census.gov/data',
     BLS: 'https://api.bls.gov/publicAPI/v2/timeseries/data',
     censusTimeSeries : 'https://api.census.gov/data/timeseries'

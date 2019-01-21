@@ -8,7 +8,9 @@ var EurostatDatabases = [
     	TopicName: "Gross value added by sector (% del GDP)",
 		id: 'nama_10_a10',
 		rev: 1,
-		Geo: 'EU',
+		Geo: {
+			location: 'EU',
+	    },
 		Time: {
 			Type: 'A',
 			Start: 1995,
@@ -28,7 +30,9 @@ var EurostatDatabases = [
     	   TopicName: "Exports & Imports of goods",
            id: 'ext_lt_intertrd',
            rev: 1,
-           Geo: 'EU',
+           Geo: {
+			location: 'EU',
+		   },
            Time: {
             	Type: 'A',
             	Start: 2002,
@@ -50,7 +54,9 @@ var EurostatDatabases = [
     	   TopicName: "Number of enterprises by sector",
            id: 'sbs_sc_sca_r2',
            rev: 1,
-           Geo: 'EU',
+           Geo: {
+			location: 'EU',
+		   },
            Time: {
             	Type: 'A',
             	Start: 2010,
@@ -71,7 +77,9 @@ var EurostatDatabases = [
     	   TopicName: "Employment by major industry sectors",
            id: 'nama_10_a10_e',
            rev: 1,
-           Geo: 'EU',
+           Geo: {
+			location: 'EU',
+	    	},
 
            Time: {
             	Type: 'A',
@@ -94,7 +102,9 @@ var EurostatDatabases = [
     	   TopicName: "Wages & salaries",
            id: 'lc_lci_r2_a',
            rev: 1,
-           Geo: 'EU',
+           Geo: {
+			location: 'EU',
+	    	},
 
            Time: {
             	Type: 'A',

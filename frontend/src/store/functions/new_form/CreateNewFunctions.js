@@ -17,9 +17,9 @@ import {
 } from 'functions/search_data/SearchIterGen'
 
 import EurostatDatabases from "data/Eurostat/EurostatMap";
-import dataRequest from 'classes/dataRequest'
+import {EUdataRequest, OECDdataRequest}  from 'classes/dataRequest'
 import {getCookie} from 'functions/auth/Cookies'
-import {urls} from 'constants/constants'
+import {urls, DatabaseConstants as thirdParty} from 'constants/constants'
 
 export const handle_new_change = (e, prevstate) => {
     /*
@@ -257,6 +257,17 @@ export const setUnitSelected = (list=[], id='') => {
 
 }
 
+const getDataRequest = function (requestObject) {
+
+    switch(requestObject.ThirdPartyAPI.id){
+        case thirdParty.EU:
+            return new EUdataRequest(requestObject)
+        case thirdParty.OECD:
+            return new OECDdataRequest(requestObject)
+        default:
+            return
+    }
+}
 
 export const handle_data_request = () => {
     /*
@@ -264,9 +275,9 @@ export const handle_data_request = () => {
      */
     return (dispatch, getState) => {
         var requestObject = prepareRequestData(JSON.parse(JSON.stringify(getState().Current_search)))
-        var dataRequestItem = new dataRequest(requestObject);
+        var dataRequestItem = getDataRequest(requestObject)
         return Promise.all([
-            dataRequestItem.createEUpath(),
+           // dataRequestItem.createPath(),
             dataRequestItem.createAPIRequest(),
             dataRequestItem.makeAPIcall()
                 .then(result =>{

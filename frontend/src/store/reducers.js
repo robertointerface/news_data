@@ -216,7 +216,7 @@ export const Modify_current_search = (state = {}, action) =>{
             return {
                 ...state,
                 Times: createTimeList(state.TopicMap.Time.Start, state.TopicMap.Time.End),
-                Geo: createGeoList(state.ThirdPartyAPI.id)
+                Geo: createGeoList(state.TopicMap.Geo)
             }
 
         default :

@@ -294,8 +294,10 @@ const GeoIterator = {
 }*/
 
 const getGeoClass = geoOption => {
+    /*
 
-    switch(geoOption){
+     */
+    switch(geoOption.location){
         case 'EU':
             return new Geo(geoOption)
         case 'OECD':
@@ -304,7 +306,7 @@ const getGeoClass = geoOption => {
 
 }
 
-export const createGeoList = (geoOption, TopicMap) => {
+export const createGeoList = (geoOption) => {
 
     var list = [];
     var geo = getGeoClass(geoOption);

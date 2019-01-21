@@ -9,9 +9,9 @@ const OECDDatabases = [
 	            	   TopicName: "GDP growth",
 	                   id: 'PDB_GR',
 	                   rev: 1,
-	                   Geo: 'OCDE',
-	                   RemoveGeo: [],
-
+	                   Geo: {
+	            	   	location: 'OECD',
+                       },
 	                   ExtraMessage : 'Constant prices',
 	                   Time: {
 	                    	Type: 'A',
@@ -19,7 +19,7 @@ const OECDDatabases = [
 	                     	End: 2016
 	                     },
 	                    UrlStructure:{
-	                    	orderOption: 2,
+	                    	orderOption: ['G', 'E', 'I', 'U'],
 	                    	IndicatorName: "SUBJECT",
 	                		UnitName: 'MEASURE',
 	                		DisplayMessageOrder:['Indicator', 'Unit'],
@@ -31,14 +31,16 @@ const OECDDatabases = [
 	            	   TopicName: "Labour productivity",
 	                   id: 'PDB_LV',
 	                   rev: 1,
-	                   Geo: 'OCDE',
+					   Geo: {
+	            	   	location: 'OECD',
+                       },
 	                   Time: {
 	                    	Type: 'A',
 	                    	Start: 1990,
 	                     	End: 2016
 	                     },
 	                    UrlStructure:{
-	                    	orderOption: 2,
+	                    	orderOption: ['G', 'E', 'I', 'U'],
 	                    	IndicatorName: "SUBJECT",
 	                		UnitName: 'MEASURE',
 	                		DisplayMessageOrder:['Indicator', 'Extra', 'Unit'],
@@ -50,15 +52,16 @@ const OECDDatabases = [
 	            	   TopicName: "Income, expenditure & debt of households",
 	                   id: 'HH_DASH',
 	                   rev: 1,
-	                   Geo: 'OCDE',
-
+					   Geo: {
+	            	   	location: 'OECD',
+                       },
 	                   Time: {
 	                    	Type: 'A',
 	                    	Start: 2007,
 	                     	End: 2016
 	                     },
 	                    UrlStructure:{
-	                    	orderOption: 2,
+	                    	orderOption: ['G', 'E', 'I', 'U'],
 	                    	TimeType: 'A',
 	                    	IndicatorName: "INDICATOR",
 	                    	DisplayMessageOrder:['Indicator'],
@@ -71,14 +74,16 @@ const OECDDatabases = [
 	            	   TopicName: "Consumer prices growth",
 	                   id: 'MEI_PRICES',
 	                   rev: 1,
-	                   Geo: 'OCDE',
+	                   Geo: {
+	            	   	location: 'OECD',
+                       },
 	                   Time: {
 	                    	Type: 'A',
 	                    	Start: 1995,
 	                     	End: 2017
 	                     },
 	                    UrlStructure:{
-	                    	orderOption: 1,
+	                    	orderOption: ['I', 'G', 'E', 'U'],
 	                    	TimeType: 'A',
 	                    	IndicatorName: "SUBJECT",
 	                		UnitName: 'MEASURE',
@@ -92,38 +97,40 @@ const OECDDatabases = [
 	            	   TopicName: "Gross value Added by sector",
 	                   id: 'PDBI_I4',
 	                   rev: 1,
-	                   Geo: 'OCDE',
-
+	                   Geo: {
+	            	   	location: 'OECD',
+                       },
 	                   Time: {
 	                    	Type: 'A',
 	                    	Start: 1995,
 	                     	End: 2016
 	                     },
 	                    UrlStructure:{
-	                    	orderOption: 3,
+	                    	orderOption: ['G', 'E', 'U', 'I'],
 
 	                    	IndicatorName: "ACTIVITY",
 	                		UnitName: 'MEASURE',
 	                 		DisplayMessageOrder:['Unit' , 'Extra', 'Indicator'],
 					 		DisplayExtra: ' for ',
 	                		extras: {
-		        				extra1: {"SUBJECT" : 'I4_ANA_GVA'},
-		        				}
-
+		        				"SUBJECT" : 'I4_ANA_GVA'
 	            			}
+	            	   }
 	               },
 	               {
 	            	   TopicName: "Employment growth by sectors",
 	                   id: 'PDBI_I4',
 	                   rev: 2,
-	                   Geo: 'OCDE',
+	                   Geo: {
+	            	   	location: 'OECD',
+                       },
 	                   Time: {
 	                    	Type: 'A',
 	                    	Start: 1995,
 	                     	End: 2016
 	                     },
 	                    UrlStructure:{
-	                    	orderOption: 3,
+	                    	orderOption: ['G', 'E', 'U', 'I'],
 
 	                    	IndicatorName: "ACTIVITY",
 	                		UnitName: 'MEASURE',
@@ -139,14 +146,16 @@ const OECDDatabases = [
 	            	   TopicName: "Growth in hours worked by sectors",
 	                   id: 'PDBI_I4',
 	                   rev: 3,
-	                   Geo: 'OCDE',
+	                   Geo: {
+	            	   	location: 'OCDE',
+                       },
 	                   Time: {
 	                    	Type: 'A',
 	                    	Start: 1995,
 	                     	End: 2016
 	                     },
 	                    UrlStructure:{
-	                    	orderOption: 3,
+	                    	orderOption: ['G', 'E', 'U', 'I'],
 
 	                    	IndicatorName: "ACTIVITY",
 	                		UnitName: 'MEASURE',
@@ -162,14 +171,16 @@ const OECDDatabases = [
 	            	   TopicName: "Salaries growth by sector",
 	                   id: 'PDBI_I4',
 	                   rev: 4,
-	                   Geo: 'OCDE',
+	                   Geo: {
+	            	   	location: 'OCDE',
+                       },
 	                   Time: {
 	                    	Type: 'A',
 	                    	Start: 1995,
 	                     	End: 2016
 	                     },
 	                    UrlStructure:{
-	                    	orderOption: 3,
+	                    	orderOption: ['G', 'E', 'U', 'I'],
 
 	                    	IndicatorName: "ACTIVITY",
 	                		UnitName: 'MEASURE',
@@ -195,15 +206,17 @@ const OECDDatabases = [
 	               {
 	            	   TopicName: "industrial and manufacturing growth",
 	                   id: 'KEI',
-	                   rev: '1',
-	                   Geo: 'OCDE',
+	                   rev: 1,
+	                   Geo: {
+	            	   	location: 'OCDE',
+                       },
 	                   Time: {
 	                    	Type: 'A',
 	                    	Start: 1985,
 	                     	End: 2017
 	                     },
 	                    UrlStructure:{
-	                    	orderOption: 1,
+	                    	orderOption: ['I', 'G', 'E', 'U'],
 	                    	TimeType: 'A',
 	                    	IndicatorName: "SUBJECT",
 	                		UnitName: 'MEASURE',
@@ -214,8 +227,10 @@ const OECDDatabases = [
 	               {
 	            	   TopicName: "exports and import growth (Goods)",
 	                   id: 'KEI',
-	                   rev: '2',
-	                   Geo: 'OCDE',
+	                   rev: 2,
+	                   Geo: {
+	            	   	location: 'OCDE',
+                       },
 	                   Time: {
 	                    	Type: 'A',
 	                    	Start: 1985,
@@ -223,7 +238,7 @@ const OECDDatabases = [
 	                     },
 	                    UrlStructure:{
 	                    	TimeType: 'A',
-	                    	orderOption: 1,
+	                    	orderOption: ['I', 'G', 'E', 'U'],
 	                    	IndicatorName: "SUBJECT",
 	                		UnitName: 'MEASURE',
 	                		DisplayMessageOrder:['Unit' , 'Extra', 'Indicator'],
@@ -233,15 +248,17 @@ const OECDDatabases = [
 	               {
 	            	   TopicName: "Consumer & production prices",
 	                   id: 'KEI',
-	                   rev: '3',
-	                   Geo: 'OCDE',
+	                   rev: 3,
+	                   Geo: {
+	            	   	location: 'OECD',
+                       },
 	                   Time: {
 	                    	Type: 'A',
 	                    	Start: 1985,
 	                     	End: 2017
 	                     },
 	                    UrlStructure:{
-	                    	orderOption: 1,
+	                    	orderOption: ['I', 'G', 'E', 'U'],
 	                    	TimeType: 'A',
 	                    	IndicatorName: "SUBJECT",
 	                		UnitName: 'MEASURE',
@@ -252,15 +269,17 @@ const OECDDatabases = [
 	               {
 	            	   TopicName: "GDP growth and components",
 	                   id: 'KEI',
-	                   rev: '4',
-	                   Geo: 'OCDE',
+	                   rev: 4,
+	                   Geo: {
+	            	   	location: 'OECD',
+                       },
 	                   Time: {
 	                    	Type: 'A',
 	                    	Start: 1985,
 	                     	End: 2017
 	                     },
 	                    UrlStructure:{
-	                    	orderOption: 1,
+	                    	orderOption: ['I', 'G', 'E', 'U'],
 	                    	TimeType: 'A',
 	                    	IndicatorName: "SUBJECT",
 	                		UnitName: 'MEASURE',
@@ -271,8 +290,10 @@ const OECDDatabases = [
 	               {
 	            	   TopicName: "Long-Term interest rates",
 	                   id: 'KEI',
-	                   rev: '5',
-	                   Geo: 'OCDE',
+	                   rev: 5,
+	                   Geo: {
+	            	   	location: 'OECD',
+                       },
 	                   ExtraMessage : 'long-term interest rates (central government bond yields on the secondary market, with around 10 years residual maturity).',
 	                   Time: {
 	                    	Type: 'A',
@@ -280,7 +301,7 @@ const OECDDatabases = [
 	                     	End: 2017
 	                     },
 	                    UrlStructure:{
-	                    	orderOption: 1,
+	                    	orderOption: ['I', 'G', 'E', 'U'],
 	                    	TimeType: 'A',
 	                    	IndicatorName: "SUBJECT",
 	                		UnitName: 'MEASURE',
@@ -291,15 +312,17 @@ const OECDDatabases = [
 	               {
 	            	   TopicName: "Retail trade and car registration",
 	                   id: 'KEI',
-	                   rev: '6',
-	                   Geo: 'OCDE',
+	                   rev: 6,
+	                   Geo: {
+	            	   	location: 'OECD',
+                       },
 	                   Time: {
 	                    	Type: 'A',
 	                    	Start: 1995,
 	                     	End: 2017
 	                     },
 	                    UrlStructure:{
-	                    	orderOption: 1,
+	                    	orderOption: ['I', 'G', 'E', 'U'],
 	                    	TimeType: 'A',
 	                    	IndicatorName: "SUBJECT",
 	                		UnitName: 'MEASURE',
@@ -318,8 +341,10 @@ const OECDDatabases = [
 	               {
 	            	   TopicName: "Employment statistics",
 	                   id: 'LFS_SEXAGE_I_R',
-	                   rev: '1',
-	                   Geo: 'OCDE',
+	                   rev: 1,
+	                   Geo: {
+	            	   	location: 'OECD',
+                       },
 	                   ExtraMessage : '% of the population between 15 & 65 years old',
 	                   Time: {
 	                    	Type: 'A',
@@ -327,7 +352,7 @@ const OECDDatabases = [
 	                     	End: 2016
 	                     },
 	                    UrlStructure:{
-	                    	orderOption: 2,
+	                    	orderOption: ['G', 'E', 'I', 'U'],
 	                    	IndicatorName: "SERIES",
 	                    	TimeType: 'A',
 	                    	DisplayMessageOrder:['Indicator' ],
@@ -343,8 +368,10 @@ const OECDDatabases = [
 	               {
 	            	   TopicName: "Employment by job duration",
 	                   id: 'TENURE_DIS',
-	                   rev: '1',
-	                   Geo: 'OCDE',
+	                   rev: 1,
+	                   Geo: {
+	            	   	location: 'OECD',
+                       },
 	                   RemoveGeo: ['ISR', 'NZL'],
 	                   ExtraMessage : 'Result x 1000',
 	                   Time: {
@@ -353,7 +380,7 @@ const OECDDatabases = [
 	                     	End: 2016
 	                     },
 	                    UrlStructure:{
-	                    	orderOption: 2,
+	                    	orderOption: ['G', 'E', 'I', 'U'],
 	                    	IndicatorName: "TENURE",
 	                    	TimeType: 'A',
 	                      	DisplayMessageOrder:['Extra', 'Indicator'],
@@ -370,15 +397,17 @@ const OECDDatabases = [
 	               {
 	            	   TopicName: "Real minimum wages",
 	                   id: 'RMW',
-	                   rev: '1',
-	                   Geo: 'OCDE',
+	                   rev: 1,
+	                   Geo: {
+	            	   	location: 'OECD',
+                       },
 	                   Time: {
 	                    	Type: 'A',
 	                    	Start: 1990,
 	                     	End: 2016
 	                     },
 	                    UrlStructure:{
-	                    	orderOption: 3,
+	                    	orderOption: ['G', 'E', 'U', 'I'],
 	                    	IndicatorName: "PERIOD",
 	                    	UnitName: 'SERIES',
 	                    	TimeType: 'A',
@@ -392,9 +421,12 @@ const OECDDatabases = [
 	               {
 	            	   TopicName: "Minimum wages compared to average wages of full-time workers",
 	                   id: 'MIN2AVE',
-	                   rev: '1',
-	                   Geo: 'OCDE',
-	                   RemoveGeo: ['FIN','ITA','DNK','AUT','NOR','SWE','CHE','ISL'],
+	                   rev: 1,
+	                   Geo: {
+	            	   	location: 'OECD',
+					    RemoveGeo: ['FIN','ITA','DNK','AUT','NOR','SWE','CHE','ISL'],
+                       },
+
 	                   ExtraMessage : 'Minimum wages / (Average or Median wages)',
 	                   Time: {
 	                    	Type: 'A',
@@ -402,7 +434,7 @@ const OECDDatabases = [
 	                     	End: 2016
 	                     },
 	                    UrlStructure:{
-	                    	orderOption: 3,
+	                    	orderOption:['G', 'E', 'U', 'I'],
 	                    	IndicatorName: "SERIES",
 	                    	DisplayMessageOrder:['Extra' , 'Indicator'],
 					 		DisplayExtra: ' Minimum wages/ ',
@@ -413,16 +445,18 @@ const OECDDatabases = [
 	               {
 	            	   TopicName: "Average weekly hours worked",
 	                   id: 'AVE_HRS',
-	                   rev: '1',
-	                   Geo: 'OCDE',
-	                   RemoveGeo: ['JPN'],
+	                   rev: 1,
+	                   Geo: {
+                           location: 'OECD',
+                           RemoveGeo: ['JPN'],
+                       },
 	                   Time: {
 	                    	Type: 'A',
 	                    	Start: 2000,
 	                     	End: 2016
 	                     },
 	                    UrlStructure:{
-	                    	orderOption: 2,
+	                    	orderOption: ['G', 'E', 'I', 'U'],
 
 	                    	IndicatorName: "JOBTYPE",
 	                    	TimeType: 'A',
@@ -439,15 +473,17 @@ const OECDDatabases = [
 	               {
 	            	   TopicName: "Average annual hours worked per worker",
 	                   id: 'ANHRS',
-	                   rev: '1',
-	                   Geo: 'OCDE',
+	                   rev: 1,
+	                   Geo: {
+                           location: 'OECD',
+                       },
 	                   Time: {
 	                    	Type: 'A',
 	                    	Start: 2000,
 	                     	End: 2016
 	                     },
 	                    UrlStructure:{
-	                    	orderOption: 2,
+	                    	orderOption: ['G', 'E', 'I', 'U'],
 	                    	IndicatorName: "EMPSTAT",
 	                    	TimeType: 'A',
 	                       	DisplayMessageOrder:['Indicator'],
@@ -457,8 +493,10 @@ const OECDDatabases = [
 	               {
 	            	   TopicName: "Involuntary part time workers",
 	                   id: 'INVPT_D',
-	                   rev: '1',
-	                   Geo: 'OCDE',
+	                   rev: 1,
+	                    Geo: {
+                           location: 'OECD',
+                       },
 	                   RemoveGeo: ['KOR','MEX'],
 	                   ExtraMessage : 'Result x 1000',
 	                   Time: {
@@ -467,7 +505,7 @@ const OECDDatabases = [
 	                     	End: 2016
 	                     },
 	                    UrlStructure:{
-	                    	orderOption: 2,
+	                    	orderOption: ['G', 'E', 'I', 'U'],
 	                    	IndicatorName: "EMPSTAT",
 	                    	TimeType: 'A',
 	                      	DisplayMessageOrder:['Indicator', 'Extra'],
@@ -492,8 +530,10 @@ const OECDDatabases = [
 	               {
 	            	   TopicName: "Revenue statistics",
 	                   id: 'REV',
-	                   rev: '1',
-	                   Geo: 'OCDE',
+	                   rev: 1,
+	                    Geo: {
+                           location: 'OECD',
+                       },
 
 	                   Time: {
 	                    	Type: 'A',
@@ -501,7 +541,7 @@ const OECDDatabases = [
 	                     	End: 2016
 	                     },
 	                    UrlStructure:{
-	                    	orderOption: 6,
+	                    	orderOption: ['E', 'I', 'U', 'G'],
 	                    	IndicatorName: "TAX",
 	                    	UnitName: 'VAR',
 	                     	DisplayMessageOrder:['Indicator', 'Unit'],
@@ -525,9 +565,11 @@ const OECDDatabases = [
 	    Topics:[
 	               {
 	            	   TopicName: "Education data",
-	                   id: 'BLI',
-	                   rev: '1',
-	                   Geo: 'OCDE',
+	                   id: 'BLI2015',
+	                   rev: 1,
+	                    Geo: {
+                           location: 'OECD',
+                       },
 	                   Time: {
 	                    	Type: 'A',
 	                    	Start: 2015,
@@ -535,24 +577,24 @@ const OECDDatabases = [
 	                     },
 	                    ExtraMessage : 'Data is from 2015 except educational atteintment which is from 2016',
 	                    UrlStructure:{
-	                    	orderOption: 5,
+	                    	orderOption: ['G', 'I', 'E', 'U'],
 	                    	IndicatorName: "INDICATOR",
 	                    	TimeType: 'A',
 	                     	DisplayMessageOrder:['Indicator'],
 					 		DisplayExtra: '',
 	                    	extras: {
-		        				extra1:{'MEASURE' : 'L'},
-		        				extra2:{'INEQUALITY' : 'TOT'},
-
+		        				'MEASURE' : 'L',
+		        				'INEQUALITY' : 'TOT',
 		        				}
-
 	            			},
 	               },
 	               {
 	            	   TopicName: "work-life balance",
-	                   id: 'BLI',
-	                   rev: '2',
-	                   Geo: 'OCDE',
+	                   id: 'BLI2015',
+	                   rev: 2,
+	                   Geo: {
+                           location: 'OECD',
+                       },
 	                   ExtraMessage : 'Data for Time devoted to leisure and personal care ranges from 2000 to 2016',
 	                   Time: {
 	                    	Type: 'A',
@@ -560,25 +602,25 @@ const OECDDatabases = [
 	                     	End: 2015
 	                     },
 	                    UrlStructure:{
-	                    	orderOption: 5,
+	                    	orderOption: ['G', 'I', 'E', 'U'],
 	                    	IndicatorName: "INDICATOR",
 	                    	TimeType: 'A',
 	                    	DisplayMessageOrder:['Indicator'],
 					 		DisplayExtra: '',
 	                    	extras: {
-		        				extra1:{'MEASURE' : 'L'},
-		        				extra2:{'INEQUALITY' : 'TOT'},
-
+		        				'MEASURE' : 'L',
+		        				'INEQUALITY' : 'TOT',
 		        				}
-
 	            			},
 	               },
 
 	               {
 	            	   TopicName: "Household Income",
-	                   id: 'BLI',
-	                   rev: '3',
-	                   Geo: 'OCDE',
+	                   id: 'BLI2015',
+	                   rev: 3,
+	                   Geo: {
+                           location: 'OECD',
+                       },
 	                   ExtraMessage : 'US dollars at current Purchasing Power Parity per capita',
 	                   Time: {
 	                    	Type: 'A',
@@ -586,7 +628,7 @@ const OECDDatabases = [
 	                     	End: 2015
 	                     },
 	                    UrlStructure:{
-	                    	orderOption: 5,
+	                    	orderOption: ['G', 'I', 'E', 'U'],
 	                    	IndicatorName: "INDICATOR",
 	                    	TimeType: 'A',
 	                    	DisplayMessageOrder:['Indicator'],
@@ -601,9 +643,11 @@ const OECDDatabases = [
 	               },
 	               {
 	            	   TopicName: "Personal earnings",
-	                   id: 'BLI',
-	                   rev: '4',
-	                   Geo: 'OCDE',
+	                   id: 'BLI2015',
+	                   rev: 4,
+	                    Geo: {
+                           location: 'OECD',
+                       },
 	                   ExtraMessage : 'US dollars at current Purchasing Power Parity per capita',
 	                   Time: {
 	                    	Type: 'A',
@@ -611,7 +655,7 @@ const OECDDatabases = [
 	                     	End: 2016
 	                     },
 	                    UrlStructure:{
-	                    	orderOption: 5,
+	                    	orderOption: ['G', 'I', 'E', 'U'],
 	                    	IndicatorName: "INDICATOR",
 	                    	TimeType: 'A',
 	                    	DisplayMessageOrder:['Indicator'],
@@ -626,16 +670,18 @@ const OECDDatabases = [
 	               },
 	               {
 	            	   TopicName: "Life expectancy",
-	                   id: 'BLI',
-	                   rev: '5',
-	                   Geo: 'OCDE',
+	                   id: 'BLI2015',
+	                   rev: 5,
+	                   Geo: {
+                           location: 'OECD',
+                       },
 	                   Time: {
 	                    	Type: 'A',
 	                    	Start: 2015,
 	                     	End: 2015
 	                     },
 	                    UrlStructure:{
-	                    	orderOption: 5,
+	                    	orderOption: ['G', 'I', 'E', 'U'],
 	                    	IndicatorName: "INDICATOR",
 	                    	TimeType: 'A',
 	                    	DisplayMessageOrder:['Indicator'],
@@ -649,9 +695,11 @@ const OECDDatabases = [
 	               },
 	               {
 	            	   TopicName: "Population feeling that they are in good or better health",
-	                   id: 'BLI',
-	                   rev: '6',
-	                   Geo: 'OCDE',
+	                   id: 'BLI2015',
+	                   rev: 6,
+	                    Geo: {
+                           location: 'OECD',
+                       },
 	                   ExtraMessage : '',
 	                   Time: {
 	                    	Type: 'A',
@@ -659,7 +707,7 @@ const OECDDatabases = [
 	                     	End: 2015
 	                     },
 	                    UrlStructure:{
-	                    	orderOption: 5,
+	                    	orderOption: ['G', 'I', 'E', 'U'],
 	                    	IndicatorName: "INDICATOR",
 	                    	TimeType: 'A',
 	                    	DisplayMessageOrder:['Indicator', 'Extra' ],
@@ -674,17 +722,18 @@ const OECDDatabases = [
 
 	               {
 	            	   TopicName: "Life satisfaction",
-	                   id: 'BLI',
-	                   rev: '7',
-	                   Geo: 'OCDE',
-
+	                   id: 'BLI2015',
+	                   rev: 7,
+	                    Geo: {
+                           location: 'OECD',
+                       },
 	                   Time: {
 	                    	Type: 'A',
 	                    	Start: 2015,
 	                     	End: 2015
 	                     },
 	                    UrlStructure:{
-	                    	orderOption: 5,
+	                    	orderOption: ['G', 'I', 'E', 'U'],
 	                    	IndicatorName: "INDICATOR",
 	                    	TimeType: 'A',
 	                    	DisplayMessageOrder:['Indicator', 'Extra'],
@@ -698,9 +747,11 @@ const OECDDatabases = [
 	               },
 	               {
 	            	   TopicName: "Voter turnout",
-	                   id: 'BLI',
-	                   rev: '8',
-	                   Geo: 'OCDE',
+	                   id: 'BLI2015',
+	                   rev: 8,
+	                    Geo: {
+                           location: 'OECD',
+                       },
 
 	                   Time: {
 	                    	Type: 'A',
@@ -708,7 +759,7 @@ const OECDDatabases = [
 	                     	End: 2015
 	                     },
 	                    UrlStructure:{
-	                    	orderOption: 5,
+	                    	orderOption: ['G', 'I', 'E', 'U'],
 	                    	IndicatorName: "INDICATOR",
 	                    	TimeType: 'A',
 	                    	DisplayMessageOrder:['Indicator', 'Extra'],
@@ -723,9 +774,11 @@ const OECDDatabases = [
 	               },
 	               {
 	            	   TopicName: "Homicide rate",
-	                   id: 'BLI',
-	                   rev: '9',
-	                   Geo: 'OCDE',
+	                   id: 'BLI2015',
+	                   rev: 9,
+	                    Geo: {
+                           location: 'OECD',
+                       },
 
 	                   Time: {
 	                    	Type: 'A',
@@ -733,7 +786,7 @@ const OECDDatabases = [
 	                     	End: 2014
 	                     },
 	                    UrlStructure:{
-	                    	orderOption: 5,
+	                    	orderOption: ['G', 'I', 'E', 'U'],
 	                    	IndicatorName: "INDICATOR",
 	                    	TimeType: 'A',
 	                    	DisplayMessageOrder:['Indicator', 'Extra'],
@@ -748,16 +801,18 @@ const OECDDatabases = [
 	               },
 	               {
 	            	   TopicName: "safety",
-	                   id: 'BLI',
-	                   rev: '10',
-	                   Geo: 'OCDE',
+	                   id: 'BLI2015',
+	                   rev: 10,
+	                   Geo: {
+                           location: 'OECD',
+                       },
 	                   Time: {
 	                    	Type: 'A',
 	                    	Start: 2015,
 	                     	End: 2015
 	                     },
 	                    UrlStructure:{
-	                    	orderOption: 5,
+	                    	orderOption: ['G', 'I', 'E', 'U'],
 	                    	IndicatorName: "INDICATOR",
 	                    	TimeType: 'A',
 	                    	DisplayMessageOrder:['Indicator', 'Extra'],
@@ -780,15 +835,17 @@ const OECDDatabases = [
 						{
 							TopicName: "Expenditure on R&D",
 						    id: 'MSTI_PUB',
-						    rev: '1',
-						    Geo: 'OCDE',
+						    rev: 1,
+						     Geo: {
+                           		location: 'OECD',
+                       		},
 						    Time: {
 						     	Type: 'A',
 						     	Start: 1995,
 						      	End: 2016
 						      },
 						     UrlStructure:{
-						     	orderOption: 1,
+						     	orderOption:  ['I', 'G', 'E', 'U'],
 						     	IndicatorName: "MSTI_VAR",
 						     	DisplayMessageOrder:['Indicator'],
 						 		DisplayExtra: ' ',
@@ -798,15 +855,17 @@ const OECDDatabases = [
 						{
 							TopicName: "Source of fund of R&D",
 						    id: 'MSTI_PUB',
-						    rev: '2',
-						    Geo: 'OCDE',
+						    rev: 2,
+						     Geo: {
+                           		location: 'OECD',
+                       		},
 						    Time: {
 						     	Type: 'A',
 						     	Start: 1995,
 						      	End: 2016
 						      },
 						     UrlStructure:{
-						     	orderOption: 1,
+						     	orderOption:  ['I', 'G', 'E', 'U'],
 						     	IndicatorName: "MSTI_VAR",
 						    	DisplayMessageOrder:['Indicator'],
 						 		DisplayExtra: '',
@@ -816,8 +875,10 @@ const OECDDatabases = [
 						{
 							TopicName: "Perfomance of R&D",
 						    id: 'MSTI_PUB',
-						    rev: '3',
-						    Geo: 'OCDE',
+						    rev: 3,
+						     Geo: {
+                           		location: 'OECD',
+                       		},
 						    Time: {
 						     	Type: 'A',
 						     	Start: 1995,
@@ -833,15 +894,17 @@ const OECDDatabases = [
 						{
 							TopicName: "Patent aplications",
 						    id: 'MSTI_PUB',
-						    rev: '4',
-						    Geo: 'OCDE',
+						    rev: 4,
+						     Geo: {
+                           		location: 'OECD',
+							},
 						    Time: {
 						     	Type: 'A',
 						     	Start: 1995,
 						      	End: 2016
 						      },
 						     UrlStructure:{
-						     	orderOption: 1,
+						     	orderOption:  ['I', 'G', 'E', 'U'],
 						     	IndicatorName: "MSTI_VAR",
 						     	DisplayMessageOrder:['Indicator'],
 						 		DisplayExtra: '',

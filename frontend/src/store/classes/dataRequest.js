@@ -4,7 +4,7 @@ import {save_result} from 'actions/actions'
 import React from 'react';
 import {urls} from 'constants/constants'
 
-export class dataRequest {
+class dataRequest {
 
     constructor(requestObject){
         this.ThirdPartyAPI = requestObject.ThirdPartyAPI;
@@ -16,6 +16,7 @@ export class dataRequest {
         this.SelectedTimes = requestObject.SelectedTimes;
         this.SelectedGeo = requestObject.SelectedGeo;
         this.queryMap = requestObject.queryMap;
+        this.extra = this.getExtras();
         this.pathArray = [];
         this.result = {};
         this.APIUrl = '';
@@ -23,13 +24,21 @@ export class dataRequest {
         this.requestDate = Date.now()
     }
 
+    getExtras() {
+        if (this.queryMap.extras) {
+            return this.queryMap.extras
+        }
+        return null;
+    }
+
+
     createDisplayMessage(){
         /*
             @Fun: create short message that explains in a short sentence the data result.
             @return (string): composed message
          */
         var displayMessage = '';
-        var orderArray = this.queryMap.UrlStructure.DisplayMessageOrder;
+        var orderArray = this.queryMap.DisplayMessageOrder;
         for (var item of orderArray){ //iterate over array DisplayMessageOrder to find out the order the message should
                                         //be displayed.
             if (this[item]){
@@ -50,72 +59,7 @@ export class dataRequest {
         }
         return array[0];
     }
-    createAPIRequest(){
-        /*
-            @Func: Create API Request url.
-            @Return true if successful.
-         */
 
-        var baseUrl = ThirdPartyIPIBaseAddress.EuroStatUrl;
-        this.APIUrl = `${baseUrl}/${this.Topic.id}?`;
-        var pathParameter;
-        for (var i of this.pathArray){
-            pathParameter = '';
-            pathParameter = pathParameter.concat(i.name, '=', i.value)
-            this.APIUrl = this.APIUrl.concat('&', pathParameter)
-        }
-        console.log('this.APIUrl: ' + this.APIUrl);
-        return true;
-    }
-
-    createEUpath(){
-        /*
-            @Func: Create Array of objects with syntax { name: "", value: "" }, each object represent a parameter that
-             is used to create a Url path with syntax name=value.
-         */
-        this.addToPathArray(this.Indicator.id, this.queryMap.UrlStructure.IndicatorName);
-        this.addToPathArray(this.Unit.id, this.queryMap.UrlStructure.UnitName);
-        this.addToPathArray('1', 'precision');
-        this.addToPathArray(this.SelectedTimes, 'time');
-        this.addToPathArray(this.SelectedGeo, 'geo');
-
-        for (let key of Object.keys(this.queryMap.UrlStructure.extras)){
-            this.addToPathArray(this.queryMap.UrlStructure.extras[key], key)
-        }
-        return true;
-    }
-
-    addToPathArray(item, name) {
-        /*
-            @Func: Create objects with syntax: { name: name, value: item}.
-            if item is Array type, it iterates through the array by using urlOptionsIter() to create an object for
-            each value in the array.
-            @Args:
-                item (string or array).
-                name (string).
-         */
-        if((Array.isArray(item)) || (typeof item === 'string')) {
-            if (Array.isArray(item)) {
-                var it = this.urlOptionsIter();
-                it.name = name;
-                it.array = item;
-                var iterator = it[Symbol.iterator]();
-                for (var item of iterator) {
-                    this.pathArray.push(item);
-                }
-            }
-            else {
-                var item = {
-                    name: name,
-                    value: item
-                }
-                this.pathArray.push(item)
-            }
-        }
-
-
-        return true;
-    }
 
     urlOptionsIter () {
         /*
@@ -237,7 +181,85 @@ export class dataRequest {
         return saveObject;
     }
 
-    filterResult(){
+ addToPathArray(item, name='') {
+        /*
+            @Func: Create objects with syntax: { name: name, value: item}.
+            if item is Array type, it iterates through the array by using urlOptionsIter() to create an object for
+            each value in the array.
+            @Args:
+                item (string, array or object).
+                name (string on none).
+         */
+        if((Array.isArray(item)) || (typeof item === 'string') || (typeof item == 'object')) {
+            if (Array.isArray(item)) {
+                var it = this.urlOptionsIter();
+                it.name = name;
+                it.array = item;
+                var iterator = it[Symbol.iterator]();
+                for (var item of iterator) {
+                    this.pathArray.push(item);
+                }
+            }
+            else if(typeof item === 'string') {
+                var item = {
+                    name: name,
+                    value: item
+                }
+                this.pathArray.push(item)
+            }
+            else{
+                for (let key of Object.keys(item)){
+                    this.addToPathArray(item[key], key)
+                }
+            }
+        }
+        return true;
+    }
+
+}
+
+
+class EUdataRequest extends dataRequest{
+
+    constructor(requestObject) {
+        super(requestObject)
+    }
+
+    createAPIRequest(){
+        /*
+            @Func: Create API Request url.
+            @Return true if successful.
+         */
+        this.createPath();
+        var baseUrl = ThirdPartyIPIBaseAddress.EuroStatUrl;
+        this.APIUrl = `${baseUrl}/${this.Topic.id}?`;
+        var pathParameter;
+        for (var i of this.pathArray){
+            pathParameter = '';
+            pathParameter = pathParameter.concat(i.name, '=', i.value)
+            this.APIUrl = this.APIUrl.concat('&', pathParameter)
+        }
+        console.log('this.APIUrl: ' + this.APIUrl);
+        return true;
+    }
+
+
+
+    createPath(){
+        /*
+            @Func: Create Array of objects with syntax { name: "", value: "" }, each object represent a parameter that
+             is used to create a Url path with syntax name=value.
+         */
+        this.addToPathArray(this.Indicator.id, this.queryMap.IndicatorName);
+        this.addToPathArray(this.Unit.id, this.queryMap.UnitName);
+        this.addToPathArray('1', 'precision');
+        this.addToPathArray(this.SelectedTimes, 'time');
+        this.addToPathArray(this.SelectedGeo, 'geo');
+        this.addToPathArray(this.extra);
+        return true;
+    }
+
+      filterResult(){
         /*
             @Func: Organize given API result in format {name: GeoLocation (i.e UK), values: [](Array of values ordered chronologically)}
             @Return: (array of objects): each object is geoObject.
@@ -278,13 +300,109 @@ export class dataRequest {
         var indexObject = this.result['dimension'][type]['category']['index'];
         var index = indexObject[name]
         return index;
-
     }
 }
 
-export default dataRequest
+class OECDdataRequest extends dataRequest {
+
+    constructor(requestObject) {
+        super(requestObject)
+        this.orderConstants = {
+            'E': 'extra',
+            'I': 'Indicator',
+            'U': 'Unit',
+            'G': 'SelectedGeo'
+        }
+    }
+
+
+    createTimeOptions(){
+        var minYear = Math.min(...this.SelectedTimes)
+        var maxYear = Math.max(...this.SelectedTimes)
+        this.addToPathArray(minYear.toString(), 'startTime');
+        this.addToPathArray(maxYear.toString(), 'endTime');
+        this.addToPathArray('allDimensions', 'dimensionAtObservation');
+
+    }
+    createGeoOptions(){
+        var locations = this.SelectedGeo;
+        var geoPath = '';
+        for(let location of locations){
+            geoPath = geoPath.concat('+', location);
+        }
+        geoPath = geoPath.slice(1)
+        return geoPath
+    }
+    addToPath(itemToAdd){
+      if ((Array.isArray(itemToAdd)) || (typeof itemToAdd === 'string') || (typeof itemToAdd == 'object' && itemToAdd != null)) {
+            if (Array.isArray(itemToAdd)) {
+                for (let y of itemToAdd) {
+                    this.APIUrl = this.APIUrl.concat('.', y);
+                }
+            }
+            else if(typeof itemToAdd == 'object'){
+                if(itemToAdd.hasOwnProperty('id')){
+                    this.APIUrl = this.APIUrl.concat('.', itemToAdd.id);
+                }
+                else{
+                    for(var key in itemToAdd) {
+                        this.APIUrl = this.APIUrl.concat('.', itemToAdd[key]);
+                    }
+                }
+            }
+            else if (typeof itemToAdd === 'string') {
+                this.APIUrl = this.APIUrl.concat('.', itemToAdd);
+            }
+        }
+    }
+
+    createPath() {
+        var order = this.queryMap.orderOption;
+        var path = '';
+        for (let item of order) {
+            var x = this[this.orderConstants[item]];
+            switch(true){
+                case (item == 'I') || (item == 'E') || (item == 'U'):
+                    this.addToPath(x);
+                    break;
+                case (item=='G'):
+                    this.APIUrl = this.APIUrl.concat('/', this.createGeoOptions());
+                    break;
+                default:
+                    break;
+            }
+        }
+        return path;
+       // path = path.slice(1) // required to remove '.' at the beginning of the string
+    }
+     createAPIRequest(){
+        this.APIUrl = ThirdPartyIPIBaseAddress.OCDE;
+        this.APIUrl = this.APIUrl.concat('/', this.Topic.id);
+        this.createPath();
+        this.APIUrl = this.APIUrl.concat('/all?');
+        this.createTimeOptions();
+        var pathParameter;
+        for (let i of this.pathArray){
+            pathParameter = '';
+            pathParameter = pathParameter.concat(i.name, '=', i.value)
+            this.APIUrl = this.APIUrl.concat(pathParameter, '&')
+        }
+
+
+     }
+
+
+
+
+
+
+}
+
 
 function isString(s) {
     return typeof(s) === 'string' || s instanceof String;
 }
 
+
+
+export {dataRequest, EUdataRequest, OECDdataRequest}
