@@ -41,3 +41,12 @@ export const flashFlags = {
     WARNING: 'warning',
     ALERT: 'alert'
 }
+
+export const SearchConstants = {
+    INDICATOR: 'Indicator',
+    TOPIC: 'Topic',
+    SECTOR: 'Sector',
+    MEASURE: 'Unit',
+    EXTRA: 'extra',
+    GEO: 'SelectedGeo'
+}

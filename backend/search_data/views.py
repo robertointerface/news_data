@@ -9,13 +9,16 @@ from django.http import JsonResponse, HttpResponse
 from rest_framework.views import APIView
 from rest_framework.decorators import api_view
 import json
-from DataBasesModel.EurostatModel import Eurostat
-from DataBasesModel.OECDModel import OECD
+
 urlfetch.set_default_fetch_deadline(15) #set fetching time limit to 15 seconds,
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.views import APIView
 
+
+from DataBasesModel.EurostatModel import Eurostat
+from DataBasesModel.OECDModel import OECD
+from DataBasesModel.UNESCOModel import UNESCO
 
 class IndicatorsDict(dict):
     def __missing__(self, key):
@@ -82,6 +85,8 @@ class GetIndicators(APIView):
             return IndicatorsDict(Eurostat)
         elif third_party == 'OECD':
             return IndicatorsDict(OECD)
+        elif third_party == 'UNESCO':
+            return IndicatorsDict(UNESCO)
         else:
             raise KeyError
 
@@ -114,4 +119,5 @@ class MakeApiCall(APIView):
             }
         return JsonResponse(api_result)
 
+    def get_api_keys
 

@@ -1,5 +1,6 @@
 import EurostatDatabases from 'data/Eurostat/EurostatMap'
 import OECDDatabases from 'data/OECD/OECDMap'
+import UnescoDatabase from 'data/UNESCO/UNESCOMap'
 import {ModelGeo, } from 'data/Geo/Geo'
 import {Geo, OECDGeo} from 'classes/geo'
 function isEmpty(obj) {
@@ -19,6 +20,8 @@ export const getDatabase = thirdPartyAPI => {
             return EurostatDatabases
         case 'OECD':
             return OECDDatabases
+        case 'UNESCO':
+            return UnescoDatabase
         default:
             return {}
     }
@@ -297,11 +300,12 @@ const getGeoClass = geoOption => {
     /*
 
      */
-    switch(geoOption.location){
-        case 'EU':
-            return new Geo(geoOption)
-        case 'OECD':
+    switch(true){
+        case (geoOption.location == 'OECD'):
             return new OECDGeo(geoOption)
+        case (geoOption.location == 'EU') || (geoOption.location == 'Unesco') || (geoOption.location == 'UnescoEduRegions'):
+            return new Geo(geoOption)
+
     }
 
 }

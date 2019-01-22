@@ -17,7 +17,7 @@ import {
 } from 'functions/search_data/SearchIterGen'
 
 import EurostatDatabases from "data/Eurostat/EurostatMap";
-import {EUdataRequest, OECDdataRequest}  from 'classes/dataRequest'
+import {EUdataRequest, OECDdataRequest, UnescoDataRequest}  from 'classes/dataRequest'
 import {getCookie} from 'functions/auth/Cookies'
 import {urls, DatabaseConstants as thirdParty} from 'constants/constants'
 
@@ -264,6 +264,8 @@ const getDataRequest = function (requestObject) {
             return new EUdataRequest(requestObject)
         case thirdParty.OECD:
             return new OECDdataRequest(requestObject)
+        case thirdParty.UNESCO:
+            return new UnescoDataRequest(requestObject)
         default:
             return
     }

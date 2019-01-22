@@ -18,22 +18,7 @@ UNESCO = {
                 'units': {}
             }
         },
-        'PREV_HIV': {
-            1: {
-                'indicators': {
-                    'PT_POP_Y15T49': 'as % of population aged 15-49'
-                },
-                'units': {}
-            }
-        },
-        'PHR_USD190': {
-            1: {
-                'indicators': {
-                    'PT_POP': 'as % of total population'
-                },
-                'units': {}
-            }
-        },
+
         'PHR_USD310': {
             1: {
                 'indicators': {
@@ -124,9 +109,11 @@ UNESCO = {
                     '_T': 'Total population',
                     'M': 'Male',
                     'F': 'Female',
-                    'PT': 'Percentage of the population employed'
+
                 },
-                'units': {}
+                'units': {
+                    'PT': 'Percentage of the population employed'
+                }
             }
         },
         'ILO_LFPR': {
@@ -136,7 +123,9 @@ UNESCO = {
                     'M': 'Male',
                     'F': 'Female',
                 },
-                'units': {}
+                'units': {
+                    'PT': 'Percentage of the population employed'
+                }
             }
         },
     },

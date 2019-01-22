@@ -3,6 +3,7 @@ import {getCookie} from "functions/auth/Cookies";
 import {save_result} from 'actions/actions'
 import React from 'react';
 import {urls} from 'constants/constants'
+import {SearchConstants as C} from 'constants/constants'
 
 class dataRequest {
 
@@ -61,49 +62,7 @@ class dataRequest {
     }
 
 
-    urlOptionsIter () {
-        /*
-            @Iter: Iterate through a given array and create objects with the syntax:
-                obj = {
-                    name: this.name,
-                    value: array[x]
-                }
-            @Args:
-                array (type: array): of string or int values.
-                name: name that will be used to create the object.
-         */
-         var obj = {
-                 [Symbol.iterator]() {
-                     var item = 0;
-                     var arrayLenght = this.array.length;
-                     var _this = this;
-                     return {
-                         [Symbol.iterator]() {
-                             return this;
-                         },
-                         next() {
-                             if (item < arrayLenght) {
-                                 var CurrentValue = {
-                                     name: _this.name,
-                                     value: _this.array[item],
-                                 };
-                                 item = item + 1;
-                                 return {value: CurrentValue, done: false};
-                             }
-                             else {
-                                 return {done: true}
-                             }
-                         },
-                         return(v) {
-                            return{value: v, done: true};
-                         }
-                     }
-                 },
-                 array: [],
-                 name: ''
-         }
-        return obj;
-    }
+
 
     makeAPIcall(){
         /*
@@ -181,7 +140,51 @@ class dataRequest {
         return saveObject;
     }
 
- addToPathArray(item, name='') {
+    urlOptionsIter () {
+        /*
+            @Iter: Iterate through a given array and create objects with the syntax:
+                obj = {
+                    name: this.name,
+                    value: array[x]
+                }
+            @Args:
+                array (type: array): of string or int values.
+                name: name that will be used to create the object.
+         */
+         var obj = {
+                 [Symbol.iterator]() {
+                     var item = 0;
+                     var arrayLenght = this.array.length;
+                     var _this = this;
+                     return {
+                         [Symbol.iterator]() {
+                             return this;
+                         },
+                         next() {
+                             if (item < arrayLenght) {
+                                 var CurrentValue = {
+                                     name: _this.name,
+                                     value: _this.array[item],
+                                 };
+                                 item = item + 1;
+                                 return {value: CurrentValue, done: false};
+                             }
+                             else {
+                                 return {done: true}
+                             }
+                         },
+                         return(v) {
+                            return{value: v, done: true};
+                         }
+                     }
+                 },
+                 array: [],
+                 name: ''
+         }
+        return obj;
+    }
+
+    addToPathArray(item, name='') {
         /*
             @Func: Create objects with syntax: { name: name, value: item}.
             if item is Array type, it iterates through the array by using urlOptionsIter() to create an object for
@@ -216,6 +219,15 @@ class dataRequest {
         return true;
     }
 
+    addPathArrayToUrl(){
+        if(this.pathArray){
+            for(let i of this.pathArray){
+                let pathParameter = '';
+                pathParameter = pathParameter.concat(i.name, '=', i.value)
+                this.APIUrl = this.APIUrl.concat(pathParameter, '&')
+            }
+        }
+    }
 }
 
 
@@ -224,26 +236,21 @@ class EUdataRequest extends dataRequest{
     constructor(requestObject) {
         super(requestObject)
     }
-
     createAPIRequest(){
         /*
             @Func: Create API Request url.
             @Return true if successful.
          */
-        this.createPath();
-        var baseUrl = ThirdPartyIPIBaseAddress.EuroStatUrl;
-        this.APIUrl = `${baseUrl}/${this.Topic.id}?`;
-        var pathParameter;
-        for (var i of this.pathArray){
-            pathParameter = '';
-            pathParameter = pathParameter.concat(i.name, '=', i.value)
-            this.APIUrl = this.APIUrl.concat('&', pathParameter)
-        }
-        console.log('this.APIUrl: ' + this.APIUrl);
-        return true;
+        return Promise.all([
+            this.createPath(),
+            this.APIUrl = `${ThirdPartyIPIBaseAddress.EuroStatUrl}/${this.Topic.id}?`,
+            this.addPathArrayToUrl(),
+        ])
+        .catch(error => {
+
+        })
+
     }
-
-
 
     createPath(){
         /*
@@ -259,7 +266,7 @@ class EUdataRequest extends dataRequest{
         return true;
     }
 
-      filterResult(){
+    filterResult(){
         /*
             @Func: Organize given API result in format {name: GeoLocation (i.e UK), values: [](Array of values ordered chronologically)}
             @Return: (array of objects): each object is geoObject.
@@ -315,24 +322,31 @@ class OECDdataRequest extends dataRequest {
         }
     }
 
-
     createTimeOptions(){
+        /*
+            @Fun: Get minimum and maximum years from this.SelectedTimes and add them to pathArray
+         */
         var minYear = Math.min(...this.SelectedTimes)
         var maxYear = Math.max(...this.SelectedTimes)
         this.addToPathArray(minYear.toString(), 'startTime');
         this.addToPathArray(maxYear.toString(), 'endTime');
         this.addToPathArray('allDimensions', 'dimensionAtObservation');
-
     }
+
     createGeoOptions(){
+        /*
+            @Func: Create string composed of a concatenation of this.SelectedGeo array in order to create a API request
+            with the required locations.
+         */
         var locations = this.SelectedGeo;
         var geoPath = '';
         for(let location of locations){
-            geoPath = geoPath.concat('+', location);
+            geoPath = geoPath.concat(location, '+');
         }
-        geoPath = geoPath.slice(1)
+        geoPath = geoPath.slice(0, geoPath.length - 1)
         return geoPath
     }
+
     addToPath(itemToAdd){
       if ((Array.isArray(itemToAdd)) || (typeof itemToAdd === 'string') || (typeof itemToAdd == 'object' && itemToAdd != null)) {
             if (Array.isArray(itemToAdd)) {
@@ -360,9 +374,9 @@ class OECDdataRequest extends dataRequest {
         var order = this.queryMap.orderOption;
         var path = '';
         for (let item of order) {
-            var x = this[this.orderConstants[item]];
             switch(true){
                 case (item == 'I') || (item == 'E') || (item == 'U'):
+                    var x = this[this.orderConstants[item]];
                     this.addToPath(x);
                     break;
                 case (item=='G'):
@@ -376,33 +390,108 @@ class OECDdataRequest extends dataRequest {
        // path = path.slice(1) // required to remove '.' at the beginning of the string
     }
      createAPIRequest(){
-        this.APIUrl = ThirdPartyIPIBaseAddress.OCDE;
-        this.APIUrl = this.APIUrl.concat('/', this.Topic.id);
-        this.createPath();
-        this.APIUrl = this.APIUrl.concat('/all?');
-        this.createTimeOptions();
-        var pathParameter;
-        for (let i of this.pathArray){
-            pathParameter = '';
-            pathParameter = pathParameter.concat(i.name, '=', i.value)
-            this.APIUrl = this.APIUrl.concat(pathParameter, '&')
-        }
-
+        return Promise.all([
+            this.APIUrl = ThirdPartyIPIBaseAddress.OCDE,
+            this.APIUrl = this.APIUrl.concat('/', this.Topic.id),
+            this.createPath(),
+            this.APIUrl = this.APIUrl.concat('/all?'),
+            this.createTimeOptions(),
+            this.addPathArrayToUrl(),
+        ])
 
      }
-
-
-
-
-
-
 }
 
+class UnescoDataRequest extends dataRequest {
 
-function isString(s) {
-    return typeof(s) === 'string' || s instanceof String;
+    constructor(requestObject){
+        super(requestObject);
+    }
+
+    getSector(){
+        return this.Sector.id.split("-Rev")[0];
+    }
+
+    createTimeOptions(){
+        /*
+            @Fun: Get minimum and maximum years from this.SelectedTimes and add them to pathArray
+         */
+        var minYear = Math.min(...this.SelectedTimes)
+        var maxYear = Math.max(...this.SelectedTimes)
+        this.addToPathArray('sdmx-json', 'format');
+        this.addToPathArray(minYear.toString(), 'startPeriod');
+        this.addToPathArray(maxYear.toString(), 'endPeriod');
+        this.addToPathArray('en', 'locale')
+
+    }
+
+    createGeoOptions(){
+        /*
+            @Func: Create string composed of a concatenation of this.SelectedGeo array in order to create a API request
+            with the required locations.
+         */
+        var locations = this.SelectedGeo;
+        var geoPath = '';
+        for(let location of locations){
+            geoPath = geoPath.concat(location, '+');
+        }
+        geoPath = geoPath.slice(0, geoPath.length - 1)
+        return geoPath
+    }
+
+    addToPath(itemToAdd){
+        if ((Array.isArray(itemToAdd)) || (typeof itemToAdd === 'string') || (typeof itemToAdd == 'object' && itemToAdd != null)) {
+            if (Array.isArray(itemToAdd)) {
+                for (let y of itemToAdd) {
+                    this.APIUrl = this.APIUrl.concat('.', y);
+                }
+            }
+            else if(typeof itemToAdd == 'object'){
+                if(itemToAdd.hasOwnProperty('id')){
+                    this.APIUrl = this.APIUrl.concat('.', itemToAdd.id);
+                }
+                else{
+                    for(var key in itemToAdd) {
+                        this.APIUrl = this.APIUrl.concat('.', itemToAdd[key]);
+                    }
+                }
+            }
+            else if (typeof itemToAdd === 'string') {
+                this.APIUrl = this.APIUrl.concat('.', itemToAdd);
+            }
+        }
+    }
+
+
+    createPath(){
+        var order = this.queryMap.orderOption;
+        for (let item of order){
+            switch(true){
+                case (item == C.TOPIC) ||(item == C.INDICATOR) || (item == C.MEASURE):
+                    var x = this[item];
+                    this.addToPath(x);
+                    break;
+                case (item == C.GEO):
+                    this.APIUrl = this.APIUrl.concat('.', this.createGeoOptions());
+                    break;
+                default:
+                    this.addToPath(item);
+                    break;
+            }
+        }
+    }
+
+    createAPIRequest(){
+        return Promise.all([
+            this.APIUrl = ThirdPartyIPIBaseAddress.Unesco,
+            this.APIUrl = this.APIUrl.concat(',', this.getSector(), ',', '1.0', '/'),
+            this.createPath(),
+            this.createGeoOptions(),
+            this.APIUrl = this.APIUrl.concat('?'),
+            this.createTimeOptions(),
+            this.addPathArrayToUrl(),
+        ])
+    }
 }
 
-
-
-export {dataRequest, EUdataRequest, OECDdataRequest}
+export {dataRequest, EUdataRequest, OECDdataRequest, UnescoDataRequest}
