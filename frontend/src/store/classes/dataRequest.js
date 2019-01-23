@@ -71,7 +71,8 @@ class dataRequest {
          */
         var csrftoken = getCookie('csrftoken');
         var data = {
-            'APIUrl': this.APIUrl
+            'APIUrl': this.APIUrl,
+            'API': this.ThirdPartyAPI.id
         }
         return fetch(`${urls.MAKE_API_CALL}`, {
                 method: 'POST',
@@ -330,7 +331,6 @@ class OECDdataRequest extends dataRequest {
         var maxYear = Math.max(...this.SelectedTimes)
         this.addToPathArray(minYear.toString(), 'startTime');
         this.addToPathArray(maxYear.toString(), 'endTime');
-        this.addToPathArray('allDimensions', 'dimensionAtObservation');
     }
 
     createGeoOptions(){
@@ -389,7 +389,8 @@ class OECDdataRequest extends dataRequest {
         return path;
        // path = path.slice(1) // required to remove '.' at the beginning of the string
     }
-     createAPIRequest(){
+
+    createAPIRequest(){
         return Promise.all([
             this.APIUrl = ThirdPartyIPIBaseAddress.OCDE,
             this.APIUrl = this.APIUrl.concat('/', this.Topic.id),
@@ -398,8 +399,31 @@ class OECDdataRequest extends dataRequest {
             this.createTimeOptions(),
             this.addPathArrayToUrl(),
         ])
+    }
 
-     }
+/*    filterResult(){
+
+    }
+
+    getResult(){
+        try{
+            var result = JSON.parse(JSON.stringify(this.result['dataSets']['series']))
+            var rowOrder = JSON.parse(JSON.stringify(this.result['structure']['dimensions']['series']))
+            var columnOrder = JSON.parse(JSON.stringify(this.result['structure']['dimensions']['TIME_PERIOD']))
+        }
+        catch(error){
+
+        }
+
+
+    }
+
+    getGeoOrder(series){
+        for(let serie of series){
+            if(serie)
+        }
+    }*/
+
 }
 
 class UnescoDataRequest extends dataRequest {
@@ -443,25 +467,24 @@ class UnescoDataRequest extends dataRequest {
         if ((Array.isArray(itemToAdd)) || (typeof itemToAdd === 'string') || (typeof itemToAdd == 'object' && itemToAdd != null)) {
             if (Array.isArray(itemToAdd)) {
                 for (let y of itemToAdd) {
-                    this.APIUrl = this.APIUrl.concat('.', y);
+                    this.APIUrl = this.APIUrl.concat(y, '.');
                 }
             }
             else if(typeof itemToAdd == 'object'){
                 if(itemToAdd.hasOwnProperty('id')){
-                    this.APIUrl = this.APIUrl.concat('.', itemToAdd.id);
+                    this.APIUrl = this.APIUrl.concat(itemToAdd.id, '.');
                 }
                 else{
                     for(var key in itemToAdd) {
-                        this.APIUrl = this.APIUrl.concat('.', itemToAdd[key]);
+                        this.APIUrl = this.APIUrl.concat(itemToAdd[key], '.');
                     }
                 }
             }
             else if (typeof itemToAdd === 'string') {
-                this.APIUrl = this.APIUrl.concat('.', itemToAdd);
+                this.APIUrl = this.APIUrl.concat(itemToAdd, '.') ;
             }
         }
     }
-
 
     createPath(){
         var order = this.queryMap.orderOption;
@@ -472,7 +495,7 @@ class UnescoDataRequest extends dataRequest {
                     this.addToPath(x);
                     break;
                 case (item == C.GEO):
-                    this.APIUrl = this.APIUrl.concat('.', this.createGeoOptions());
+                    this.APIUrl = this.APIUrl.concat(this.createGeoOptions());
                     break;
                 default:
                     this.addToPath(item);

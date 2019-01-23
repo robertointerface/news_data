@@ -19,6 +19,8 @@ from rest_framework.views import APIView
 from DataBasesModel.EurostatModel import Eurostat
 from DataBasesModel.OECDModel import OECD
 from DataBasesModel.UNESCOModel import UNESCO
+from DataBasesModel.APIKeys import api_keys
+
 
 class IndicatorsDict(dict):
     def __missing__(self, key):
@@ -96,11 +98,16 @@ class GetIndicators(APIView):
 
 class MakeApiCall(APIView):
     permission_classes = (AllowAny,)
+    api = ''
 
     def post(self, request, format=None):
         request_data = json.loads(request.body)
         api_url = request_data['APIUrl']
+        self.api = request_data['API']
+        api_key = self.get_api_keys()
         try:
+            if api_key is not None:
+                api_url = '{api_url}{key_name}={key}'.format(api_url=api_url, key_name=api_key[1], key=api_key[2])
             headers = {'Content-Type': 'application/json'}
             result = urlfetch.fetch(
                 url=api_url,
@@ -119,5 +126,12 @@ class MakeApiCall(APIView):
             }
         return JsonResponse(api_result)
 
-    def get_api_keys
+    def get_api_keys(self):
+        for api_key in api_keys:
+            if api_key[0] == self.api:
+                return api_key
+        return None
+
+
+
 
