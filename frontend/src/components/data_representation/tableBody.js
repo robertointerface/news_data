@@ -8,7 +8,7 @@ export const Tablebody = ({list=[]}) => {
                 <th scope="row">{x.name}</th>
                 {x.values.map((x, i) =>
                     <td key={i}>
-                        {x}
+                        {(x != null ? x : '...')}
                     </td>
                 )}
             </tr>

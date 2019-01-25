@@ -63,11 +63,14 @@ export const getTopicMap = (thirdPartyAPI, sectorId, topicId) => {
         @Args: SectorId (string), topiId (string).
         @Returns: queryOptions Object.
      */
+    var rev = parseInt(topicId.split('-')[1])
+    topicId = topicId.split('-')[0]
+
     var database = getDatabase(thirdPartyAPI)
     try {
         var sector = database.find(sector => sector['id'] == sectorId)
         var sectorTopics = sector['Topics']
-        var topic = sectorTopics.find(topic => topic['id'] == topicId)
+        var topic = sectorTopics.find(topic => topic['id'] == topicId && topic['rev'] == rev)
     }
     catch (e) {
        var topic = {}
@@ -95,7 +98,7 @@ export const handle_indicator_request = (topicId='', topicName='') => {
         var version = getVersion(Sector, topicId);
         var data = {
             'sector': Sector,
-            'topic': topicId,
+            'topic': topicId.split('-')[0],
             'version': version,
             'ThirdPartyAPI': ThirdPartyAPI
         }
@@ -203,7 +206,6 @@ export const setItemSelected = (list=[], id) => {
             list: Array of objects.
             id: string, object id which will be updated.
         @returns: updated list
-
      */
     var oldItem = list.find(item => item.select == true)
     if (oldItem){

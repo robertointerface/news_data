@@ -38,7 +38,8 @@ OECD = {
                     previous year''',
                     'ENDT': 'Household indebtedness to annual income ratio (percentage)',
                     'HHSAV': 'Household gross savings rate'
-                }
+                },
+                'units': {}
             }
         },
         'MEI_PRICES': {

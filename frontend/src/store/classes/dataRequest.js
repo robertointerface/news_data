@@ -10,7 +10,7 @@ class dataRequest {
     constructor(requestObject){
         this.ThirdPartyAPI = requestObject.ThirdPartyAPI;
         this.Sector = requestObject.Sector;
-        this.Topic = requestObject.Topic;
+        this.Topic = this.filterTopic(requestObject.Topic);
         this.Indicator = requestObject.Indicator;
         this.Unit = requestObject.Unit;
         this.PossibleUnitMeasure = requestObject.PossibleUnitMeasure;
@@ -32,6 +32,16 @@ class dataRequest {
         return null;
     }
 
+    filterTopic(topic){
+
+        /*
+            @Func: Topic.id is in the form 'topic-rev', in order to make an API query the Topic.id needs to be in
+            form 'topic' since the 'rev' is for internal uses purpose, if this is not performed the API query will be
+            wrong and data can not be queried.
+         */
+        return {...topic, id: topic.id.split('-')[0]}
+
+    }
 
     createDisplayMessage(){
         /*
@@ -321,6 +331,7 @@ class OECDdataRequest extends dataRequest {
             'U': 'Unit',
             'G': 'SelectedGeo'
         }
+        this.receivedCountries = []
     }
 
     createTimeOptions(){
@@ -401,28 +412,149 @@ class OECDdataRequest extends dataRequest {
         ])
     }
 
-/*    filterResult(){
-
-    }
-
-    getResult(){
+    filterResult(){
         try{
-            var result = JSON.parse(JSON.stringify(this.result['dataSets']['series']))
-            var rowOrder = JSON.parse(JSON.stringify(this.result['structure']['dimensions']['series']))
-            var columnOrder = JSON.parse(JSON.stringify(this.result['structure']['dimensions']['TIME_PERIOD']))
+            var finalValue = []
+            var result = JSON.parse(JSON.stringify(this.result['dataSets'][0]['series']))
+            var rowOrder = this.getKeyPositions(this.result['structure']['dimensions']['series'])
+            var columnOrder = this.getTimePositions(this.result['structure']['dimensions']['observation'])
+            var expectedValuesLength = this.getExpectedNumberOfValues()
+            var receivedValuesLength = this.getRecievedNumberOfValues(rowOrder, columnOrder)
+            var recievedTimes = this.filterTimes(columnOrder);
+            var Locationindex = rowOrder.findIndex(x => x['name'] == 'LOCATION')
+            for(var location in rowOrder[Locationindex].values){
+                var geoObject = {
+                    name: rowOrder[Locationindex].values[location],
+                    values: []
+                }
+               // var locationData = [0, 0, 0]
+                var locationData = Array.from({length: rowOrder.length}, (v, i) => 0)
+
+                locationData[Locationindex] = location
+                //var seriesData = `${locationData[0]}:${locationData[1]}:${locationData[2]}`;
+                var seriesData = locationData.reduce((acc, i) => {
+                    return acc.concat(`${i}`, ':')
+                }, '')
+                seriesData = seriesData.slice(0, seriesData.length - 1)
+                var data = result[seriesData]['observations']
+                for(var time of recievedTimes){
+                    var timeIndex = columnOrder.indexOf(time);
+                    var value = data[timeIndex.toString()][0]
+                    geoObject.values.push(value)
+                }
+                finalValue.push(geoObject)
+                console.log('data: ' + JSON.stringify(data))
+            }
+
         }
         catch(error){
 
         }
+        return finalValue
+    }
 
+
+    filterTimes(obtainedTimes){
+        /*
+            @Func: Verify the times that were returned by API
+         */
+        var gotTimes = this.SelectedTimes.map(i => {
+            var found = obtainedTimes.find(x => x == i)
+            if (found){
+                return found;
+            }
+        })
+        return gotTimes;
+
+    }
+
+    getRecievedNumberOfValues(rowOrder, columnOrder){
+        /*
+            @Func: Calculate the number of values returned by the API
+         */
+        var rowLength = rowOrder.reduce((acc, row) => {
+            if(Array.isArray(row)){
+                return acc * row.length
+            }else{
+                return acc * 1
+            }
+        }, 1)
+
+        return columnOrder.length * rowLength
+
+    }
+
+
+    getExpectedNumberOfValues(){
+        /*
+            @Func: Calculate the number of values that should have been returned by our request.
+         */
+        var selectedTimesLength = this.SelectedTimes.length
+        var selectedGeoLength = this.SelectedGeo.length
+        return selectedTimesLength * selectedGeoLength
+    }
+
+    getKeyPositions(series){
+        /*
+            @Func: Inspect the order in which data is returned
+         */
+        var keyPositions = new KeyPostitions()
+        for(let serie of series){
+            if(serie['values']){
+                keyPositions.push(serie['values'], serie['id'])
+            }
+        }
+        return keyPositions;
+    }
+
+    getTimePositions(observations){
+        /*
+            @Func: Convert Times returned by API into intergers
+         */
+        if(observations[0]['id'] == "TIME_PERIOD"){
+            var times = observations[0]['values'].map(time => parseInt(time['id']))
+            return times;
+        }
 
     }
 
     getGeoOrder(series){
+        var geoOrder = [];
         for(let serie of series){
-            if(serie)
+            if(serie['id'] == 'LOCATION'){
+                for(let location of serie['values']){
+                    geoOrder.push(location['id'])
+                }
+            }
         }
-    }*/
+    }
+
+}
+
+class KeyPostitions extends Array{
+    /*
+        @Array: Extension of array with customize push functionality.
+            @push: Creates an Object 'newObject', populates it and push it into the array
+     */
+     push(objectToPush, name){
+        if(Array.isArray(objectToPush)) {
+            if (objectToPush.length > 1) {
+                var newObject = {name: name,
+                                 values: []
+                }
+                for(let i = 0; i < objectToPush.length; i++){
+                    newObject.values.push(objectToPush[i]['id'])
+                }
+                return super.push(newObject);
+            } else {
+                var newObject = {name: name,
+                                 values: objectToPush[0]['id']
+                }
+                return super.push(newObject);
+            }
+        }
+     }
+
 
 }
 

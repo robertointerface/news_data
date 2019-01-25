@@ -137,7 +137,7 @@ const OECDDatabases = [
 	                		DisplayMessageOrder:['Unit' , 'Extra', 'Indicator'],
 					 		DisplayExtra: ' at ',
 	                		extras: {
-		        				extra1: {"SUBJECT" : 'I4_ANA_EMPTO'},
+		        				"SUBJECT" : 'I4_ANA_EMPTO',
 		        				}
 
 	            			}
@@ -162,7 +162,7 @@ const OECDDatabases = [
 	                		DisplayMessageOrder:['Unit' , 'Extra', 'Indicator'],
 					 		DisplayExtra: ' of hours worked at ',
 	                		extras: {
-		        				extra1: {"SUBJECT" : 'I4_ANA_HRSTO'},
+		        				"SUBJECT" : 'I4_ANA_HRSTO',
 		        				}
 
 	            			}
@@ -187,7 +187,7 @@ const OECDDatabases = [
 	                		DisplayMessageOrder:['Unit' , 'Extra', 'Indicator'],
 					 		DisplayExtra: ' at ',
 	                		extras: {
-		        				extra1: {"SUBJECT" : 'I4_ANA_LCEMP'},
+		        			"SUBJECT" : 'I4_ANA_LCEMP',
 		        				}
 
 	            			}

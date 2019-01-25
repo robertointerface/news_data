@@ -102,11 +102,11 @@ const TopicsIterator = {
                 if(item < TopicsLenght){
                      var CurrentValue = {
                          name: _this.topicsArray[item].TopicName,
-                         id: _this.topicsArray[item].id,
+                         id: `${_this.topicsArray[item].id}-${_this.topicsArray[item].rev}`,
                          select: false
                      };
                      item = item + 1;
-                     return { value: CurrentValue, done:false};
+                     return { value: CurrentValue, done:false };
                 }
                 else{
                     return { done: true }
