@@ -95,7 +95,7 @@ export const handle_indicator_request = (topicId='', topicName='') => {
         var csrftoken = getCookie('csrftoken'); //get saved cookie
         var Sector = getState().Current_search.Sector.id; //get sector id
         var ThirdPartyAPI = getState().Current_search.ThirdPartyAPI.id;
-        var version = getVersion(Sector, topicId);
+        var version = parseInt(topicId.split('-')[1])
         var data = {
             'sector': Sector,
             'topic': topicId.split('-')[0],
@@ -113,7 +113,6 @@ export const handle_indicator_request = (topicId='', topicName='') => {
                 body: JSON.stringify(data)
             })
             .then(response => {
-
                 return response.json()
             })
             .then(response => {
@@ -176,10 +175,28 @@ export const getSectorTopics = sector => {
     return topics;
 }
 
-export const markItemSelected = (list, newItem) => {
-    var newList = JSON.parse(JSON.stringify(list));
+export const markItemSelected = (list, id) => {
+
+
+     var newList = list.map((item, index) =>{
+        if(item.id == id && item.checked == false){
+            return {
+                ...item,
+                checked: true
+            }
+        }
+        if(item.id == id && item.checked == true){
+                return {
+                ...item,
+                checked: false
+            }
+        }
+        return item
+    })
+
+   /* var newList = JSON.parse(JSON.stringify(list));
     var clickedItem = newList.find(item => item['id'] == newItem);
-    clickedItem.checked = true;
+    clickedItem.checked = true;*/
     return newList;
 }
 
@@ -189,12 +206,13 @@ export const canMakeRequest = ( timeList, geoList ) => {
         @Return: False if a minimum of 1 item is selected on timeList and geo List
             otherwise return true
      */
+    var canMakeRequest;
     var timeSelected = timeList.find(time => time['checked'] == true)
     var geoSelected = geoList.find(geo => geo['checked'] == true)
     if(timeSelected && geoSelected){
-        return false;
+       return false
     }
-    return true;
+    return true
 }
 
 export const setItemSelected = (list=[], id) => {
@@ -207,15 +225,32 @@ export const setItemSelected = (list=[], id) => {
             id: string, object id which will be updated.
         @returns: updated list
      */
-    var oldItem = list.find(item => item.select == true)
+
+    var newList = list.map((item, index) =>{
+        if(item.id == id && item.select == false){
+            return {
+                ...item,
+                select: true
+            }
+        }
+        if(item.select == true && item.id != id){
+                return {
+                ...item,
+                select: false
+            }
+        }
+        return item
+    })
+
+/*    var oldItem = list.find(item => item.select == true)
     if (oldItem){
         oldItem.select = false; //unselect previous selected Item
     }
     var itemSelected = list.find(item => item['id'] == id)
     if(itemSelected){
         itemSelected.select = true;
-    }
-    return list;
+    }*/
+    return newList; // the list
 
 }
 
@@ -230,7 +265,7 @@ export const pushItemToArray = (list=[], item) => {
     if(item){
         list.push(item);
     }
-    return list;
+    return list.slice(); // return a copy of the new array
 }
 
 export const setUnitSelected = (list=[], id='') => {

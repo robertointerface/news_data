@@ -113,6 +113,8 @@ export const Current_search = (state = {}, action) => {
             return Modify_current_search(state, action)
         case C.SELECT_TIME:
             return Modify_current_search(state, action)
+        case C.CHECK_REQUEST:
+            return Modify_current_search(state, action)
         case C.SELECT_GEO:
             return Modify_current_search(state, action)
         case C.SET_UNITS:
@@ -137,8 +139,22 @@ export const Modify_current_search = (state = {}, action) =>{
                     id: action.DataBase,
                     name: action.name
                 },
-                PossibleThirdPartyAPI: [...setItemSelected(state.PossibleThirdPartyAPI, action.DataBase)],
+                PossibleThirdPartyAPI: setItemSelected(state.PossibleThirdPartyAPI, action.DataBase),
                 PossibleSectors: getSectorsByDatabase(action.DataBase),
+                PossibleTopics: [],
+                Topic: {},
+                TopicMap: {},
+                version: 1,
+                PossibleIndicators: [],
+                Indicator: {},
+                PossibleUnitMeasure: [],
+                Unit: {},
+                Times: [],
+                SelectedTimes: [],
+                Geo: [],
+                SelectedGeo: [],
+                queryMap: {},
+                requestActive: true,
                 progress: 20
             }
         case C.SELECT_SECTOR:
@@ -148,8 +164,21 @@ export const Modify_current_search = (state = {}, action) =>{
                     id: action.sector,
                     name: action.name
                 },
-                PossibleSectors: [...setItemSelected(state.PossibleSectors, action.sector)],
+                PossibleSectors: setItemSelected(state.PossibleSectors, action.sector),
                 PossibleTopics: getTopicsBySector(state.ThirdPartyAPI.id, action.sector),
+                Topic: {},
+                TopicMap: {},
+                version: 1,
+                PossibleIndicators: [],
+                Indicator: {},
+                PossibleUnitMeasure: [],
+                Unit: {},
+                Times: [],
+                SelectedTimes: [],
+                Geo: [],
+                SelectedGeo: [],
+                queryMap: {},
+                requestActive: false,
                 progress: 40
             }
         case C.SELECT_TOPIC:
@@ -159,7 +188,7 @@ export const Modify_current_search = (state = {}, action) =>{
                      id: action.topic,
                      name: action.name,
                  },
-                 PossibleTopics: [...setItemSelected(state.PossibleTopics, action.topic)],
+                 PossibleTopics: setItemSelected(state.PossibleTopics, action.topic),
                  TopicMap: getTopicMap(state.ThirdPartyAPI.id, state.Sector.id, action.topic),
                  progress: 60
              }
@@ -175,7 +204,7 @@ export const Modify_current_search = (state = {}, action) =>{
                     id: action.indicator,
                     name: action.name
                 },
-                PossibleIndicators: [...setItemSelected(state.PossibleIndicators, action.indicator)],
+                PossibleIndicators: setItemSelected(state.PossibleIndicators, action.indicator),
                 progress: 80
             }
         case C.SELECT_UNIT:
@@ -186,15 +215,18 @@ export const Modify_current_search = (state = {}, action) =>{
         case C.SELECT_GEO:
             return {
                 ...state,
-                Geo: [...markItemSelected(state.Geo, action.geo)],
-                SelectedGeo: [...pushItemToArray(state.SelectedGeo, action.geo)],
-                requestActive: canMakeRequest(state.Times, state.Geo)
+                Geo: markItemSelected(state.Geo, action.geo),
+                SelectedGeo: pushItemToArray(state.SelectedGeo, action.geo),
             }
         case C.SELECT_TIME:
             return {
                 ...state,
                 Times: markItemSelected(state.Times, action.time),
-                SelectedTimes: [...pushItemToArray(state.SelectedTimes, action.time)],
+               requestActive: canMakeRequest(state.Times, state.Geo)
+            }
+        case C.CHECK_REQUEST:
+            return {
+                 ...state,
                 requestActive: canMakeRequest(state.Times, state.Geo)
             }
         case C.SET_INDICATORS:

@@ -26,29 +26,29 @@ var EurostatDatabases = [
 		}
 	},
 
-       {
-    	   TopicName: "Exports & Imports of goods",
-           id: 'ext_lt_intertrd',
-           rev: 1,
-           Geo: {
-			location: 'EU',
-		   },
-           Time: {
-            	Type: 'A',
-            	Start: 2002,
-             	End: 2016
-             },
-            UrlStructure:{
-            	IndicatorName: "indic_et",
-            	UnitName: 'sitc06',
-            	DisplayMessageOrder:['Indicator', 'Extra', 'Unit'],
-		 		DisplayExtra: ' for ',
-            	extras: {
-    				extra1: {"partner" : 'WORLD'},
+{
+    TopicName: "Exports & Imports of goods",
+    id: 'ext_lt_intertrd',
+    rev: 1,
+    Geo: {
+        location: 'EU',
+    },
+    Time: {
+        Type: 'A',
+        Start: 2002,
+        End: 2016
+    },
+    UrlStructure:{
+    IndicatorName: "indic_et",
+    UnitName: 'sitc06',
+    DisplayMessageOrder:['Indicator', 'Extra', 'Unit'],
+    DisplayExtra: ' for ',
+    extras: {
+      "partner" : 'WORLD',
 
-    				},
-    			}
-       },
+    },
+    }
+},
 
        {
     	   TopicName: "Number of enterprises by sector",
@@ -125,7 +125,9 @@ var EurostatDatabases = [
     	   TopicName: "Exports & imports by EU Member States to UE or Non-EU countries",
            id: 'namq_10_exi',
            rev: 1,
-           Geo: 'EU',
+          Geo: {
+			location: 'EU',
+	    	},
            Time: {
             	Type: 'Q',
             	Start: 2001,
@@ -146,7 +148,9 @@ var EurostatDatabases = [
     	   TopicName: "Gross fixed capital formation by asset type",
            id: 'nama_10_an6',
            rev: 1,
-           Geo: 'EU',
+          Geo: {
+			location: 'EU',
+	    	},
            Time: {
             	Type: 'A',
             	Start: 1995,
@@ -163,7 +167,9 @@ var EurostatDatabases = [
     	   TopicName: "Interest rates (bond yields)",
            id: 'irt_lt_mcby_q',
            rev: 1,
-           Geo: 'EU',
+         Geo: {
+			location: 'EU',
+	    	},
            ExtraMessage : 'long-term interest rates (central government bond yields on the secondary market, with around 10 years residual maturity).',
            Time: {
             	Type: 'Q',
@@ -181,7 +187,9 @@ var EurostatDatabases = [
     	   TopicName: "Consumption expenditure of households",
            id: 'nama_10_co3_p3',
            rev: 1,
-           Geo: 'EU',
+          Geo: {
+			location: 'EU',
+	    	},
            Time: {
             	Type: 'A',
             	Start: 1995,
@@ -213,7 +221,9 @@ var EurostatDatabases = [
         	          	End: 2018,
         	          	EndMonth: 1,
         	          },
-        	          Geo: 'EU',
+        	          Geo: {
+						location: 'EU',
+					  },
         	          UrlStructure:{
         	          	IndicatorName: "indic",
         	        	DisplayMessageOrder:[ 'Indicator'],
@@ -232,7 +242,9 @@ var EurostatDatabases = [
                       	Start: 1990,
                       	End: 2017
                       },
-                      Geo: 'EU',
+                     Geo: {
+			location: 'EU',
+	    	},
                 	UrlStructure:{
                 		IndicatorName: "na_item",
                 		UnitName: 'unit',
@@ -249,7 +261,9 @@ var EurostatDatabases = [
                   	Start: 1995,
                   	End: 2017
                   },
-                  Geo: 'EU',
+                    Geo: {
+						location: 'EU',
+					  },
             	UrlStructure:{
             		IndicatorName: "na_item",
             		UnitName: 'unit',
@@ -266,7 +280,9 @@ var EurostatDatabases = [
                       	Start: 1996,
                       	End: 2016
                       },
-                      Geo: 'EU',
+					 Geo: {
+						location: 'EU',
+					  },
                 	UrlStructure:{
                 		IndicatorName: "na_item",
                 		UnitName: 'sector',
@@ -286,7 +302,9 @@ var EurostatDatabases = [
                         	Start: 1996,
                         	End: 2016
                         },
-                        Geo: 'EU',
+                          Geo: {
+						location: 'EU',
+					  },
                   		UrlStructure:{
                   		IndicatorName: "na_item",
                   		UnitName: 'sector',
@@ -300,13 +318,15 @@ var EurostatDatabases = [
                     {
                       	TopicName:"Coorporate investment",
                       	id:"nasa_10_ki",
-                      	rev: '3',
+                      	rev: 3,
                       	 Time: {
                             	Type: 'A',
                             	Start: 1996,
                             	End: 2016
                             },
-                            Geo: 'EU',
+                              Geo: {
+						location: 'EU',
+					  },
                       	UrlStructure:{
                       		IndicatorName: "na_item",
                       		UnitName: 'sector',
@@ -320,7 +340,7 @@ var EurostatDatabases = [
                         {
                           	TopicName:"Total investement in the economy",
                           	id:"nasa_10_ki",
-                          	rev: '4',
+                          	rev: 4,
                           	 Time: {
                                 	Type: 'A',
                                 	Start: 1996,
@@ -340,13 +360,15 @@ var EurostatDatabases = [
                   {
                   	TopicName:"Consumer Prices (HICP 2015 = 100) - annual data (average index and rate of change)",
                   	id:"prc_hicp_aind",
-                  	rev: '1',
+                  	rev: 1,
                   	 Time: {
                         	Type: 'A',
                         	Start: 1997,
                         	End: 2017
                         },
-                        Geo: 'EU',
+                         Geo: {
+						location: 'EU',
+					  },
                         UrlStructure:{
 	                  		IndicatorName: "coicop",
 	                  		UnitName: 'unit',
@@ -357,13 +379,15 @@ var EurostatDatabases = [
                    {
                      	TopicName:"Unemployment",
                      	id:"une_rt_a",
-                     	rev: '1',
+                     	rev: 1,
                      	 Time: {
                            	Type: 'A',
                            	Start: 1987,
                            	End: 2017
                            },
-                           Geo: 'EU',
+                             Geo: {
+						location: 'EU',
+					  },
                      	UrlStructure:{
                      		IndicatorName: "age",
                      		UnitName: 'unit',
@@ -384,13 +408,15 @@ var EurostatDatabases = [
 	               {
                     	TopicName:"Unemployment (Annual)",
                     	id:"une_rt_a",
-                    	rev: '1',
+                    	rev: 1,
                     	 Time: {
                           	Type: 'A',
                           	Start: 1987,
                           	End: 2017
                           },
-                          Geo: 'EU',
+                            Geo: {
+								location: 'EU',
+					  		},
                     	UrlStructure:{
                     		IndicatorName: "age",
                     		UnitName: 'unit',
@@ -404,7 +430,7 @@ var EurostatDatabases = [
                      {
                      	TopicName:"Unemployment (quarterly)",
                      	id:"une_rt_q",
-                     	rev: '1',
+                     	rev: 1,
                      	ExtraMessage : 'Seasonally adjusted data',
                      	 Time: {
                            	Type: 'Q',
@@ -413,7 +439,9 @@ var EurostatDatabases = [
                            	EndQuarter: 4,
 
                            },
-                           Geo: 'EU',
+                            Geo: {
+								location: 'EU',
+					  		},
                            UrlStructure:{
                      		IndicatorName: "age",
                      		UnitName: 'unit',
@@ -429,7 +457,7 @@ var EurostatDatabases = [
                       {
                        	TopicName:"Employment rate (quarterly)",
                        	id:"lfsi_emp_q",
-                       	rev: '1',
+                       	rev:  1,
                        	ExtraMessage : 'Seasonally adjusted data, population from 15 to 64 years old',
                        	 Time: {
                              	Type: 'Q',
@@ -438,7 +466,9 @@ var EurostatDatabases = [
                              	EndQuarter: 3,
 
                              },
-                             Geo: 'EU',
+                               Geo: {
+									location: 'EU',
+					  			},
                              UrlStructure:{
                        		IndicatorName: "sex",
                        		UnitName: 'unit',
@@ -455,7 +485,7 @@ var EurostatDatabases = [
                         {
                            	TopicName:"labour force participation rate (quarterly)",
                            	id:"lfsi_emp_q",
-                           	rev: '2',
+                           	rev: 2,
 
                            	 Time: {
                                  	Type: 'Q',
@@ -464,7 +494,9 @@ var EurostatDatabases = [
                                  	EndQuarter: 3,
 
                                  },
-                                 Geo: 'EU',
+                                  Geo: {
+						location: 'EU',
+					  },
                                  UrlStructure:{
                            		IndicatorName: "sex",
                            		UnitName: 'unit',
@@ -481,14 +513,16 @@ var EurostatDatabases = [
                      {
                      	TopicName:"Employment by educational attainment level",
                      	id:"lfsi_educ_a",
-                     	rev: '1',
+                     	rev:  1,
                      	Time: {
                      			Type: 'A',
                            		Start: 1998,
                            		End: 2016
                           	},
                         ExtraMessage : 'From 15 to 64 years',
-                        Geo: 'EU',
+                         Geo: {
+						location: 'EU',
+					  },
                      	UrlStructure:{
                      		IndicatorName: "isced11",
                      		UnitName: 'unit',
@@ -503,13 +537,15 @@ var EurostatDatabases = [
 	              {
 	            	  TopicName: "Temporary employees",
 	            	  id:"lfsa_etpgan",
-	            	  rev: '1',
+	            	  rev:  1,
                     	 Time: {
                           	Type: 'A',
                           	Start: 1990,
                           	End: 2016
                           },
-                          Geo: 'EU',
+                         Geo: {
+							location: 'EU',
+					  	},
                     	UrlStructure:{
                     		IndicatorName: "age",
                     		UnitName: 'unit',
@@ -524,13 +560,15 @@ var EurostatDatabases = [
 	              {
 	            	  TopicName: "Part-time employment",
 	            	  id:"lfsa_eppga",
-	            	  rev: '1',
+	            	  rev:  1,
                     	 Time: {
                           	Type: 'A',
                           	Start: 1987,
                           	End: 2016
                           },
-                          Geo: 'EU',
+                           Geo: {
+						location: 'EU',
+					  },
                     	UrlStructure:{
                     		IndicatorName: "age",
                     		UnitName: 'unit',
@@ -544,13 +582,15 @@ var EurostatDatabases = [
 	              {
 	            	  TopicName: "Involuntary part-time employment",
 	            	  id:"lfsa_eppgai",
-	            	  rev: '1',
+	            	  rev: 1,
                     	 Time: {
                           	Type: 'A',
                           	Start: 1987,
                           	End: 2016
                           },
-                          Geo: 'EU',
+                           Geo: {
+						location: 'EU',
+					  },
                     	  UrlStructure:{
                     		IndicatorName: "age",
                     		UnitName: 'unit',
@@ -564,13 +604,15 @@ var EurostatDatabases = [
 	              {
 	            	  TopicName: "Precarious employment (2008-2016)",
 	            	  id:"lfsa_qoe_4ax1r2",
-	            	  rev: '1',
+	            	  rev:  1,
                     	 Time: {
                           	Type: 'A',
                           	Start: 2008,
                           	End: 2016
                           },
-                        Geo: 'EU',
+                          Geo: {
+						location: 'EU',
+					  },
                         ExtraMessage : '15 years or over',
                     	UrlStructure:{
                     		IndicatorName: "nace_r2",
@@ -587,13 +629,15 @@ var EurostatDatabases = [
                     {
   	            	  TopicName: "Precarious employment (2000-2008)",
   	            	  id:"lfsa_qoe_4ax1r1",
-  	            	  rev: '1',
+  	            	  rev:  1,
                       	 Time: {
                             	Type: 'A',
                             	Start: 2000,
                             	End: 2008
                             },
-                        Geo: 'EU',
+                        Geo: {
+						location: 'EU',
+					  },
                         ExtraMessage : '15 years or over',
                       	UrlStructure:{
                       		IndicatorName: "nace_r1",
@@ -609,13 +653,15 @@ var EurostatDatabases = [
                     {
   	            	  TopicName: "Long-term unemployment",
   	            	  id:"une_ltu_a",
-  	            	  rev: '1',
+  	            	  rev:  1,
                       	 Time: {
                             	Type: 'A',
                             	Start: 1996,
                             	End: 2016
                             },
-                        Geo: 'EU',
+                          Geo: {
+						location: 'EU',
+					  },
                         ExtraMessage : '15 years or over',
                       	UrlStructure:{
                       		IndicatorName: "indic_em",
@@ -637,13 +683,15 @@ var EurostatDatabases = [
 		   	        {
 		   	         TopicName: "government expenditure by function",
 		   	         id: 'gov_10a_exp',
-		   	         rev: '1',
+		   	         rev:  1,
 		   	         Time: {
 		   	         	Type: 'A',
 		   	         	Start: 1995,
 		   	         	End: 2015
 		   	         },
-		   	         Geo: 'EU',
+		   	         Geo: {
+						location: 'EU',
+					  },
 		   	         UrlStructure:{
 		   	         	IndicatorName: "cofog99",
 		   	            UnitName: 'unit',
@@ -658,13 +706,15 @@ var EurostatDatabases = [
 		         {
 		   	         TopicName: "Government debt",
 		   	         id: 'gov_10dd_edpt1',
-		   	         rev: '1',
+		   	         rev:  1,
 		   	         Time: {
 		   	         	Type: 'A',
 		   	         	Start: 1995,
 		   	         	End: 2016
 		   	         },
-		   	         Geo: 'EU',
+		   	          Geo: {
+						location: 'EU',
+					  },
 		   	         UrlStructure:{
 		   	         	IndicatorName: "na_item",
 		   	            UnitName: 'unit',
@@ -678,13 +728,15 @@ var EurostatDatabases = [
 		         {
 		   	         TopicName: "Government revenue & expenditure",
 		   	         id: 'gov_10a_main',
-		   	         rev: '1',
+		   	         rev:  1,
 		   	         Time: {
 		   	         	Type: 'A',
 		   	         	Start: 1995,
 		   	         	End: 2016
 		   	         },
-		   	         Geo: 'EU',
+		   	          Geo: {
+						location: 'EU',
+					  },
 		   	         UrlStructure:{
 		   	         	IndicatorName: "na_item",
 		   	            UnitName: 'unit',
@@ -698,13 +750,15 @@ var EurostatDatabases = [
 		   	  {
 		   	         TopicName: "who owns government debt?",
 		   	         id: 'gov_10dd_ggd',
-		   	         rev: '1',
+		   	         rev:  1,
 		   	         Time: {
 		   	         	Type: 'A',
 		   	         	Start: 2015,
 		   	         	End: 2016
 		   	         },
-		   	         Geo: 'EU',
+		   	         Geo: {
+						location: 'EU',
+					  },
 		   	         UrlStructure:{
 		   	         	IndicatorName: "sector",
 		   	            UnitName: 'unit',
@@ -719,13 +773,15 @@ var EurostatDatabases = [
 		   	  {
 		   	         TopicName: "Government revenue (Tax)",
 		   	         id: 'gov_10a_taxag',
-		   	         rev: '1',
+		   	         rev:  1,
 		   	         Time: {
 		   	         	Type: 'A',
 		   	         	Start: 1999,
 		   	         	End: 2016
 		   	         },
-		   	         Geo: 'EU',
+		   	          Geo: {
+						location: 'EU',
+					  },
 		   	         UrlStructure:{
 		   	         	IndicatorName: "na_item",
 		   	            UnitName: 'unit',
@@ -749,14 +805,16 @@ var EurostatDatabases = [
 	     	  {
 		   	         TopicName: "Population by nationality",
 		   	         id: 'migr_pop2ctz',
-		   	         rev: '1',
+		   	         rev:  1,
 		   	         Time: {
 		   	         	Type: 'A',
 		   	         	Start: 1998,
 		   	         	End: 2017
 		   	         },
 
-		   	         Geo: 'EU',
+		   	          Geo: {
+						location: 'EU',
+					  },
 		   	         UrlStructure:{
 		   	         	IndicatorName: "citizen",
 		   	            UnitName: 'unit',
@@ -771,14 +829,16 @@ var EurostatDatabases = [
 		   	  {
 		   	         TopicName: "Population by age",
 		   	         id: 'demo_pjanind',
-		   	         rev: '1',
+		   	         rev:  1,
 		   	         Time: {
 		   	         	Type: 'A',
 		   	         	Start: 1960,
 		   	         	End: 2017
 		   	         },
 
-		   	         Geo: 'EU',
+		   	          Geo: {
+						location: 'EU',
+					  },
 		   	         UrlStructure:{
 		   	         	IndicatorName: "indic_de",
 		   	         	DisplayMessageOrder:['Indicator'],
@@ -789,13 +849,15 @@ var EurostatDatabases = [
 		    	  {
 		   	         TopicName: "Immigration",
 		   	         id: 'migr_imm8',
-		   	         rev: '1',
+		   	         rev:  1,
 		   	         Time: {
 		   	         	Type: 'A',
 		   	         	Start: 1990,
 		   	         	End: 2015
 		   	         },
-		   	         Geo: 'EU',
+		   	          Geo: {
+						location: 'EU',
+					  },
 		   	         UrlStructure:{
 		   	         	IndicatorName: "sex",
 		   	         	UnitName: 'unit',
@@ -810,13 +872,15 @@ var EurostatDatabases = [
 		   	  {
 		   	         TopicName: "Emigration by age",
 		   	         id: 'migr_emi1ctz',
-		   	         rev: '1',
+		   	         rev:  1,
 		   	         Time: {
 		   	         	Type: 'A',
 		   	         	Start: 2002,
 		   	         	End: 2015
 		   	         },
-		   	         Geo: 'EU',
+		   	          Geo: {
+						location: 'EU',
+					  },
 		   	         UrlStructure:{
 		   	           	IndicatorName: "age",
 		   	           UnitName: 'unit',
@@ -832,13 +896,15 @@ var EurostatDatabases = [
 		   	  {
 		   	         TopicName: "Life expectancy",
 		   	         id: 'demo_mlexpec',
-		   	         rev: '1',
+		   	         rev:  1,
 		   	         Time: {
 		   	         	Type: 'A',
 		   	         	Start: 1975,
 		   	         	End: 2015
 		   	         },
-		   	         Geo: 'EU',
+		   	           Geo: {
+						location: 'EU',
+					  },
 		   	         UrlStructure:{
 		   	         IndicatorName: "sex",
 		   	         UnitName: 'unit',
@@ -853,13 +919,15 @@ var EurostatDatabases = [
 		   	  {
 		   	         TopicName: "Divorce indicators",
 		   	         id: 'demo_ndivind',
-		   	         rev: '1',
+		   	         rev:  1,
 		   	         Time: {
 		   	         	Type: 'A',
 		   	         	Start: 1970,
 		   	         	End: 2015
 		   	         },
-		   	         Geo: 'EU',
+		   	          Geo: {
+						location: 'EU',
+					  },
 		   	         UrlStructure:{
 		   	         IndicatorName: "indic_de",
 		   	         DisplayMessageOrder:['Indicator'],
@@ -869,13 +937,15 @@ var EurostatDatabases = [
 		    	  {
 		   	         TopicName: "Asylum applications",
 		   	         id: 'migr_asyappctza',
-		   	         rev: '1',
+		   	         rev:  1,
 		   	         Time: {
 		   	         	Type: 'A',
 		   	         	Start: 2008,
 		   	         	End: 2017
 		   	         },
-		   	         Geo: 'EU',
+		   	          Geo: {
+						location: 'EU',
+					  },
 		   	         UrlStructure:{
 		   	         	IndicatorName: "citizen",
 		   	         	UnitName: 'unit',
@@ -891,13 +961,15 @@ var EurostatDatabases = [
 		   	  {
 		   	         TopicName: "Decision on Asylum applications",
 		   	         id: 'migr_asydcfsta',
-		   	         rev: '1',
+		   	         rev:  1,
 		   	         Time: {
 		   	         	Type: 'A',
 		   	         	Start: 2008,
 		   	         	End: 2017
 		   	         },
-		   	         Geo: 'EU',
+		   	          Geo: {
+						location: 'EU',
+					  },
 		   	         UrlStructure:{
 		   	         	IndicatorName: "decision",
 		   	         	UnitName: 'unit',
@@ -913,14 +985,16 @@ var EurostatDatabases = [
 		   	  {
 		   	         TopicName: "Crimes by category (police data)",
 		   	         id: 'crim_off_cat',
-		   	         rev: '1',
+		   	         rev:  1,
 		   	         Time: {
 		   	         	Type: 'A',
 		   	         	Start: 2008,
 		   	         	End: 2015
 		   	         },
 
-		   	         Geo: 'EU',
+		   	          Geo: {
+						location: 'EU',
+					  },
 		   	         UrlStructure:{
 		   	         	IndicatorName: "iccs",
 		   	            UnitName: 'unit',
@@ -940,13 +1014,15 @@ var EurostatDatabases = [
 
         	      TopicName: "Health care expenditure by financing scheme",
 		   	         id: 'hlth_sha11_hf',
-		   	         rev: '1',
+		   	         rev:  1,
 		   	         Time: {
 		   	         	Type: 'A',
 		   	         	Start: 2003,
 		   	         	End: 2015
 		   	         },
-		   	         Geo: 'EU',
+		   	          Geo: {
+						location: 'EU',
+					  },
 		   	         UrlStructure:{
 		   	         IndicatorName: "icha11_hf",
 		   	         UnitName: 'unit',
@@ -958,13 +1034,15 @@ var EurostatDatabases = [
 
      	      	TopicName: "Self-perceived health",
 		   	         id: 'hlth_silc_18',
-		   	         rev: '1',
+		   	         rev:  1,
 		   	         Time: {
 		   	         	Type: 'A',
 		   	         	Start: 2004,
 		   	         	End: 2016
 		   	         },
-		   	         Geo: 'EU',
+		   	         Geo: {
+						location: 'EU',
+					  },
 
 		   	         UrlStructure:{
 		   	         	IndicatorName: "levels",
@@ -982,13 +1060,15 @@ var EurostatDatabases = [
 
    	      		TopicName: "People having a long-standing illness or health problem",
 		   	         id: 'hlth_silc_04',
-		   	         rev: '1',
+		   	         rev:  1,
 		   	         Time: {
 		   	         	Type: 'A',
 		   	         	Start: 2004,
 		   	         	End: 2016
 		   	         },
-		   	         Geo: 'EU',
+		   	          Geo: {
+						location: 'EU',
+					  },
 		   	         UrlStructure:{
 		   	         	IndicatorName: "wstatus",
 		   	         	UnitName: 'unit',
@@ -1004,13 +1084,15 @@ var EurostatDatabases = [
 
    	      		TopicName: "Hospital beds by hospital ownership (public or private)",
 		   	         id: 'hlth_rs_bds2',
-		   	         rev: '1',
+		   	         rev:  1,
 		   	         Time: {
 		   	         	Type: 'A',
 		   	         	Start: 1986,
 		   	         	End: 2015
 		   	         },
-		   	      Geo: 'EU',
+		   	       Geo: {
+						location: 'EU',
+					  },
 		   	         UrlStructure:{
 		   	         IndicatorName: "owner",
 		   	         UnitName: 'unit',
@@ -1024,13 +1106,15 @@ var EurostatDatabases = [
 
    	      TopicName: "Technical resources in hospital",
 		   	         id: 'hlth_rs_tech',
-		   	         rev: '1',
+		   	         rev:  1,
 		   	         Time: {
 		   	         	Type: 'A',
 		   	         	Start: 2000,
 		   	         	End: 2015
 		   	         },
-		   	         Geo: 'EU',
+		   	          Geo: {
+						location: 'EU',
+					  },
 		   	         UrlStructure:{
 		   	         	IndicatorName: "facility",
 		   	         	UnitName: 'unit',
@@ -1071,14 +1155,16 @@ var EurostatDatabases = [
                {
                    TopicName: "Early leavers from education and training",
                    id: 'edat_lfse_30',
-                   rev: '1',
+                   rev:  1,
                    Time: {
                    	Type: 'A',
                    	Start: 2000,
                    	End: 2016
                    },
 
-                   Geo: 'EU',
+                    Geo: {
+						location: 'EU',
+					  },
                    UrlStructure:{
                    	IndicatorName: "sex",
                    	UnitName: 'unit',
@@ -1095,13 +1181,15 @@ var EurostatDatabases = [
                {
                    TopicName: "Ratio of students to teachers",
                    id: 'educ_uoe_perp04',
-                   rev: '1',
+                   rev:  1,
                    Time: {
                    	Type: 'A',
                    	Start: 2013,
                    	End: 2016
                    },
-                   Geo: 'EU',
+                     Geo: {
+						location: 'EU',
+					  },
                    UrlStructure:{
                    	IndicatorName: "isced11",
                    	UnitName: 'unit',
@@ -1113,13 +1201,15 @@ var EurostatDatabases = [
                {
                    TopicName: "public expenditure on education as % of GDP (2001-2011)",
                    id: 'educ_figdp',
-                   rev: '1',
+                   rev:  1,
                    Time: {
                    	Type: 'A',
                    	Start: 2001,
                    	End: 2011
                    },
-                   Geo: 'EU',
+                    Geo: {
+						location: 'EU',
+					  },
                    UrlStructure:{
                    	IndicatorName: "indic_ed",
                    	UnitName: 'unit',
@@ -1131,13 +1221,15 @@ var EurostatDatabases = [
                {
                    TopicName: "Public expenditure on education (Euros per student)",
                    id: 'educ_uoe_fine09',
-                   rev: '1',
+                   rev:  1,
                    Time: {
                    	Type: 'A',
                    	Start: 2012,
                    	End: 2014
                    },
-                   Geo: 'EU',
+                     Geo: {
+						location: 'EU',
+					  },
                    UrlStructure:{
                    	IndicatorName: "isced11",
                 	UnitName: 'unit',
@@ -1148,13 +1240,15 @@ var EurostatDatabases = [
                {
                    TopicName: "Financial aid to students, 2001-2011",
                    id: 'educ_fiaid',
-                   rev: '1',
+                   rev:  1,
                    Time: {
                    	Type: 'A',
                    	Start: 2001,
                    	End: 2011
                    },
-                   Geo: 'EU',
+                    Geo: {
+						location: 'EU',
+					  },
                    UrlStructure:{
                    	IndicatorName: "indic_ed",
                 	UnitName: 'unit',
@@ -1165,13 +1259,15 @@ var EurostatDatabases = [
                {
                    TopicName: "Financial aid to students, 2012-2014",
                    id: 'educ_uoe_fina01',
-                   rev: '1',
+                   rev:  1,
                    Time: {
                    	Type: 'A',
                    	Start: 2012,
                    	End: 2014
                    },
-                   Geo: 'EU',
+                     Geo: {
+						location: 'EU',
+					  },
                    UrlStructure:{
                    	IndicatorName: "isced11",
                 	UnitName: 'unit',
@@ -1182,13 +1278,15 @@ var EurostatDatabases = [
                {
                    TopicName: "Young people neither in employment nor in education and training",
                    id: 'edat_lfse_20',
-                   rev: '1',
+                   rev: 1,
                    Time: {
                    	Type: 'A',
                    	Start: 2000,
                    	End: 2016
                    },
-                   Geo: 'EU',
+                    Geo: {
+						location: 'EU',
+					  },
                    UrlStructure:{
                    	IndicatorName: "wstatus",
                 	UnitName: 'unit',
@@ -1205,13 +1303,15 @@ var EurostatDatabases = [
                {
                    TopicName: "Unemployment by educational attainment level",
                    id: 'lfsa_urgaed',
-                   rev: '1',
+                   rev:  1,
                    Time: {
                    	Type: 'A',
                    	Start: 1995,
                    	End: 2016
                    },
-                   Geo: 'EU',
+                    Geo: {
+						location: 'EU',
+					  },
                    UrlStructure:{
                    	IndicatorName: "isced11",
                 	UnitName: 'unit',
@@ -1234,13 +1334,15 @@ var EurostatDatabases = [
     {
         TopicName: "People at risk of poverty or social exclusion",
         id: 'ilc_peps01',
-        rev: '1',
+        rev:  1,
         Time: {
         	Type: 'A',
         	Start: 2003,
         	End: 2016
         },
-        Geo: 'EU',
+         Geo: {
+						location: 'EU',
+					  },
         UrlStructure:{
         	IndicatorName: "age",
         	UnitName: 'unit',
@@ -1256,13 +1358,15 @@ var EurostatDatabases = [
     {
         TopicName: "Working and at risk of poverty rate (educational attainment level)",
         id: 'ilc_iw04',
-        rev: '1',
+        rev:  1,
         Time: {
         	Type: 'A',
         	Start: 2003,
         	End: 2016
         },
-        Geo: 'EU',
+         Geo: {
+						location: 'EU',
+					  },
         UrlStructure:{
         	IndicatorName: "isced11",
         	DisplayMessageOrder:[ 'Indicator', 'Extra'],
@@ -1273,13 +1377,15 @@ var EurostatDatabases = [
     {
         TopicName: "At risk of poverty threshold (60% of median equivalised income)",
         id: 'ilc_li01',
-        rev: '1',
+        rev:  1,
         Time: {
         	Type: 'A',
         	Start: 2003,
         	End: 2016
         },
-        Geo: 'EU',
+          Geo: {
+						location: 'EU',
+					  },
 
         UrlStructure:{
         	IndicatorName: "hhtyp",
@@ -1295,13 +1401,15 @@ var EurostatDatabases = [
     {
         TopicName: "Gini coefficient (Inequality on income)",
         id: 'ilc_di12',
-        rev: '1',
+        rev: 1,
         Time: {
         	Type: 'A',
         	Start: 1995,
         	End: 2016
         },
-        Geo: 'EU',
+          Geo: {
+			location: 'EU',
+		  },
 
         UrlStructure:{
         	IndicatorName: "indic_il",
@@ -1313,13 +1421,15 @@ var EurostatDatabases = [
     {
         TopicName: "Government expenditure on welfare",
         id: 'spr_exp_sum',
-        rev: '1',
+        rev: 1,
         Time: {
         	Type: 'A',
         	Start: 1995,
         	End: 2015,
         },
-        Geo: 'EU',
+         Geo: {
+						location: 'EU',
+					  },
         UrlStructure:{
         	IndicatorName: "spdeps",
         	UnitName: 'unit',
@@ -1332,13 +1442,15 @@ var EurostatDatabases = [
     {
         TopicName: "Pensions beneficiaries",
         id: 'spr_pns_ben',
-        rev: '1',
+        rev:  1,
         Time: {
         	Type: 'A',
         	Start: 2006,
         	End: 2015
         },
-        Geo: 'EU',
+         Geo: {
+						location: 'EU',
+					  },
         UrlStructure:{
         	IndicatorName: "spdepb",
         	UnitName: 'unit',
@@ -1354,13 +1466,15 @@ var EurostatDatabases = [
     {
         TopicName: "Pensions expenditure",
         id: 'spr_exp_pens',
-        rev: '1',
+        rev:  1,
         Time: {
         	Type: 'A',
         	Start: 1995,
         	End: 2015
         },
-        Geo: 'EU',
+         Geo: {
+			location: 'EU',
+		 },
         UrlStructure:{
         	IndicatorName: "spdepb",
         	UnitName: 'unit',
@@ -1375,13 +1489,15 @@ var EurostatDatabases = [
     {
         TopicName: "Distribution of population by tenure status",
         id: 'ilc_lvho02',
-        rev: '1',
+        rev:  1,
         Time: {
         	Type: 'A',
         	Start: 2007,
         	End: 2016
         },
-        Geo: 'EU',
+         Geo: {
+						location: 'EU',
+					  },
         UrlStructure:{
         	IndicatorName: "tenure",
         	UnitName: 'hhtyp',
@@ -1404,13 +1520,15 @@ var EurostatDatabases = [
 			{
 			TopicName: "Greenhouse gases emission by sector",
 			id: 'env_ac_ainah_r2',
-			rev: '1',
+			rev:  1,
 			Time: {
 				Type: 'A',
 				Start: 2005,
 				End: 2016
 			},
-			Geo: 'EU',
+			  Geo: {
+						location: 'EU',
+					  },
 			UrlStructure:{
 				IndicatorName : 'nace_r2',
 				UnitName: 'unit',
@@ -1426,14 +1544,16 @@ var EurostatDatabases = [
 			{
 				TopicName: "Greenhouse gases emissions intensities",
 				id: 'env_ac_aeint_r2',
-				rev: '1',
+				rev:  1,
 				ExtraMessage : 'Greenhouse gases emissions required to produce economic benefit',
 				Time: {
 					Type: 'A',
 					Start: 2005,
 					End: 2016
 				},
-				Geo: 'EU',
+				  Geo: {
+						location: 'EU',
+					  },
 				UrlStructure:{
 					IndicatorName : 'nace_r2',
 					UnitName: 'unit',
@@ -1450,13 +1570,15 @@ var EurostatDatabases = [
 				{
 					TopicName: "Environmental tax revenues",
 					id: 'env_ac_tax',
-					rev: '1',
+					rev:  1,
 					Time: {
 						Type: 'A',
 						Start: 1995,
 						 End: 2016
 					},
-					Geo: 'EU',
+					  Geo: {
+						location: 'EU',
+					  },
 					UrlStructure:{
 						IndicatorName : 'tax',
 						UnitName: 'unit',
@@ -1469,13 +1591,15 @@ var EurostatDatabases = [
 				{
 					TopicName: "Government expenditure on Environmental protection",
 					id: 'env_ac_eptrf',
-					rev: '1',
+					rev:  1,
 					Time: {
 						Type: 'A',
 						Start: 2006,
 						 End: 2014
 					},
-					Geo: 'EU',
+					  Geo: {
+						location: 'EU',
+					  },
 					UrlStructure:{
 						IndicatorName : 'ceparema',
 						UnitName: 'unit',
@@ -1494,14 +1618,16 @@ var EurostatDatabases = [
 				{
 					TopicName: "Electricity prices for household consumers (euro/kWh)",
 					id: 'nrg_pc_204',
-					rev: '1',
+					rev:  1,
 					Time: {
 						Type: 'B',
 						Start: 2008,
 						 End: 2017,
 						EndSemester: 1,
 					},
-					Geo: 'EU',
+					  Geo: {
+						location: 'EU',
+					  },
 					UrlStructure:{
 						IndicatorName : 'tax',
 						UnitName: 'currency',
@@ -1517,14 +1643,16 @@ var EurostatDatabases = [
 				{
 					TopicName: "Electricity prices components for household consumers",
 					id: 'nrg_pc_204_c',
-					rev: '1',
+					rev:  1,
 					Time: {
 						Type: 'B',
 						Start: 2008,
 						 End: 2016,
 						EndSemester: 2,
 					},
-					Geo: 'EU',
+					  Geo: {
+						location: 'EU',
+					  },
 					UrlStructure:{
 						IndicatorName : 'breakdown',
 						UnitName: 'currency',
@@ -1539,14 +1667,16 @@ var EurostatDatabases = [
 				{
 					TopicName: "Electricity prices for non-household consumers (euro/kWh), taxes included",
 					id: 'nrg_pc_205',
-					rev: '1',
+					rev:  1,
 					Time: {
 						Type: 'B',
 						Start: 2008,
 						End: 2017,
 						EndSemester: 1,
 					},
-					Geo: 'EU',
+					  Geo: {
+						location: 'EU',
+					  },
 
 					UrlStructure:{
 						IndicatorName : 'consom',
@@ -1564,14 +1694,16 @@ var EurostatDatabases = [
 				{
 					TopicName: "Electricity prices for non-household consumers (euro/kWh), taxes not included",
 					id: 'nrg_pc_205',
-					rev: '2',
+					rev:  1,
 					Time: {
 						Type: 'B',
 						Start: 2008,
 						 End: 2017,
 						 EndSemester: 1
 					},
-					Geo: 'EU',
+				    Geo: {
+						location: 'EU',
+					  },
 					UrlStructure:{
 						IndicatorName : 'consom',
 						UnitName: 'currency',
@@ -1598,7 +1730,7 @@ var EurostatDatabases = [
                 {
                     TopicName: "Expenditure on R&D by sector",
                     id: 'rd_e_gerdtot',
-                    rev: '1',
+                    rev:  1,
                     Geo: 'EU',
                     UrlStructure:{
                     IndicatorName: 'sectperf',
@@ -1615,7 +1747,7 @@ var EurostatDatabases = [
                 {
                     TopicName: "Source of funding of R&D",
                     id: 'rd_e_gerdfund',
-                    rev: '1',
+                    rev:  1,
                     Geo: 'EU',
                     Time: {
                     	Type: 'A',
@@ -1636,7 +1768,7 @@ var EurostatDatabases = [
                     {
                         TopicName: "Total R&D personnel by sectors",
                         id: 'rd_p_persocc',
-                        rev: '1',
+                        rev:  1,
                         Geo: 'EU',
                         Time: {
                         	Type: 'A',
@@ -1658,7 +1790,7 @@ var EurostatDatabases = [
                 {
                     TopicName: "Patent applications to the EPO by international patent classification (IPC) sections",
                     id: 'pat_ep_nipc',
-                    rev: '1',
+                    rev:  1,
                     Geo: 'EU',
                     Time: {
                     	Type: 'A',
@@ -1677,7 +1809,7 @@ var EurostatDatabases = [
             {
                 TopicName: "Patents granted by the USPTO by international patent classification (IPC) sections",
                 id: 'pat_us_nipc',
-                rev: '1',
+                rev:  1,
                 Geo: 'EU',
                 Time: {
                 	Type: 'A',
@@ -1696,7 +1828,7 @@ var EurostatDatabases = [
             {
                 TopicName: "Number of tech enterprises",
                 id: 'htec_eco_ent2',
-                rev: '1',
+                rev:  1,
                 Geo: 'EU',
                 Time: {
                 	Type: 'A',
@@ -1715,7 +1847,7 @@ var EurostatDatabases = [
             {
                 TopicName: "Employment in technology and knowledge-intensive sectors (2008-2016)",
                 id: 'htec_emp_nat2',
-                rev: '1',
+                rev:  1,
                 Geo: 'EU',
                 Time: {
                 	Type: 'A',
@@ -1736,7 +1868,7 @@ var EurostatDatabases = [
             {
                 TopicName: "Employment in technology and knowledge-intensive sectors (1994-2008)",
                 id: 'htec_emp_nat',
-                rev: '1',
+                rev:  1,
                 Geo: 'EU',
                 Time: {
                 	Type: 'A',

@@ -118,6 +118,10 @@ export const select_geo = id =>
         geo: id
     })
 
+export const check_request = () =>
+    ({
+        type: C.CHECK_REQUEST
+    })
 export const set_indicators = (list=[]) =>
     ({
         type: C.SET_INDICATORS,
@@ -135,6 +139,7 @@ export const set_timeGeo = () =>
         type: C.SET_TIMES_GEO
     })
 
+
 export const set_query_map = (sector, topic) =>
     ({
         type: C.SET_QUERY_MAP,
@@ -147,3 +152,4 @@ export const save_result = (result = {}) =>
         type: C.SAVE_RESULT,
         result: result
     })
+

@@ -6,7 +6,8 @@ import {
     select_geo,
     select_indicator,
     select_sector,
-    select_time
+    select_time,
+    check_request
 } from "actions/actions";
 import SearchComponent from "components/search_data/SearchComponent";
 import {RequestButton} from "components/search_data/RequestButton";
@@ -106,6 +107,7 @@ export const TimeContainer = connect(
             onChange(e, id){
                 e.preventDefault();
                 dispatch(select_time(id))
+                dispatch(check_request())
             }
 
         })
@@ -119,8 +121,9 @@ export const GeoContainer = connect(
     dispatch =>
         ({
              onChange(e, id){
-                e.preventDefault();
-                dispatch(select_geo(id))
+                 e.preventDefault();
+                 dispatch(select_geo(id))
+                 dispatch(check_request())
             }
 
         })

@@ -25,7 +25,6 @@ export const getDatabase = thirdPartyAPI => {
         default:
             return {}
     }
-
 }
 
 const getSectors = {
@@ -172,6 +171,7 @@ export const findQueryOptions = (thirdPartyAPI, sectorId, topicId) => {
 
 export const getVersion = (thirdPartyAPI, sectorId, topicId) => {
     var database = getDatabase(thirdPartyAPI)
+
     try {
         var sector = database.find(sector => sector['id'] == sectorId)
         var sectorTopics = sector['Topics']

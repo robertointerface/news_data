@@ -3,7 +3,12 @@ import OptionsCard from './optionsCard'
 
 const SearchComponent = ({title='title', list=[], onSelect=f=>f}) => {
     return(
-        <OptionsCard cardTitle={title} list={list} onSelect={onSelect}/>
+        <div>
+            {(list.length > 0) ?
+                <OptionsCard cardTitle={title} list={list} onSelect={onSelect}/>
+                : null
+            }
+        </div>
     )
 }
 

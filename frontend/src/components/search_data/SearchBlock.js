@@ -15,9 +15,8 @@ import {
 
 import OptionsCardTitle from 'ui/search_data/optionsCardTitle'
 
-class SearchBlock extends Component {
-    render() {
-        let { ThirdPartyAPI, Sector, Topic, requestActive } = this.props
+const SearchBlock = props => {
+     let { ThirdPartyAPI, Sector, Topic, requestActive } = props
         return (
             <div>
                     <DatabaseContainer/>
@@ -49,7 +48,6 @@ class SearchBlock extends Component {
                 <ProgressContainer/>
             </div>
         )
-    }
 }
 
 export default SearchBlock
