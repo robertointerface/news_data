@@ -222,7 +222,7 @@ export const Modify_current_search = (state = {}, action) =>{
             return {
                 ...state,
                 Times: markItemSelected(state.Times, action.time),
-               requestActive: canMakeRequest(state.Times, state.Geo)
+                SelectedTimes: pushItemToArray(state.SelectedTimes, action.time)
             }
         case C.CHECK_REQUEST:
             return {

@@ -32,24 +32,35 @@ const TimeOptions = (props) =>{
                 {props.list.map((x, i) =>
 
                         <FormGroup>
-                            <TimeInput onChange={props.onChange} checked={x.checked} name={x.name} id={x.id}/>
+                            {(x.checked == false) ?
+                                <TimeInput onChange={props.onChange} checked={x.checked} name={x.name} id={x.id}/>
+                                :  <TimeInputChecked onChange={props.onChange} checked={x.checked} name={x.name} id={x.id}/>
+                            }
                         </FormGroup>
                 )}
         </div>
     )
 }
 const TimeInput = (props) => {
-    let {onChange, checked, id, name} = props
+    let {onChange, id, name} = props
     return(
-        <Checkbox
-               onChange={(e) => onChange(e, id)}
-               checked={checked}
-               key={name}
-               value={name}>{name}</Checkbox>
+            <Checkbox
+                onChange={(e) => onChange(e, id)}
+                key={name}
+                value={name}>{name}</Checkbox>
     )
 }
 
-
+const TimeInputChecked = (props) => {
+    let {onChange, id, name} = props
+    return(
+        <Checkbox
+            onChange={(e) => onChange(e, id)}
+            checked
+            key={name}
+            value={name}>{name}</Checkbox>
+    )
+}
 
 
 export default TimeOptions
