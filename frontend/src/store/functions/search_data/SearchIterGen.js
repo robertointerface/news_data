@@ -137,7 +137,8 @@ export const createIndicatorUnitList = list => {
     Object.keys(list).map(key => {
         let tempObject = {
             id: key,
-            name: list[key]
+            name: list[key],
+            select: false
         }
         newList.push(tempObject)
     });

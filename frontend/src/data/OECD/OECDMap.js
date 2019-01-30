@@ -20,6 +20,7 @@ const OECDDatabases = [
 	                     },
 	                    UrlStructure:{
 	                    	orderOption: ['G', 'E', 'I', 'U'],
+							TimeType: 'A',
 	                    	IndicatorName: "SUBJECT",
 	                		UnitName: 'MEASURE',
 	                		DisplayMessageOrder:['Indicator', 'Unit'],
@@ -41,6 +42,7 @@ const OECDDatabases = [
 	                     },
 	                    UrlStructure:{
 	                    	orderOption: ['G', 'E', 'I', 'U'],
+							TimeType: 'A',
 	                    	IndicatorName: "SUBJECT",
 	                		UnitName: 'MEASURE',
 	                		DisplayMessageOrder:['Indicator', 'Extra', 'Unit'],
@@ -61,7 +63,7 @@ const OECDDatabases = [
 	                     	End: 2016
 	                     },
 	                    UrlStructure:{
-	                    	orderOption: ['G', 'E', 'I', 'U'],
+	                    	orderOption: ['G', 'E', 'I', 'U', 'TT'],
 	                    	TimeType: 'A',
 	                    	IndicatorName: "INDICATOR",
 	                    	DisplayMessageOrder:['Indicator'],
@@ -70,7 +72,7 @@ const OECDDatabases = [
 
 	            			}
 	               },
-	               {
+/*	               {
 	            	   TopicName: "Consumer prices growth",
 	                   id: 'MEI_PRICES',
 	                   rev: 1,
@@ -83,7 +85,7 @@ const OECDDatabases = [
 	                     	End: 2017
 	                     },
 	                    UrlStructure:{
-	                    	orderOption: ['I', 'G', 'E', 'U'],
+	                    	orderOption: ['I', 'G', 'E', 'U', 'TT'],
 	                    	TimeType: 'A',
 	                    	IndicatorName: "SUBJECT",
 	                		UnitName: 'MEASURE',
@@ -91,7 +93,7 @@ const OECDDatabases = [
 					 		DisplayExtra: '',
 
 	            			}
-	               },
+	               },*/
 
 	               {
 	            	   TopicName: "Gross value Added by sector",
@@ -110,7 +112,7 @@ const OECDDatabases = [
 
 	                    	IndicatorName: "ACTIVITY",
 	                		UnitName: 'MEASURE',
-	                 		DisplayMessageOrder:['Unit' , 'Extra', 'Indicator'],
+	                 		DisplayMessageOrder:['Unit' , 'for', 'Indicator'],
 					 		DisplayExtra: ' for ',
 	                		extras: {
 		        				"SUBJECT" : 'I4_ANA_GVA'
@@ -127,14 +129,14 @@ const OECDDatabases = [
 	                   Time: {
 	                    	Type: 'A',
 	                    	Start: 1995,
-	                     	End: 2016
+	                     	End: 2017
 	                     },
 	                    UrlStructure:{
 	                    	orderOption: ['G', 'E', 'U', 'I'],
-
+							TimeType: 'A',
 	                    	IndicatorName: "ACTIVITY",
 	                		UnitName: 'MEASURE',
-	                		DisplayMessageOrder:['Unit' , 'Extra', 'Indicator'],
+	                		DisplayMessageOrder:['Unit' , 'at', 'Indicator'],
 					 		DisplayExtra: ' at ',
 	                		extras: {
 		        				"SUBJECT" : 'I4_ANA_EMPTO',
@@ -147,7 +149,7 @@ const OECDDatabases = [
 	                   id: 'PDBI_I4',
 	                   rev: 3,
 	                   Geo: {
-	            	   	location: 'OCDE',
+	            	   	location: 'OECD',
                        },
 	                   Time: {
 	                    	Type: 'A',
@@ -156,10 +158,10 @@ const OECDDatabases = [
 	                     },
 	                    UrlStructure:{
 	                    	orderOption: ['G', 'E', 'U', 'I'],
-
+							TimeType: 'A',
 	                    	IndicatorName: "ACTIVITY",
 	                		UnitName: 'MEASURE',
-	                		DisplayMessageOrder:['Unit' , 'Extra', 'Indicator'],
+	                		DisplayMessageOrder:['Unit' , 'of hours worked at', 'Indicator'],
 					 		DisplayExtra: ' of hours worked at ',
 	                		extras: {
 		        				"SUBJECT" : 'I4_ANA_HRSTO',
@@ -172,7 +174,7 @@ const OECDDatabases = [
 	                   id: 'PDBI_I4',
 	                   rev: 4,
 	                   Geo: {
-	            	   	location: 'OCDE',
+	            	   	location: 'OECD',
                        },
 	                   Time: {
 	                    	Type: 'A',
@@ -181,7 +183,7 @@ const OECDDatabases = [
 	                     },
 	                    UrlStructure:{
 	                    	orderOption: ['G', 'E', 'U', 'I'],
-
+							TimeType: 'A',
 	                    	IndicatorName: "ACTIVITY",
 	                		UnitName: 'MEASURE',
 	                		DisplayMessageOrder:['Unit' , 'Extra', 'Indicator'],
@@ -208,7 +210,7 @@ const OECDDatabases = [
 	                   id: 'KEI',
 	                   rev: 1,
 	                   Geo: {
-	            	   	location: 'OCDE',
+	            	   	location: 'OECD',
                        },
 	                   Time: {
 	                    	Type: 'A',
@@ -216,7 +218,7 @@ const OECDDatabases = [
 	                     	End: 2017
 	                     },
 	                    UrlStructure:{
-	                    	orderOption: ['I', 'G', 'E', 'U'],
+	                    	orderOption: ['I', 'G', 'E', 'U', 'TT'],
 	                    	TimeType: 'A',
 	                    	IndicatorName: "SUBJECT",
 	                		UnitName: 'MEASURE',
@@ -229,7 +231,7 @@ const OECDDatabases = [
 	                   id: 'KEI',
 	                   rev: 2,
 	                   Geo: {
-	            	   	location: 'OCDE',
+	            	   	location: 'OECD',
                        },
 	                   Time: {
 	                    	Type: 'A',
@@ -238,7 +240,7 @@ const OECDDatabases = [
 	                     },
 	                    UrlStructure:{
 	                    	TimeType: 'A',
-	                    	orderOption: ['I', 'G', 'E', 'U'],
+	                    	orderOption: ['I', 'G', 'E', 'U', 'TT'],
 	                    	IndicatorName: "SUBJECT",
 	                		UnitName: 'MEASURE',
 	                		DisplayMessageOrder:['Unit' , 'Extra', 'Indicator'],
@@ -258,7 +260,7 @@ const OECDDatabases = [
 	                     	End: 2017
 	                     },
 	                    UrlStructure:{
-	                    	orderOption: ['I', 'G', 'E', 'U'],
+	                    	orderOption: ['I', 'G', 'E', 'U', 'TT'],
 	                    	TimeType: 'A',
 	                    	IndicatorName: "SUBJECT",
 	                		UnitName: 'MEASURE',
@@ -279,7 +281,7 @@ const OECDDatabases = [
 	                     	End: 2017
 	                     },
 	                    UrlStructure:{
-	                    	orderOption: ['I', 'G', 'E', 'U'],
+	                    	orderOption: ['I', 'G', 'E', 'U', 'TT'],
 	                    	TimeType: 'A',
 	                    	IndicatorName: "SUBJECT",
 	                		UnitName: 'MEASURE',
@@ -301,7 +303,7 @@ const OECDDatabases = [
 	                     	End: 2017
 	                     },
 	                    UrlStructure:{
-	                    	orderOption: ['I', 'G', 'E', 'U'],
+	                    	orderOption: ['I', 'G', 'E', 'U', 'TT'],
 	                    	TimeType: 'A',
 	                    	IndicatorName: "SUBJECT",
 	                		UnitName: 'MEASURE',
@@ -322,7 +324,7 @@ const OECDDatabases = [
 	                     	End: 2017
 	                     },
 	                    UrlStructure:{
-	                    	orderOption: ['I', 'G', 'E', 'U'],
+	                    	orderOption: ['I', 'G', 'E', 'U', 'TT'],
 	                    	TimeType: 'A',
 	                    	IndicatorName: "SUBJECT",
 	                		UnitName: 'MEASURE',
@@ -436,6 +438,7 @@ const OECDDatabases = [
 	                    UrlStructure:{
 	                    	orderOption:['G', 'E', 'U', 'I'],
 	                    	IndicatorName: "SERIES",
+							TimeType: 'A',
 	                    	DisplayMessageOrder:['Extra' , 'Indicator'],
 					 		DisplayExtra: ' Minimum wages/ ',
 	                    	TimeType: 'A'
@@ -457,7 +460,6 @@ const OECDDatabases = [
 	                     },
 	                    UrlStructure:{
 	                    	orderOption: ['G', 'E', 'I', 'U'],
-
 	                    	IndicatorName: "JOBTYPE",
 	                    	TimeType: 'A',
 	                    	DisplayMessageOrder:['Extra' , 'Indicator'],
@@ -484,6 +486,7 @@ const OECDDatabases = [
 	                     },
 	                    UrlStructure:{
 	                    	orderOption: ['G', 'E', 'I', 'U'],
+							TimeType: 'A',
 	                    	IndicatorName: "EMPSTAT",
 	                    	TimeType: 'A',
 	                       	DisplayMessageOrder:['Indicator'],
@@ -542,12 +545,13 @@ const OECDDatabases = [
 	                     },
 	                    UrlStructure:{
 	                    	orderOption: ['E', 'I', 'U', 'G'],
+							TimeType: 'A',
 	                    	IndicatorName: "TAX",
 	                    	UnitName: 'VAR',
 	                     	DisplayMessageOrder:['Indicator', 'Unit'],
 					 		DisplayExtra: '',
 	                    	extras: {
-		        				extra1: {"GOV" : 'NES'},
+		        				"GOV" : 'NES',
 		        				}
 
 	            			},
@@ -845,7 +849,8 @@ const OECDDatabases = [
 						      	End: 2016
 						      },
 						     UrlStructure:{
-						     	orderOption:  ['I', 'G', 'E', 'U'],
+						     	orderOption: ['I', 'G', 'E', 'U', 'TT'],
+								 TimeType: 'A',
 						     	IndicatorName: "MSTI_VAR",
 						     	DisplayMessageOrder:['Indicator'],
 						 		DisplayExtra: ' ',
@@ -865,7 +870,8 @@ const OECDDatabases = [
 						      	End: 2016
 						      },
 						     UrlStructure:{
-						     	orderOption:  ['I', 'G', 'E', 'U'],
+						     	orderOption: ['I', 'G', 'E', 'U', 'TT'],
+								 TimeType: 'A',
 						     	IndicatorName: "MSTI_VAR",
 						    	DisplayMessageOrder:['Indicator'],
 						 		DisplayExtra: '',
@@ -887,6 +893,7 @@ const OECDDatabases = [
 						     UrlStructure:{
 						     	orderOption: 1,
 						     	IndicatorName: "MSTI_VAR",
+								 TimeType: 'A',
 						     	DisplayMessageOrder:['Indicator'],
 						 		DisplayExtra: '',
 									},
@@ -904,7 +911,8 @@ const OECDDatabases = [
 						      	End: 2016
 						      },
 						     UrlStructure:{
-						     	orderOption:  ['I', 'G', 'E', 'U'],
+						     	orderOption: ['I', 'G', 'E', 'U', 'TT'],
+								 TimeType: 'A',
 						     	IndicatorName: "MSTI_VAR",
 						     	DisplayMessageOrder:['Indicator'],
 						 		DisplayExtra: '',

@@ -109,7 +109,6 @@ export const TimeContainer = connect(
                 dispatch(select_time(id))
                 dispatch(check_request())
             }
-
         })
 )(TimeOptions)
 

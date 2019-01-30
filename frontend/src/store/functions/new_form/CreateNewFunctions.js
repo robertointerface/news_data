@@ -178,7 +178,7 @@ export const getSectorTopics = sector => {
 export const markItemSelected = (list, id) => {
 
 
-     var newList = list.map((item, index) =>{
+     return list.map((item, index) => {
         if(item.id == id && item.checked == false){
             return {
                 ...item,
@@ -197,7 +197,7 @@ export const markItemSelected = (list, id) => {
    /* var newList = JSON.parse(JSON.stringify(list));
     var clickedItem = newList.find(item => item['id'] == newItem);
     clickedItem.checked = true;*/
-    return newList;
+   // return newList;
 }
 
 export const canMakeRequest = ( timeList, geoList ) => {
@@ -256,16 +256,27 @@ export const setItemSelected = (list=[], id) => {
 
 export const pushItemToArray = (list=[], item) => {
     /*
-        @Func: Push item into array.
+        @Func: Push item into array if Item is not in the array, if item is in the array remove from array and create
+        a new list
         @Args:
             list (array).
             item: (integer, string, object....).
         @return list (array).
      */
-    if(item){
-        list.push(item);
+    var itemIndex = list.indexOf(item);
+    if(itemIndex >= 0){
+        return list.filter(function (item, i){
+            if(i == itemIndex){
+                return false
+            } else{
+                return true
+            }
+        })
     }
-    return list.slice(); // return a copy of the new array
+    else{
+        return [...list, item]; // return a copy of the new array
+    }
+
 }
 
 export const setUnitSelected = (list=[], id='') => {

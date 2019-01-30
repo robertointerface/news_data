@@ -16,26 +16,33 @@ class DataDisplay extends Component{
                         <div className='col-6' key={result.id}>
                                 <div className='card'>
                                     <div className='row'>
-                                        <div className='col-12'>
-                                            <DataTitle title={result.searchObject.displayMessage}/>
-                                        </div>
-                                        <div className='col-12'>
-                                            <Table columnList={result.searchObject.SelectedTimes}
-                                                   rowList={result.resultObject.filterResult}
-                                            />
-                                        </div>
-                                        <div className='col-12'>
-                                            <div className='row'>
-                                                <div className='col-3 offset-2'>
-                                                    <AttachDataRequest onClick={(e) => onAttach(e, result.id)}/>
-                                                </div>
-                                                <div className='offset-2 col-3'>
+                                        <div className='card-header'>
+                                            <div className='col-12'>
 
-                                                </div>
+                                            </div>
+                                            <div className='col-12'>
+                                                <DataTitle title={result.searchObject.displayMessage} />
                                             </div>
                                         </div>
-                                        <div className='col-8 offset-2'>
-                                            <ChangeUnitMeasureContainer props={result.id}/>
+                                        <div className='card-body'>
+                                            <div className='col-12'>
+                                                <Table columnList={result.searchObject.SelectedTimes}
+                                                       rowList={result.resultObject.filterResult}
+                                                />
+                                            </div>
+                                            <div className='col-12'>
+                                                <div className='row'>
+                                                    <div className='col-3 offset-2'>
+                                                        <AttachDataRequest onClick={(e) => onAttach(e, result.id)}/>
+                                                    </div>
+                                                    <div className='offset-2 col-3'>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className='col-8 offset-2'>
+                                                <ChangeUnitMeasureContainer props={result.id}/>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

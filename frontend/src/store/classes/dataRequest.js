@@ -325,11 +325,13 @@ class OECDdataRequest extends dataRequest {
 
     constructor(requestObject) {
         super(requestObject)
+        this.TimeType = this.queryMap.TimeType
         this.orderConstants = {
             'E': 'extra',
             'I': 'Indicator',
             'U': 'Unit',
-            'G': 'SelectedGeo'
+            'G': 'SelectedGeo',
+            'TT': 'TimeType'
         }
         this.receivedCountries = []
     }
@@ -359,26 +361,33 @@ class OECDdataRequest extends dataRequest {
     }
 
     addToPath(itemToAdd){
-      if ((Array.isArray(itemToAdd)) || (typeof itemToAdd === 'string') || (typeof itemToAdd == 'object' && itemToAdd != null)) {
+        var pathItem = ''
+        if ((Array.isArray(itemToAdd)) || (typeof itemToAdd === 'string') || (typeof itemToAdd == 'object' && itemToAdd != null)) {
             if (Array.isArray(itemToAdd)) {
                 for (let y of itemToAdd) {
-                    this.APIUrl = this.APIUrl.concat('.', y);
+                    pathItem = pathItem.concat('.', y);
+                    //this.APIUrl = this.APIUrl.concat('.', y);
                 }
             }
             else if(typeof itemToAdd == 'object'){
                 if(itemToAdd.hasOwnProperty('id')){
-                    this.APIUrl = this.APIUrl.concat('.', itemToAdd.id);
+                    pathItem = pathItem.concat('.', itemToAdd.id);
+                   // this.APIUrl = this.APIUrl.concat('.', itemToAdd.id);
                 }
                 else{
                     for(var key in itemToAdd) {
-                        this.APIUrl = this.APIUrl.concat('.', itemToAdd[key]);
+                        pathItem = pathItem.concat('.', itemToAdd[key]);
+                        //this.APIUrl = this.APIUrl.concat('.', itemToAdd[key]);
                     }
                 }
             }
             else if (typeof itemToAdd === 'string') {
-                this.APIUrl = this.APIUrl.concat('.', itemToAdd);
+                pathItem = pathItem.concat('.', itemToAdd);
+                //this.APIUrl = this.APIUrl.concat('.', itemToAdd);
             }
         }
+
+        return pathItem;
     }
 
     createPath() {
@@ -386,17 +395,22 @@ class OECDdataRequest extends dataRequest {
         var path = '';
         for (let item of order) {
             switch(true){
-                case (item == 'I') || (item == 'E') || (item == 'U'):
+                case (item == 'I') || (item == 'E') || (item == 'U') || (item == 'TT'):
                     var x = this[this.orderConstants[item]];
-                    this.addToPath(x);
+                    //this.addToPath(x);
+                    if(x != null) {
+                        path = path.concat(this.addToPath(x));
+                    }
                     break;
                 case (item=='G'):
-                    this.APIUrl = this.APIUrl.concat('/', this.createGeoOptions());
+                    path = path.concat('.', this.createGeoOptions());
+                    //this.APIUrl = this.APIUrl.concat('.', this.createGeoOptions());
                     break;
                 default:
                     break;
             }
         }
+        path = path.slice(1, path.length)
         return path;
        // path = path.slice(1) // required to remove '.' at the beginning of the string
     }
@@ -405,58 +419,88 @@ class OECDdataRequest extends dataRequest {
         return Promise.all([
             this.APIUrl = ThirdPartyIPIBaseAddress.OCDE,
             this.APIUrl = this.APIUrl.concat('/', this.Topic.id),
-            this.createPath(),
+            this.APIUrl = this.APIUrl.concat('/', this.createPath()),
             this.APIUrl = this.APIUrl.concat('/all?'),
             this.createTimeOptions(),
             this.addPathArrayToUrl(),
         ])
     }
 
+
     filterResult(){
+        /*
+            @Func: Extract the result given by OECD API and organized it with the object structured.
+                geoObject = {name: country name, values: array composed of country values. }
+            The OECD API returns two JSON Objects:
+                1- Data (only numbers organized by indices, e.g 1:0:0 = {342.45}, no legend on what data means).
+                2- Indices explanation that is used to organized data by country and time.
+         */
         try{
             var finalValue = []
-            var result = JSON.parse(JSON.stringify(this.result['dataSets'][0]['series']))
+            var result = JSON.parse(JSON.stringify(this.result['dataSets'][0]['series'])) //get the returned OECD api result
             var rowOrder = this.getKeyPositions(this.result['structure']['dimensions']['series'])
             var columnOrder = this.getTimePositions(this.result['structure']['dimensions']['observation'])
             var expectedValuesLength = this.getExpectedNumberOfValues()
             var receivedValuesLength = this.getRecievedNumberOfValues(rowOrder, columnOrder)
             var recievedTimes = this.filterTimes(columnOrder);
-            var Locationindex = rowOrder.findIndex(x => x['name'] == 'LOCATION')
+            var Locationindex = rowOrder.findIndex(x => (x['name'] == 'LOCATION') ||
+                                                        (x['name'] == 'COU') ||
+                                                        (x['name'] == 'COUNTRY'))
             for(var location in rowOrder[Locationindex].values){
                 var geoObject = {
                     name: rowOrder[Locationindex].values[location],
                     values: []
                 }
-               // var locationData = [0, 0, 0]
-                var locationData = Array.from({length: rowOrder.length}, (v, i) => 0)
+
+                var locationData = Array.from({length: rowOrder.length}, (v, i) => 0) // create array
 
                 locationData[Locationindex] = location
-                //var seriesData = `${locationData[0]}:${locationData[1]}:${locationData[2]}`;
                 var seriesData = locationData.reduce((acc, i) => {
                     return acc.concat(`${i}`, ':')
-                }, '')
-                seriesData = seriesData.slice(0, seriesData.length - 1)
+                }, '')// convert locationData array into string '0:0:0:...' length of '0' is the length of
+                    // array locationData
+                seriesData = seriesData.slice(0, seriesData.length - 1)//remove last character ':'
                 var data = result[seriesData]['observations']
                 for(var time of recievedTimes){
-                    var timeIndex = columnOrder.indexOf(time);
-                    var value = data[timeIndex.toString()][0]
-                    geoObject.values.push(value)
+                    var timeIndex = columnOrder.indexOf(time)
+                    try {
+                        var value = data[timeIndex.toString()][0].toFixed(2);
+                    } catch{
+                        var value = null
+                    } finally{
+                        geoObject.values.push(value)
+                    }
                 }
                 finalValue.push(geoObject)
-                console.log('data: ' + JSON.stringify(data))
             }
 
-        }
-        catch(error){
+        } catch (error){
 
+        } finally { // if values for specific location not returned put them to '...'
+            for(var location of this.SelectedGeo){
+                var indexInResult = finalValue.findIndex(x => x['name'] == location)
+                if (indexInResult < 0){
+                    var geoObject = {
+                        name: location,
+                        values: []
+                    }
+                    for(let time in this.SelectedTimes) {
+                        geoObject.values.push(null);
+                    }
+                    finalValue.push(geoObject)
+                }
+            }
         }
         return finalValue
     }
 
 
+
+
+
     filterTimes(obtainedTimes){
         /*
-            @Func: Verify the times that were returned by API
+            @Func: Verify which of the asked times where returned by the OECD API.
          */
         var gotTimes = this.SelectedTimes.map(i => {
             var found = obtainedTimes.find(x => x == i)
@@ -470,7 +514,7 @@ class OECDdataRequest extends dataRequest {
 
     getRecievedNumberOfValues(rowOrder, columnOrder){
         /*
-            @Func: Calculate the number of values returned by the API
+            @Func: Calculate the number of values returned by the API multiplying years * countries.
          */
         var rowLength = rowOrder.reduce((acc, row) => {
             if(Array.isArray(row)){
@@ -496,7 +540,13 @@ class OECDdataRequest extends dataRequest {
 
     getKeyPositions(series){
         /*
-            @Func: Inspect the order in which data is returned
+            @Func: Data is returned with a combination indices, indices look like like '2:0:0' or '0:0:0:0' where each
+            number describes parameters like country data, year of data, unit of measure...
+            @In order to organized data by country and year, it is required to know.
+                1- what parameter each index belongs to, e.g '2:0:0' the '2' index is related to countries, the first '0'
+                (after the 2) is related to year and the last '0' belongs to units of measures.
+                2- inside an index
+            This functions gets parameter 1, it finds what index belongs to what
          */
         var keyPositions = new KeyPostitions()
         for(let serie of series){
@@ -518,7 +568,7 @@ class OECDdataRequest extends dataRequest {
 
     }
 
-    getGeoOrder(series){
+    getGeoOrder(series){ //CLEAN THIS, LESS LOOPING
         var geoOrder = [];
         for(let serie of series){
             if(serie['id'] == 'LOCATION'){
