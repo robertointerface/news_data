@@ -119,6 +119,8 @@ class MakeApiCall(APIView):
                     'status': 200,
                     'result': result.content
                 }
+            else:
+                raise urlfetch.Error
         except urlfetch.Error:
             print('urlfetch.Error: ' + urlfetch.Error)
             api_result = {

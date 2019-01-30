@@ -35,7 +35,7 @@ OECD = {
                 'indicators': {
                     'RHHGDI': 'Real household gross disposable income per capita, growth rate compared to previous year',
                     'HHFINCON': '''Real household final consumption expenditure per capita, growth rate compared to 
-                    previous year''',
+                     previous year''',
                     'ENDT': 'Household indebtedness to annual income ratio (percentage)',
                     'HHSAV': 'Household gross savings rate'
                 },
