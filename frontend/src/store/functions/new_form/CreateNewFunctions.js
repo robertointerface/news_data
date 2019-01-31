@@ -305,7 +305,7 @@ export const setUnitSelected = (list=[], id='') => {
 
 }
 
-const getDataRequest = function (requestObject) {
+export const getDataRequest = function (requestObject) {
 
     switch(requestObject.ThirdPartyAPI.id){
         case thirdParty.EU:
@@ -327,7 +327,6 @@ export const handle_data_request = () => {
         var requestObject = prepareRequestData(JSON.parse(JSON.stringify(getState().Current_search)))
         var dataRequestItem = getDataRequest(requestObject)
         return Promise.all([
-           // dataRequestItem.createPath(),
             dataRequestItem.createAPIRequest(),
             dataRequestItem.makeAPIcall()
                 .then(result =>{

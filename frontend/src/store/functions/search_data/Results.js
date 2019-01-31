@@ -1,12 +1,23 @@
 
 import {prepareRequestData} from 'functions/new_form/CreateNewFunctions'
-import dataRequest from "root/store/classes/dataRequest";
+import {getDataRequest} from "functions/new_form/CreateNewFunctions"
 import {save_result} from "root/actions/actions";
 
 export const push_result = (list, newItem ) => {
-    list.push(newItem);
-    return list;
+    return [...list, newItem];
 }
+
+export const remove_result = (list, id) => {
+
+    return list.filter(item =>  {
+        if (item.id == id){
+            return false
+        }
+        return true
+    })
+
+}
+
 
 export const handle_change_unit = (resultId, unitId) => {
     return (dispatch, getState) =>{
@@ -14,9 +25,8 @@ export const handle_change_unit = (resultId, unitId) => {
         var foundResult = {...resultsMade.find(item => item['id'] == resultId)};
         foundResult.searchObject.Unit = findItemInArray(unitId, foundResult.searchObject.PossibleUnitMeasure);
         var requestObject = prepareRequestData(foundResult.searchObject);
-        var dataRequestItem = new dataRequest(requestObject);
+        var dataRequestItem = getDataRequest(requestObject)
         return Promise.all([
-            dataRequestItem.createEUpath(),
             dataRequestItem.createAPIRequest(),
             dataRequestItem.makeAPIcall()
                 .then(result =>{

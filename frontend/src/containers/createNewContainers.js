@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import {handle_new_change} from "actions/actions";
+import {
+    handle_new_change,
+    remove_result} from "actions/actions";
 import LongNewForm from "components/create_new/create_long_new/LongNewForm";
 import DataDisplay from "components/data_representation/dataDisplay";
 import {attach_reference} from "functions/new_form/CreateNewFunctions";
@@ -44,7 +46,10 @@ export const DataDisplayContainer = connect(
                 console.log('foudn id: ' + id);
                 dispatch(attach_reference(id))
             },
-
+            onRemove(e, id){
+                e.preventDefault();
+                dispatch(remove_result(id));
+            },
             onChangeUnit(e){
 
             }

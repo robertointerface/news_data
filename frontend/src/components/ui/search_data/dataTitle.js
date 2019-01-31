@@ -1,9 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const DataTitle = ({title=''}) => {
+import { faTimesCircle } from '@fortawesome/free-regular-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+const DataTitle = ({title='', resultId=0 ,explination='', onRemove=f=>f}) => {
     return (
-        <p>{title}</p>
+        <div className='row'>
+            <div className='col-12'>
+                <div className='row'>
+                    <div className='col-10'>
+                        <p className='resultTitle ColorW'>{title}</p>
+                    </div>
+                    <div className='col-2'>
+                        <a href='#' onClick={(e) => onRemove(e, resultId)}>
+                            <FontAwesomeIcon className='ColorW F12' icon={faTimesCircle}/>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div className='col-12'>
+                <p className='ColorW'>{explination}</p>
+            </div>
+        </div>
     )
 }
 export default DataTitle

@@ -22,7 +22,8 @@ import {
 } from 'functions/search_data/SearchIterGen'
 
 import {
-    push_result
+    push_result,
+    remove_result
 } from 'functions/search_data/Results'
 
 import { userData as emptyUserData }  from './initialData'
@@ -260,6 +261,8 @@ export const Results_management = (state={}, action) => {
     switch (action.type){
         case C.SAVE_RESULT:
             return Modify_result_management(state, action)
+        case C.REMOVE_RESULT:
+            return Modify_result_management(state, action)
         default:
             return state
     }
@@ -271,8 +274,13 @@ const Modify_result_management = (state={}, action) => {
             return {
                 ...state,
                 numberResults: state.numberResults + 1,
-                results: [...push_result(state.results, action.result)],
-
+                results: push_result(state.results, action.result),
+            }
+        case C.REMOVE_RESULT:
+            return{
+                ...state,
+                numberResults: state.numberResults - 1,
+                results: remove_result(state.results, action.id),
             }
         default:
             return state

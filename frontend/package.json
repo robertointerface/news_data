@@ -4,6 +4,10 @@
   "private": true,
   "dependencies": {
     "@babel/polyfill": "^7.2.5",
+    "@fortawesome/fontawesome-svg-core": "^1.2.13",
+    "@fortawesome/free-brands-svg-icons": "^5.7.0",
+    "@fortawesome/free-regular-svg-icons": "^5.7.0",
+    "@fortawesome/react-fontawesome": "^0.1.4",
     "@types/react": "^16.7.18",
     "babel-core": "^6.26.3",
     "babel-polyfill": "^6.26.0",
@@ -25,6 +29,7 @@
     "react": "^16.7.0",
     "react-bootstrap": "^0.32.4",
     "react-dom": "^16.7.0",
+    "react-fontawesome": "^1.6.1",
     "react-google-login": "^4.0.1",
     "react-redux": "^6.0.0",
     "react-router": "^4.3.1",

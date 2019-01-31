@@ -4,6 +4,23 @@ body {
     padding-bottom: 5rem;
 }
 
+.resultCardBody{
+    padding: 0rem;
+}
+
+.resultTitle{
+    font-family: bitter;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.ColorW{
+    color: snow;
+}
+
+.F12{
+    font-size: 1.2rem;
+}
+
 .btn span.glyphicon {
 	opacity: 0;
 }

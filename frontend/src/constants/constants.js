@@ -24,6 +24,7 @@ export const ActionsConstants = {
     SET_UNITS: 'SET_UNITS',
     SET_QUERY_MAP: 'SET_QUERY_MAP',
     SAVE_RESULT: 'SAVE_RESULT',
+    REMOVE_RESULT: 'REMOVE_RESULT'
 }
 export const urls = {
     DEVELOP: 'http://localhost:8080',

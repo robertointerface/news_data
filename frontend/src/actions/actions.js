@@ -153,3 +153,8 @@ export const save_result = (result = {}) =>
         result: result
     })
 
+export const remove_result = id =>
+    ({
+        type: C.REMOVE_RESULT,
+        id: id
+    })

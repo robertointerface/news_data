@@ -41,8 +41,7 @@ var EurostatDatabases = [
     UrlStructure:{
     IndicatorName: "indic_et",
     UnitName: 'sitc06',
-    DisplayMessageOrder:['Indicator', 'Extra', 'Unit'],
-    DisplayExtra: ' for ',
+    DisplayMessageOrder:['Indicator', 'for', 'Unit'],
     extras: {
       "partner" : 'WORLD',
 
@@ -65,8 +64,7 @@ var EurostatDatabases = [
             UrlStructure:{
             	IndicatorName: "nace_r2",
             	UnitName: 'size_emp',
-            	DisplayMessageOrder:['Indicator', 'Extra', 'Unit'],
-		 		DisplayExtra: ' companies - ',
+            	DisplayMessageOrder:['Indicator', 'companies -', 'Unit'],
             	extras: {
     				extra1: {"indic_sb" : 'V11110'},
     				},
