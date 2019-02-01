@@ -23,7 +23,7 @@ import {urls, DatabaseConstants as thirdParty} from 'constants/constants'
 
 export const handle_new_change = (e, prevstate) => {
     /*
-        @Func: Get change in New Form and update the state.
+        @Func: Get change (keyboard interrupt) in New Form and update the state.
         @Arg:
             e: Input that was changed
             prevstate: previous state of 'Create_new'
@@ -38,8 +38,11 @@ export const handle_new_change = (e, prevstate) => {
 }
 
 export const attach_reference = (id) => {
+    /*
+        @Func: Get result from Results_management.results and call save_reference if result was not attached yet.
+        @Arg: id(int) time.stamp when reference was requested.
+     */
     return (dispatch, getState) => {
-
         try {
             var searchResults = getState().Results_management.results.find(item => item.id == id)
             if(searchResults.attached){
@@ -200,6 +203,18 @@ export const markItemSelected = (list, id) => {
    // return newList;
 }
 
+export const unSelectItems = (list) => {
+    return list.map(item => {
+        if(item.checked){
+            return {
+                ...item,
+                checked: false
+            }
+        }
+        return {...item}
+    })
+}
+
 export const canMakeRequest = ( timeList, geoList ) => {
     /*
         @Func: Verify if user has selected a minimum of one time and one geo.
@@ -287,10 +302,16 @@ export const setUnitSelected = (list=[], id='') => {
             id (string):  object id to find.
      */
     if(id.length == 0 || typeof id === 'undefined') {
-        return {
-            id: list[0]['id'],
-            name: list[0]['name']
-        };
+        if(list.length >0){
+            return {
+                id: list[0]['id'],
+                name: list[0]['name']
+            };
+        }
+        else{
+            return {};
+        }
+
     }
 
     var item = list.find(item => item['id'] == id);

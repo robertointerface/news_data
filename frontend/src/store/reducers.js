@@ -8,7 +8,8 @@ import {
     setItemSelected,
     markItemSelected,
     setUnitSelected,
-    attach_reference
+    attach_reference,
+    unSelectItems
 } from 'functions/new_form/CreateNewFunctions'
 
 import {
@@ -191,6 +192,7 @@ export const Modify_current_search = (state = {}, action) =>{
                  },
                  PossibleTopics: setItemSelected(state.PossibleTopics, action.topic),
                  TopicMap: getTopicMap(state.ThirdPartyAPI.id, state.Sector.id, action.topic),
+
                  progress: 60
              }
         case C.SELECT_VERSION:
@@ -205,6 +207,10 @@ export const Modify_current_search = (state = {}, action) =>{
                     id: action.indicator,
                     name: action.name
                 },
+                Times: unSelectItems(state.Times),
+                SelectedTimes: [],
+                Geo: unSelectItems(state.Geo),
+                SelectedGeo: [],
                 PossibleIndicators: setItemSelected(state.PossibleIndicators, action.indicator),
                 progress: 80
             }

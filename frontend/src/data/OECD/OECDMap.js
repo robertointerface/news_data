@@ -186,8 +186,7 @@ const OECDDatabases = [
 							TimeType: 'A',
 	                    	IndicatorName: "ACTIVITY",
 	                		UnitName: 'MEASURE',
-	                		DisplayMessageOrder:['Unit' , 'Extra', 'Indicator'],
-					 		DisplayExtra: ' at ',
+	                		DisplayMessageOrder:['Unit' , 'at', 'Indicator'],
 	                		extras: {
 		        			"SUBJECT" : 'I4_ANA_LCEMP',
 		        				}
@@ -300,7 +299,7 @@ const OECDDatabases = [
 	                   Time: {
 	                    	Type: 'A',
 	                    	Start: 1995,
-	                     	End: 2017
+	                     	End: 2018
 	                     },
 	                    UrlStructure:{
 	                    	orderOption: ['I', 'G', 'E', 'U', 'TT'],
@@ -351,17 +350,17 @@ const OECDDatabases = [
 	                   Time: {
 	                    	Type: 'A',
 	                    	Start: 1988,
-	                     	End: 2016
+	                     	End: 2017
 	                     },
 	                    UrlStructure:{
-	                    	orderOption: ['G', 'E', 'I', 'U'],
+	                    	orderOption: ['G', 'E', 'I', 'U', 'TT'],
 	                    	IndicatorName: "SERIES",
 	                    	TimeType: 'A',
 	                    	DisplayMessageOrder:['Indicator' ],
 					 		DisplayExtra: '',
 	                    	extras: {
-		        				extra1: {"SEX" : 'MW'},
-		        				extra2:{'AGE' : '1564'}
+		        				"SEX" : 'MW',
+		        				'AGE' : '1564'
 		        				}
 	                		//UnitName: 'MEASURE',
 	            			},
@@ -373,24 +372,25 @@ const OECDDatabases = [
 	                   rev: 1,
 	                   Geo: {
 	            	   	location: 'OECD',
+					   	RemoveGeo: ['ISR', 'NZL'],
                        },
-	                   RemoveGeo: ['ISR', 'NZL'],
+
 	                   ExtraMessage : 'Result x 1000',
 	                   Time: {
 	                    	Type: 'A',
 	                    	Start: 2005,
-	                     	End: 2016
+	                     	End: 2017
 	                     },
 	                    UrlStructure:{
-	                    	orderOption: ['G', 'E', 'I', 'U'],
+	                    	orderOption: ['G', 'E', 'I', 'U', 'TT'],
 	                    	IndicatorName: "TENURE",
 	                    	TimeType: 'A',
 	                      	DisplayMessageOrder:['Extra', 'Indicator'],
 					 		DisplayExtra: 'Number of employees that hold in the job for ',
 	                    	extras: {
-		        				extra1: {"SEX" : 'MW'},
-		        				extra2:{'AGE' : '1564'},
-		        				extra3:{'EMPSTAT' : 'TE'},
+		        				"SEX" : 'MW',
+		        				'AGE' : '1564',
+		        				'EMPSTAT' : 'TE',
 		        				}
 
 	            			},
@@ -402,6 +402,7 @@ const OECDDatabases = [
 	                   rev: 1,
 	                   Geo: {
 	            	   	location: 'OECD',
+					   RemoveGeo: ['FIN','ITA','DNK','AUT','NOR','SWE','CHE','ISL'],
                        },
 	                   Time: {
 	                    	Type: 'A',
@@ -413,10 +414,7 @@ const OECDDatabases = [
 	                    	IndicatorName: "PERIOD",
 	                    	UnitName: 'SERIES',
 	                    	TimeType: 'A',
-	                    	DisplayMessageOrder:['Indicator', 'Extra', 'Unit' ],
-					 		DisplayExtra: ' salary in ',
-
-
+	                    	DisplayMessageOrder:['Indicator', 'salary in', 'Unit' ],
 	            			},
 
 	               },
@@ -428,7 +426,6 @@ const OECDDatabases = [
 	            	   	location: 'OECD',
 					    RemoveGeo: ['FIN','ITA','DNK','AUT','NOR','SWE','CHE','ISL'],
                        },
-
 	                   ExtraMessage : 'Minimum wages / (Average or Median wages)',
 	                   Time: {
 	                    	Type: 'A',
@@ -439,8 +436,8 @@ const OECDDatabases = [
 	                    	orderOption:['G', 'E', 'U', 'I'],
 	                    	IndicatorName: "SERIES",
 							TimeType: 'A',
-	                    	DisplayMessageOrder:['Extra' , 'Indicator'],
-					 		DisplayExtra: ' Minimum wages/ ',
+	                    	DisplayMessageOrder:['Minimum wages/' , 'Indicator'],
+
 	                    	TimeType: 'A'
 
 	            			},
@@ -459,15 +456,15 @@ const OECDDatabases = [
 	                     	End: 2016
 	                     },
 	                    UrlStructure:{
-	                    	orderOption: ['G', 'E', 'I', 'U'],
+	                    	orderOption: ['G', 'E', 'I', 'U', 'TT'],
 	                    	IndicatorName: "JOBTYPE",
 	                    	TimeType: 'A',
 	                    	DisplayMessageOrder:['Extra' , 'Indicator'],
 					 		DisplayExtra: ' Weekly hours worked for ',
 	                    	extras: {
-		        				extra1: {"SEX" : 'MW'},
-		        				extra2:{'AGE' : '900000'},
-		        				extra3:{'EMPSTAT' : 'TE'},
+		        				"SEX" : 'MW',
+		        				'AGE' : '900000',
+		        				'EMPSTAT' : 'TE',
 		        				}
 
 	            			},
@@ -485,8 +482,7 @@ const OECDDatabases = [
 	                     	End: 2016
 	                     },
 	                    UrlStructure:{
-	                    	orderOption: ['G', 'E', 'I', 'U'],
-							TimeType: 'A',
+	                    	orderOption: ['G', 'E', 'I', 'U', 'TT'],
 	                    	IndicatorName: "EMPSTAT",
 	                    	TimeType: 'A',
 	                       	DisplayMessageOrder:['Indicator'],
@@ -499,8 +495,9 @@ const OECDDatabases = [
 	                   rev: 1,
 	                    Geo: {
                            location: 'OECD',
+							RemoveGeo: ['KOR','MEX'],
                        },
-	                   RemoveGeo: ['KOR','MEX'],
+
 	                   ExtraMessage : 'Result x 1000',
 	                   Time: {
 	                    	Type: 'A',
@@ -508,14 +505,14 @@ const OECDDatabases = [
 	                     	End: 2016
 	                     },
 	                    UrlStructure:{
-	                    	orderOption: ['G', 'E', 'I', 'U'],
+	                    	orderOption: ['G', 'E', 'I', 'U', 'TT'],
 	                    	IndicatorName: "EMPSTAT",
 	                    	TimeType: 'A',
 	                      	DisplayMessageOrder:['Indicator', 'Extra'],
 					 		DisplayExtra: ' that are working part time and would like to work full time ',
 	                    	extras: {
-		        				extra1: {"SEX" : 'MW'},
-		        				extra2:{'AGE' : '900000'},
+		        				"SEX" : 'MW',
+		        				'AGE' : '900000',
 
 		        				}
 
@@ -558,7 +555,6 @@ const OECDDatabases = [
 	               },
 
 	               ]
-
 
    },
 
@@ -638,8 +634,8 @@ const OECDDatabases = [
 	                    	DisplayMessageOrder:['Indicator'],
 					 		DisplayExtra: '',
 	                    	extras: {
-		        				extra1:{'MEASURE' : 'L'},
-		        				extra2:{'INEQUALITY' : 'TOT'},
+		        				'MEASURE' : 'L',
+		        				'INEQUALITY' : 'TOT',
 
 		        				}
 
@@ -665,8 +661,8 @@ const OECDDatabases = [
 	                    	DisplayMessageOrder:['Indicator'],
 					 		DisplayExtra: '',
 	                    	extras: {
-		        				extra1:{'MEASURE' : 'L'},
-		        				extra2:{'INEQUALITY' : 'TOT'},
+		        				'MEASURE' : 'L',
+		        				'INEQUALITY' : 'TOT',
 
 		        				}
 
@@ -691,8 +687,8 @@ const OECDDatabases = [
 	                    	DisplayMessageOrder:['Indicator'],
 					 		DisplayExtra: '',
 	                    	extras: {
-		        				extra1:{'MEASURE' : 'L'},
-		        				extra2:{'INEQUALITY' : 'TOT'},
+		        				'MEASURE' : 'L',
+		        				'INEQUALITY' : 'TOT',
 		        				}
 
 	            			},
@@ -717,8 +713,8 @@ const OECDDatabases = [
 	                    	DisplayMessageOrder:['Indicator', 'Extra' ],
 					 		DisplayExtra: ' ,percentage of the population that think they are in good or better health',
 	                    	extras: {
-		        				extra1:{'MEASURE' : 'L'},
-		        				extra2:{'INEQUALITY' : 'TOT'},
+		        				'MEASURE' : 'L',
+		        				'INEQUALITY' : 'TOT',
 		        				}
 
 	            			},
@@ -743,8 +739,8 @@ const OECDDatabases = [
 	                    	DisplayMessageOrder:['Indicator', 'Extra'],
 					 		DisplayExtra: ' ,scale from 0 to 10, 0 = No satisfaction, 10 = Fully satisfied.',
 	                    	extras: {
-		        				extra1:{'MEASURE' : 'L'},
-		        				extra2:{'INEQUALITY' : 'TOT'},
+		        				'MEASURE' : 'L',
+		        				'INEQUALITY' : 'TOT',
 
 		        				}
 	            			},
@@ -769,8 +765,8 @@ const OECDDatabases = [
 	                    	DisplayMessageOrder:['Indicator', 'Extra'],
 					 		DisplayExtra: ' ,Voter turnout is taken from the last election',
 	                    	extras: {
-		        				extra1:{'MEASURE' : 'L'},
-		        				extra2:{'INEQUALITY' : 'TOT'},
+		        				'MEASURE' : 'L',
+		        				'INEQUALITY' : 'TOT',
 
 		        				}
 
@@ -796,8 +792,8 @@ const OECDDatabases = [
 	                    	DisplayMessageOrder:['Indicator', 'Extra'],
 					 		DisplayExtra: ' ,Homicides per 100,000 population',
 	                    	extras: {
-		        				extra1:{'MEASURE' : 'L'},
-		        				extra2:{'INEQUALITY' : 'TOT'},
+		        				'MEASURE' : 'L',
+		        				'INEQUALITY' : 'TOT',
 
 		        				}
 
@@ -822,8 +818,8 @@ const OECDDatabases = [
 	                    	DisplayMessageOrder:['Indicator', 'Extra'],
 					 		DisplayExtra: ' ,Percentage of the population feeling safe while walking during the night',
 	                    	extras: {
-		        				extra1:{'MEASURE' : 'L'},
-		        				extra2:{'INEQUALITY' : 'TOT'},
+		        				'MEASURE' : 'L',
+		        				'INEQUALITY' : 'TOT',
 
 		        				}
 
@@ -849,7 +845,7 @@ const OECDDatabases = [
 						      	End: 2016
 						      },
 						     UrlStructure:{
-						     	orderOption: ['I', 'G', 'E', 'U', 'TT'],
+						     	orderOption: ['I', 'G', 'E', 'U'],
 								 TimeType: 'A',
 						     	IndicatorName: "MSTI_VAR",
 						     	DisplayMessageOrder:['Indicator'],
@@ -870,7 +866,7 @@ const OECDDatabases = [
 						      	End: 2016
 						      },
 						     UrlStructure:{
-						     	orderOption: ['I', 'G', 'E', 'U', 'TT'],
+						     	orderOption: ['I', 'G', 'E', 'U'],
 								 TimeType: 'A',
 						     	IndicatorName: "MSTI_VAR",
 						    	DisplayMessageOrder:['Indicator'],
@@ -888,10 +884,10 @@ const OECDDatabases = [
 						    Time: {
 						     	Type: 'A',
 						     	Start: 1995,
-						      	End: 2016
+						      	End: 2017
 						      },
 						     UrlStructure:{
-						     	orderOption: 1,
+						     	orderOption: ['I', 'G', 'E', 'U'],
 						     	IndicatorName: "MSTI_VAR",
 								 TimeType: 'A',
 						     	DisplayMessageOrder:['Indicator'],
@@ -908,10 +904,10 @@ const OECDDatabases = [
 						    Time: {
 						     	Type: 'A',
 						     	Start: 1995,
-						      	End: 2016
+						      	End: 2017
 						      },
 						     UrlStructure:{
-						     	orderOption: ['I', 'G', 'E', 'U', 'TT'],
+						     	orderOption: ['I', 'G', 'E', 'U'],
 								 TimeType: 'A',
 						     	IndicatorName: "MSTI_VAR",
 						     	DisplayMessageOrder:['Indicator'],

@@ -245,9 +245,11 @@ OECD = {
                 'indicators': {
                     'A': 'Annual',
                     'H': 'Hourly',
-                    'PPP': 'USD purchasing power constant prices (2015)'
+
                 },
-                'units': {}
+                'units': {
+                    'PPP': 'USD purchasing power constant prices (2017)'
+                }
             }
         },
         'MIN2AVE': {

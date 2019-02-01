@@ -496,8 +496,6 @@ class OECDdataRequest extends dataRequest {
 
 
 
-
-
     filterTimes(obtainedTimes){
         /*
             @Func: Verify which of the asked times where returned by the OECD API.
