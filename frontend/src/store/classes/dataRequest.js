@@ -438,7 +438,7 @@ class OECDdataRequest extends dataRequest {
         try{
             var finalValue = []
             var result = JSON.parse(JSON.stringify(this.result['dataSets'][0]['series'])) //get the returned OECD api result
-            var rowOrder = this.getKeyPositions(this.result['structure']['dimensions']['series'])
+            var rowOrder = this.getKeyPositions(this.result['structure']['dimensions']['series']) //
             var columnOrder = this.getTimePositions(this.result['structure']['dimensions']['observation'])
             var expectedValuesLength = this.getExpectedNumberOfValues()
             var receivedValuesLength = this.getRecievedNumberOfValues(rowOrder, columnOrder)

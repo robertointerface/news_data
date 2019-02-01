@@ -12,10 +12,6 @@ import {
 } from "actions/actions";
 
 import {getDatabase} from 'functions/search_data/SearchIterGen'
-import {
-    getVersion
-} from 'functions/search_data/SearchIterGen'
-
 import EurostatDatabases from "data/Eurostat/EurostatMap";
 import {EUdataRequest, OECDdataRequest, UnescoDataRequest}  from 'classes/dataRequest'
 import {getCookie} from 'functions/auth/Cookies'
@@ -38,7 +34,7 @@ export const handle_new_change = (e, prevstate) => {
 }
 
 export const attach_reference = (id) => {
-    /*
+    /*  When user clicks on 'attach reference' on button
         @Func: Get result from Results_management.results and call save_reference if result was not attached yet.
         @Arg: id(int) time.stamp when reference was requested.
      */
@@ -91,8 +87,10 @@ export const handle_indicator_request = (topicId='', topicName='') => {
             topicName (string): Topic name.
         @returns: promise with:
             set_query_map: find the time and Urlstructure and saved on state.
-            set_timeGeo:
-
+            set_timeGeo: Create time and geo lists.
+            set_units: copy to state the unit list returned from the server
+            set_indicators: copy to state the indicator list returned from the server
+            select_unit: select a default unit
      */
     return (dispatch, getState) => {
         var csrftoken = getCookie('csrftoken'); //get saved cookie
@@ -123,7 +121,6 @@ export const handle_indicator_request = (topicId='', topicName='') => {
                     return Promise.all([
                         dispatch(select_topic(topicId, topicName)),
                         dispatch(set_query_map(Sector, topicId)),
-                        dispatch(select_version(version)),//DELETE VERSION NUMBER TO PASS
                         dispatch(set_timeGeo()),
                         dispatch(set_units(response['data']['units'])),
                         dispatch(set_indicators(response['data']['indicators'])),
@@ -178,42 +175,8 @@ export const getSectorTopics = sector => {
     return topics;
 }
 
-export const markItemSelected = (list, id) => {
 
 
-     return list.map((item, index) => {
-        if(item.id == id && item.checked == false){
-            return {
-                ...item,
-                checked: true
-            }
-        }
-        if(item.id == id && item.checked == true){
-                return {
-                ...item,
-                checked: false
-            }
-        }
-        return item
-    })
-
-   /* var newList = JSON.parse(JSON.stringify(list));
-    var clickedItem = newList.find(item => item['id'] == newItem);
-    clickedItem.checked = true;*/
-   // return newList;
-}
-
-export const unSelectItems = (list) => {
-    return list.map(item => {
-        if(item.checked){
-            return {
-                ...item,
-                checked: false
-            }
-        }
-        return {...item}
-    })
-}
 
 export const canMakeRequest = ( timeList, geoList ) => {
     /*
@@ -230,101 +193,7 @@ export const canMakeRequest = ( timeList, geoList ) => {
     return true
 }
 
-export const setItemSelected = (list=[], id) => {
-    /*
-        @Func: set object property 'select=true' in given list.
-            only one object can have select = true at the time and the previous selected item must be 'unselected'
 
-        @args:
-            list: Array of objects.
-            id: string, object id which will be updated.
-        @returns: updated list
-     */
-
-    var newList = list.map((item, index) =>{
-        if(item.id == id && item.select == false){
-            return {
-                ...item,
-                select: true
-            }
-        }
-        if(item.select == true && item.id != id){
-                return {
-                ...item,
-                select: false
-            }
-        }
-        return item
-    })
-
-/*    var oldItem = list.find(item => item.select == true)
-    if (oldItem){
-        oldItem.select = false; //unselect previous selected Item
-    }
-    var itemSelected = list.find(item => item['id'] == id)
-    if(itemSelected){
-        itemSelected.select = true;
-    }*/
-    return newList; // the list
-
-}
-
-export const pushItemToArray = (list=[], item) => {
-    /*
-        @Func: Push item into array if Item is not in the array, if item is in the array remove from array and create
-        a new list
-        @Args:
-            list (array).
-            item: (integer, string, object....).
-        @return list (array).
-     */
-    var itemIndex = list.indexOf(item);
-    if(itemIndex >= 0){
-        return list.filter(function (item, i){
-            if(i == itemIndex){
-                return false
-            } else{
-                return true
-            }
-        })
-    }
-    else{
-        return [...list, item]; // return a copy of the new array
-    }
-
-}
-
-export const setUnitSelected = (list=[], id='') => {
-    /*
-        @Func: find object on list.
-        @Args:
-            list (Array): list of object with a compulsory property 'id'.
-            id (string):  object id to find.
-     */
-    if(id.length == 0 || typeof id === 'undefined') {
-        if(list.length >0){
-            return {
-                id: list[0]['id'],
-                name: list[0]['name']
-            };
-        }
-        else{
-            return {};
-        }
-
-    }
-
-    var item = list.find(item => item['id'] == id);
-    if(item){
-        return item;
-    }
-
-    return {
-        id: list[0]['id'],
-        name: list[0]['id']
-    };
-
-}
 
 export const getDataRequest = function (requestObject) {
 

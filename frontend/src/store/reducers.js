@@ -1,31 +1,34 @@
 import React from 'react'
 import { ActionsConstants as C } from 'constants/constants'
 import { handle_user_change, handle_logout } from 'functions/auth/LoginFunctions'
-import {
-    handle_new_change,
-    pushItemToArray,
-    canMakeRequest,
-    setItemSelected,
-    markItemSelected,
-    setUnitSelected,
-    attach_reference,
-    unSelectItems
-} from 'functions/new_form/CreateNewFunctions'
+
 
 import {
-    getSectorsByDatabase,
-    getTopicsBySector,
-    createIndicatorUnitList,
-    findQueryOptions,
-    createTimeList,
-    createGeoList,
-    getVersion
-} from 'functions/search_data/SearchIterGen'
+    handle_new_change,
+    canMakeRequest,
+    attach_reference,
+} from 'functions/new_form/CreateNewFunctions'
+
 
 import {
     push_result,
     remove_result
 } from 'functions/search_data/Results'
+
+
+import {
+    markItemChecked,
+    unSelectItems,
+    setItemSelected,
+    pushItemToArray,
+    setUnitSelected,
+    getTopicsBySector,
+    createIndicatorUnitList,
+    getSectorsByDatabase,
+    createTimeList,
+    createGeoList,
+} from "functions/search_data/stateManipulation";
+
 
 import { userData as emptyUserData }  from './initialData'
 import {getTopicMap} from 'functions/new_form/CreateNewFunctions'
@@ -222,13 +225,13 @@ export const Modify_current_search = (state = {}, action) =>{
         case C.SELECT_GEO:
             return {
                 ...state,
-                Geo: markItemSelected(state.Geo, action.geo),
+                Geo: markItemChecked(state.Geo, action.geo),
                 SelectedGeo: pushItemToArray(state.SelectedGeo, action.geo),
             }
         case C.SELECT_TIME:
             return {
                 ...state,
-                Times: markItemSelected(state.Times, action.time),
+                Times: markItemChecked(state.Times, action.time),
                 SelectedTimes: pushItemToArray(state.SelectedTimes, action.time)
             }
         case C.CHECK_REQUEST:
