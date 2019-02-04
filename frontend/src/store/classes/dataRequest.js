@@ -145,7 +145,8 @@ class dataRequest {
             id: Date.now(),
             resultObject: {...resultObject},
             searchObject: {...searchObject},
-            attached: false
+            attached: false,
+            saved: false
         }
 
         return saveObject;

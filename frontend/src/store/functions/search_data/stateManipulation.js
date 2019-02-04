@@ -245,6 +245,17 @@ const createGeoList = geoOption => {
 }
 
 
+const setProgress100 = (timeList = [], GeoList = []) => {
+    /*
+        @Func: Verify if time and geo have been selected
+     */
+    if(timeList.length > 0 && GeoList.length > 0){
+        return 100
+    } else{
+        return 80
+    }
+}
+
 export {
     markItemChecked,
     unSelectItems,
@@ -255,5 +266,6 @@ export {
     createIndicatorUnitList,
     getSectorsByDatabase,
     createTimeList,
-    createGeoList
+    createGeoList,
+    setProgress100
 }

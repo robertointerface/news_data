@@ -1,7 +1,8 @@
 body {
     -webkit-font-smoothing: subpixel-antialiased;
     font-size: 100%;
-    padding-bottom: 5rem;
+    padding-bottom: 8rem;
+    padding-top: 65px;
 }
 
 .resultCardBody{
@@ -21,12 +22,21 @@ body {
     font-size: 1.2rem;
 }
 
+.MT1{
+    margin-top: 1rem;
+}
+
+.MB1{
+      margin-bottom: 1rem;
+}
+
 .btn span.glyphicon {
 	opacity: 0;
 }
 .btn.active span.glyphicon {
 	opacity: 1;
 }
+
 
 .NavText > li > a{
     font-size: 2rem;

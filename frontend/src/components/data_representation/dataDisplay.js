@@ -4,9 +4,12 @@ import { Component } from 'react';
 import Table from "./table";
 import DataTitle from 'ui/search_data/dataTitle'
 import {AttachDataRequest} from './attachData'
-import {ChangeUnitMeasureContainer} from 'containers/searchDataContainers'
-class DataDisplay extends Component{
+import {
+    ChangeUnitMeasureContainer,
+} from 'containers/searchDataContainers'
+import DataOptions from './dataOptions/dataOptions'
 
+class DataDisplay extends Component{
     render(){
         let { resultLenght, list, onAttach, onRemove } =  this.props;
         return(
@@ -34,15 +37,15 @@ class DataDisplay extends Component{
                                                 </div>
                                                 <div className='col-12'>
                                                     <div className='row'>
-                                                        <div className='col-5 offset-2'>
+                                                        <div className='offset-1 col-5 '>
                                                             <AttachDataRequest onClick={(e) => onAttach(e, result.id)}/>
                                                         </div>
-                                                        <div className='offset-2 col-3'>
-
+                                                        <div className='offset-1 col-5'>
+                                                            <DataOptions resulId={result.id} resultSaved={result.saved}/>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div className='col-8 offset-2'>
+                                                <div className='col-8 offset-2 MT1 MB1'>
                                                     <ChangeUnitMeasureContainer props={result.id}/>
                                                 </div>
                                             </div>

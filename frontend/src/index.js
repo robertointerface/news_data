@@ -2,12 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './components/stylesheets/main.css';
-import Popper from 'popper.js';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
+import './components/stylesheets/main.css';
 import { store } from './store/index'
 import App from './App'
-import {LogInContainer} from "./containers/containers";
 import { Provider } from 'react-redux'
 
 

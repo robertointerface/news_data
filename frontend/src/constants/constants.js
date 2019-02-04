@@ -23,14 +23,19 @@ export const ActionsConstants = {
     SET_INDICATORS: 'SET_INDICATORS',
     SET_UNITS: 'SET_UNITS',
     SET_QUERY_MAP: 'SET_QUERY_MAP',
+    REQUESTING_DATA: 'REQUESTING_DATA',
+    FINISHED_REQUESTING: 'FINISHED_REQUESTING',
     SAVE_RESULT: 'SAVE_RESULT',
+    SET_RESULT_SAVED: 'SET_RESULT_SAVED',
     REMOVE_RESULT: 'REMOVE_RESULT'
 }
 export const urls = {
     DEVELOP: 'http://localhost:8080',
     MAKE_API_CALL: 'http://localhost:8080/search/makeapicall/',
     GET_INDICATORS: 'http://localhost:8080/search/indicators',
+    SAVE_DATA: 'http://localhost:8080/search/savedata/',
     PUBLISH_LON_NEW: 'http://localhost:8080/createnew/publishlongnew/',
+
 }
 export const DatabaseConstants = {
     EU: 'EU',

@@ -8,7 +8,8 @@ import {
     set_query_map,
     select_unit,
     save_result,
-    save_reference
+    save_reference,
+    finished_requestiong
 } from "actions/actions";
 
 import {getDatabase} from 'functions/search_data/SearchIterGen'
@@ -222,6 +223,7 @@ export const handle_data_request = () => {
                 .then(result =>{
                     return dispatch(save_result(result));
                 })
+                .then(result => dispatch(finished_requestiong()))
         ])
     }
 }

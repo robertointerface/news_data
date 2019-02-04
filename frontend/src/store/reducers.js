@@ -9,12 +9,11 @@ import {
     attach_reference,
 } from 'functions/new_form/CreateNewFunctions'
 
-
 import {
     push_result,
-    remove_result
+    remove_result,
+    result_saved
 } from 'functions/search_data/Results'
-
 
 import {
     markItemChecked,
@@ -27,6 +26,7 @@ import {
     getSectorsByDatabase,
     createTimeList,
     createGeoList,
+    setProgress100
 } from "functions/search_data/stateManipulation";
 
 
@@ -130,6 +130,10 @@ export const Current_search = (state = {}, action) => {
             return Modify_current_search(state,action)
         case C.SET_TIMES_GEO:
             return Modify_current_search(state,action)
+        case C.REQUESTING_DATA:
+            return Modify_current_search(state,action)
+        case C.FINISHED_REQUESTING:
+            return Modify_current_search(state,action)
         default:
             return state
     }
@@ -220,7 +224,8 @@ export const Modify_current_search = (state = {}, action) =>{
         case C.SELECT_UNIT:
             return {
                 ...state,
-                Unit: setUnitSelected(state.PossibleUnitMeasure, action.unit)
+                Unit: setUnitSelected(state.PossibleUnitMeasure, action.unit),
+
             }
         case C.SELECT_GEO:
             return {
@@ -232,12 +237,14 @@ export const Modify_current_search = (state = {}, action) =>{
             return {
                 ...state,
                 Times: markItemChecked(state.Times, action.time),
-                SelectedTimes: pushItemToArray(state.SelectedTimes, action.time)
+                SelectedTimes: pushItemToArray(state.SelectedTimes, action.time),
             }
         case C.CHECK_REQUEST:
             return {
                  ...state,
-                requestActive: canMakeRequest(state.Times, state.Geo)
+                requestActive: canMakeRequest(state.Times, state.Geo),
+                progress: setProgress100(state.SelectedTimes, state.SelectedGeo)
+
             }
         case C.SET_INDICATORS:
             return {
@@ -260,7 +267,16 @@ export const Modify_current_search = (state = {}, action) =>{
                 Times: createTimeList(state.TopicMap.Time.Start, state.TopicMap.Time.End),
                 Geo: createGeoList(state.TopicMap.Geo)
             }
-
+        case C.REQUESTING_DATA:
+            return {
+                ...state,
+                requestActive: true
+            }
+        case C.FINISHED_REQUESTING:
+            return {
+                ...state,
+                requestActive: false
+            }
         default :
             return state
     }
@@ -271,6 +287,8 @@ export const Results_management = (state={}, action) => {
         case C.SAVE_RESULT:
             return Modify_result_management(state, action)
         case C.REMOVE_RESULT:
+            return Modify_result_management(state, action)
+        case C.SET_RESULT_SAVED:
             return Modify_result_management(state, action)
         default:
             return state
@@ -290,6 +308,11 @@ const Modify_result_management = (state={}, action) => {
                 ...state,
                 numberResults: state.numberResults - 1,
                 results: remove_result(state.results, action.id),
+            }
+        case C.SET_RESULT_SAVED:
+            return {
+                ...state,
+                results: result_saved(state.results, action.resultId),
             }
         default:
             return state

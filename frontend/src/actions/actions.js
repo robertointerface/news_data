@@ -147,12 +147,26 @@ export const set_query_map = (sector, topic) =>
         topic: topic
     })
 
+export const requesting_data = () =>
+    ({
+        type: C.REQUESTING_DATA
+    })
+
+export const finished_requestiong = () =>
+    ({
+        type: C.FINISHED_REQUESTING
+    })
 export const save_result = (result = {}) =>
     ({
         type: C.SAVE_RESULT,
         result: result
     })
 
+export const set_result_saved = resultId =>
+    ({
+        type: C.SET_RESULT_SAVED,
+        resultId: resultId
+    })
 export const remove_result = id =>
     ({
         type: C.REMOVE_RESULT,

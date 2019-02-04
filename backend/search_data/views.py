@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 from google.appengine.api import urlfetch
 from django.shortcuts import render
+from django.db import DatabaseError
 from decorators import ajax_required
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse, HttpResponse
@@ -14,13 +15,15 @@ urlfetch.set_default_fetch_deadline(15) #set fetching time limit to 15 seconds,
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.views import APIView
-
+import functools
+from rest_framework.decorators import parser_classes
+from rest_framework.parsers import JSONParser
 
 from DataBasesModel.EurostatModel import Eurostat
 from DataBasesModel.OECDModel import OECD
 from DataBasesModel.UNESCOModel import UNESCO
 from DataBasesModel.APIKeys import api_keys
-
+from .models import UserData
 
 class IndicatorsDict(dict):
     def __missing__(self, key):
@@ -59,7 +62,7 @@ class GetIndicators(APIView):
 
     def post(self, request, format=None):
         try:
-            request_data = json.loads(request.body)
+            request_data = request.data
             sector = request_data['sector']
             topic = request_data['topic']
             third_party = request_data['ThirdPartyAPI']
@@ -101,7 +104,7 @@ class MakeApiCall(APIView):
     api = ''
 
     def post(self, request, format=None):
-        request_data = json.loads(request.body)
+        request_data = self.request.data
         api_url = request_data['APIUrl']
         self.api = request_data['API']
         api_key = self.get_api_keys()
@@ -135,5 +138,38 @@ class MakeApiCall(APIView):
         return None
 
 
+class SaveData(APIView):
+    """
+    Saves third party data (queried by the user) into table UserData.
+    the API url that was used to save the data is hashed, the purpose of this is to avoid duplicate saving of the same
+    data. If the data that is going to be saved was already saved, it will be found and not saved.
+    """
+    permission_classes = (IsAuthenticated, )
 
+    def __repr__(self):
+        class_name = type(self).__name__
+        return'{}'.format(class_name)
+
+    def post(self, request, format=None):
+        try:
+            request_data = self.request.data
+            data_to_save = request_data['DataToSave']
+            api_url = request_data['APIUrl']
+            api_hash = hash(api_url)
+            user = request.user
+            UserData.objects.create(
+                data=data_to_save,
+                hashed=api_hash,
+                saved_by=user
+            )
+            response = JsonResponse({
+                'status': 200,
+            })
+        except DatabaseError:
+            response = JsonResponse({
+                'status': 500,
+                'content': """There was a problem """
+            })
+        finally:
+            return response
 

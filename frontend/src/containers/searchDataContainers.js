@@ -7,7 +7,9 @@ import {
     select_indicator,
     select_sector,
     select_time,
-    check_request
+    check_request,
+    requesting_data,
+    finished_requestiong
 } from "actions/actions";
 import SearchComponent from "components/search_data/SearchComponent";
 import {RequestButton} from "components/search_data/RequestButton";
@@ -16,7 +18,11 @@ import Progress from "components/search_data/progressBar";
 import TimeOptions from "components/search_data/TimeOption";
 import {handle_data_request} from 'functions/new_form/CreateNewFunctions'
 import ChangeUnitMeasure from 'components/data_representation/changeUnitMeasure'
-import {handle_change_unit} from 'functions/search_data/Results'
+import {
+    handle_change_unit,
+    handle_save_result_user
+} from 'functions/search_data/Results'
+import {Graph, GoToThirdParty, SaveData} from 'components/data_representation/dataOptions/options'
 
 export const SearchDataContainer = connect(
     state =>
@@ -148,7 +154,9 @@ export const RequestButtonContainer = connect(
         ({
             onClick(e){
                 e.preventDefault()
-                dispatch(handle_data_request());
+                dispatch(requesting_data())
+                dispatch(handle_data_request())
+
             }
         })
 )(RequestButton)
@@ -169,6 +177,55 @@ export const ChangeUnitMeasureContainer = connect(
             }
         })
 )(ChangeUnitMeasure)
+
+
+export const SaveDataContainer = connect(
+    (state, props) =>
+        ({
+            title: 'save data',
+            resultId: props.resultId,
+            resultSaved: props.resultSaved
+        }),
+    (dispatch, props) =>
+        ({
+            onClick(e, resultId){
+                e.preventDefault();
+                dispatch(handle_save_result_user(resultId))
+
+            }
+
+        })
+
+)(SaveData)
+
+export const VisitContainer = connect(
+    state =>
+        ({
+            title: 'go to '
+        }),
+    dispatch =>
+        ({
+            onClick(e, resultId){
+
+            }
+
+        })
+)(GoToThirdParty)
+
+
+export const GraphContainer = connect(
+    state =>
+        ({
+            title: 'graph '
+        }),
+    dispatch =>
+        ({
+            onClick(e, resultId){
+
+            }
+
+        })
+)(Graph)
 
 const findChangeUnitMeasure = (id, list=[]) => {
 

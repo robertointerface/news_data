@@ -66,7 +66,7 @@ var EurostatDatabases = [
             	UnitName: 'size_emp',
             	DisplayMessageOrder:['Indicator', 'companies -', 'Unit'],
             	extras: {
-    				extra1: {"indic_sb" : 'V11110'},
+    				"indic_sb" : 'V11110',
     				},
     			}
        },
@@ -90,7 +90,7 @@ var EurostatDatabases = [
         		DisplayMessageOrder:[ 'Unit', 'Extra', 'Indicator'],
 		 		DisplayExtra: ' dedicated to ',
     			extras: {
-    				extra1: {"na_item" : 'EMP_DC'},
+    			"na_item" : 'EMP_DC',
 
     				},
 
@@ -115,7 +115,7 @@ var EurostatDatabases = [
         		DisplayMessageOrder:[ 'Unit', 'Extra', 'Indicator'],
 		 		DisplayExtra: ' for ',
     			extras: {
-    				extra1: {"lcstruct" : 'D11'},
+    			"lcstruct" : 'D11',
     				},
     			}
        },
@@ -138,7 +138,7 @@ var EurostatDatabases = [
         		DisplayMessageOrder:[ 'Indicator', 'Extra', 'Unit' ],
 		 		DisplayExtra: ' measured in ',
     			extras: {
-    				extra1: {"s_adj" : 'NSA'},
+    				"s_adj" : 'NSA',
     				},
     			}
        },
@@ -227,7 +227,7 @@ var EurostatDatabases = [
         	        	DisplayMessageOrder:[ 'Indicator'],
         		 		DisplayExtra: '',
         	        	extras: {
-            				extra1: {"s_adj" : 'SA'}
+            				"s_adj" : 'SA'
             				}
         	          }
         	    },
@@ -287,7 +287,7 @@ var EurostatDatabases = [
                 		DisplayMessageOrder:[ 'Indicator'],
         		 		DisplayExtra: '',
                 		extras: {
-            				extra1: {"unit" : 'PC'}
+            				"unit" : 'PC'
             				}
                 	}
                   },
@@ -309,7 +309,7 @@ var EurostatDatabases = [
                   		DisplayMessageOrder:[ 'Unit'],
         		 		DisplayExtra: '',
                   		extras: {
-              				extra1: {"unit" : 'PC'}
+              				"unit" : 'PC'
               				}
                   	}
                     },
@@ -331,7 +331,7 @@ var EurostatDatabases = [
                       		DisplayMessageOrder:[ 'Indicator', 'Extra', 'Unit' ],
             		 		DisplayExtra: ' as ',
                       		extras: {
-                  				extra1: {"unit" : 'PC'}
+                  				"unit" : 'PC'
                   				}
                       	}
                         },
@@ -351,7 +351,7 @@ var EurostatDatabases = [
                           		DisplayMessageOrder:[ 'Unit'],
                 		 		DisplayExtra: '',
                           		extras: {
-                      				extra1: {"unit" : 'PC'}
+                      				"unit" : 'PC'
                       				}
                           	}
                             },
@@ -392,7 +392,7 @@ var EurostatDatabases = [
                      		DisplayMessageOrder:[ 'Indicator' , 'Extra', 'Unit' ],
             		 		DisplayExtra: ' that is unemployeed as ',
                      		extras: {
-                				extra1: {"sex" : 'T'}
+                				"sex" : 'T'
                 				}
                      		}
                       },
@@ -421,7 +421,7 @@ var EurostatDatabases = [
                     		DisplayMessageOrder:[ 'Indicator' , 'Extra', 'Unit' ],
             		 		DisplayExtra: ' that is unemployeed as ',
                     		extras: {
-               				extra1: {"sex" : 'T'}
+               				"sex" : 'T'
                					}
                     		}
                      },
@@ -446,8 +446,8 @@ var EurostatDatabases = [
                      		DisplayMessageOrder:[ 'Indicator' , 'Extra', 'Unit' ],
             		 		DisplayExtra: ' that is unemployeed as ',
                      		extras: {
-                				extra1: {"sex" : 'T'},
-                				extra2: {"s_adj" : 'SA'}
+                				"sex" : 'T',
+                				"s_adj" : 'SA'
                 					}
                      		}
                       },
@@ -473,9 +473,9 @@ var EurostatDatabases = [
                      		DisplayMessageOrder:[ 'Indicator' , 'Extra', 'Unit' ],
             		 		DisplayExtra: ' that is employeed as ',
                        		extras: {
-                  				extra1: {"s_adj" : 'SA'},
-                  				extra2: {"age" : 'Y15-64'},
-                  				extra3: {'indic_em' : 'EMP_LFS'}
+                  				"s_adj" : 'SA',
+                  				"age" : 'Y15-64',
+                  				'indic_em' : 'EMP_LFS'
                   					}
                        		}
                         },
@@ -501,9 +501,9 @@ var EurostatDatabases = [
                            		DisplayMessageOrder:[ 'Indicator' , 'Extra', 'Unit' ],
                 		 		DisplayExtra: ' that is working or are actively looking for work as ',
                            		extras: {
-                      				extra1: {"s_adj" : 'SA'},
-                      				extra2: {"age" : 'Y15-64'},
-                      				extra3: {'indic_em' : 'ACT'}
+                      				"s_adj" : 'SA',
+                      				"age" : 'Y15-64',
+                      				'indic_em' : 'ACT'
                       					}
                            		}
                             },
@@ -527,8 +527,8 @@ var EurostatDatabases = [
                      		DisplayMessageOrder:[ 'Unit', 'Extra', 'Indicator'],
                             DisplayExtra: ' with ',
                      		extras: {
-                				extra1: {"age" : 'Y15-64'},
-                				extra2: {'sex' : 'T'}
+                				"age" : 'Y15-64',
+                				'sex' : 'T'
                 					}
                      		}
                       },
@@ -550,8 +550,8 @@ var EurostatDatabases = [
                     		DisplayMessageOrder:[ 'Unit', 'Indicator', 'Extra', ],
                             DisplayExtra: ' that are Temporary employees ',
                     		extras: {
-                    			extra1: {"sex" : 'T'},
-                    			extra2: {'citizen' : 'TOTAL'}
+                    			"sex" : 'T',
+                    			'citizen' : 'TOTAL'
                					}
                     		}
 	              },
@@ -573,7 +573,7 @@ var EurostatDatabases = [
                     		DisplayMessageOrder:[ 'Unit', 'Extra', 'Indicator' ],
                             DisplayExtra: ' that is part time ',
                     		extras: {
-                    			extra1: {"sex" : 'T'}
+                    			"sex" : 'T'
                					}
                     		}
 	              },
@@ -595,7 +595,7 @@ var EurostatDatabases = [
                     		DisplayMessageOrder:[ 'Unit', 'Extra', 'Indicator' ],
                             DisplayExtra: ' that is unvoluntary ',
                     		extras: {
-                    			extra1: {"sex" : 'T'}
+                    			"sex" : 'T'
                					}
                     		}
 	              },
@@ -618,8 +618,8 @@ var EurostatDatabases = [
                     		DisplayMessageOrder:[ 'Unit', 'Extra', 'Indicator' ],
                             DisplayExtra: ' that is precarious at ',
                     		extras: {
-                    			extra1: {"sex" : 'T'},
-                    			extra2:	{'age' : 'Y_GE15'}
+                    			"sex" : 'T',
+                    			'age' : 'Y_GE15'
                     			},
 
                				},
@@ -643,8 +643,8 @@ var EurostatDatabases = [
                       		DisplayMessageOrder:[ 'Unit', 'Extra', 'Indicator' ],
                             DisplayExtra: ' that is precarious at ',
                       		extras: {
-                      			extra1: {"sex" : 'T'},
-                      			extra2:	{'age' : 'Y_GE15'}
+                      			"sex" : 'T',
+                      			'age' : 'Y_GE15'
                       			},
                  				},
                       },
@@ -667,8 +667,8 @@ var EurostatDatabases = [
                       		DisplayMessageOrder:[ 'Indicator', 'Extra', 'Unit' ],
                       		DisplayExtra: ' as ',
                       		extras: {
-                      			extra1: {"sex" : 'T'},
-                      			extra2:	{'age' : 'Y15-74'}
+                      			"sex" : 'T',
+                      			'age' : 'Y15-74'
                       			},
                  			},
                       },
@@ -696,8 +696,8 @@ var EurostatDatabases = [
 			   	   		DisplayMessageOrder:[ 'Unit' , 'Extra', 'Indicator'],
 	              		DisplayExtra: ' spent on ',
 		   	         extras: {
-         				extra1: {"sector" : 'S13'},
-         				extra2: {'na_item' : 'TE'}
+         				"sector" : 'S13',
+         				'na_item' : 'TE'
          				}
 		   	         }
 		   	     },
@@ -719,7 +719,7 @@ var EurostatDatabases = [
 		   	            DisplayMessageOrder:[ 'Indicator', 'Extra', 'Unit' ],
 		   	            DisplayExtra: ' as ',
 		   	         extras: {
-         				extra1: {"sector" : 'S13'}
+         				"sector" : 'S13'
          				}
 		   	         }
 		   	     },
@@ -741,7 +741,7 @@ var EurostatDatabases = [
 		   	            DisplayMessageOrder:[ 'Indicator', 'Extra', 'Unit' ],
 		   	            DisplayExtra: ' as ',
 		   	         extras: {
-         				extra1: {"sector" : 'S13'}
+         				"sector" : 'S13'
          				}
 		   	         }
 		   	     },
@@ -763,8 +763,8 @@ var EurostatDatabases = [
 		   	            DisplayMessageOrder:[ 'Unit' , 'Extra', 'Indicator'],
 		   	            DisplayExtra: ' owned by ',
 		   	         extras: {
-         				extra1: {"maturity" : 'TOTAL'},
-         				extra2: {'na_item': 'GD'}
+         				"maturity" : 'TOTAL',
+         				'na_item': 'GD'
          				}
 		   	         }
 		   	     },
@@ -786,7 +786,7 @@ var EurostatDatabases = [
 		   	         DisplayMessageOrder:['Indicator','Extra', 'Unit'],
 		   	            DisplayExtra: ' as ',
 		   	         extras: {
-         				extra1: {"sector" : 'S13'},
+         				"sector" : 'S13',
 
          				}
 		   	         }
@@ -819,8 +819,8 @@ var EurostatDatabases = [
 		   	            DisplayMessageOrder:['Indicator'],
 		   	            DisplayExtra: '',
 		   	         extras: {
-		   	        	 extra1: {"age" : 'TOTAL'},
-		   	        	 extra2: {'sex': 'T'}
+		   	        	 "age" : 'TOTAL',
+		   	        	 'sex': 'T'
 		   	         		}
 		   	         }
 		   	     },
@@ -862,8 +862,8 @@ var EurostatDatabases = [
 		   	         	DisplayMessageOrder:['Unit', 'Extra', 'Indicator'],
 		   	         	DisplayExtra: ' of ',
 		   	         extras: {
-		   	        	 extra1: {"agedef" : 'REACH'},
-		   	        	 extra2: {'age': 'TOTAL'}
+		   	        	 "agedef" : 'REACH',
+		   	        	 'age': 'TOTAL'
 		   	         		}
 		   	         }
 		   	     },
@@ -885,9 +885,9 @@ var EurostatDatabases = [
 		   	    	DisplayMessageOrder:['Unit',  'Indicator'],
 	   	         	DisplayExtra: ' of emmigrants ',
 		   	         extras: {
-		   	        	 extra1: {"citizen" : 'TOTAL'},
-		   	        	 extra2: {'agedef': 'REACH'},
-		   	        	 extra3: {'sex' : 'T'}
+		   	        	"citizen" : 'TOTAL',
+		   	        	 'agedef': 'REACH',
+		   	        	 'sex' : 'T'
 		   	         		}
 		   	         }
 		   	     },
@@ -909,7 +909,7 @@ var EurostatDatabases = [
 		   	         DisplayMessageOrder:['Indicator', 'Extra', 'Unit' ],
 		   	         DisplayExtra: ' Life expectancy ',
 		   	         extras: {
-		   	        	 extra1: {"age" : 'Y_LT1'},
+		   	        	 "age" : 'Y_LT1',
 
 		   	         		}
 		   	         }
@@ -950,9 +950,9 @@ var EurostatDatabases = [
 		   	         DisplayMessageOrder:['Unit', 'Extra', 'Indicator'],
 		   	         DisplayExtra: ' that applyed for asylum from ',
 		   	         extras: {
-		   	        	 extra1: {"asyl_app" : 'ASY_APP'},
-		   	        	 extra2: {'age': 'TOTAL'},
-		   	        	 extra3: {'sex' : 'T'}
+		   	        	"asyl_app" : 'ASY_APP',
+		   	        	'age': 'TOTAL',
+		   	        	 'sex' : 'T'
 		   	         		}
 		   	         }
 		   	     },
@@ -974,9 +974,9 @@ var EurostatDatabases = [
 		   	         	DisplayMessageOrder:['Unit', 'Extra', 'Indicator'],
 		   	         	DisplayExtra: ' with ',
 		   	         extras: {
-		   	        	 extra1: {"citizen" : 'TOTAL'},
-		   	        	 extra2: {'age': 'TOTAL'},
-		   	        	 extra3: {'sex' : 'T'}
+		   	        	 "citizen" : 'TOTAL',
+		   	        	 'age': 'TOTAL',
+		   	        	 'sex' : 'T'
 		   	         		}
 		   	         }
 		   	     },
@@ -1048,9 +1048,9 @@ var EurostatDatabases = [
 		   	         	DisplayMessageOrder:['Unit', 'Extra', 'Indicator'],
 		   	         	DisplayExtra: ' that rate their health status as  ',
 		   	         extras: {
-		   	        	 extra1: {"deg_urb" : 'TOTAL'},
-		   	        	 extra2:{'unit': 'PC'},
-		   	        	 extra3: {'sex' : 'T'}
+		   	        	 "deg_urb" : 'TOTAL',
+		   	        	'unit': 'PC',
+		   	        	'sex' : 'T'
 		   	         		}
 		   	         }
         },
@@ -1073,8 +1073,8 @@ var EurostatDatabases = [
 		   	         	DisplayMessageOrder:['Unit', 'Indicator', 'Extra' ],
 		   	         	DisplayExtra: ' having a long-standing illness or health problem ',
 		   	         extras: {
-		   	        	 extra1: {'age': 'Y_GE16'},
-		   	        	 extra2: {'sex' : 'T'}
+		   	        	'age': 'Y_GE16',
+		   	        	 'sex' : 'T'
 		   	         		}
 		   	         }
       },
@@ -1169,9 +1169,9 @@ var EurostatDatabases = [
                     DisplayMessageOrder:['Unit', 'Indicator', 'Extra'  ],
 		   	        DisplayExtra: ' that has not completed education or training ',
                     extras: {
-		   	        	 extra1: {"wstatus" : 'POP'},
-		   	        	 extra2:{'age': 'Y18-24'},
-		   	        	 extra3: {'deg_urb' : 'TOTAL'}
+		   	        	 "wstatus" : 'POP',
+		   	        	'age': 'Y18-24',
+		   	        	 'deg_urb' : 'TOTAL'
 
 		   	         		}
                    }
@@ -1316,8 +1316,8 @@ var EurostatDatabases = [
                 	DisplayMessageOrder:['Unit', 'Indicator', 'Extra'],
   		   	        DisplayExtra: ' & unemployed ',
                 	extras: {
-		   	        	 extra1: {"sex" : 'T'},
-		   	        	 extra2:{'age': 'Y15-74'},
+		   	        	 "sex" : 'T',
+		   	        	 'age': 'Y15-74',
 		   	         		}
                    }
                },
@@ -1347,7 +1347,7 @@ var EurostatDatabases = [
         	DisplayMessageOrder:['Unit', 'Indicator', 'Extra'],
 	   	    DisplayExtra: ' that are at risk of poverty or social exclusion ',
         	extras: {
-  	        	 extra1: {"sex" : 'T'},
+  	        	"sex" : 'T',
 
   	         		}
         }
@@ -1391,8 +1391,8 @@ var EurostatDatabases = [
         	DisplayMessageOrder:[ 'Indicator', 'Extra', 'Unit'],
 	   	    DisplayExtra: ' with less income are considered to be in risk at poverty, ',
         	extras: {
-  	        	 extra1: {"indic_il" : 'T'},
-  	        	 extra2:{'indic_il': 'LI_C_M60'},
+  	        	 "indic_il" : 'T',
+  	        	 'indic_il': 'LI_C_M60',
   	         		}
         }
     },
@@ -1455,8 +1455,8 @@ var EurostatDatabases = [
         	DisplayMessageOrder:[ 'Unit', 'Extra', 'Indicator'],
 	   	    DisplayExtra: ' of ',
           	extras: {
- 	        	 extra1: {"spdepm" : 'TOTAL'},
- 	        	 extra2:{'sex': 'T'},
+ 	        	 "spdepm" : 'TOTAL',
+ 	        	 'sex': 'T',
  	         		}
 
         }
@@ -1479,7 +1479,7 @@ var EurostatDatabases = [
         	DisplayMessageOrder:[ 'Unit', 'Extra', 'Indicator'],
 	   	    DisplayExtra: ' deditaced to ',
           	extras: {
- 	        	 extra1: {"spdepm" : 'TOTAL'}
+ 	        	 "spdepm" : 'TOTAL'
  	         		}
 
         }
@@ -1502,7 +1502,7 @@ var EurostatDatabases = [
           	DisplayMessageOrder:[ 'Unit', 'Extra', 'Indicator'],
 	   	    DisplayExtra: ' that is ',
           	extras: {
- 	        	 extra1: {"incgrp" : 'TOTAL'},
+ 	        	 "incgrp" : 'TOTAL',
  	         		}
         }
     },
@@ -1533,7 +1533,7 @@ var EurostatDatabases = [
 				DisplayMessageOrder:[ 'Unit', 'Extra', 'Indicator'],
 				DisplayExtra: ' of greenhouse gases created by ',
 				extras: {
-					extra1: {"airpol" : 'CO2_N2O_CH4_CO2E'}
+					"airpol" : 'CO2_N2O_CH4_CO2E'
 					}
 				},
 
@@ -1558,8 +1558,8 @@ var EurostatDatabases = [
 					DisplayMessageOrder:[ 'Unit', 'Extra', 'Indicator'],
 					DisplayExtra: ' by ',
 					extras: {
-						extra1: {"airpol" : 'CO2_N2O_CH4_CO2E'},
-						extra2: {"na_item" : 'B1G'}
+						"airpol" : 'CO2_N2O_CH4_CO2E',
+						"na_item" : 'B1G'
 						}
 					},
 
@@ -1604,8 +1604,8 @@ var EurostatDatabases = [
 						DisplayMessageOrder:[ 'Unit', 'Extra', 'Indicator'],
 						DisplayExtra: ' dedicated to ',
 						extras: {
-							extra1: {"sector" : 'S13_S15'},
-							extra2: {"env_econ" : 'EP_D3_7_92_99_P'},
+							"sector" : 'S13_S15',
+							"env_econ" : 'EP_D3_7_92_99_P',
 
 							}
 					},
@@ -1632,8 +1632,8 @@ var EurostatDatabases = [
 						DisplayMessageOrder:[ 'Extra', 'Unit',  'Indicator'],
 						DisplayExtra: ' Electicity prices in ',
 						extras: {
-							extra1: {"unit" : 'KWH'},
-							extra2: {"consom" : '4161903'}
+							"unit" : 'KWH',
+							"consom" : '4161903'
 							}
 					},
 
@@ -1657,7 +1657,7 @@ var EurostatDatabases = [
 						DisplayMessageOrder:[ 'Unit', 'Extra', 'Indicator'],
 						DisplayExtra: ' dedicated to ',
 						extras: {
-							extra1: {"consom" : '4161903'}
+							"consom" : '4161903'
 							}
 					},
 
@@ -1682,8 +1682,8 @@ var EurostatDatabases = [
 						DisplayMessageOrder:[ 'Unit', 'Extra', 'Indicator'],
 						DisplayExtra: ' for ',
 						extras: {
-							extra1: {"unit" : 'KWH'},
-							extra2: {"tax": 'I_TAX'},
+							"unit" : 'KWH',
+							"tax": 'I_TAX',
 
 							}
 					},
@@ -1708,8 +1708,8 @@ var EurostatDatabases = [
 						DisplayMessageOrder:[ 'Unit', 'Extra', 'Indicator'],
 						DisplayExtra: ' for ',
 						extras: {
-							extra1: {"unit" : 'KWH'},
-							extra2: {"tax": 'X_TAX'},
+							"unit" : 'KWH',
+							"tax": 'X_TAX',
 
 							}
 					},
@@ -1758,7 +1758,7 @@ var EurostatDatabases = [
                 	DisplayMessageOrder:[ 'Unit', 'Extra', 'Indicator'],
         	   	    DisplayExtra: ' invested in R&D by ',
                 	extras: {
-            			extra1: {"sectperf" : 'TOTAL'}
+            			"sectperf" : 'TOTAL'
             			}
                     },
                 },
@@ -1779,8 +1779,8 @@ var EurostatDatabases = [
                         DisplayMessageOrder:[ 'Unit', 'Extra', 'Indicator'],
             	   	    DisplayExtra: ' R&D personnel in ',
                     	extras: {
-                			extra1: {"prof_pos" : 'TOTAL'},
-                			extra2:{"sex" : 'T'}
+                			"prof_pos" : 'TOTAL',
+                			"sex" : 'T'
                 			}
                         },
 
@@ -1858,7 +1858,7 @@ var EurostatDatabases = [
                 DisplayMessageOrder:[ 'Unit', 'Extra', 'Indicator'],
     	   	    DisplayExtra: ' employeed at ',
             	extras: {
-        			extra1:{"sex" : 'T'}
+        			"sex" : 'T'
         			}
 
                 },
@@ -1879,7 +1879,7 @@ var EurostatDatabases = [
                 DisplayMessageOrder:[ 'Unit', 'Extra', 'Indicator'],
     	   	    DisplayExtra: ' employeed at ',
             	extras: {
-        			extra1:{"sex" : 'T'}
+        			"sex" : 'T'
         			}
 
                 },

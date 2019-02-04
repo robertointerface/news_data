@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
-
+import datetime
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 print ('BASE_DIR ' + BASE_DIR)
@@ -94,7 +94,7 @@ DATABASES = {
         'NAME': 'news',
         'USER': 'root',
         'PASSWORD': 'rondog123',
-        'HOST': '127.0.0.1'
+        'HOST': '/Users/robertoalvarez/Desktop/virtualEnv/news_refactor/cloudsql/vcit-217004:europe-west3:practice1'
     }
 }
 
@@ -130,6 +130,8 @@ REST_FRAMEWORK = {
 
 JWT_AUTH = {
     'JWT_VERIFY': True,
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(hours=2),
+    'JWT_ALLOW_REFRESH': True,
     'JWT_RESPONSE_PAYLOAD_HANDLER': jwt_response_handler
 }
 

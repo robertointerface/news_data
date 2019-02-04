@@ -56,7 +56,7 @@ export const initialStateCurrentSearch = {
         SelectedGeo: [],
         queryMap: {},
         requestActive: true,
-
+        fetching: false,
         progress: 0,
 }
 

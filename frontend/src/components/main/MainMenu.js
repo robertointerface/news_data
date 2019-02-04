@@ -8,7 +8,7 @@ import { FlashContainer } from 'containers/containers'
 const MainMenu = ({loggedIn = false, token = '', log_out=f=>f, flashMessage='', username=''}) => {
         return (
         <div>
-            <nav className='navbar navbar-expand-lg navbar-dark bg-primary'>
+            <nav className='navbar navbar-expand-lg fixed-top navbar-dark bg-primary'>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#MainNavBar"
                         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
@@ -31,10 +31,11 @@ const MainMenu = ({loggedIn = false, token = '', log_out=f=>f, flashMessage='', 
                        </li>
                     </ul>
                 </div>
+
             </nav>
-            {(flashMessage) ?
-                <FlashContainer/> : null
-            }
+             {(flashMessage) ?
+                 <FlashContainer/> : null
+             }
         </div>
         )
 }
