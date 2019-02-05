@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 from django.db import models
 from django.utils import timezone
+from django_mysql.models import JSONField
 
 try:
     from backend.backend.settings import Migration
@@ -21,8 +22,10 @@ class New(models.Model):
     bullet_point2 = models.CharField(max_length=100, null=True)
     bullet_point3 = models.CharField(max_length=100, null=True)
     content = models.TextField(max_length=605, null=False)
+    references = JSONField()
     time_stamp = models.DateField(default=timezone.now)
     created_by = models.ForeignKey(User, related_name='user_created_new')
 
     def __str__(self):
-        return self.new_title
+        class_name = type(self).__name__
+        return '{class_name} {title}'.format(class_name=class_name, title=self.new_title)

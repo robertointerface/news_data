@@ -7,7 +7,7 @@ import {
 
 import {
     AttachedReferencesContainer
-} from 'containers/containers'
+} from 'containers/createNewContainers'
 
 import CardCol12 from 'ui/common/cards/CardCol12'
 import {PrimaryButton} from 'ui/common/buttons/buttons'

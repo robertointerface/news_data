@@ -32,7 +32,7 @@ if Migration:
 
 else:
     urlpatterns.append(url(r'^accounts/', include('backend.accounts.urls', namespace='accounts'))),
-    urlpatterns.append(url(r'^search/', include('backend.search_data.urls', namespace='search_data'))),
+    urlpatterns.append(url(r'^search/', include('backend.search_data.urls', namespace='Current_search'))),
     urlpatterns.append(url(r'^createnew/', include('backend.create_new.urls', namespace='create_new'))),
     urlpatterns.append(url(r'^$', include('backend.main.urls', namespace='main'))),
     urlpatterns.append(url(r'^(?:.*)/?$', include('backend.main.urls', namespace='main')))

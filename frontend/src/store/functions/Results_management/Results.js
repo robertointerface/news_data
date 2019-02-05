@@ -1,6 +1,6 @@
 
-import {prepareRequestData} from 'functions/new_form/CreateNewFunctions'
-import {getDataRequest} from "functions/new_form/CreateNewFunctions"
+import {prepareRequestData} from 'functions/Create_new/CreateNewFunctions'
+import {getDataRequest} from "functions/Create_new/CreateNewFunctions"
 import {
     save_result,
     set_result_saved,
@@ -11,36 +11,7 @@ import {
     urls,
     flashFlags
 } from 'constants/constants'
-export const push_result = (list, newItem ) => {
-    return [...list, newItem];
-}
 
-export const remove_result = (list, id) => {
-
-    return list.filter(item =>  {
-        if (item.id == id){
-            return false
-        }
-        return true
-    })
-
-}
-
-export const result_saved = (list, resultId) =>{
-/*
-    @Func: Find result and change status 'saved' to True
- */
-    return list.map(item =>{
-        if(item.id == resultId){
-            return {
-                ...item,
-                saved: true
-            }
-        }
-        return item;
-    })
-
-}
 export const handle_change_unit = (resultId, unitId) => {
     return (dispatch, getState) =>{
         var resultsMade = getState().Results_management.results;

@@ -38,7 +38,10 @@ class DataDisplay extends Component{
                                                 <div className='col-12'>
                                                     <div className='row'>
                                                         <div className='offset-1 col-5 '>
-                                                            <AttachDataRequest onClick={(e) => onAttach(e, result.id)}/>
+                                                            <AttachDataRequest
+                                                                onClick={(e) => onAttach(e, result.id)}
+                                                                attached={result.attached}
+                                                            />
                                                         </div>
                                                         <div className='offset-1 col-5'>
                                                             <DataOptions resulId={result.id} resultSaved={result.saved}/>

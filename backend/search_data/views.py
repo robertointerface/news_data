@@ -25,6 +25,7 @@ from DataBasesModel.UNESCOModel import UNESCO
 from DataBasesModel.APIKeys import api_keys
 from .models import UserData
 
+
 class IndicatorsDict(dict):
     def __missing__(self, key):
         if isinstance(key, str):

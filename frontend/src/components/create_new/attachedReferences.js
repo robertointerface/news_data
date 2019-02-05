@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {DropDownMenu} from 'ui/common/dropdowns/dropdown'
+import {DropDownMenuRemove} from 'ui/common/dropdowns/dropDownRemove'
 
-const AttachedReferences = ({list=[]}) => {
+const AttachedReferences = ({list=[], onRemove=f=>f}) => {
     var cleanList = getAttachedRefList(list)
     return (
-        <DropDownMenu title={'References'} list={cleanList}/>
+        <DropDownMenuRemove title={'References'} list={cleanList} onRemove={onRemove}/>
     )
 }
 
@@ -15,10 +15,17 @@ AttachedReferences.propTypes = {
 
 export default AttachedReferences
 
+
 function getAttachedRefList( results=[] ){
+/*
+    @Func: convert state.Create_new.references into a list of objects {name: searchObject.displayMessage, id: id}
+    @Args:
+        result(array): state.Create_new.references
+    @Return: list of objects
+ */
     var list = [];
     for(var result in results){
-        list.push(createAttachObject(results[result].searchObject, result))
+        list.push(createAttachObject(results[result].searchObject, results[result].id))
     }
     return list;
 }

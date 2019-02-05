@@ -9,10 +9,11 @@ import {
     select_unit,
     save_result,
     save_reference,
-    finished_requestiong
+    finished_requestiong,
+    attach_result
 } from "actions/actions";
 
-import {getDatabase} from 'functions/search_data/SearchIterGen'
+import {getDatabase} from 'functions/Current_search/SearchIterGen'
 import EurostatDatabases from "data/Eurostat/EurostatMap";
 import {EUdataRequest, OECDdataRequest, UnescoDataRequest}  from 'classes/dataRequest'
 import {getCookie} from 'functions/auth/Cookies'
@@ -34,6 +35,7 @@ export const handle_new_change = (e, prevstate) => {
     return newState;
 }
 
+
 export const attach_reference = (id) => {
     /*  When user clicks on 'attach reference' on button
         @Func: Get result from Results_management.results and call save_reference if result was not attached yet.
@@ -45,13 +47,12 @@ export const attach_reference = (id) => {
             if(searchResults.attached){
                 throw 'already attached'
             }
-            searchResults.attached = true;
+            dispatch(attach_result(id))
         }
         catch (error) {
             var searchResults = '';
         }
         finally {
-
             return dispatch(save_reference(searchResults));
         }
     }
@@ -267,9 +268,9 @@ export const handle_publish_long_new = () =>{
 
     return (dispatch, getState) => {
         var csrftoken = getCookie('csrftoken'); //get saved cookie
-        var title = getState().Create_new.title
+        var newData = getState().Create_new
         var data = {
-            title: title
+            newData: newData
         }
         return fetch(`${urls.PUBLISH_LON_NEW}`, {
             method: 'POST',

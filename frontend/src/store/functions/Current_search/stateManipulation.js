@@ -4,7 +4,7 @@ import {
     getSectors,
     getDatabase,
     timeIterator
-} from 'functions/search_data/SearchIterGen'
+} from 'functions/Current_search/SearchIterGen'
 import {Geo, OECDGeo} from "classes/geo";
 
 const markItemChecked = (list, id) => {

@@ -167,15 +167,6 @@ export const MainMenuContainer = connect(
 )(MainMenu)
 
 
-export const AttachedReferencesContainer = connect(
-    state =>
-        ({
-            list: state.Create_new.references
-        }),
-    dispatch =>
-        ({
 
-        })
-)(AttachedReferences)
 
 

@@ -13,15 +13,17 @@ import {
 } from "actions/actions";
 import SearchComponent from "components/search_data/SearchComponent";
 import {RequestButton} from "components/search_data/RequestButton";
-import {handle_indicator_request} from "functions/new_form/CreateNewFunctions";
 import Progress from "components/search_data/progressBar";
 import TimeOptions from "components/search_data/TimeOption";
-import {handle_data_request} from 'functions/new_form/CreateNewFunctions'
+import {
+    handle_data_request,
+    handle_indicator_request
+} from 'functions/Create_new/CreateNewFunctions'
 import ChangeUnitMeasure from 'components/data_representation/changeUnitMeasure'
 import {
     handle_change_unit,
     handle_save_result_user
-} from 'functions/search_data/Results'
+} from 'functions/Results_management/Results'
 import {Graph, GoToThirdParty, SaveData} from 'components/data_representation/dataOptions/options'
 
 export const SearchDataContainer = connect(

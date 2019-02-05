@@ -67,6 +67,24 @@ export const save_reference = (object) =>
         object: object
     })
 
+export const remove_reference = id =>
+    ({
+        type: C.REMOVE_REFERENCE,
+        id: id
+    })
+
+export const attach_result = id =>
+    ({
+        type: C.SET_RESULT_ATTACHED,
+        id: id
+    })
+
+export const unattached_result = id =>
+    ({
+        type: C.SET_RESULT_UNATTACHED,
+        id: id
+    })
+
 export const select_database = (id, name) =>
     ({
         type: C.SELECT_DATABASE,

@@ -6,14 +6,20 @@ import { handle_user_change, handle_logout } from 'functions/auth/LoginFunctions
 import {
     handle_new_change,
     canMakeRequest,
-    attach_reference,
-} from 'functions/new_form/CreateNewFunctions'
+
+} from 'functions/Create_new/CreateNewFunctions'
 
 import {
-    push_result,
-    remove_result,
-    result_saved
-} from 'functions/search_data/Results'
+    removeReference
+} from 'functions/Create_new/stateManipulation'
+
+import {
+    pushResult,
+    removeResult,
+    resultSaved,
+    setResultAttached,
+    setResultUnattached
+} from 'functions/Results_management/stateManipulation'
 
 import {
     markItemChecked,
@@ -27,11 +33,11 @@ import {
     createTimeList,
     createGeoList,
     setProgress100
-} from "functions/search_data/stateManipulation";
+} from "functions/Current_search/stateManipulation";
 
 
 import { userData as emptyUserData }  from './initialData'
-import {getTopicMap} from 'functions/new_form/CreateNewFunctions'
+import {getTopicMap} from 'functions/Create_new/CreateNewFunctions'
 
 export const App_status = (state = {}, action) => {
     switch (action.type) {
@@ -91,9 +97,14 @@ export const Create_new = (state ={}, action) => {
             state = handle_new_change(action.e, state);
             return state
         case C.SAVE_REFERENCE:
-            return{
+            return {
                 ...state,
                 references: [...pushItemToArray(state.references, action.object)]
+            }
+        case C.REMOVE_REFERENCE:
+            return {
+                ...state,
+                references: removeReference(state.references, action.id)
             }
         default:
             return state
@@ -286,9 +297,13 @@ export const Results_management = (state={}, action) => {
     switch (action.type){
         case C.SAVE_RESULT:
             return Modify_result_management(state, action)
+        case C.SET_RESULT_ATTACHED:
+            return Modify_result_management(state, action)
         case C.REMOVE_RESULT:
             return Modify_result_management(state, action)
         case C.SET_RESULT_SAVED:
+            return Modify_result_management(state, action)
+        case C.SET_RESULT_UNATTACHED:
             return Modify_result_management(state, action)
         default:
             return state
@@ -301,18 +316,28 @@ const Modify_result_management = (state={}, action) => {
             return {
                 ...state,
                 numberResults: state.numberResults + 1,
-                results: push_result(state.results, action.result),
+                results: pushResult(state.results, action.result),
+            }
+        case C.SET_RESULT_ATTACHED:
+            return {
+                ...state,
+                results: setResultAttached(state.results, action.id)
             }
         case C.REMOVE_RESULT:
             return{
                 ...state,
                 numberResults: state.numberResults - 1,
-                results: remove_result(state.results, action.id),
+                results: removeResult(state.results, action.id),
             }
         case C.SET_RESULT_SAVED:
             return {
                 ...state,
-                results: result_saved(state.results, action.resultId),
+                results: resultSaved(state.results, action.resultId),
+            }
+        case C.SET_RESULT_UNATTACHED:
+            return {
+                ...state,
+                results: setResultUnattached(state.results, action.id)
             }
         default:
             return state
