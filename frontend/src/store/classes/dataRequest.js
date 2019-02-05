@@ -14,7 +14,7 @@ class dataRequest {
         this.Indicator = requestObject.Indicator;
         this.Unit = requestObject.Unit;
         this.PossibleUnitMeasure = requestObject.PossibleUnitMeasure;
-        this.SelectedTimes = requestObject.SelectedTimes;
+        this.SelectedTimes = requestObject.SelectedTimes.sort();
         this.SelectedGeo = requestObject.SelectedGeo;
         this.queryMap = requestObject.queryMap;
         this.extra = this.getExtras();
@@ -223,8 +223,10 @@ class dataRequest {
                 this.pathArray.push(item)
             }
             else{
-                for (let key of Object.keys(item)){
-                    this.addToPathArray(item[key], key)
+                if(item != null) { //As null is an object, is required to find out if is a null object or not
+                    for (let key of Object.keys(item)) {
+                        this.addToPathArray(item[key], key)
+                    }
                 }
             }
         }

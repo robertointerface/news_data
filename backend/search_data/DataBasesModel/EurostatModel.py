@@ -203,14 +203,12 @@ Eurostat = {
                     'P3_S13': 'Actual individual consumption',
                     'P41': 'Gross domestic product at market prices',
                     'P5G': 'Gross capital formation',
-
                     'P6': 'Exports of goods and services',
                     'P7': 'Imports of goods and services',
                     'B1G': 'Value added, gross',
                 },
                 'units': {
                     'PC_GDP': 'Percentage of gross domestic product (GDP)',
-
                     'CLV_PCH_PRE': 'Chain linked volumes, percentage change on previous period',
                     'CLV_I10': 'Chain linked volumes, index 2010=100',
                     'CP_MEUR': 'Current prices, million euro',

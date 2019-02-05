@@ -241,13 +241,12 @@ var EurostatDatabases = [
                       	End: 2017
                       },
                      Geo: {
-			location: 'EU',
-	    	},
+						location: 'EU',
+	    				},
                 	UrlStructure:{
                 		IndicatorName: "na_item",
                 		UnitName: 'unit',
-                    	DisplayMessageOrder:[ 'Indicator', 'Extra', 'Unit' ],
-        		 		DisplayExtra: ' as ',
+                    	DisplayMessageOrder:[ 'Indicator', 'as', 'Unit' ],
                 	}
                 },
                 {
@@ -265,8 +264,7 @@ var EurostatDatabases = [
             	UrlStructure:{
             		IndicatorName: "na_item",
             		UnitName: 'unit',
-            		DisplayMessageOrder:[ 'Indicator', 'Extra', 'Unit' ],
-    		 		DisplayExtra: ' as ',
+            		DisplayMessageOrder:[ 'Indicator', 'as', 'Unit' ],
             		}
               },
                 {
