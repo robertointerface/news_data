@@ -2,11 +2,23 @@ from rest_framework import serializers
 from rest_framework_jwt.settings import api_settings
 from .models import User
 
+try:
+    from backend.backend.settings import Migration
+except:
+    from backend.settings import Migration
+
+if Migration:
+    from search_data.serializers import UserDataSerializers
+else:
+    from backend.search_data.serializers import UserDataSerializers
+
 
 class UserSerializer(serializers.ModelSerializer):
+    user_saved_data = UserDataSerializers(many=True)
+
     class Meta:
         model = User
-        fields = ('username', 'email')
+        fields = ('username', 'email', 'user_saved_data')
 
 
 class UserSerializerWithToken(serializers.ModelSerializer):

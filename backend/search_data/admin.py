@@ -5,7 +5,7 @@ from .models import UserData
 
 
 class UserDataAdmin(admin.ModelAdmin):
-    list_display = ['hashed', 'saved_by']
+    list_display = ['hashed', 'savedBy']
 
 
 admin.site.register(UserData, UserDataAdmin)

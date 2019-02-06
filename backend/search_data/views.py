@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
 from google.appengine.api import urlfetch
 from django.shortcuts import render
 from django.db import DatabaseError
@@ -10,7 +9,6 @@ from django.http import JsonResponse, HttpResponse
 from rest_framework.views import APIView
 from rest_framework.decorators import api_view
 import json
-
 urlfetch.set_default_fetch_deadline(15) #set fetching time limit to 15 seconds,
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes
@@ -18,12 +16,14 @@ from rest_framework.views import APIView
 import functools
 from rest_framework.decorators import parser_classes
 from rest_framework.parsers import JSONParser
-
+from rest_framework.response import Response
 from DataBasesModel.EurostatModel import Eurostat
 from DataBasesModel.OECDModel import OECD
 from DataBasesModel.UNESCOModel import UNESCO
 from DataBasesModel.APIKeys import api_keys
 from .models import UserData
+from .serializers import UserDataSerializers
+from rest_framework.serializers import ValidationError
 
 
 class IndicatorsDict(dict):
@@ -158,15 +158,21 @@ class SaveData(APIView):
             api_url = request_data['APIUrl']
             api_hash = hash(api_url)
             user = request.user
-            UserData.objects.create(
-                data=data_to_save,
-                hashed=api_hash,
-                saved_by=user
-            )
-            response = JsonResponse({
-                'status': 200,
-            })
+            serializer = UserDataSerializers(data={'data': data_to_save,
+                                                   'hashed': api_hash,
+                                                   'savedBy': user.id})
+            if serializer.is_valid(raise_exception=True):
+                serializer.create(serializer.validated_data)
+                response = JsonResponse({
+                    'status': 200,
+                })
         except DatabaseError:
+            response = JsonResponse({
+                'status': 500,
+                'content': """There was a problem """
+            })
+        except ValidationError:
+            print('Serialize error ' + serializer.errors)
             response = JsonResponse({
                 'status': 500,
                 'content': """There was a problem """
