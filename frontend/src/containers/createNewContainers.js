@@ -21,6 +21,7 @@ import AttachedReferences from "root/components/create_new/attachedReferences";
 export const CreateNewFormContainer = connect(
     state =>
         ({
+            title: state.Create_new.title,
             headline1: state.Create_new.headline1,
             headline2: state.Create_new.headline2,
             headline3: state.Create_new.headline3,

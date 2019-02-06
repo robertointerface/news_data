@@ -12,9 +12,9 @@ import {
 import CardCol12 from 'ui/common/cards/CardCol12'
 import {PrimaryButton} from 'ui/common/buttons/buttons'
 
-const LongNewForm = ({headline1='', headline2='', headline3='', content='', onSubmit= f=>f, onChange= f=>f}) => {
+const LongNewForm = ({title='', headline1='', headline2='', headline3='', content='', onSubmit= f=>f, onChange= f=>f}) => {
     return (
-        <CardCol12 Component={ <NewTitleForm/> }>
+        <CardCol12 Component={ <NewTitleForm onChange={onChange} name='title' value={title}/> }>
             <NewHeadlineForm onChange={onChange} name='headline1' value={headline1}/>
             <NewHeadlineForm onChange={onChange} name='headline2' value={headline2}/>
             <NewHeadlineForm onChange={onChange} name='headline3' value={headline3}/>

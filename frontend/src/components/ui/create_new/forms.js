@@ -1,17 +1,20 @@
 import React from 'react';
 
 
-export const NewTitleForm = () => {
+export const NewTitleForm = ({name='', value='', onChange=f=>f}) => {
     return(
         <div className='form-group row'>
             <label className='col-12'>
                 Title
             </label>
             <div className='col-12'>
-                <input className='form-control'
+               <input className='form-control'
                        type='text'
-                       placeholder='max 60 character'>
-                </input>
+                       name={name}
+                       value={value}
+                       placeholder='Headline (max. 100 carach)'
+                       onChange={(e) => onChange(e)}
+                />
             </div>
         </div>
     )
