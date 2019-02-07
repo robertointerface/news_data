@@ -58,6 +58,7 @@ export const initialStateCurrentSearch = {
         requestActive: true,
         fetching: false,
         progress: 0,
+        errorMessage: ''
 }
 
 export const results = {

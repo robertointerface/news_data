@@ -46,6 +46,14 @@ body {
     margin: 0.25rem;
 }
 
+.errorMessage{
+    border-style: solid;
+    border-radius: 10px;
+    background-color:  rgba(2, 41, 104, 0.5);
+    color: snow;
+    font-weight: 600;
+}
+
 .message{
     background-color:  rgba(2, 41, 104, 0.5);
     border-style: solid;

@@ -4,6 +4,7 @@ import {save_result} from 'actions/actions'
 import React from 'react';
 import {urls} from 'constants/constants'
 import {SearchConstants as C} from 'constants/constants'
+import {error_search_data} from "root/actions/actions";
 
 class dataRequest {
 
@@ -94,21 +95,21 @@ class dataRequest {
                 body: JSON.stringify(data)
             })
             .then(response => {
-                return response.json()
-            })
-            .then(response => {
-                //console.log('response after json: ' + JSON.stringify(response));
-                if(response['status'] == 200){
-                    var jsonResult = JSON.parse(response['result'])
-                    this.result = JSON.parse(JSON.stringify(jsonResult)); //Save API call result on this.result
-                    return this.createSaveObject();
+                if(response.status == 200){
+                    return response.json()
                 }
                 else{
-                    throw ('Could not get data, please try again. If error persists please contact us and let us know.')
+                    throw `error obtaining the data, Please note that we request data to third party databases 
+                            that we do not control and they might be out of service sometimes`
                 }
             })
-            .catch(err => {
-                throw (err)
+            .then(response => {
+                    var jsonResult = JSON.parse(response)
+                    this.result = JSON.parse(JSON.stringify(jsonResult)); //Save API call result on this.result
+                    return this.createSaveObject();
+            })
+            .catch(error => {
+               throw error
             })
     }
 

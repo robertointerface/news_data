@@ -1,7 +1,6 @@
 import {
     fetching_data,
     select_topic,
-    select_version,
     set_indicators,
     set_timeGeo,
     set_units,
@@ -10,7 +9,8 @@ import {
     save_result,
     save_reference,
     finished_requestiong,
-    attach_result
+    attach_result,
+    error_search_data
 } from "actions/actions";
 
 import {getDatabase} from 'functions/Current_search/SearchIterGen'
@@ -87,12 +87,14 @@ export const handle_indicator_request = (topicId='', topicName='') => {
         @Arg:
             topicId (string): Selected topic id.
             topicName (string): Topic name.
-        @returns: promise with:
-            set_query_map: find the time and Urlstructure and saved on state.
-            set_timeGeo: Create time and geo lists.
-            set_units: copy to state the unit list returned from the server
-            set_indicators: copy to state the indicator list returned from the server
-            select_unit: select a default unit
+        @returns:
+            promise with:
+                set_query_map: find the time and Urlstructure and saved on state.
+                set_timeGeo: Create time and geo lists.
+                set_units: copy to state the unit list returned from the server
+                set_indicators: copy to state the indicator list returned from the server
+                select_unit: select a default unit
+            catch error: error_search_data
      */
     return (dispatch, getState) => {
         var csrftoken = getCookie('csrftoken'); //get saved cookie
@@ -116,25 +118,25 @@ export const handle_indicator_request = (topicId='', topicName='') => {
                 body: JSON.stringify(data)
             })
             .then(response => {
-                return response.json()
-            })
-            .then(response => {
-                if(response.status == 'ok'){
-                    return Promise.all([
-                        dispatch(select_topic(topicId, topicName)),
-                        dispatch(set_query_map(Sector, topicId)),
-                        dispatch(set_timeGeo()),
-                        dispatch(set_units(response['data']['units'])),
-                        dispatch(set_indicators(response['data']['indicators'])),
-                        dispatch(select_unit()),
-                                        ])
+                if(response.status == 200){
+                    return response.json()
                 }
                 else{
-
+                    throw 'error loading, please try again.'
                 }
             })
+            .then(response => {
+                return Promise.all([
+                    dispatch(select_topic(topicId, topicName)),
+                    dispatch(set_query_map(Sector, topicId)),
+                    dispatch(set_timeGeo()),
+                    dispatch(set_units(response['units'])),
+                    dispatch(set_indicators(response['indicators'])),
+                    dispatch(select_unit()),
+                                    ])
+            })
             .catch(error => {
-                console.log('error: ' + error);
+                return dispatch(error_search_data(error))
             })
     }
 }
@@ -216,18 +218,22 @@ export const handle_data_request = () => {
         @Func: Use State.Current_search to create class object dataRequest
      */
     return (dispatch, getState) => {
+
         var requestObject = prepareRequestData(JSON.parse(JSON.stringify(getState().Current_search)))
         var dataRequestItem = getDataRequest(requestObject)
         return Promise.all([
             dataRequestItem.createAPIRequest(),
             dataRequestItem.makeAPIcall()
-                .then(result =>{
+                .then(result => {
                     return dispatch(save_result(result));
                 })
                 .then(result => dispatch(finished_requestiong()))
-        ])
+        ]).catch(error => {
+            return dispatch(error_search_data(error))
+        })
     }
 }
+
 
 export const prepareRequestData = CurrentSearch => {
     /*

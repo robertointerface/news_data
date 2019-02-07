@@ -145,6 +145,8 @@ export const Current_search = (state = {}, action) => {
             return Modify_current_search(state,action)
         case C.FINISHED_REQUESTING:
             return Modify_current_search(state,action)
+        case C.ERROR_SEARCH_DATA:
+            return Modify_current_search(state,action)
         default:
             return state
     }
@@ -175,7 +177,8 @@ export const Modify_current_search = (state = {}, action) =>{
                 SelectedGeo: [],
                 queryMap: {},
                 requestActive: true,
-                progress: 20
+                progress: 20,
+                errorMessage: ''
             }
         case C.SELECT_SECTOR:
             return {
@@ -199,7 +202,8 @@ export const Modify_current_search = (state = {}, action) =>{
                 SelectedGeo: [],
                 queryMap: {},
                 requestActive: false,
-                progress: 40
+                progress: 40,
+                errorMessage: ''
             }
         case C.SELECT_TOPIC:
              return {
@@ -210,8 +214,8 @@ export const Modify_current_search = (state = {}, action) =>{
                  },
                  PossibleTopics: setItemSelected(state.PossibleTopics, action.topic),
                  TopicMap: getTopicMap(state.ThirdPartyAPI.id, state.Sector.id, action.topic),
-
-                 progress: 60
+                 progress: 60,
+                 errorMessage: ''
              }
         case C.SELECT_VERSION:
             return {
@@ -287,6 +291,11 @@ export const Modify_current_search = (state = {}, action) =>{
             return {
                 ...state,
                 requestActive: false
+            }
+        case C.ERROR_SEARCH_DATA:
+            return {
+                ...state,
+                errorMessage: action.error
             }
         default :
             return state

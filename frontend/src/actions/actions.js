@@ -43,6 +43,13 @@ export const error_at_login = (error) =>
         error: error
     })
 
+export const error_search_data = error =>
+    ({
+        type: C.ERROR_SEARCH_DATA,
+        error: error
+    })
+
+
 export const fetching_data = () =>
     ({
         type: C.FETCHING_DATA

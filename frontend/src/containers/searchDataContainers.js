@@ -32,7 +32,8 @@ export const SearchDataContainer = connect(
             ThirdPartyAPI : state.Current_search.ThirdPartyAPI.id,
             Sector: state.Current_search.Sector.id,
             Topic: state.Current_search.Topic.id,
-            requestActive: state.Current_search.requestActive
+            requestActive: state.Current_search.requestActive,
+            errorMessage: state.Current_search.errorMessage
         }),
     dispatch =>
         ({

@@ -12,11 +12,12 @@ import {
     ProgressContainer,
     RequestButtonContainer
 } from 'containers/searchDataContainers'
+import ErrorSearchData from 'components/search_data/Error'
 
 import OptionsCardTitle from 'ui/search_data/optionsCardTitle'
 
 const SearchBlock = props => {
-     let { ThirdPartyAPI, Sector, Topic, requestActive } = props
+     let { ThirdPartyAPI, Sector, Topic, errorMessage } = props
         return (
             <div>
                     <DatabaseContainer/>
@@ -44,6 +45,9 @@ const SearchBlock = props => {
                         <RequestButtonContainer/>
                     </div>
                     : null
+                }
+                {(errorMessage) ?
+                    <ErrorSearchData errorMessage={errorMessage}/> : null
                 }
                 <ProgressContainer/>
             </div>
