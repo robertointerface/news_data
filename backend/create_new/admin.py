@@ -2,5 +2,11 @@
 from __future__ import unicode_literals
 
 from django.contrib import admin
+from .models import New
 
-# Register your models here.
+
+class NewAdmin(admin.ModelAdmin):
+    list_display = ['new_title', 'created_by']
+
+
+admin.site.register(New, NewAdmin)
