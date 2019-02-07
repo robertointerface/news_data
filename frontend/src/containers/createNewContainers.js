@@ -25,7 +25,7 @@ export const CreateNewFormContainer = connect(
             headline1: state.Create_new.headline1,
             headline2: state.Create_new.headline2,
             headline3: state.Create_new.headline3,
-            content: state.Create_new.content
+            content: state.Create_new.content,
         }),
     dispatch =>
         ({
