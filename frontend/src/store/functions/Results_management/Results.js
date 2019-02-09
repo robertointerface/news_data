@@ -3,7 +3,9 @@ import {getDataRequest} from "functions/Create_new/CreateNewFunctions"
 import {
     save_result,
     set_result_saved,
-    set_flash_message
+    set_flash_message,
+    error_data_display,
+    info_data_display
 } from "root/actions/actions";
 import {getCookie} from "root/store/functions/auth/Cookies";
 import {
@@ -52,22 +54,14 @@ export const handle_save_result_user = resultId => {
             })
             .then(response => {
                 if(response.status == 200){
-                    return response.json()
+                    return dispatch(info_data_display(resultId, 'data saved'))
                 }
                 else{
                     throw 'error saving, please try again.'
                 }
             })
-            .then(response => {
-                if(response.status == 200){
-                    return Promise.all([
-                        dispatch(set_result_saved(resultId)),
-
-                        ])
-                }
-            })
             .catch(error => {
-                console.log('error: '+ error)
+               return dispatch(error_data_display(resultId, error))
             })
         }
 

@@ -18,7 +18,9 @@ import {
     removeResult,
     resultSaved,
     setResultAttached,
-    setResultUnattached
+    setResultUnattached,
+    setErrorMessageAtDisplay,
+    setInfoMessageAtDisplay
 } from 'functions/Results_management/stateManipulation'
 
 import {
@@ -314,6 +316,10 @@ export const Results_management = (state={}, action) => {
             return Modify_result_management(state, action)
         case C.SET_RESULT_UNATTACHED:
             return Modify_result_management(state, action)
+        case C.ERROR_DATA_DISPLAY:
+            return Modify_result_management(state, action)
+        case C.INFO_DATA_DISPLAY:
+            return Modify_result_management(state, action)
         default:
             return state
     }
@@ -347,6 +353,16 @@ const Modify_result_management = (state={}, action) => {
             return {
                 ...state,
                 results: setResultUnattached(state.results, action.id)
+            }
+        case C.ERROR_DATA_DISPLAY:
+            return {
+                ...state,
+                results: setErrorMessageAtDisplay(state.results, action.id, action.message)
+            }
+        case C.INFO_DATA_DISPLAY:
+            return {
+                ...state,
+                results: setInfoMessageAtDisplay(state.results, action.id, action.message)
             }
         default:
             return state

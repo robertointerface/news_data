@@ -5,9 +5,9 @@ import { PrimaryButton } from 'ui/common/buttons/buttons'
 export const AttachDataRequest = ({onClick=f=>f, attached=false}) => {
     return (
         <div>
-            <PrimaryButton message={'attach data'} onClick={onClick}/>
             {(attached) ?
-                <p>attached</p> : null
+                <PrimaryButton message={'attached'} onClick={f=>f}/> :
+                <PrimaryButton message={'attach data'} onClick={onClick}/>
             }
         </div>
     )

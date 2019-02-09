@@ -197,3 +197,16 @@ export const remove_result = id =>
         type: C.REMOVE_RESULT,
         id: id
     })
+export const error_data_display = (resultId, message) =>
+    ({
+        type: C.ERROR_DATA_DISPLAY,
+        id: resultId,
+        message: message
+    })
+
+export const info_data_display = (resultId, message) =>
+    ({
+        type: C.INFO_DATA_DISPLAY,
+        id: resultId,
+        message: message
+    })

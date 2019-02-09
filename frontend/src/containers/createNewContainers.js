@@ -6,7 +6,8 @@ import {
     remove_reference,
     unattached_result,
     attach_result,
-    save_reference
+    save_reference,
+    info_data_display
 } from "actions/actions";
 import LongNewForm from "components/create_new/create_long_new/LongNewForm";
 import DataDisplay from "components/data_representation/dataDisplay";
@@ -55,6 +56,7 @@ export const DataDisplayContainer = connect(
                 e.preventDefault();
                 console.log('foudn id: ' + id);
                 dispatch(attach_reference(id))
+                dispatch(info_data_display(id, 'attached' ))
             },
             onRemove(e, id){
                 e.preventDefault();

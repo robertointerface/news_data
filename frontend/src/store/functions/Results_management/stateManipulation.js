@@ -57,4 +57,42 @@ const setResultUnattached = (list=[], resultId) =>{
     })
 }
 
-export {pushResult, removeResult, resultSaved, setResultAttached, setResultUnattached}
+const setErrorMessageAtDisplay = (list=[], resultId, message) => {
+    return list.map(item => {
+        if(item.id == resultId){
+            return {
+                ...item,
+                DisplayMessage: {
+                    message: message,
+                }
+            }
+        }
+        return item;
+    })
+}
+
+const setInfoMessageAtDisplay = (list=[], resultId, message) => {
+    return list.map(item => {
+        if(item.id == resultId){
+            return {
+                ...item,
+                DisplayMessage: {
+                    message: message,
+                    type: 'alert-info'
+                }
+            }
+        }
+        return item;
+    })
+}
+
+
+export {
+    pushResult,
+    removeResult,
+    resultSaved,
+    setResultAttached,
+    setResultUnattached,
+    setErrorMessageAtDisplay,
+    setInfoMessageAtDisplay
+}
