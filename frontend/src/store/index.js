@@ -14,7 +14,9 @@ import {
     initialStateCurrentSearch,
     createNewForm,
     results,
-    appStatus} from './initialData'
+    appStatus,
+    newDisplay
+} from './initialData'
 import thunkMiddleware from 'redux-thunk';
 import ReduxPromise from "redux-promise";
 import promiseMiddleware from 'redux-promise';
@@ -36,7 +38,7 @@ export const store =
     combineReducers({
         Current_search: Current_search, User_management: User_management,
         Create_new: Create_new, Results_management: Results_management,
-        App_status: App_status, form: formReducer}),
+        App_status: App_status, New_display: newDisplay, form: formReducer}),
         {Current_search: initialStateCurrentSearch, User_management: initializeUserManagement(),
          Create_new: createNewForm, Results_management: results, App_status: appStatus},
          window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()

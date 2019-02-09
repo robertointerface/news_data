@@ -75,6 +75,12 @@ export const createNewForm = {
     references: [],
 }
 
+export const newDisplay = {
+    news: [],
+
+
+}
+
 export const DataOrderObject = {
 	ThirdParty: '',
 	DataSetId:'',
