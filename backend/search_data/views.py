@@ -26,6 +26,7 @@ from .serializers import UserDataSerializers
 from rest_framework.serializers import ValidationError
 import collections
 
+
 class IndicatorsDict(dict): #CHANGED IT TO INHERIT FROM collections.UserDict CHAPTER 12 FLUENT PYTHON, BE CAREFUL AS TWICK
     #MIGHT BE NEEDED, MAYBE IT CANOT BE IMPLEMENTED, LOOK AT PAGE 364 OF FLUENT PYTHON
     def __missing__(self, key):
