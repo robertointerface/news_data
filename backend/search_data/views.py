@@ -104,9 +104,12 @@ class MakeApiCall(APIView):
     Make Third Party API calls (fetch) after the user has selected all required options.
 
     """
+    def __init__(self):
+        APIView.__init__(self)
+        self._api = ''
+        self._result = {}
+
     permission_classes = (AllowAny,)
-    api = ''
-    result = {}
 
     def post(self, request, format=None):
         request_data = self.request.data
@@ -116,14 +119,14 @@ class MakeApiCall(APIView):
         euro_faulty_api = 'http://ec.europa.eu/eurostat/wdds/rest/data/v2.1/json/en/nama_10_a10?nace_r2=K&unit=PC_GDP&precision=1&time=1996&time=1997&geo=ES&geo=FR&na_item=BG&'
         OECD_faulty_api = 'https://stats.oecd.org/SDMX-JSON/data/PDB_GR/USA+KOR.T_GDOP_V.2010Y/all?startTime=1999&endTime=2001&'
 
-        self.api = request_data['API']
+        self._api = request_data['API']
         api_key = self.get_api_keys()
         try:
             #if api_key required get it
             if api_key is not None:
                 api_url = '{api_url}{key_name}={key}'.format(api_url=api_url, key_name=api_key[1], key=api_key[2])
             headers = {'Content-Type': 'application/json'}
-            self.result = urlfetch.fetch(
+            self._result = urlfetch.fetch(
                 url=api_url,
                 method=urlfetch.GET,
                 headers=headers)
@@ -132,33 +135,35 @@ class MakeApiCall(APIView):
         except urlfetch.Error:
             return Response(None, status=400, content_type=json)
         else:
-            return Response(json.dumps(self.result), status=200, content_type=json)
+            return Response(json.dumps(self._result), status=200, content_type=json)
 
     def get_api_keys(self):
         for api_key in api_keys:
-            if api_key[0] == self.api:
+            if api_key[0] == self._api:
                 return api_key
         return None
 
     def verify_result(self):
-        if self.api == 'EU':
+        if self._api == 'EU':
             self.verify_EU()
-        elif self.api == 'OECD':
+        elif self._api == 'OECD':
             self.verify_OECD()
 
     def verify_EU(self):
-        self.result = json.loads(self.result.content)
+        self._result = json.loads(self._result.content)
         try:
-            if self.result['error']:
+            if self._result['error']:
                 raise urlfetch.Error
         except KeyError:
             pass
 
     def verify_OECD(self):
         try:
-            self.result = json.loads(self.result.content)
+            self._result = json.loads(self._result.content)
         except ValueError:
             raise urlfetch.Error
+
+
 
 
 
