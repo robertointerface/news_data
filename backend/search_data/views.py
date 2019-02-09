@@ -24,9 +24,10 @@ from DataBasesModel.APIKeys import api_keys
 from .models import UserData
 from .serializers import UserDataSerializers
 from rest_framework.serializers import ValidationError
+import collections
 
-
-class IndicatorsDict(dict):
+class IndicatorsDict(dict): #CHANGED IT TO INHERIT FROM collections.UserDict CHAPTER 12 FLUENT PYTHON, BE CAREFUL AS TWICK
+    #MIGHT BE NEEDED, MAYBE IT CANOT BE IMPLEMENTED, LOOK AT PAGE 364 OF FLUENT PYTHON
     def __missing__(self, key):
         if isinstance(key, str):
             raise KeyError(key)
@@ -123,7 +124,7 @@ class MakeApiCall(APIView):
                 api_url = '{api_url}{key_name}={key}'.format(api_url=api_url, key_name=api_key[1], key=api_key[2])
             headers = {'Content-Type': 'application/json'}
             self.result = urlfetch.fetch(
-                url=OECD_faulty_api,
+                url=api_url,
                 method=urlfetch.GET,
                 headers=headers)
             #Verify if result fetched was successfull
@@ -185,20 +186,10 @@ class SaveData(APIView):
                                                    'savedBy': user.id})
             if serializer.is_valid(raise_exception=True):
                 serializer.create(serializer.validated_data)
-                response = JsonResponse({
-                    'status': 200,
-                })
         except DatabaseError:
-            response = JsonResponse({
-                'status': 500,
-                'content': """There was a problem """
-            })
+            return Response(None, status=400, content_type=json)
         except ValidationError:
-            print('Serialize error ' + serializer.errors)
-            response = JsonResponse({
-                'status': 500,
-                'content': """There was a problem """
-            })
-        finally:
-            return response
+            return Response(None, status=400, content_type=json)
+        else:
+            return Response(None, status=200, content_type=json)
 

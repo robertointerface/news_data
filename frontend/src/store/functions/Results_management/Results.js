@@ -1,4 +1,3 @@
-
 import {prepareRequestData} from 'functions/Create_new/CreateNewFunctions'
 import {getDataRequest} from "functions/Create_new/CreateNewFunctions"
 import {
@@ -51,7 +50,14 @@ export const handle_save_result_user = resultId => {
                 },
                 body: JSON.stringify(data)
             })
-            .then(response=> response.json())
+            .then(response => {
+                if(response.status == 200){
+                    return response.json()
+                }
+                else{
+                    throw 'error saving, please try again.'
+                }
+            })
             .then(response => {
                 if(response.status == 200){
                     return Promise.all([
@@ -59,7 +65,6 @@ export const handle_save_result_user = resultId => {
 
                         ])
                 }
-
             })
             .catch(error => {
                 console.log('error: '+ error)

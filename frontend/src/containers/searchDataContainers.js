@@ -25,6 +25,7 @@ import {
     handle_save_result_user
 } from 'functions/Results_management/Results'
 import {Graph, GoToThirdParty, SaveData} from 'components/data_representation/dataOptions/options'
+import MessageDisplay from 'components/data_representation/messageDisplay'
 
 export const SearchDataContainer = connect(
     state =>
@@ -198,7 +199,6 @@ export const SaveDataContainer = connect(
             }
 
         })
-
 )(SaveData)
 
 export const VisitContainer = connect(
@@ -229,6 +229,19 @@ export const GraphContainer = connect(
 
         })
 )(Graph)
+
+export const DisplayDataMessage = connect(
+    (state, props) =>
+        ({
+            message: props.message,
+            type: props.type
+        }),
+    dispatch =>
+        ({
+
+        })
+)(MessageDisplay)
+
 
 const findChangeUnitMeasure = (id, list=[]) => {
 

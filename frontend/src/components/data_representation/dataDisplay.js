@@ -6,6 +6,7 @@ import DataTitle from 'ui/search_data/dataTitle'
 import {AttachDataRequest} from './attachData'
 import {
     ChangeUnitMeasureContainer,
+    DisplayDataMessage
 } from 'containers/searchDataContainers'
 import DataOptions from './dataOptions/dataOptions'
 
@@ -18,7 +19,6 @@ class DataDisplay extends Component{
                     list.map((result, i) =>
                         <div className='col-6' key={result.id}>
                                 <div className='card'>
-
                                         <div className='card-header bg-primary'>
                                             <div className='col-12'>
                                                 <DataTitle
@@ -33,6 +33,11 @@ class DataDisplay extends Component{
                                                 <div className='col-12'>
                                                     <Table columnList={result.searchObject.SelectedTimes}
                                                            rowList={result.resultObject.filterResult}
+                                                    />
+                                                </div>
+                                                <div className='col-12'>
+                                                    <DisplayDataMessage message={result.DisplayMessage.message}
+                                                                        type={result.DisplayMessage.type}
                                                     />
                                                 </div>
                                                 <div className='col-12'>
@@ -53,7 +58,6 @@ class DataDisplay extends Component{
                                                 </div>
                                             </div>
                                         </div>
-
                                 </div>
                         </div>
                     )

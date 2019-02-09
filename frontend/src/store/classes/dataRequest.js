@@ -118,7 +118,6 @@ class dataRequest {
             @Func: Create object with filtered result obtained from API call and details of made request.
             Data is saved so the user has the possibility of saving the data.
             Details of made request is saved so user can request the same data in different format.
-
          */
         var searchObject = {};
         ({
@@ -147,12 +146,20 @@ class dataRequest {
             resultObject: {...resultObject},
             searchObject: {...searchObject},
             attached: false,
-            saved: false
+            saved: false,
+            DisplayMessage: {
+                message: '',
+                type: 'alert-info'
+            }
         }
 
         return saveObject;
     }
-
+    filterResult(){
+        /*
+            Abstract method
+         */
+    }
     urlOptionsIter () {
         /*
             @Iter: Iterate through a given array and create objects with the syntax:
