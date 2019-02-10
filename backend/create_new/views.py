@@ -8,6 +8,7 @@ from rest_framework.views import APIView
 from rest_framework.serializers import ValidationError
 import json
 from parser import ParserError
+from rest_framework.response import Response
 from rest_framework.parsers import ParseError
 from .serializers import NewSerializer
 from django.http import JsonResponse
@@ -31,23 +32,11 @@ class PublishLongNew(APIView):
             serializer = NewSerializer(data=data_to_save)
             if serializer.is_valid(raise_exception=True):
                 serializer.create(serializer.validated_data)
-                response = JsonResponse({
-                    'status': 200,
-                })
-
         except ParseError:
-            print ('puto')
+            return Response(None, status=400, content_type=json)
         except DatabaseError:
-            print ('database error :')
-            response = JsonResponse({
-                'status': 500,
-                'content': """There was a problem """
-            })
+            return Response(None, status=400, content_type=json)
         except ValidationError:
-            print('Serialize error ' + serializer.errors)
-            response = JsonResponse({
-                'status': 500,
-                'content': """There was a problem """
-            })
-        finally:
-            return response
+            return Response(None, status=400, content_type=json)
+        else:
+            return Response(None, status=200, content_type=json)
