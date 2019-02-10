@@ -12,7 +12,7 @@ import {
     attach_result,
     error_search_data
 } from "actions/actions";
-
+import {history} from 'root/App.js';
 import {getDatabase} from 'functions/Current_search/SearchIterGen'
 import EurostatDatabases from "data/Eurostat/EurostatMap";
 import {EUdataRequest, OECDdataRequest, UnescoDataRequest}  from 'classes/dataRequest'
@@ -288,10 +288,16 @@ export const handle_publish_long_new = () =>{
             },
             body: JSON.stringify(data)
         })
-        .then(res => res.json())
-        .then(res =>{
-
+        .then(response => {
+            if(response.status == 200){
+                history.push('/hot')
+            }else{
+                throw 'error loading news'
+            }
         })
+            .catch(error =>{
+
+            })
     }
 }
 

@@ -5,7 +5,6 @@ export const ActionsConstants = {
     REMOVE_USER_DATA: 'REMOVE_USER_DATA',
     REGISTER: 'REGISTER',
     HANDLE_USER_CHANGE: 'HANDLE_USER_CHANGE',
-
     FETCHING_DATA: 'FETCHING_DATA',
     LOGGED_IN: 'LOGGED_IN',
     HANDLE_NEW_CHANGE: 'HANDLE_USER_CHANGE',
@@ -37,6 +36,7 @@ export const ActionsConstants = {
     INFO_DATA_DISPLAY: 'INFO_DATA_DISPLAY'
 }
 export const urls = {
+    MAIN: 'http://localhost:8080/display/news/',
     DEVELOP: 'http://localhost:8080',
     MAKE_API_CALL: 'http://localhost:8080/search/makeapicall/',
     GET_INDICATORS: 'http://localhost:8080/search/indicators',

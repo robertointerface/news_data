@@ -8,8 +8,6 @@ import createBrowserHistory from 'history/createBrowserHistory'
 export const history = createBrowserHistory()
 import { Router } from 'react-router'
 
-
-
 import {
   HashRouter,
   Route,
@@ -20,17 +18,19 @@ import {
 
 import Accounts from "./components/accounts/accounts";
 import CreateNew from "./components/create_new/createNew"
+import NewDisplayRouter from './components/new_display/NewDisplayRouter'
 
 const App = () => {
     return (
          <Router history={history}>
             <div>
                 <Route exact path="/" component={Home}/>
+                <Route path="/hot" component={NewDisplayRouter}/>
                 <Route path="/about" component={About}/>
                 <Route path="/accounts" component={Accounts}/>
                 <Route path='/publish' component={CreateNew}/>
             </div>
-       </Router>
+         </Router>
     )
 }
 

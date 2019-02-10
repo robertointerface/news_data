@@ -9,7 +9,7 @@ const LogOutNav = (user_id = 0) => {
     return (
         <ul className='navbar-nav NavText'>
             <li>
-                <NavLink className='witheFont' to='/'>
+                <NavLink className='witheFont' to='/hot'>
                     Hot Blog
                 </NavLink>
             </li>
