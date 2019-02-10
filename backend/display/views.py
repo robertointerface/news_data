@@ -27,7 +27,9 @@ class GetNews(APIView):
     permission_classes = (AllowAny,)
 
     def get(self, request, format=None):
-        news = NewSerializer(New.objects.all(), many=True)
-        content = JSONRenderer().render(news.data)
-        return Response(content, status=200, content_type=json)
-
+        try:
+            news = NewSerializer(New.objects.all(), many=True)
+            content = JSONRenderer().render(news.data)
+            return Response(content, status=200, content_type=json)
+        except DatabaseError:
+            return Response(None, status=400, content_type=json)
