@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Component } from 'react';
-import Table from "./table";
+import Table from "components/data_representation/table";
 import DataTitle from 'ui/search_data/dataTitle'
 import {AttachDataRequest} from './attachData'
 import {
