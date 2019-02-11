@@ -24,8 +24,12 @@ class NewDetail extends Component{
     }
 
     render(){
-        <p>new detail </p>
+        return (
+
+            <p>new detail </p>
+        )
     }
+
 
 
 }

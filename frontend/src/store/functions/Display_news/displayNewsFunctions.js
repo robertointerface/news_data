@@ -34,7 +34,8 @@ const getNewsToDisplay = () =>{
 
 const getDetailNew = (id = 0) => {
     var csrftoken = getCookie('csrftoken'); //get saved cookie
-    return fetch(`${urls.NEW_DETAIL}${id}`, {
+    var url = `${urls.NEW_DETAIL}?id=${id}`
+    return fetch(`${url}`, {
         method: 'GET',
         mode: 'same-origin',
         headers: {
@@ -43,7 +44,10 @@ const getDetailNew = (id = 0) => {
         },
     })
         .then(response =>{
-
+            return response.json()
+        })
+        .then(jsonResponse => {
+            return JSON.parse(jsonResponse)
         })
         .catch(error => {
 

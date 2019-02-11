@@ -40,7 +40,12 @@ class GetNew(APIView):
 
     def get(self, request, format=None):
         try:
-            request.query_params
-            news = NewSerializer(New.objects.all(), many=True)
+            params = request.query_params
+            new_id = params['id']
+            new = NewSerializer(New.objects.filter(id=new_id).first(), many=False)
+            content = JSONRenderer().render(new.data)
+            return Response(content, status=200, content_type=json)
         except DatabaseError:
+            return Response(None, status=400, content_type=json)
+        except ValueError:
             return Response(None, status=400, content_type=json)
