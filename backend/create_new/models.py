@@ -18,9 +18,9 @@ else:
 
 class New(models.Model):
     new_title = models.CharField(max_length=80, null=False)
-    headline1 = models.CharField(max_length=100, null=True)
-    headline2 = models.CharField(max_length=100, null=True)
-    headline3 = models.CharField(max_length=100, null=True)
+    headline1 = models.CharField(max_length=100, null=True, blank=True)
+    headline2 = models.CharField(max_length=100, null=True, blank=True)
+    headline3 = models.CharField(max_length=100, null=True, blank=True)
     content = models.TextField(max_length=605, null=False)
     references = JSONField(null=True)
     time_stamp = models.DateField(default=timezone.now)
