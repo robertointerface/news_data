@@ -290,7 +290,7 @@ export const handle_publish_long_new = () =>{
         })
         .then(response => {
             if(response.status == 200){
-                history.push('/hot')
+                history.push('/display/hot')
             }else{
                 throw 'error loading news'
             }

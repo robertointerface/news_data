@@ -25,7 +25,7 @@ const App = () => {
          <Router history={history}>
             <div>
                 <Route exact path="/" component={Home}/>
-                <Route path="/hot" component={NewDisplayRouter}/>
+                <Route path="/display" component={NewDisplayRouter}/>
                 <Route path="/about" component={About}/>
                 <Route path="/accounts" component={Accounts}/>
                 <Route path='/publish' component={CreateNew}/>

@@ -8,7 +8,7 @@ const LogInNav = ({ username = '' }) => {
     return (
         <ul className='nav navbar-nav NavText'>
             <li>
-                <NavLink to='/hot'>
+                <NavLink to='/display/hot'>
                     Hot
                 </NavLink>
             </li>
