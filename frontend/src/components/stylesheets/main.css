@@ -9,10 +9,17 @@ body {
     padding: 0rem;
 }
 
+.carachLeft{
+    border-radius: 25%;
+    background: #007bff;
+    color: snow;
+    padding: 0.25rem;
+}
 .resultTitle{
     font-family: bitter;
     font-size: 1.2rem;
     font-weight: bold;
+
 }
 .ColorW{
     color: snow;
