@@ -7,7 +7,7 @@ import PageTemplate from 'components/main/PageTemplate'
 import {DisplayNewListContainer} from 'containers/newDisplayContainer'
 import {getNewsToDisplay} from 'functions/Display_news/displayNewsFunctions'
 import NewsDisplayList from 'components/new_display/NewsDisplayList'
-class NewsDisplayBlock extends Component{
+class NewsListDisplayContainer extends Component{
     constructor(props){
         super(props )
         this.state = {
@@ -34,4 +34,4 @@ class NewsDisplayBlock extends Component{
     }
 }
 
-export default NewsDisplayBlock
+export default NewsListDisplayContainer

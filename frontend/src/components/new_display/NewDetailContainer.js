@@ -2,7 +2,7 @@ import React from 'react'
 import {Component} from 'react'
 import {getDetailNew} from "root/store/functions/Display_news/displayNewsFunctions";
 
-class NewDetail extends Component{
+class NewDetailContainer extends Component{
 
     constructor(props){
         super(props)
@@ -19,7 +19,10 @@ class NewDetail extends Component{
 
     componentDidMount() {
          getDetailNew(this.newId).then(newData => {
-             this.setState({title: newData.title})
+             this.setState({
+                 title: newData.title,
+                 headline1: newData.title
+             })
          })
     }
 
@@ -34,4 +37,4 @@ class NewDetail extends Component{
 
 }
 
-export default NewDetail
+export default NewDetailContainer
