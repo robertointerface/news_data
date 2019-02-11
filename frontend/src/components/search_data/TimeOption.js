@@ -25,7 +25,7 @@ import {FormGroup, Checkbox} from 'react-bootstrap'
 }*/
 
 
-const TimeOptions = (props) =>{
+const TimeOptions = (props) => {
 
     return(
         <div className={'list-group' + (props.list.length > 4 ? ' scroll_300' : '' )}>
@@ -41,6 +41,7 @@ const TimeOptions = (props) =>{
         </div>
     )
 }
+
 const TimeInput = (props) => {
     let {onChange, id, name} = props
     return(

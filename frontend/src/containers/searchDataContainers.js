@@ -15,6 +15,7 @@ import SearchComponent from "components/search_data/SearchComponent";
 import {RequestButton} from "components/search_data/RequestButton";
 import Progress from "components/search_data/progressBar";
 import TimeOptions from "components/search_data/TimeOption";
+import GeoOptions from 'components/search_data/GeoOption'
 import {
     handle_data_request,
     handle_indicator_request
@@ -129,14 +130,14 @@ export const GeoContainer = connect(
         }),
     dispatch =>
         ({
-             onChange(e, id){
+             onChange(e, id, name){
                  e.preventDefault();
-                 dispatch(select_geo(id))
+                 dispatch(select_geo(id, name))
                  dispatch(check_request())
             }
 
         })
-)(TimeOptions)
+)(GeoOptions)
 
 export const ProgressContainer = connect(
     state =>
