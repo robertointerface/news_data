@@ -23,7 +23,7 @@ else:
     from backend.create_new.serializers import NewSerializer
 
 
-class GetNews(APIView):
+class GetNewList(APIView):
     permission_classes = (AllowAny,)
 
     def get(self, request, format=None):
