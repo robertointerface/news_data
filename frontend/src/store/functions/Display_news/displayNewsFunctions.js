@@ -20,7 +20,7 @@ const getNewsToDisplay = () =>{
             }
         })
         .then(response =>{
-            console.log('news to display: ' + response)
+            return JSON.parse(response)
         })
         .catch(error => {
 
