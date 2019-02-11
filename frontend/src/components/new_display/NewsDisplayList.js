@@ -2,7 +2,7 @@ import React from 'react';
 import CardCol12 from 'ui/common/cards/CardCol12'
 import NewTitle from 'ui/new_display/title'
 import Headline from 'ui/new_display/headline'
-
+import Truncate from 'react-truncate'
 const NewsDisplayList = ({News=[]}) => {
     var news = News
     return (
@@ -10,7 +10,7 @@ const NewsDisplayList = ({News=[]}) => {
             {(News.length > 0) ?
                 <div>
                     { News.map((x, i) =>
-                        <CardCol12 Component={<NewTitle title={x.new_title}/>}>
+                        <CardCol12 Component={<NewTitle title={x.new_title}/>} headerClass='bg-primary'>
                              <div className='resultCardBody card-body'>
                                  <ul>
                                      <Headline text={x.headline1}/>

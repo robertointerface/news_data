@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from "prop-types";
 
-const CardCol12 = ({Component, children}) => {
+const CardCol12 = ({Component, headerClass='', children}) => {
     return (
         <div className='col-12'>
             <div className='card'>
-                <div className='card-header'>
+                <div className={`card-header ${headerClass}`} >
                     {Component}
                 </div>
                     {children}
