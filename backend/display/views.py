@@ -33,3 +33,14 @@ class GetNews(APIView):
             return Response(content, status=200, content_type=json)
         except DatabaseError:
             return Response(None, status=400, content_type=json)
+
+
+class GetNew(APIView):
+    permission_classes = (AllowAny,)
+
+    def get(self, request, format=None):
+        try:
+            request.query_params
+            news = NewSerializer(New.objects.all(), many=True)
+        except DatabaseError:
+            return Response(None, status=400, content_type=json)
