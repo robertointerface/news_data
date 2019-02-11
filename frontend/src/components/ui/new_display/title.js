@@ -1,8 +1,8 @@
 import React from 'react';
 
-const NewTitle = ({title=''}) => {
+const NewTitle = ({title='', id=0}) => {
     return(
-        <p>{title}</p>
+        <a href={'#'} >{title}</a>
     )
 }
 

@@ -3,6 +3,10 @@ import {getCookie} from "root/store/functions/auth/Cookies";
 
 
 const getNewsToDisplay = () =>{
+    /*
+        @Func: fetch data from 'New' table by calling API View 'GetNews' at 'display' app in django
+        @Return: parse of data returned from backend end.
+     */
     var csrftoken = getCookie('csrftoken'); //get saved cookie
     return fetch(`${urls.MAIN}`,{
         method: 'GET',
@@ -27,4 +31,23 @@ const getNewsToDisplay = () =>{
         })
 }
 
-export {getNewsToDisplay}
+
+const getDetailNew = (id = 0) => {
+    var csrftoken = getCookie('csrftoken'); //get saved cookie
+    return fetch(`${urls.NEW_DETAIL}${id}`, {
+        method: 'GET',
+        mode: 'same-origin',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRFToken': csrftoken
+        },
+    })
+        .then(response =>{
+
+        })
+        .catch(error => {
+
+        })
+}
+
+export {getNewsToDisplay, getDetailNew}

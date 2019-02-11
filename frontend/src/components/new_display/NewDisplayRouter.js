@@ -1,10 +1,11 @@
 import React from 'react';
 import { Route } from 'react-router-dom'
-import NewDisplayBlock from "root/components/new_display/NewDisplayBlock";
-import {getNewsToDisplay} from 'functions/Display_news/displayNewsFunctions'
+import NewsDisplayBlock from "root/components/new_display/NewsDisplayBlock";
+import NewDetail from "root/components/new_display/NewDetail";
 const NewDisplayRouter = ({match}) =>
     <section>
-        <Route path='/hot' component={NewDisplayBlock}/>
+        <Route path='/hot' component={NewsDisplayBlock}/>
+        <Route path='/display/new/:id' component={NewDetail}/>
     </section>
 
 export default NewDisplayRouter
