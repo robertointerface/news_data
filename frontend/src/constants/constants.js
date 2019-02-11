@@ -36,7 +36,7 @@ export const ActionsConstants = {
     INFO_DATA_DISPLAY: 'INFO_DATA_DISPLAY'
 }
 export const urls = {
-    MAIN: 'http://localhost:8080/display/getnew/',
+    MAIN: 'http://localhost:8080/display/newslist/',
     NEW_DETAIL: 'http://localhost:8080/display/new/',
     DEVELOP: 'http://localhost:8080',
     MAKE_API_CALL: 'http://localhost:8080/search/makeapicall/',

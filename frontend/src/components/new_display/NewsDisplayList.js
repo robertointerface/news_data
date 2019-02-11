@@ -10,7 +10,7 @@ const NewsDisplayList = ({News=[]}) => {
             {(News.length > 0) ?
                 <div>
                     { News.map((x, i) =>
-                        <CardCol12 Component={<NewTitle title={x.new_title}/>} headerClass='bg-primary'>
+                        <CardCol12 Component={<NewTitle title={x.new_title} id={x.id}/>} headerClass='bg-primary'>
                              <div className='resultCardBody card-body'>
                                  <ul>
                                      <Headline text={x.headline1}/>
