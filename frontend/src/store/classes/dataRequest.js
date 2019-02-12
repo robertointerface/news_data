@@ -313,6 +313,7 @@ class EUdataRequest extends dataRequest{
         }
 
         for(var geo of this.SelectedGeo){
+            //this.SelectedGeo is an array composed of objects {id: 'FR', name: 'France}
             let geoIndex = this.getIndex('geo', geo.id);
             let geoObject = {
                 name: geo.name,
@@ -375,7 +376,7 @@ class OECDdataRequest extends dataRequest {
         var locations = this.SelectedGeo;
         var geoPath = '';
         for(let location of locations){
-            geoPath = geoPath.concat(location, '+');
+            geoPath = geoPath.concat(location.id, '+');
         }
         geoPath = geoPath.slice(0, geoPath.length - 1)
         return geoPath
@@ -502,7 +503,7 @@ class OECDdataRequest extends dataRequest {
                 var indexInResult = finalValue.findIndex(x => x['name'] == location)
                 if (indexInResult < 0){
                     var geoObject = {
-                        name: location,
+                        name: location.name,
                         values: []
                     }
                     for(let time in this.SelectedTimes) {
