@@ -759,7 +759,118 @@ Eurostat = {
             }
         }
     },
-}
+},
+
+    'EDU': {
+        'edat_lfse_30': {
+            1: {
+                'indicators': {
+                    'T': 'Population (18 to 24 years old)',
+                    'F': 'Males (18 to 24 years old)',
+                    'M': 'Females (18 to 24 years old)',
+                },
+                'units': {
+                    'PC': 'Percentage'
+                }
+            }
+        },
+        'educ_uoe_perp04': {
+            1: {
+                'indicators': {
+                    'ED1': 'Primary education',
+                    'ED2': 'Lower secondary education',
+                    'ED34': 'Upper secondary education - general',
+                    'ED35': 'Upper secondary education - vocational',
+                    'ED4': 'Post-secondary non-university education',
+                    'ED5': 'Short-cycle University education',
+                    'ED6-8': 'University'
+                },
+                'units': {
+                    'RT': 'number of students per teacher'
+                }
+            }
+        },
+        'educ_figdp': {
+            1: {
+                'indicators': {
+                    'FP01_1': 'all levels of education combined',
+                    'FP02_1': 'all levels of education combined',
+                    'FP02_2': 'secondary education & vocational',
+                    'FP02_3': 'University',
+                },
+                'units': {
+                    'PC': 'Percentage of GDP',
+                }
+            }
+        },
+        'educ_uoe_fine09': {
+            1: {
+                'indicators': {
+                    'ED1': 'Primary education',
+                    'ED2': 'Lower secondary education',
+                    'ED34': 'Upper secondary education - general',
+                    'ED35': 'Upper secondary education - vocational',
+                    'ED4': 'Post-secondary non-university education',
+                    'ED5-8': 'University'
+                },
+                'units': {
+                    'EUR': 'Euros',
+                    'PPS': 'Purchasing power standard (PPS)',
+                    'GDP_HAB': 'GDP per capita',
+                }
+            }
+        },
+        'educ_fiaid': {
+            1: {
+                'indicators': {
+                    'FD01_1': 'all education levels',
+                    'FD01_2': 'Primary, secondary & vocational education',
+                    'FD01_3': 'University education'
+                },
+                'units': {
+                    'PC': '% of total public expenditure'
+                }
+            }
+        },
+        'educ_uoe_fina01': {
+            1: {
+                'indicators': {
+                        'ED02-8': 'all education levels',
+                        'ED1_2': 'Primary, secondary education',
+                        'FD01_3': 'Upper secondary and vocational',
+                        'ED5-8': 'University'
+                },
+                'units': {
+                    'PC': '% of total public expenditure'
+                }
+            }
+        },
+        'edat_lfse_20': {
+            1: {
+                'indicators':{
+                    'NEMP': 'are Not employed',
+                    'WANT': 'would like to work (seeking employment or not)',
+                    'NWANT': 'do not want to work',
+                },
+                'units': {
+                    'PC': 'Percentage of population between 15 & 34 years'
+                }
+            }
+        },
+        'lfsa_urgaed': {
+            1: {
+                'indicators': {
+                    'ED0-2': 'Secondary education or lower',
+                    'ED3_4': 'Upper secondary and vocational',
+                    'ED5-8': 'University education'
+                },
+                'units': {
+                    'PC': 'Percentage of the population with'
+                }
+            }
+        }
+
+    }
 
 
 
