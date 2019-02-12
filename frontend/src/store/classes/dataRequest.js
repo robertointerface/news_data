@@ -449,7 +449,12 @@ class OECDdataRequest extends dataRequest {
     }
 
     getGeoName(id){
-
+            /*
+                @Func: Find an object in the array this.SelectedGeo ( i.e object format {id: 'FR', 'France'})
+                by providing the id.
+                @Args: id: String.
+                @Return: object.name
+             */
         var countryName = this.SelectedGeo.find(x => x['id'] == id)
         if(countryName){
             return countryName['name'];
