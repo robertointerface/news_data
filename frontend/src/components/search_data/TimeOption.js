@@ -31,7 +31,7 @@ const TimeOptions = (props) => {
         <div className={'list-group' + (props.list.length > 4 ? ' scroll_300' : '' )}>
                 {props.list.map((x, i) =>
 
-                        <FormGroup>
+                        <FormGroup key={`${x.name}-${i}`}>
                             {(x.checked == false) ?
                                 <TimeInput onChange={props.onChange} checked={x.checked} name={x.name} id={x.id}/>
                                 :  <TimeInputChecked onChange={props.onChange} checked={x.checked} name={x.name} id={x.id}/>

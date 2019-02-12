@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const TableHeader = ({list = []}) => {
-    var test = list
     return(
         <thead>
             <tr className='table-primary'>
@@ -10,7 +9,7 @@ const TableHeader = ({list = []}) => {
                     countries
                 </th>
                 {list.map((x, i) =>
-                    <th scope="col" key={i}>
+                    <th scope="col" key={`Geo-${x}-${i}`}>
                         {x}
                     </th>
                 )}

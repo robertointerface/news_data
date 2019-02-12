@@ -17,7 +17,7 @@ class DataDisplay extends Component{
             <div className='row'>
                 {(resultLenght > 0) ?
                     list.map((result, i) =>
-                        <div className='col-6' key={result.id}>
+                        <div className='col-6' key={`RES-${result.id}-${i}`}>
                                 <div className='card'>
                                         <div className='card-header bg-primary'>
                                             <div className='col-12'>

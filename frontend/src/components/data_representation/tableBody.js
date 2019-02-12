@@ -7,7 +7,7 @@ export const Tablebody = ({list=[]}) => {
             <tr className='table-warning' key={i}>
                 <th scope="row">{x.name}</th>
                 {x.values.map((x, i) =>
-                    <td key={i}>
+                    <td key={`R-${x}-${i}`}>
                         {(x != null ? x : '...')}
                     </td>
                 )}

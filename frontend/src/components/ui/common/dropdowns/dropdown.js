@@ -12,7 +12,7 @@ export const DropDownMenu = ({title='', list=[], onClick=f=>f}) => {
             <div className="dropdown-menu padding0" aria-labelledby="commonDropdown">
                 <div className='list-group'>
                     {list.map((x, i) =>
-                        <a href='#' className='list-group-item' key={x.id} onClick={(e) => onClick(e, x.id)}>
+                        <a href='#' className='list-group-item' key={`${x.id}-${i}`} onClick={(e) => onClick(e, x.id)}>
                             {x.name}
                         </a>
                     )}

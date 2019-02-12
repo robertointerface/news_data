@@ -8,7 +8,7 @@ const GeoOptions = (props) => {
         <div className={'list-group' + (props.list.length > 4 ? ' scroll_300' : '' )}>
                 {props.list.map((x, i) =>
 
-                        <FormGroup>
+                        <FormGroup key={`${x.name}-${i}`}>
                             {(x.checked == false) ?
                                 <GeoInput onChange={props.onChange} checked={x.checked} name={x.name} id={x.id}/>
                                 :  <GeoInputChecked onChange={props.onChange} checked={x.checked} name={x.name} id={x.id}/>

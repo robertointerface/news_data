@@ -13,15 +13,15 @@ export const DropDownMenuRemove = ({title='', list=[], onRemove=f=>f}) => {
             <div className="dropdown-menu padding0" aria-labelledby="commonDropdown">
                 <div className='list-group'>
                     {list.map((x, i) =>
-                        <div className='list-group-item'>
+                        <div key={`REF-${x.id}-${i}`} className='list-group-item'>
                             <div className='offset-10 col-2'>
                                  <a href='#' onClick={(e) => onRemove(e, x.id)}>
                                     <FontAwesomeIcon className='F12' icon={faTimesCircle}/>
                                  </a>
                             </div>
                             <div className='col-12'>
-                                <a key={x.id}>
-                                    {x.name} {x.id}
+                                <a>
+                                    {x.name}
                                 </a>
                             </div>
                         </div>
