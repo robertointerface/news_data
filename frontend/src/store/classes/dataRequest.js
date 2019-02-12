@@ -448,6 +448,14 @@ class OECDdataRequest extends dataRequest {
         ])
     }
 
+    getGeoName(id){
+
+        var countryName = this.SelectedGeo.find(x => x['id'] == id)
+        if(countryName){
+            return countryName['name'];
+        }
+        return '';
+    }
 
     filterResult(){
         /*
@@ -470,7 +478,7 @@ class OECDdataRequest extends dataRequest {
                                                         (x['name'] == 'COUNTRY'))
             for(var location in rowOrder[Locationindex].values){
                 var geoObject = {
-                    name: rowOrder[Locationindex].values[location],
+                    name: this.getGeoName(rowOrder[Locationindex].values[location]),
                     values: []
                 }
 
@@ -500,7 +508,7 @@ class OECDdataRequest extends dataRequest {
 
         } finally { // if values for specific location not returned put them to '...'
             for(var location of this.SelectedGeo){
-                var indexInResult = finalValue.findIndex(x => x['name'] == location)
+                var indexInResult = finalValue.findIndex(x => x['name'] == location['name'])
                 if (indexInResult < 0){
                     var geoObject = {
                         name: location.name,
