@@ -182,10 +182,20 @@ class dataRequest {
                          },
                          next() {
                              if (item < arrayLenght) {
-                                 var CurrentValue = {
-                                     name: _this.name,
-                                     value: _this.array[item],
-                                 };
+                                 //this.array migt be an array composed of objects or composed of strings/integers
+                                 //if is an array of objects {id: 'FR', name: 'France'} CurrentValue.name is the object id
+                                 //if is an array of string/integers, CurrentValue.name is the array item
+                                 if(typeof _this.array[item] == 'object'){
+                                     var CurrentValue = {
+                                         name: _this.name,
+                                         value: _this.array[item].id,
+                                     };
+                                 }else{
+                                     var CurrentValue = {
+                                         name: _this.name,
+                                         value: _this.array[item],
+                                     };
+                                 }
                                  item = item + 1;
                                  return {value: CurrentValue, done: false};
                              }
@@ -303,9 +313,9 @@ class EUdataRequest extends dataRequest{
         }
 
         for(var geo of this.SelectedGeo){
-            let geoIndex = this.getIndex('geo', geo);
+            let geoIndex = this.getIndex('geo', geo.id);
             let geoObject = {
-                name: geo,
+                name: geo.name,
                 values: []
             }
             let start = geoIndex * timeLength;
