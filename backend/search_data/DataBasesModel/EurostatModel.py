@@ -45,7 +45,7 @@ Eurostat = {
         'sbs_sc_sca_r2': {
             1: {
                 'indicators': {
-                    'N_S95_X_K': 'Total business economy',
+                    'B-N_S95_X_K': 'Total business economy',
                     'B': 'Mining and quarrying',
                     'C': 'Manufacturing',
                     'D': 'Electricity, gas, steam and air conditioning supply',
