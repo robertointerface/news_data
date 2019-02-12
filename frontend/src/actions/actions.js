@@ -137,10 +137,11 @@ export const select_time = id =>
         time: id
     })
 
-export const select_geo = id =>
+export const select_geo = (id, name) =>
     ({
         type: C.SELECT_GEO,
-        geo: id
+        geoId: id,
+        geoName: name
     })
 
 export const check_request = () =>

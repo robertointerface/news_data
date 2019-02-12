@@ -104,11 +104,33 @@ const pushItemToArray = (list=[], item) => {
         })
     }
     else{
-        return [...list, item]; // return a copy of the new array
+        return [...list, item]; // return a copy of the new array with item added
     }
-
 }
 
+
+const pushGeoToArray = (list=[], id, name) => {
+    /*
+        @Func: Push new object into array if object is not in the array, if object is in the array remove from array and create
+        a new list
+        @Args:
+            list (array).
+            item: (integer, string, object....).
+        @return list (array).
+     */
+    var itemIndex = list.findIndex(x => x['id'] == id)
+    if(itemIndex >= 0){
+        return list.filter(function (item, i){
+            if(i == itemIndex){
+                return false
+            } else{
+                return true
+            }
+        })
+    }else{
+        return [...list, {'id': id, 'name': name}]
+    }
+}
 
 
 const setUnitSelected = (list=[], id='') => {
@@ -267,5 +289,6 @@ export {
     getSectorsByDatabase,
     createTimeList,
     createGeoList,
-    setProgress100
+    setProgress100,
+    pushGeoToArray
 }

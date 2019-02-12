@@ -34,7 +34,8 @@ import {
     getSectorsByDatabase,
     createTimeList,
     createGeoList,
-    setProgress100
+    setProgress100,
+    pushGeoToArray
 } from "functions/Current_search/stateManipulation";
 
 
@@ -247,8 +248,8 @@ export const Modify_current_search = (state = {}, action) =>{
         case C.SELECT_GEO:
             return {
                 ...state,
-                Geo: markItemChecked(state.Geo, action.geo),
-                SelectedGeo: pushItemToArray(state.SelectedGeo, action.geo),
+                Geo: markItemChecked(state.Geo, action.geoId),
+                SelectedGeo: pushGeoToArray(state.SelectedGeo, action.geoId, action.geoName),
             }
         case C.SELECT_TIME:
             return {
@@ -261,7 +262,6 @@ export const Modify_current_search = (state = {}, action) =>{
                  ...state,
                 requestActive: canMakeRequest(state.Times, state.Geo),
                 progress: setProgress100(state.SelectedTimes, state.SelectedGeo)
-
             }
         case C.SET_INDICATORS:
             return {
