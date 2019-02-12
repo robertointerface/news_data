@@ -45,21 +45,23 @@ const TimeOptions = (props) => {
 const TimeInput = (props) => {
     let {onChange, id, name} = props
     return(
+        <a href='#' onClick={(e) => onChange(e, id)}>
             <Checkbox
-                onChange={(e) => onChange(e, id)}
                 key={name}
                 value={name}>{name}</Checkbox>
+        </a>
     )
 }
 
 const TimeInputChecked = (props) => {
     let {onChange, id, name} = props
     return(
-        <Checkbox
-            onChange={(e) => onChange(e, id)}
-            checked
-            key={name}
-            value={name}>{name}</Checkbox>
+         <a href='#' onClick={(e) => onChange(e, id)}>
+            <Checkbox
+                checked
+                key={name}
+                value={name}>{name}</Checkbox>
+         </a>
     )
 }
 

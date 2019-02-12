@@ -24,23 +24,25 @@ export default GeoOptions
 const GeoInput = (props) => {
     let {onChange, id, name} = props
     return(
+        <a href='#' onClick={(e) => onChange(e, id, name)}>
             <Checkbox
-                onChange={(e) => onChange(e, id, name)}
                 key={name}
                 value={name}>{name}
             </Checkbox>
+        </a>
     )
 }
 
 const GeoInputChecked = (props) => {
     let {onChange, id, name} = props
     return(
-        <Checkbox
-            onChange={(e) => onChange(e, id, name)}
-            checked
-            key={name}
-            value={name}>{name}
-        </Checkbox>
+        <a href='#' onClick={(e) => onChange(e, id, name)}>
+            <Checkbox
+                checked
+                key={name}
+                value={name}>{name}
+            </Checkbox>
+        </a>
     )
 }
 
