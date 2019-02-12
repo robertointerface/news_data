@@ -61,6 +61,7 @@ export const DataDisplayContainer = connect(
             onRemove(e, id){
                 e.preventDefault();
                 dispatch(remove_result(id));
+
             },
 
         })
@@ -77,6 +78,7 @@ export const AttachedReferencesContainer = connect(
                 e.preventDefault();
                 dispatch(remove_reference(resultId));
                 dispatch(unattached_result(resultId));
+                dispatch(info_data_display(resultId, '' )) //Clean 'attached' message as is not attached anymore
             }
         })
 )(AttachedReferences)
