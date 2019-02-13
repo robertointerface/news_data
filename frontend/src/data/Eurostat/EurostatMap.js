@@ -87,11 +87,9 @@ var EurostatDatabases = [
             UrlStructure:{
             	IndicatorName: "nace_r2",
         		UnitName: 'unit',
-        		DisplayMessageOrder:[ 'Unit', 'Extra', 'Indicator'],
-		 		DisplayExtra: ' dedicated to ',
+        		DisplayMessageOrder:[ 'Unit', 'dedicated to', 'Indicator'],
     			extras: {
     			"na_item" : 'EMP_DC',
-
     				},
 
     			}
@@ -112,8 +110,7 @@ var EurostatDatabases = [
             UrlStructure:{
             	IndicatorName: "nace_r2",
         		UnitName: 'unit',
-        		DisplayMessageOrder:[ 'Unit', 'Extra', 'Indicator'],
-		 		DisplayExtra: ' for ',
+        		DisplayMessageOrder:[ 'Unit', 'for', 'Indicator'],
     			extras: {
     			"lcstruct" : 'D11',
     				},
@@ -135,8 +132,7 @@ var EurostatDatabases = [
             UrlStructure:{
             	IndicatorName: "na_item",
         		UnitName: 'unit',
-        		DisplayMessageOrder:[ 'Indicator', 'Extra', 'Unit' ],
-		 		DisplayExtra: ' measured in ',
+        		DisplayMessageOrder:[ 'Indicator', 'measured in', 'Unit' ],
     			extras: {
     				"s_adj" : 'NSA',
     				},
@@ -157,8 +153,7 @@ var EurostatDatabases = [
             UrlStructure:{
             	IndicatorName: "asset10",
         		UnitName: 'unit',
-        		DisplayMessageOrder:[ 'Indicator', 'Extra', 'Unit' ],
-		 		DisplayExtra: ' as ',
+        		DisplayMessageOrder:[ 'Indicator', 'as', 'Unit' ],
     			}
        },
        {
@@ -178,7 +173,6 @@ var EurostatDatabases = [
             UrlStructure:{
             	IndicatorName: "intrt",
             	DisplayMessageOrder:[ 'Indicator' ],
-		 		DisplayExtra: '',
     			}
        },
        {
@@ -196,8 +190,7 @@ var EurostatDatabases = [
             UrlStructure:{
             	IndicatorName: "coicop",
             	UnitName: 'unit',
-            	DisplayMessageOrder:[ 'Indicator', 'Extra', 'Unit' ],
-		 		DisplayExtra: ' as ',
+            	DisplayMessageOrder:[ 'Indicator', 'as', 'Unit' ],
     			}
        },
 
@@ -225,7 +218,6 @@ var EurostatDatabases = [
         	          UrlStructure:{
         	          	IndicatorName: "indic",
         	        	DisplayMessageOrder:[ 'Indicator'],
-        		 		DisplayExtra: '',
         	        	extras: {
             				"s_adj" : 'SA'
             				}
@@ -283,7 +275,6 @@ var EurostatDatabases = [
                 		IndicatorName: "na_item",
                 		UnitName: 'sector',
                 		DisplayMessageOrder:[ 'Indicator'],
-        		 		DisplayExtra: '',
                 		extras: {
             				"unit" : 'PC'
             				}
@@ -305,7 +296,7 @@ var EurostatDatabases = [
                   		IndicatorName: "na_item",
                   		UnitName: 'sector',
                   		DisplayMessageOrder:[ 'Unit'],
-        		 		DisplayExtra: '',
+
                   		extras: {
               				"unit" : 'PC'
               				}
@@ -326,8 +317,7 @@ var EurostatDatabases = [
                       	UrlStructure:{
                       		IndicatorName: "na_item",
                       		UnitName: 'sector',
-                      		DisplayMessageOrder:[ 'Indicator', 'Extra', 'Unit' ],
-            		 		DisplayExtra: ' as ',
+                      		DisplayMessageOrder:[ 'Indicator', 'as', 'Unit' ],
                       		extras: {
                   				"unit" : 'PC'
                   				}
@@ -347,7 +337,6 @@ var EurostatDatabases = [
                           		IndicatorName: "na_item",
                           		UnitName: 'sector',
                           		DisplayMessageOrder:[ 'Unit'],
-                		 		DisplayExtra: '',
                           		extras: {
                       				"unit" : 'PC'
                       				}
@@ -368,8 +357,7 @@ var EurostatDatabases = [
                         UrlStructure:{
 	                  		IndicatorName: "coicop",
 	                  		UnitName: 'unit',
-	                  		DisplayMessageOrder:[ 'Unit', 'Extra', 'Indicator'],
-            		 		DisplayExtra: ' for ',
+	                  		DisplayMessageOrder:[ 'Unit', 'for', 'Indicator'],
                   		}
                    },
                    {
@@ -387,8 +375,7 @@ var EurostatDatabases = [
                      	UrlStructure:{
                      		IndicatorName: "age",
                      		UnitName: 'unit',
-                     		DisplayMessageOrder:[ 'Indicator' , 'Extra', 'Unit' ],
-            		 		DisplayExtra: ' that is unemployeed as ',
+                     		DisplayMessageOrder:[ 'Indicator' , 'that is unemployeed as', 'Unit' ],
                      		extras: {
                 				"sex" : 'T'
                 				}
@@ -416,8 +403,7 @@ var EurostatDatabases = [
                     	UrlStructure:{
                     		IndicatorName: "age",
                     		UnitName: 'unit',
-                    		DisplayMessageOrder:[ 'Indicator' , 'Extra', 'Unit' ],
-            		 		DisplayExtra: ' that is unemployeed as ',
+                    		DisplayMessageOrder:[ 'Indicator' , 'that is unemployeed as', 'Unit' ],
                     		extras: {
                				"sex" : 'T'
                					}
@@ -441,8 +427,7 @@ var EurostatDatabases = [
                            UrlStructure:{
                      		IndicatorName: "age",
                      		UnitName: 'unit',
-                     		DisplayMessageOrder:[ 'Indicator' , 'Extra', 'Unit' ],
-            		 		DisplayExtra: ' that is unemployeed as ',
+                     		DisplayMessageOrder:[ 'Indicator' , 'that is unemployeed as', 'Unit' ],
                      		extras: {
                 				"sex" : 'T',
                 				"s_adj" : 'SA'
@@ -468,8 +453,7 @@ var EurostatDatabases = [
                              UrlStructure:{
                        		IndicatorName: "sex",
                        		UnitName: 'unit',
-                     		DisplayMessageOrder:[ 'Indicator' , 'Extra', 'Unit' ],
-            		 		DisplayExtra: ' that is employeed as ',
+                     		DisplayMessageOrder:[ 'Indicator' , 'that is employeed as', 'Unit' ],
                        		extras: {
                   				"s_adj" : 'SA',
                   				"age" : 'Y15-64',
@@ -496,8 +480,7 @@ var EurostatDatabases = [
                                  UrlStructure:{
                            		IndicatorName: "sex",
                            		UnitName: 'unit',
-                           		DisplayMessageOrder:[ 'Indicator' , 'Extra', 'Unit' ],
-                		 		DisplayExtra: ' that is working or are actively looking for work as ',
+                           		DisplayMessageOrder:[ 'Indicator' , 'that is working or are actively looking for work as', 'Unit' ],
                            		extras: {
                       				"s_adj" : 'SA',
                       				"age" : 'Y15-64',
@@ -522,8 +505,7 @@ var EurostatDatabases = [
                      	UrlStructure:{
                      		IndicatorName: "isced11",
                      		UnitName: 'unit',
-                     		DisplayMessageOrder:[ 'Unit', 'Extra', 'Indicator'],
-                            DisplayExtra: ' with ',
+                     		DisplayMessageOrder:[ 'Unit', 'with', 'Indicator'],
                      		extras: {
                 				"age" : 'Y15-64',
                 				'sex' : 'T'
@@ -545,8 +527,7 @@ var EurostatDatabases = [
                     	UrlStructure:{
                     		IndicatorName: "age",
                     		UnitName: 'unit',
-                    		DisplayMessageOrder:[ 'Unit', 'Indicator', 'Extra', ],
-                            DisplayExtra: ' that are Temporary employees ',
+                    		DisplayMessageOrder:[ 'Unit', 'that are Temporary employees', 'Extra', ],
                     		extras: {
                     			"sex" : 'T',
                     			'citizen' : 'TOTAL'
@@ -568,8 +549,7 @@ var EurostatDatabases = [
                     	UrlStructure:{
                     		IndicatorName: "age",
                     		UnitName: 'unit',
-                    		DisplayMessageOrder:[ 'Unit', 'Extra', 'Indicator' ],
-                            DisplayExtra: ' that is part time ',
+                    		DisplayMessageOrder:[ 'Unit', 'that is part time', 'Indicator' ],
                     		extras: {
                     			"sex" : 'T'
                					}
@@ -590,8 +570,7 @@ var EurostatDatabases = [
                     	  UrlStructure:{
                     		IndicatorName: "age",
                     		UnitName: 'unit',
-                    		DisplayMessageOrder:[ 'Unit', 'Extra', 'Indicator' ],
-                            DisplayExtra: ' that is unvoluntary ',
+                    		DisplayMessageOrder:[ 'Unit', 'that is unvoluntary', 'Indicator' ],
                     		extras: {
                     			"sex" : 'T'
                					}
@@ -613,8 +592,7 @@ var EurostatDatabases = [
                     	UrlStructure:{
                     		IndicatorName: "nace_r2",
                     		UnitName: 'unit',
-                    		DisplayMessageOrder:[ 'Unit', 'Extra', 'Indicator' ],
-                            DisplayExtra: ' that is precarious at ',
+                    		DisplayMessageOrder:[ 'Unit', 'that is precarious at', 'Indicator' ],
                     		extras: {
                     			"sex" : 'T',
                     			'age' : 'Y_GE15'
@@ -638,8 +616,7 @@ var EurostatDatabases = [
                       	UrlStructure:{
                       		IndicatorName: "nace_r1",
                       		UnitName: 'unit',
-                      		DisplayMessageOrder:[ 'Unit', 'Extra', 'Indicator' ],
-                            DisplayExtra: ' that is precarious at ',
+                      		DisplayMessageOrder:[ 'Unit', 'that is precarious at', 'Indicator' ],
                       		extras: {
                       			"sex" : 'T',
                       			'age' : 'Y_GE15'
@@ -662,8 +639,7 @@ var EurostatDatabases = [
                       	UrlStructure:{
                       		IndicatorName: "indic_em",
                       		UnitName: 'unit',
-                      		DisplayMessageOrder:[ 'Indicator', 'Extra', 'Unit' ],
-                      		DisplayExtra: ' as ',
+                      		DisplayMessageOrder:[ 'Indicator', 'as', 'Unit' ],
                       		extras: {
                       			"sex" : 'T',
                       			'age' : 'Y15-74'
@@ -691,8 +667,7 @@ var EurostatDatabases = [
 		   	         UrlStructure:{
 		   	         	IndicatorName: "cofog99",
 		   	            UnitName: 'unit',
-			   	   		DisplayMessageOrder:[ 'Unit' , 'Extra', 'Indicator'],
-	              		DisplayExtra: ' spent on ',
+			   	   		DisplayMessageOrder:[ 'Unit' , 'spent on', 'Indicator'],
 		   	         extras: {
          				"sector" : 'S13',
          				'na_item' : 'TE'
@@ -714,8 +689,7 @@ var EurostatDatabases = [
 		   	         UrlStructure:{
 		   	         	IndicatorName: "na_item",
 		   	            UnitName: 'unit',
-		   	            DisplayMessageOrder:[ 'Indicator', 'Extra', 'Unit' ],
-		   	            DisplayExtra: ' as ',
+		   	            DisplayMessageOrder:[ 'Indicator', 'as', 'Unit' ],
 		   	         extras: {
          				"sector" : 'S13'
          				}
@@ -736,8 +710,7 @@ var EurostatDatabases = [
 		   	         UrlStructure:{
 		   	         	IndicatorName: "na_item",
 		   	            UnitName: 'unit',
-		   	            DisplayMessageOrder:[ 'Indicator', 'Extra', 'Unit' ],
-		   	            DisplayExtra: ' as ',
+		   	            DisplayMessageOrder:[ 'Indicator', 'as', 'Unit' ],
 		   	         extras: {
          				"sector" : 'S13'
          				}
@@ -758,8 +731,7 @@ var EurostatDatabases = [
 		   	         UrlStructure:{
 		   	         	IndicatorName: "sector",
 		   	            UnitName: 'unit',
-		   	            DisplayMessageOrder:[ 'Unit' , 'Extra', 'Indicator'],
-		   	            DisplayExtra: ' owned by ',
+		   	            DisplayMessageOrder:[ 'Unit' , 'owned by', 'Indicator'],
 		   	         extras: {
          				"maturity" : 'TOTAL',
          				'na_item': 'GD'
@@ -781,8 +753,7 @@ var EurostatDatabases = [
 		   	         UrlStructure:{
 		   	         	IndicatorName: "na_item",
 		   	            UnitName: 'unit',
-		   	         DisplayMessageOrder:['Indicator','Extra', 'Unit'],
-		   	            DisplayExtra: ' as ',
+		   	         DisplayMessageOrder:['Indicator','as', 'Unit'],
 		   	         extras: {
          				"sector" : 'S13',
 
@@ -815,7 +786,6 @@ var EurostatDatabases = [
 		   	         	IndicatorName: "citizen",
 		   	            UnitName: 'unit',
 		   	            DisplayMessageOrder:['Indicator'],
-		   	            DisplayExtra: '',
 		   	         extras: {
 		   	        	 "age" : 'TOTAL',
 		   	        	 'sex': 'T'
@@ -838,7 +808,6 @@ var EurostatDatabases = [
 		   	         UrlStructure:{
 		   	         	IndicatorName: "indic_de",
 		   	         	DisplayMessageOrder:['Indicator'],
-		   	            DisplayExtra: '',
 
 		   	         }
 		   	     },
@@ -857,8 +826,7 @@ var EurostatDatabases = [
 		   	         UrlStructure:{
 		   	         	IndicatorName: "sex",
 		   	         	UnitName: 'unit',
-		   	         	DisplayMessageOrder:['Unit', 'Extra', 'Indicator'],
-		   	         	DisplayExtra: ' of ',
+		   	         	DisplayMessageOrder:['Unit', 'of', 'Indicator'],
 		   	         extras: {
 		   	        	 "agedef" : 'REACH',
 		   	        	 'age': 'TOTAL'
@@ -878,10 +846,9 @@ var EurostatDatabases = [
 						location: 'EU',
 					  },
 		   	         UrlStructure:{
-		   	           	IndicatorName: "age",
+		   	         	IndicatorName: "age",
 		   	           UnitName: 'unit',
-		   	    	DisplayMessageOrder:['Unit',  'Indicator'],
-	   	         	DisplayExtra: ' of emmigrants ',
+		   	    	DisplayMessageOrder:['Unit',  'Indicator', 'of emmigrants'],
 		   	         extras: {
 		   	        	"citizen" : 'TOTAL',
 		   	        	 'agedef': 'REACH',
@@ -904,8 +871,7 @@ var EurostatDatabases = [
 		   	         UrlStructure:{
 		   	         IndicatorName: "sex",
 		   	         UnitName: 'unit',
-		   	         DisplayMessageOrder:['Indicator', 'Extra', 'Unit' ],
-		   	         DisplayExtra: ' Life expectancy ',
+		   	         DisplayMessageOrder:['Indicator', 'Life expectancy', 'Unit' ],
 		   	         extras: {
 		   	        	 "age" : 'Y_LT1',
 
@@ -927,7 +893,6 @@ var EurostatDatabases = [
 		   	         UrlStructure:{
 		   	         IndicatorName: "indic_de",
 		   	         DisplayMessageOrder:['Indicator'],
-		   	         DisplayExtra: '',
 		   	         }
 		   	     },
 		    	  {
@@ -945,8 +910,7 @@ var EurostatDatabases = [
 		   	         UrlStructure:{
 		   	         	IndicatorName: "citizen",
 		   	         	UnitName: 'unit',
-		   	         DisplayMessageOrder:['Unit', 'Extra', 'Indicator'],
-		   	         DisplayExtra: ' that applyed for asylum from ',
+		   	         DisplayMessageOrder:['Unit', 'that applyed for asylum from', 'Indicator'],
 		   	         extras: {
 		   	        	"asyl_app" : 'ASY_APP',
 		   	        	'age': 'TOTAL',
@@ -969,8 +933,7 @@ var EurostatDatabases = [
 		   	         UrlStructure:{
 		   	         	IndicatorName: "decision",
 		   	         	UnitName: 'unit',
-		   	         	DisplayMessageOrder:['Unit', 'Extra', 'Indicator'],
-		   	         	DisplayExtra: ' with ',
+		   	         	DisplayMessageOrder:['Unit', 'with', 'Indicator'],
 		   	         extras: {
 		   	        	 "citizen" : 'TOTAL',
 		   	        	 'age': 'TOTAL',
@@ -995,7 +958,6 @@ var EurostatDatabases = [
 		   	         	IndicatorName: "iccs",
 		   	            UnitName: 'unit',
 		   	            DisplayMessageOrder:[ 'Indicator', 'Unit'],
-		   	            DisplayExtra: '',
 		   	         }
 		   	     },
 
@@ -1022,8 +984,7 @@ var EurostatDatabases = [
 		   	         UrlStructure:{
 		   	         IndicatorName: "icha11_hf",
 		   	         UnitName: 'unit',
-		   	         DisplayMessageOrder:['Unit', 'Extra', 'Indicator'],
-		   	         DisplayExtra: ' financed by ',
+		   	         DisplayMessageOrder:['Unit', 'financed by', 'Indicator'],
 		   	         }
            },
            {
@@ -1043,8 +1004,7 @@ var EurostatDatabases = [
 		   	         UrlStructure:{
 		   	         	IndicatorName: "levels",
 		   	         	UnitName: 'age',
-		   	         	DisplayMessageOrder:['Unit', 'Extra', 'Indicator'],
-		   	         	DisplayExtra: ' that rate their health status as  ',
+		   	         	DisplayMessageOrder:['Unit', 'that rate their health status as', 'Indicator'],
 		   	         extras: {
 		   	        	 "deg_urb" : 'TOTAL',
 		   	        	'unit': 'PC',
@@ -1068,8 +1028,7 @@ var EurostatDatabases = [
 		   	         UrlStructure:{
 		   	         	IndicatorName: "wstatus",
 		   	         	UnitName: 'unit',
-		   	         	DisplayMessageOrder:['Unit', 'Indicator', 'Extra' ],
-		   	         	DisplayExtra: ' having a long-standing illness or health problem ',
+		   	         	DisplayMessageOrder:['Unit', 'Indicator', 'having a long-standing illness or health problem'],
 		   	         extras: {
 		   	        	'age': 'Y_GE16',
 		   	        	 'sex' : 'T'
@@ -1092,8 +1051,7 @@ var EurostatDatabases = [
 		   	         UrlStructure:{
 		   	         IndicatorName: "owner",
 		   	         UnitName: 'unit',
-		   	         DisplayMessageOrder:['Unit', 'Extra', 'Indicator' ],
-		   	         DisplayExtra: ' that are ',
+		   	         DisplayMessageOrder:['Unit', 'that are', 'Indicator' ],
 
 		   	         }
       },
@@ -1114,9 +1072,7 @@ var EurostatDatabases = [
 		   	         UrlStructure:{
 		   	         	IndicatorName: "facility",
 		   	         	UnitName: 'unit',
-		   	         DisplayMessageOrder:['Indicator', 'Unit' ],
-		   	         DisplayExtra: ' that are ',
-
+		   	         DisplayMessageOrder:['Indicator', 'Unit' , 'that are'],
 		   	         }
       },
 //      {
@@ -1164,8 +1120,7 @@ var EurostatDatabases = [
                    UrlStructure:{
                    	IndicatorName: "sex",
                    	UnitName: 'unit',
-                    DisplayMessageOrder:['Unit', 'Indicator', 'Extra'  ],
-		   	        DisplayExtra: ' that has not completed education or training ',
+                    DisplayMessageOrder:['Unit', 'Indicator', 'that has not completed education or training' ],
                     extras: {
 		   	        	 "wstatus" : 'POP',
 		   	        	'age': 'Y18-24',
@@ -1189,9 +1144,7 @@ var EurostatDatabases = [
                    UrlStructure:{
                    	IndicatorName: "isced11",
                    	UnitName: 'unit',
-                    DisplayMessageOrder:['Unit', 'Extra' ,'Indicator'],
-		   	        DisplayExtra: ' for ',
-
+                    DisplayMessageOrder:['Unit', 'for' ,'Indicator'],
                    }
                },
                {
@@ -1209,8 +1162,7 @@ var EurostatDatabases = [
                    UrlStructure:{
                    	IndicatorName: "indic_ed",
                    	UnitName: 'unit',
-                    DisplayMessageOrder:['Unit', 'Extra' ,'Indicator'],
-		   	        DisplayExtra: ' dedicated to ',
+                    DisplayMessageOrder:['Unit', 'dedicated to' ,'Indicator'],
 
                    }
                },
@@ -1229,8 +1181,7 @@ var EurostatDatabases = [
                    UrlStructure:{
                    	IndicatorName: "isced11",
                 	UnitName: 'unit',
-                	 DisplayMessageOrder:['Unit', 'Extra' ,'Indicator'],
-  		   	        DisplayExtra: ' dedicated to ',
+                	 DisplayMessageOrder:['Unit', 'dedicated to' ,'Indicator'],
                    }
                },
                {
@@ -1248,8 +1199,7 @@ var EurostatDatabases = [
                    UrlStructure:{
                    	IndicatorName: "indic_ed",
                 	UnitName: 'unit',
-                	DisplayMessageOrder:['Unit', 'Extra' ,'Indicator'],
-  		   	        DisplayExtra: ' dedicated to Financial aid for ',
+                	DisplayMessageOrder:['Unit', 'dedicated to Financial aid for' ,'Indicator'],
                    }
                },
                {
@@ -1267,8 +1217,7 @@ var EurostatDatabases = [
                    UrlStructure:{
                    	IndicatorName: "isced11",
                 	UnitName: 'unit',
-                	DisplayMessageOrder:['Unit', 'Extra' ,'Indicator'],
-  		   	        DisplayExtra: ' dedicated to Financial aid for ',
+                	DisplayMessageOrder:['Unit', 'dedicated to Financial aid for' ,'Indicator'],
                    }
                },
                {
@@ -1286,8 +1235,7 @@ var EurostatDatabases = [
                    UrlStructure:{
                    	IndicatorName: "wstatus",
                 	UnitName: 'unit',
-                 	DisplayMessageOrder:['Unit', 'Extra' ,'Indicator'],
-  		   	        DisplayExtra: ' that ',
+                 	DisplayMessageOrder:['Unit', 'that' ,'Indicator'],
                 	extras: {
 		   	        	 extra1: {"sex" : 'T'},
 		   	        	 extra2:{'age': 'Y15-34'},
@@ -1311,8 +1259,7 @@ var EurostatDatabases = [
                    UrlStructure:{
                    	IndicatorName: "isced11",
                 	UnitName: 'unit',
-                	DisplayMessageOrder:['Unit', 'Indicator', 'Extra'],
-  		   	        DisplayExtra: ' & unemployed ',
+                	DisplayMessageOrder:['Unit', 'Indicator', '& unemployed'],
                 	extras: {
 		   	        	 "sex" : 'T',
 		   	        	 'age': 'Y15-74',
@@ -1342,8 +1289,8 @@ var EurostatDatabases = [
         UrlStructure:{
         	IndicatorName: "age",
         	UnitName: 'unit',
-        	DisplayMessageOrder:['Unit', 'Indicator', 'Extra'],
-	   	    DisplayExtra: ' that are at risk of poverty or social exclusion ',
+        	DisplayMessageOrder:['Unit', 'Indicator', 'that are at risk of poverty or social exclusion'],
+
         	extras: {
   	        	"sex" : 'T',
 
@@ -1365,9 +1312,7 @@ var EurostatDatabases = [
 					  },
         UrlStructure:{
         	IndicatorName: "isced11",
-        	DisplayMessageOrder:[ 'Indicator', 'Extra'],
-	   	    DisplayExtra: ' working & at risk of poverty ',
-
+        	DisplayMessageOrder:[ 'Indicator', ' working & at risk of poverty'],
         }
     },
     {
@@ -1386,8 +1331,7 @@ var EurostatDatabases = [
         UrlStructure:{
         	IndicatorName: "hhtyp",
         	UnitName: 'currency',
-        	DisplayMessageOrder:[ 'Indicator', 'Extra', 'Unit'],
-	   	    DisplayExtra: ' with less income are considered to be in risk at poverty, ',
+        	DisplayMessageOrder:[ 'Indicator', ' with less income are considered to be in risk at poverty,', 'Unit'],
         	extras: {
   	        	 "indic_il" : 'T',
   	        	 'indic_il': 'LI_C_M60',
@@ -1409,8 +1353,7 @@ var EurostatDatabases = [
 
         UrlStructure:{
         	IndicatorName: "indic_il",
-        	DisplayMessageOrder:['Extra'],
-	   	    DisplayExtra: '0 = perfect Equality, 100 = Perfect Inequality',
+        	DisplayMessageOrder:['0 = perfect Equality, 100 = Perfect Inequality'],
 
         }
     },
@@ -1429,9 +1372,7 @@ var EurostatDatabases = [
         UrlStructure:{
         	IndicatorName: "spdeps",
         	UnitName: 'unit',
-        	DisplayMessageOrder:[ 'Unit', 'Extra', 'Indicator'],
-	   	    DisplayExtra: ' deditaced to ',
-
+        	DisplayMessageOrder:[ 'Unit', 'deditaced to', 'Indicator'],
 
         }
     },
@@ -1445,13 +1386,12 @@ var EurostatDatabases = [
         	End: 2015
         },
          Geo: {
-						location: 'EU',
-					  },
+        	location: 'EU',
+		 },
         UrlStructure:{
         	IndicatorName: "spdepb",
         	UnitName: 'unit',
-        	DisplayMessageOrder:[ 'Unit', 'Extra', 'Indicator'],
-	   	    DisplayExtra: ' of ',
+        	DisplayMessageOrder:[ 'Unit', 'of', 'Indicator'],
           	extras: {
  	        	 "spdepm" : 'TOTAL',
  	        	 'sex': 'T',
@@ -1474,8 +1414,7 @@ var EurostatDatabases = [
         UrlStructure:{
         	IndicatorName: "spdepb",
         	UnitName: 'unit',
-        	DisplayMessageOrder:[ 'Unit', 'Extra', 'Indicator'],
-	   	    DisplayExtra: ' deditaced to ',
+        	DisplayMessageOrder:[ 'Unit', 'deditaced to', 'Indicator'],
           	extras: {
  	        	 "spdepm" : 'TOTAL'
  	         		}
@@ -1497,8 +1436,7 @@ var EurostatDatabases = [
         UrlStructure:{
         	IndicatorName: "tenure",
         	UnitName: 'hhtyp',
-          	DisplayMessageOrder:[ 'Unit', 'Extra', 'Indicator'],
-	   	    DisplayExtra: ' that is ',
+          	DisplayMessageOrder:[ 'Unit', 'that is', 'Indicator'],
           	extras: {
  	        	 "incgrp" : 'TOTAL',
  	         		}
@@ -1528,8 +1466,7 @@ var EurostatDatabases = [
 			UrlStructure:{
 				IndicatorName : 'nace_r2',
 				UnitName: 'unit',
-				DisplayMessageOrder:[ 'Unit', 'Extra', 'Indicator'],
-				DisplayExtra: ' of greenhouse gases created by ',
+				DisplayMessageOrder:[ 'Unit', 'of greenhouse gases created by', 'Indicator'],
 				extras: {
 					"airpol" : 'CO2_N2O_CH4_CO2E'
 					}
@@ -1553,8 +1490,7 @@ var EurostatDatabases = [
 				UrlStructure:{
 					IndicatorName : 'nace_r2',
 					UnitName: 'unit',
-					DisplayMessageOrder:[ 'Unit', 'Extra', 'Indicator'],
-					DisplayExtra: ' by ',
+					DisplayMessageOrder:[ 'Unit', 'by', 'Indicator'],
 					extras: {
 						"airpol" : 'CO2_N2O_CH4_CO2E',
 						"na_item" : 'B1G'
@@ -1578,8 +1514,7 @@ var EurostatDatabases = [
 					UrlStructure:{
 						IndicatorName : 'tax',
 						UnitName: 'unit',
-						DisplayMessageOrder:[ 'Indicator', 'Extra', 'Unit' ],
-						DisplayExtra: ' as ',
+						DisplayMessageOrder:[ 'Indicator', 'as', 'Unit'],
 					},
 
 				},
@@ -1599,8 +1534,7 @@ var EurostatDatabases = [
 					UrlStructure:{
 						IndicatorName : 'ceparema',
 						UnitName: 'unit',
-						DisplayMessageOrder:[ 'Unit', 'Extra', 'Indicator'],
-						DisplayExtra: ' dedicated to ',
+						DisplayMessageOrder:[ 'Unit', 'dedicated to', 'Indicator'],
 						extras: {
 							"sector" : 'S13_S15',
 							"env_econ" : 'EP_D3_7_92_99_P',
@@ -1627,8 +1561,7 @@ var EurostatDatabases = [
 					UrlStructure:{
 						IndicatorName : 'tax',
 						UnitName: 'currency',
-						DisplayMessageOrder:[ 'Extra', 'Unit',  'Indicator'],
-						DisplayExtra: ' Electicity prices in ',
+						DisplayMessageOrder:[ 'Electicity prices in', 'Unit',  'Indicator'],
 						extras: {
 							"unit" : 'KWH',
 							"consom" : '4161903'
@@ -1652,8 +1585,7 @@ var EurostatDatabases = [
 					UrlStructure:{
 						IndicatorName : 'breakdown',
 						UnitName: 'currency',
-						DisplayMessageOrder:[ 'Unit', 'Extra', 'Indicator'],
-						DisplayExtra: ' dedicated to ',
+						DisplayMessageOrder:[ 'Unit', 'dedicated to', 'Indicator'],
 						extras: {
 							"consom" : '4161903'
 							}
@@ -1677,8 +1609,7 @@ var EurostatDatabases = [
 					UrlStructure:{
 						IndicatorName : 'consom',
 						UnitName: 'currency',
-						DisplayMessageOrder:[ 'Unit', 'Extra', 'Indicator'],
-						DisplayExtra: ' for ',
+						DisplayMessageOrder:[ 'Unit', 'for', 'Indicator'],
 						extras: {
 							"unit" : 'KWH',
 							"tax": 'I_TAX',
@@ -1703,8 +1634,7 @@ var EurostatDatabases = [
 					UrlStructure:{
 						IndicatorName : 'consom',
 						UnitName: 'currency',
-						DisplayMessageOrder:[ 'Unit', 'Extra', 'Indicator'],
-						DisplayExtra: ' for ',
+						DisplayMessageOrder:[ 'Unit', 'for', 'Indicator'],
 						extras: {
 							"unit" : 'KWH',
 							"tax": 'X_TAX',
@@ -1731,8 +1661,7 @@ var EurostatDatabases = [
                     UrlStructure:{
                     IndicatorName: 'sectperf',
                     UnitName: 'unit',
-                 	DisplayMessageOrder:[ 'Unit', 'Extra', 'Indicator'],
-        	   	    DisplayExtra: ' spent in R&D by ',
+                 	DisplayMessageOrder:[ 'Unit', 'spent in R&D by', 'Indicator'],
                     },
                     Time: {
                     	Type: 'A',
@@ -1753,8 +1682,7 @@ var EurostatDatabases = [
                     UrlStructure:{
                     IndicatorName :'sectfund',
                     UnitName: 'unit',
-                	DisplayMessageOrder:[ 'Unit', 'Extra', 'Indicator'],
-        	   	    DisplayExtra: ' invested in R&D by ',
+                	DisplayMessageOrder:[ 'Unit', 'invested in R&D by', 'Indicator'],
                 	extras: {
             			"sectperf" : 'TOTAL'
             			}
@@ -1774,8 +1702,7 @@ var EurostatDatabases = [
                         UrlStructure:{
                         IndicatorName :'sectperf',
                         UnitName: 'unit',
-                        DisplayMessageOrder:[ 'Unit', 'Extra', 'Indicator'],
-            	   	    DisplayExtra: ' R&D personnel in ',
+                        DisplayMessageOrder:[ 'Unit', 'R&D personnel in', 'Indicator'],
                     	extras: {
                 			"prof_pos" : 'TOTAL',
                 			"sex" : 'T'
@@ -1796,8 +1723,7 @@ var EurostatDatabases = [
                     UrlStructure:{
                     IndicatorName :'ipc',
                     UnitName: 'unit',
-                    DisplayMessageOrder:[ 'Unit', 'Extra', 'Indicator'],
-        	   	    DisplayExtra: ' in ',
+                    DisplayMessageOrder:[ 'Unit', 'in', 'Indicator'],
 
                     },
 
@@ -1815,8 +1741,7 @@ var EurostatDatabases = [
                 UrlStructure:{
                 IndicatorName :'ipc',
                 UnitName: 'unit',
-                DisplayMessageOrder:[ 'Unit', 'Extra', 'Indicator'],
-    	   	    DisplayExtra: ' in ',
+                DisplayMessageOrder:[ 'Unit', 'in', 'Indicator'],
 
                 },
             },
@@ -1834,8 +1759,7 @@ var EurostatDatabases = [
                 UrlStructure:{
                 IndicatorName :'nace_r2',
                 UnitName: 'unit',
-                DisplayMessageOrder:[ 'Unit', 'Extra', 'Indicator'],
-    	   	    DisplayExtra: ' of enterprises dedicated to ',
+                DisplayMessageOrder:[ 'Unit', 'of enterprises dedicated to', 'Indicator'],
 
                 },
             },
