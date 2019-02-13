@@ -14,7 +14,6 @@ else:
 
 
 class UserSerializer(serializers.ModelSerializer):
-    user_saved_data = UserDataSerializers(many=True)
 
     class Meta:
         model = User
