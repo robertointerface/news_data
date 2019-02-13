@@ -15,6 +15,7 @@ import {
     onlyLettersNumbers,
     passwordSame
 } from './validation'
+import {urls} from 'constants/constants'
 
 export const handle_edit_first_time = (token) => {
     return (dispatch, getState) => {
@@ -34,7 +35,7 @@ export const handle_edit_first_time = (token) => {
             'token': token
         }
         var csrftoken = getCookie('csrftoken');
-        return fetch(`http://127.0.0.1:8080/accounts/edituserfirsttime/`, {
+        return fetch(`${urls.EDIT_USER_FIRST_TIME}`, {
             method: 'POST',
             mode: 'same-origin',
             headers: {
@@ -83,7 +84,7 @@ export const handle_signup = () => {
                 'email': email,
         }
         var csrftoken = getCookie('csrftoken');
-        return fetch('http://127.0.0.1:8080/accounts/signup/', {
+        return fetch(`${urls.SIGN_UP}`, {
             method: 'POST',
             mode: 'same-origin',
             headers: {
@@ -130,7 +131,7 @@ export const handle_login = () => {
             username: username,
             password: password,
         }
-        fetch('http://127.0.0.1:8080/accounts/token-auth/', {
+        fetch(`${urls.LOG_IN}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -152,6 +153,14 @@ export const handle_login = () => {
         })
     }
 };
+
+export const handle_refresh = () =>{
+
+    return fetch(`${urls.REFRESH_TOKEN}`, {
+
+    })
+}
+
 
 export const handle_logout = () => {
     /*

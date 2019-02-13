@@ -132,6 +132,8 @@ JWT_AUTH = {
     'JWT_VERIFY': True,
     'JWT_EXPIRATION_DELTA': datetime.timedelta(hours=20),
     'JWT_ALLOW_REFRESH': True,
+    #Token can be refreshed up to 7 days from when user logged in
+    'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(days=1),
     'JWT_RESPONSE_PAYLOAD_HANDLER': jwt_response_handler
 }
 

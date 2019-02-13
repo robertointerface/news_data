@@ -2,11 +2,12 @@ from django.conf.urls import url, include
 
 from django.conf import settings
 from django.conf.urls.static import static
-from rest_framework_jwt.views import obtain_jwt_token
+from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token
 import views
 
 urlpatterns = [
             url(r'^token-auth/', obtain_jwt_token),
+            url(r'^token-refresh/', refresh_jwt_token),
             url(r'^current_user/$', views.current_user),
             url(r'^users/$', views.UserList.as_view()),
             url(r'^signup/$', views.sign_up),

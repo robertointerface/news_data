@@ -36,6 +36,10 @@ export const ActionsConstants = {
     INFO_DATA_DISPLAY: 'INFO_DATA_DISPLAY'
 }
 export const urls = {
+    LOG_IN: 'http://127.0.0.1:8080/accounts/token-auth/',
+    SIGN_UP: 'http://127.0.0.1:8080/accounts/signup/',
+    EDIT_USER_FIRST_TIME: 'http://127.0.0.1:8080/accounts/edituserfirsttime/',
+    REFRESH_TOKEN: 'http://127.0.0.1:8080/accounts/token-refresh/',
     MAIN: 'http://localhost:8080/display/newslist/',
     NEW_DETAIL: 'http://localhost:8080/display/getnew/',
     DEVELOP: 'http://localhost:8080',
