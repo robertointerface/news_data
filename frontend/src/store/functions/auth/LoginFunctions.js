@@ -154,11 +154,28 @@ export const handle_login = () => {
     }
 };
 
-export const handle_refresh = () =>{
+export const handle_refresh_token = () =>{
+    /*
+        @Func: Refresh JWT Token
+     */
+    var csrftoken = getCookie('csrftoken'); //get saved cookie
+    var data = {
+        'token': `${localStorage.getItem('token')}`,
+    }
 
     return fetch(`${urls.REFRESH_TOKEN}`, {
-
+        method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrftoken
+            },
+            body: JSON.stringify(data)
     })
+        .then(response => response.json())
+        .then(response => {
+            console.log('new token');
+            localStorage.setItem('token', response.token);
+        })
 }
 
 
