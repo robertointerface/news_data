@@ -26,7 +26,9 @@ class NewDetailContainer extends Component{
                  headline2: newData.headline2,
                  headline3: newData.headline3,
                  content: newData.content,
-                 references: newData.references
+                 references: newData.references,
+                 created_by: newData.created_by,
+                 time_stamp: newData.time_stamp
              })
          })
     }
@@ -35,22 +37,24 @@ class NewDetailContainer extends Component{
         var {new_title, headline1, headline2, headline3, content, references} = this.state
         return (
             <PageTemplate>
-                <div className='row'>
-                    <div className='col-12'>
-                        <NewCard title={new_title}
-                                 headline1={headline1}
-                                 headline2={headline2}
-                                 headline3={headline3}
-                                 content={content}
-                        />
-                    </div>
-                    {(references.length > 0) ?
+                {(new_title)?
+                    <div className='row'>
                         <div className='col-12'>
-                            <DisplayReferences references={references}/>
+                            <NewCard title={new_title}
+                                     headline1={headline1}
+                                     headline2={headline2}
+                                     headline3={headline3}
+                                     content={content}
+                            />
                         </div>
-                        : null
-                    }
-                </div>
+                        {(references.length > 0) ?
+                            <div className='col-12'>
+                                <DisplayReferences references={references}/>
+                            </div>
+                            : null
+                        }
+                    </div> : null
+                }
             </PageTemplate>
         )
     }
