@@ -156,7 +156,8 @@ export const handle_login = () => {
 
 export const handle_refresh_token = () =>{
     /*
-        @Func: Refresh JWT Token
+        @Func: Refresh JWT Token.
+
      */
     var csrftoken = getCookie('csrftoken'); //get saved cookie
     var data = {
@@ -173,8 +174,13 @@ export const handle_refresh_token = () =>{
     })
         .then(response => response.json())
         .then(response => {
-            console.log('new token');
-            localStorage.setItem('token', response.token);
+             if(typeof response.token == "undefined"){
+                throw 'token expired';
+            }
+            return response.token
+        })
+        .catch(error => {
+            throw error
         })
 }
 
