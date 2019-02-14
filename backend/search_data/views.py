@@ -6,7 +6,6 @@ from django.db import DatabaseError
 from decorators import ajax_required
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse, HttpResponse
-from rest_framework.views import APIView
 from rest_framework.decorators import api_view
 import json
 urlfetch.set_default_fetch_deadline(15) #set fetching time limit to 15 seconds,

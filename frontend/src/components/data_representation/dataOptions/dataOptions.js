@@ -2,7 +2,8 @@ import React from 'react';
 import {
     SaveDataContainer,
     VisitContainer,
-    GraphContainer
+    GraphContainer,
+    ExcelDownloadContainer
 } from 'containers/searchDataContainers'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTools } from '@fortawesome/free-solid-svg-icons'
@@ -20,6 +21,7 @@ const DataOptions = ({resulId='', resultSaved=false}) => {
                         <SaveDataContainer resultId={resulId} resultSaved={resultSaved}/>
                         <VisitContainer/>
                         <GraphContainer/>
+                        <ExcelDownloadContainer/>
                     </div>
                 </div>
             </div>

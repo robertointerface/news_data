@@ -3,7 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
     faSave,
     faChartBar,
-    faPaperPlane
+    faPaperPlane,
+    faFileExcel
 } from '@fortawesome/free-regular-svg-icons'
 
 const Options = ({title='', icon='', resultId='', onClick=f=>f}) =>
@@ -25,6 +26,11 @@ const GoToThirdParty = ({title='', onClick=f=>f}) => {
     )
 }
 
+const ExcelDownload = ({title='', onClick=f=>f}) => {
+    return (
+        <Options title={title} icon={faFileExcel} onClick={onClick}/>
+    )
+}
 
 const SaveData = ({title='', resultId='', resultSaved=false, onClick=f=>f}) => {
     return (
@@ -40,4 +46,4 @@ const SaveData = ({title='', resultId='', resultSaved=false, onClick=f=>f}) => {
     )
 }
 
-export {Graph, GoToThirdParty, SaveData}
+export {Graph, GoToThirdParty, SaveData, ExcelDownload}

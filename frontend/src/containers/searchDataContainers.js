@@ -25,7 +25,7 @@ import {
     handle_change_unit,
     handle_save_result_user
 } from 'functions/Results_management/Results'
-import {Graph, GoToThirdParty, SaveData} from 'components/data_representation/dataOptions/options'
+import {Graph, GoToThirdParty, SaveData, ExcelDownload} from 'components/data_representation/dataOptions/options'
 import MessageDisplay from 'components/data_representation/messageDisplay'
 
 export const SearchDataContainer = connect(
@@ -231,6 +231,19 @@ export const GraphContainer = connect(
         })
 )(Graph)
 
+export const ExcelDownloadContainer = connect(
+    state =>
+        ({
+            title: 'download in excel'
+        }),
+    dispatch =>
+        ({
+            onClick(e, resultId){
+
+            }
+
+        })
+)(ExcelDownload)
 
 export const DisplayDataMessage = connect(
     (state, props) =>
