@@ -17,6 +17,7 @@
     "bootstrap": "^4.2.1",
     "copy-webpack-plugin": "^4.6.0",
     "css-loader": "^2.1.0",
+    "downloadjs": "^1.4.7",
     "fetch": "^1.1.0",
     "file-loader": "^3.0.1",
     "history": "^4.7.2",

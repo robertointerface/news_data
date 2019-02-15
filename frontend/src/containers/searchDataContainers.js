@@ -23,7 +23,8 @@ import {
 import ChangeUnitMeasure from 'components/data_representation/changeUnitMeasure'
 import {
     handle_change_unit,
-    handle_save_result_user
+    handle_save_result_user,
+    handle_excel_download
 } from 'functions/Results_management/Results'
 import {Graph, GoToThirdParty, SaveData, ExcelDownload} from 'components/data_representation/dataOptions/options'
 import MessageDisplay from 'components/data_representation/messageDisplay'
@@ -231,20 +232,6 @@ export const GraphContainer = connect(
         })
 )(Graph)
 
-export const ExcelDownloadContainer = connect(
-    state =>
-        ({
-            title: 'download in excel'
-        }),
-    dispatch =>
-        ({
-            onClick(e, resultId){
-
-            }
-
-        })
-)(ExcelDownload)
-
 export const DisplayDataMessage = connect(
     (state, props) =>
         ({
@@ -256,6 +243,22 @@ export const DisplayDataMessage = connect(
 
         })
 )(MessageDisplay)
+
+export const ExcelDownloadContainer = connect(
+    (state, props) =>
+        ({
+            title: 'download in excel',
+            resultId: props.resultId,
+        }),
+    dispatch =>
+        ({
+            onClick(e, resultId){
+                e.preventDefault();
+                dispatch(handle_excel_download(resultId));
+            }
+
+        })
+)(ExcelDownload)
 
 
 const findChangeUnitMeasure = (id, list=[]) => {

@@ -26,11 +26,7 @@ const GoToThirdParty = ({title='', onClick=f=>f}) => {
     )
 }
 
-const ExcelDownload = ({title='', onClick=f=>f}) => {
-    return (
-        <Options title={title} icon={faFileExcel} onClick={onClick}/>
-    )
-}
+
 
 const SaveData = ({title='', resultId='', resultSaved=false, onClick=f=>f}) => {
     return (
@@ -46,4 +42,9 @@ const SaveData = ({title='', resultId='', resultSaved=false, onClick=f=>f}) => {
     )
 }
 
+const ExcelDownload = ({title='', resultId='', onClick=f=>f}) => {
+    return (
+        <Options title={title} icon={faFileExcel} resultId={resultId} onClick={onClick}/>
+    )
+}
 export {Graph, GoToThirdParty, SaveData, ExcelDownload}

@@ -5,7 +5,7 @@ var EurostatDatabases = [
     SectorName: "Economy",
     id: 'EC',
     Topics:[{
-    	TopicName: "Gross value added by sector (% del GDP)",
+    	TopicName: "Gross value added by sector (% of GDP)",
 		id: 'nama_10_a10',
 		rev: 1,
 		Geo: {

@@ -1,3 +1,4 @@
+import download from 'downloadjs'
 import {prepareRequestData} from 'functions/Create_new/CreateNewFunctions'
 import {getDataRequest} from "functions/Create_new/CreateNewFunctions"
 import {
@@ -12,6 +13,7 @@ import {
     urls,
     flashFlags
 } from 'constants/constants'
+
 
 export const handle_change_unit = (resultId, unitId) => {
     return (dispatch, getState) =>{
@@ -30,6 +32,8 @@ export const handle_change_unit = (resultId, unitId) => {
     }
 
 }
+
+
 
 export const handle_save_result_user = resultId => {
     return (dispatch, getState) => {
@@ -67,6 +71,43 @@ export const handle_save_result_user = resultId => {
 
     }
 }
+
+export const handle_excel_download = resultId => {
+/*
+    @Func: Call API to convert specific result data (JSON format) into an excel file.
+    @Args: resultId,
+    @return: Excel file to browser
+ */
+    return (dispatch, getState) => {
+        var csrftoken = getCookie('csrftoken');
+        var results = getState().Results_management.results
+        var resultToExcel = results.find(result => result['id'] == resultId)
+        if (resultToExcel){
+             var data = {
+                'result': resultToExcel.resultObject.filterResult,
+                 'searchObject': resultToExcel.searchObject
+            }
+            return fetch(`${urls.DOWNLOAD_EXCEL}`, {
+                method: 'POST',
+                mode: 'same-origin',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrftoken
+                },
+                body: JSON.stringify(data)
+            })
+                .then(response => {
+                    return response.blob();
+                })
+                .then(blob =>{
+                   return download(blob, 'tablenew_data.xls', 'application/ms-excel')
+                })
+        }
+    }
+
+}
+
+
 
 const findItemInArray = function (itemId, array) {
 

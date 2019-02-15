@@ -49,7 +49,7 @@ class DataDisplay extends Component{
                                                             />
                                                         </div>
                                                         <div className='offset-1 col-5'>
-                                                            <DataOptions resulId={result.id} resultSaved={result.saved}/>
+                                                            <DataOptions resultId={result.id} resultSaved={result.saved}/>
                                                         </div>
                                                     </div>
                                                 </div>

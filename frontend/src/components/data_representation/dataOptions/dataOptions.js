@@ -8,7 +8,7 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTools } from '@fortawesome/free-solid-svg-icons'
 
-const DataOptions = ({resulId='', resultSaved=false}) => {
+const DataOptions = ({resultId='', resultSaved=false}) => {
     return (
         <div>
             <div className="dropdown row">
@@ -18,10 +18,11 @@ const DataOptions = ({resulId='', resultSaved=false}) => {
                 </button>
                 <div className="dropdown-menu padding0" aria-labelledby="optionsDropdown">
                     <div className='list-group'>
-                        <SaveDataContainer resultId={resulId} resultSaved={resultSaved}/>
+                        <SaveDataContainer resultId={resultId} resultSaved={resultSaved}/>
                         <VisitContainer/>
                         <GraphContainer/>
-                        <ExcelDownloadContainer/>
+                        <ExcelDownloadContainer resultId={resultId}/>
+
                     </div>
                 </div>
             </div>

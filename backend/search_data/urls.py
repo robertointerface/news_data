@@ -2,15 +2,7 @@ from django.conf.urls import url
 from django.conf import settings
 from django.conf.urls.static import static
 
-try:
-    from backend.backend.settings import Migration
-except:
-    from backend.settings import Migration
-
-if Migration:
-    from search_data import views
-else:
-    from backend.search_data import views
+import views
 
 urlpatterns = [
     url(r'^indicators', views.GetIndicators.as_view()),

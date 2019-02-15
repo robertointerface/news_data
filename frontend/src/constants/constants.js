@@ -47,6 +47,7 @@ export const urls = {
     GET_INDICATORS: 'http://localhost:8080/search/indicators',
     SAVE_DATA: 'http://localhost:8080/search/savedata/',
     PUBLISH_LON_NEW: 'http://localhost:8080/createnew/publishlongnew/',
+    DOWNLOAD_EXCEL: 'http://localhost:8080/downloaddata/excel/'
 
 }
 export const DatabaseConstants = {
