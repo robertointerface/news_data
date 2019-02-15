@@ -13,9 +13,9 @@ const Options = ({title='', icon='', resultId='', onClick=f=>f}) =>
     </a>
 
 
-const Graph = ({title='', onClick=f=>f}) => {
+const Graph = ({title='', resultId='', onClick=f=>f}) => {
     return (
-        <Options title={title} icon={faChartBar} onClick={onClick}/>
+        <Options title={title} resultId={resultId} icon={faChartBar} onClick={onClick}/>
     )
 }
 

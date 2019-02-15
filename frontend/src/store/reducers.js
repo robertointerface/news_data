@@ -308,6 +308,8 @@ export const Results_management = (state={}, action) => {
     switch (action.type){
         case C.SAVE_RESULT:
             return Modify_result_management(state, action)
+        case C.SAVE_GRAPH:
+            return Modify_result_management(state, action)
         case C.SET_RESULT_ATTACHED:
             return Modify_result_management(state, action)
         case C.REMOVE_RESULT:
@@ -332,6 +334,11 @@ const Modify_result_management = (state={}, action) => {
                 ...state,
                 numberResults: state.numberResults + 1,
                 results: pushResult(state.results, action.result),
+            }
+        case C.SAVE_GRAPH:
+            return {
+                ...state,
+                charts: pushResult(state.charts, action.chart)
             }
         case C.SET_RESULT_ATTACHED:
             return {

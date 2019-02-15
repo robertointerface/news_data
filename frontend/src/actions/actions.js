@@ -187,7 +187,6 @@ export const save_result = (result = {}) =>
         type: C.SAVE_RESULT,
         result: result
     })
-
 export const set_result_saved = resultId =>
     ({
         type: C.SET_RESULT_SAVED,
@@ -210,4 +209,10 @@ export const info_data_display = (resultId, message) =>
         type: C.INFO_DATA_DISPLAY,
         id: resultId,
         message: message
+    })
+
+export const save_graph = (chart = {}) =>
+    ({
+        type: C.SAVE_GRAPH,
+        chart: chart
     })

@@ -20,7 +20,7 @@ const DataOptions = ({resultId='', resultSaved=false}) => {
                     <div className='list-group'>
                         <SaveDataContainer resultId={resultId} resultSaved={resultSaved}/>
                         <VisitContainer/>
-                        <GraphContainer/>
+                        <GraphContainer resultId={resultId}/>
                         <ExcelDownloadContainer resultId={resultId}/>
 
                     </div>

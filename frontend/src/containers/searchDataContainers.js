@@ -24,7 +24,8 @@ import ChangeUnitMeasure from 'components/data_representation/changeUnitMeasure'
 import {
     handle_change_unit,
     handle_save_result_user,
-    handle_excel_download
+    handle_excel_download,
+    hanle_graph_result
 } from 'functions/Results_management/Results'
 import {Graph, GoToThirdParty, SaveData, ExcelDownload} from 'components/data_representation/dataOptions/options'
 import MessageDisplay from 'components/data_representation/messageDisplay'
@@ -221,12 +222,12 @@ export const VisitContainer = connect(
 export const GraphContainer = connect(
     state =>
         ({
-            title: 'graph '
+            title: 'graph'
         }),
     dispatch =>
         ({
             onClick(e, resultId){
-
+                dispatch(hanle_graph_result(resultId));
             }
 
         })

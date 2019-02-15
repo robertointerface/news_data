@@ -6,7 +6,8 @@ import {
     set_result_saved,
     set_flash_message,
     error_data_display,
-    info_data_display
+    info_data_display,
+    save_graph
 } from "root/actions/actions";
 import {getCookie} from "root/store/functions/auth/Cookies";
 import {
@@ -14,6 +15,7 @@ import {
     flashFlags
 } from 'constants/constants'
 
+import {graph} from 'classes/graph'
 
 export const handle_change_unit = (resultId, unitId) => {
     return (dispatch, getState) =>{
@@ -104,9 +106,45 @@ export const handle_excel_download = resultId => {
                 })
         }
     }
-
 }
 
+export const hanle_graph_result = resultId => {
+    return (dispatch, getState) => {
+        var results = getState().Results_management.results;
+        var resultToGraph = results.find(result => result['id'] == resultId);
+        var graphData = prepareGraphData(resultToGraph);
+        var graphObject = new graph(graphData);
+        graphObject.createData();
+        var chart = {
+            'type': graphObject.type,
+            'data': graphObject.data,
+            'options': graphObject.options
+        }
+        dispatch(save_graph(chart))
+
+    }
+}
+
+const prepareGraphData = resultData => {
+   // var searchObject = {...resultData.searchObject};
+   // var resultObject = {...resultData.resultObject};
+    var graphObject = {};
+    ( {
+        Sector: graphObject.Sector,
+        Topic: graphObject.Topic,
+        Indicator: graphObject.Indicator,
+        Unit: graphObject.Unit,
+        SelectedTimes: graphObject.SelectedTimes,
+        displayMessage: graphObject.displayMessage
+
+    } = resultData.searchObject );
+
+    ({
+        filterResult: graphObject.result
+    } = resultData.resultObject);
+
+    return graphObject;
+}
 
 
 const findItemInArray = function (itemId, array) {

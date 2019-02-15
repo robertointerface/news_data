@@ -64,6 +64,7 @@ export const initialStateCurrentSearch = {
 export const results = {
     numberResults: 0,
     results: [],
+    charts:[]
 }
 
 export const createNewForm = {
