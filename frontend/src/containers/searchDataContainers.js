@@ -227,6 +227,7 @@ export const GraphContainer = connect(
     dispatch =>
         ({
             onClick(e, resultId){
+                e.preventDefault();
                 dispatch(hanle_graph_result(resultId));
             }
 

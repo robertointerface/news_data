@@ -15,7 +15,15 @@ class graph {
         this.options = {
             title: {
                 display: true,
-                text: 'World population per region (in millions)'
+                text: this.displayMessage
+            },
+            scales: {
+                yAxes:[{
+                    scaleLabel:{
+                        display: true,
+                        labelString: this.Unit
+                    }
+                }]
             }
         };
         this.type = 'line';
@@ -30,7 +38,7 @@ class graph {
                 'data': this.result[i]['values'],
                 'label': this.result[i]['name'],
                 'borderColor': GraphLineColors[i],
-
+                'fill': false
             })
         }
         this.data['datasets'] = dataSets;

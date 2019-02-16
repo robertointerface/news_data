@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Component } from 'react';
-var LineChart = require("react-chartjs").Line;
 
+import {Line} from 'react-chartjs-2';
 
 
 
@@ -16,7 +16,7 @@ class GraphDisplay extends Component{
                 {(list.length > 0) ?
                     list.map((chart, i) =>
                     <div className='col-6' key={`CHART-${i}`}>
-                        <LineChart data={chart.data} options={chart.options} width="600" height="250"/>
+                        <Line data={chart.data} options={chart.options} width="600" height="350"/>
                     </div>
                     )
                     :null
