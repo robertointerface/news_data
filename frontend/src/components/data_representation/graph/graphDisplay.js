@@ -15,7 +15,7 @@ class GraphDisplay extends Component{
             <div className='row'>
                 {(list.length > 0) ?
                     list.map((chart, i) =>
-                    <div className='col-6' key={`CHART-${i}`}>
+                    <div className='col-6' key={`CHART-${chart.id}-${i}`}>
                         <Line data={chart.data} options={chart.options} width="600" height="350"/>
                     </div>
                     )

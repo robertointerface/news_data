@@ -116,6 +116,7 @@ export const hanle_graph_result = resultId => {
         var graphObject = new graph(graphData);
         graphObject.createData();
         var chart = {
+            'id': resultId,
             'type': graphObject.type,
             'data': graphObject.data,
             'options': graphObject.options
