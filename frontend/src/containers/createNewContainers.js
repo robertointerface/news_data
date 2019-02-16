@@ -11,7 +11,7 @@ import {
 } from "actions/actions";
 import LongNewForm from "components/create_new/create_long_new/LongNewForm";
 import DataDisplay from "components/data_representation/dataDisplay";
-
+import GraphDisplay from "components/data_representation/graph/graphDisplay"
 import {
     handle_publish_long_new,
     attach_reference
@@ -66,6 +66,19 @@ export const DataDisplayContainer = connect(
 
         })
 )(DataDisplay)
+
+export const GraphDisplayContainer = connect (
+    state =>
+        ({
+            list: state.Results_management.charts,
+
+        }),
+    dispatch =>
+        ({
+
+        })
+)(GraphDisplay)
+
 
 export const AttachedReferencesContainer = connect(
     state =>

@@ -5,7 +5,8 @@ import PageTemplate from 'components/main/PageTemplate'
 
 import {
     CreateNewFormContainer,
-    DataDisplayContainer
+    DataDisplayContainer,
+    GraphDisplayContainer
 } from 'containers/createNewContainers'
 
 import {SearchDataContainer} from 'containers/searchDataContainers'
@@ -28,7 +29,6 @@ class CreateLongNewBlock extends Component{
         this.isAuthorize = isUserAuthorize(username, localStorage.getItem('token'));
     }
     render() {
-
         return (
             <PageTemplate>
                 <div className='row'>
@@ -44,6 +44,7 @@ class CreateLongNewBlock extends Component{
                     </div>
                     <div className="col-12">
                             <DataDisplayContainer/>
+                            <GraphDisplayContainer/>
                     </div>
                 </div>
             </PageTemplate>

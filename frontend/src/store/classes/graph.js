@@ -30,7 +30,7 @@ class graph {
                 'data': this.result[i]['values'],
                 'label': this.result[i]['name'],
                 'borderColor': GraphLineColors[i],
-                'fill': false
+
             })
         }
         this.data['datasets'] = dataSets;
