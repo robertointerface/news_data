@@ -3,7 +3,6 @@ import {GraphLineColors} from 'data/QueryMap/QueryMap'
 class graph {
     constructor(dataObject){
 
-        this.Sector = dataObject.Sector.name;
         this.Topic = dataObject.Topic.name;
         this.Indicator = dataObject.Indicator.name;
         this.Unit = dataObject.Unit.name;
@@ -15,7 +14,7 @@ class graph {
         this.options = {
             title: {
                 display: true,
-                text: this.displayMessage
+                text: `${this.Topic} (${this.Indicator})`
             },
             scales: {
                 yAxes:[{
