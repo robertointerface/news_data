@@ -9,7 +9,7 @@ import {
     save_result,
     save_reference,
     finished_requestiong,
-    attach_result,
+    set_data_attached,
     error_search_data
 } from "actions/actions";
 import {history} from 'root/App.js';
@@ -36,7 +36,9 @@ export const handle_new_change = (e, prevstate) => {
 }
 
 
-export const attach_reference = (id) => {
+
+
+export const attach_data_reference = (id) => {
     /*  When user clicks on 'attach reference' on button
         @Func: Get result from Results_management.results and call save_reference if result was not attached yet.
         @Arg: id(int) time.stamp when reference was requested.
@@ -47,7 +49,7 @@ export const attach_reference = (id) => {
             if(searchResults.attached){
                 throw 'already attached'
             }
-            dispatch(attach_result(id))
+            dispatch(set_data_attached(id))
         }
         catch (error) {
             var searchResults = '';

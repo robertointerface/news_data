@@ -99,7 +99,7 @@ export const Create_new = (state ={}, action) => {
         case C.HANDLE_NEW_CHANGE:
             state = handle_new_change(action.e, state);
             return state
-        case C.SAVE_REFERENCE:
+        case C.ATTACH_REFERENCE:
             return {
                 ...state,
                 references: [...pushItemToArray(state.references, action.object)]
@@ -113,7 +113,6 @@ export const Create_new = (state ={}, action) => {
             return state
 
     }
-
 }
 
 export const Current_search = (state = {}, action) => {

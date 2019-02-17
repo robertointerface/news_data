@@ -15,7 +15,7 @@ import DataDisplay from "components/data_representation/dataDisplay";
 import GraphDisplay from "components/data_representation/graph/graphDisplay"
 import {
     handle_publish_long_new,
-    attach_reference
+    attach_data_reference
 } from 'functions/Create_new/CreateNewFunctions'
 
 import AttachedReferences from "root/components/create_new/attachedReferences";
@@ -56,7 +56,7 @@ export const DataDisplayContainer = connect(
             onAttach(e, id){
                 e.preventDefault();
                 console.log('foudn id: ' + id);
-                dispatch(attach_reference(id))
+                dispatch(attach_data_reference(id))
                 dispatch(info_data_display(id, 'attached' ))
             },
             onRemove(e, id){
@@ -72,15 +72,17 @@ export const GraphDisplayContainer = connect (
     state =>
         ({
             list: state.Results_management.charts,
-
         }),
     dispatch =>
         ({
+            onAttach(e, id){
+                e.preventDefault();
+                dispatch(attach_data_reference(id));
+            },
             onRemove(e, id){
                 e.preventDefault();
                 dispatch(remove_graph(id));
             }
-
         })
 )(GraphDisplay)
 

@@ -25,7 +25,7 @@ import {
     handle_change_unit,
     handle_save_result_user,
     handle_excel_download,
-    hanle_graph_result
+    handle_graph_result
 } from 'functions/Results_management/Results'
 import {Graph, GoToThirdParty, SaveData, ExcelDownload} from 'components/data_representation/dataOptions/options'
 import MessageDisplay from 'components/data_representation/messageDisplay'
@@ -228,7 +228,7 @@ export const GraphContainer = connect(
         ({
             onClick(e, resultId){
                 e.preventDefault();
-                dispatch(hanle_graph_result(resultId));
+                dispatch(handle_graph_result(resultId));
             }
 
         })

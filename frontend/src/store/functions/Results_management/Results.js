@@ -108,7 +108,7 @@ export const handle_excel_download = resultId => {
     }
 }
 
-export const hanle_graph_result = resultId => {
+export const handle_graph_result = resultId => {
     return (dispatch, getState) => {
         var results = getState().Results_management.results;
         var resultToGraph = results.find(result => result['id'] == resultId);
@@ -117,10 +117,15 @@ export const hanle_graph_result = resultId => {
         graphObject.createData();
         var chart = {
             'id': resultId,
+            'attached': false,
             'explanation': graphObject.displayMessage,
             'type': graphObject.type,
             'data': graphObject.data,
-            'options': graphObject.options
+            'options': graphObject.options,
+            'DisplayMessage': {
+                message: '',
+                type: 'alert-info'
+            }
         }
         dispatch(save_graph(chart))
 

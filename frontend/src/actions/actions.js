@@ -70,7 +70,7 @@ export const handle_new_change = (e) =>
 
 export const save_reference = (object) =>
     ({
-        type: C.SAVE_REFERENCE,
+        type: C.ATTACH_REFERENCE,
         object: object
     })
 
@@ -80,7 +80,7 @@ export const remove_reference = id =>
         id: id
     })
 
-export const attach_result = id =>
+export const set_data_attached = id =>
     ({
         type: C.SET_RESULT_ATTACHED,
         id: id

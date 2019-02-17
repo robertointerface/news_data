@@ -4,12 +4,12 @@ import { Component } from 'react';
 import {Line} from 'react-chartjs-2';
 import { faTimesCircle } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
+import {AttachDataRequest} from 'components/data_representation/attachData'
 
 class GraphDisplay extends Component{
 
     render(){
-        var {list, onRemove} = this.props
+        var {list, onRemove, onAttach} = this.props
         return(
             <section className='row'>
                 {(list.length > 0) ?
@@ -30,7 +30,9 @@ class GraphDisplay extends Component{
                                 </div>
                                 <div className='card-body'>
                                     <Line data={chart.data} options={chart.options} width="400" height="400"/>
+                                    <AttachDataRequest />
                                 </div>
+
                             </div>
                         </div>
                     )
