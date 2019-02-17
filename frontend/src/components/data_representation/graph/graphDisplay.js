@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 class GraphDisplay extends Component{
 
     render(){
-        var {list} = this.props
+        var {list, onRemove} = this.props
         return(
             <div className='row'>
                 {(list.length > 0) ?
@@ -20,7 +20,7 @@ class GraphDisplay extends Component{
                                     <p>{chart.explanation}</p>
                                 </div>
                                 <div className='col-2'>
-                                     <a href='#'>
+                                     <a href='#' onClick={(e) => onRemove(e, chart.id)}>
                                         <FontAwesomeIcon className='F12' icon={faTimesCircle}/>
                                     </a>
                                 </div>

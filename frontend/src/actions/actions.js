@@ -197,6 +197,11 @@ export const remove_result = id =>
         type: C.REMOVE_RESULT,
         id: id
     })
+export const remove_graph = id =>
+    ({
+        type: C.REMOVE_GRAPH,
+        id: id
+    })
 export const error_data_display = (resultId, message) =>
     ({
         type: C.ERROR_DATA_DISPLAY,

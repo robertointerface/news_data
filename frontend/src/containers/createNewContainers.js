@@ -7,7 +7,8 @@ import {
     unattached_result,
     attach_result,
     save_reference,
-    info_data_display
+    info_data_display,
+    remove_graph
 } from "actions/actions";
 import LongNewForm from "components/create_new/create_long_new/LongNewForm";
 import DataDisplay from "components/data_representation/dataDisplay";
@@ -75,7 +76,10 @@ export const GraphDisplayContainer = connect (
         }),
     dispatch =>
         ({
-
+            onRemove(e, id){
+                e.preventDefault();
+                dispatch(remove_graph(id));
+            }
 
         })
 )(GraphDisplay)

@@ -314,6 +314,8 @@ export const Results_management = (state={}, action) => {
             return Modify_result_management(state, action)
         case C.REMOVE_RESULT:
             return Modify_result_management(state, action)
+        case C.REMOVE_GRAPH:
+            return Modify_result_management(state, action)
         case C.SET_RESULT_SAVED:
             return Modify_result_management(state, action)
         case C.SET_RESULT_UNATTACHED:
@@ -350,6 +352,11 @@ const Modify_result_management = (state={}, action) => {
                 ...state,
                 numberResults: state.numberResults - 1,
                 results: removeResult(state.results, action.id),
+            }
+        case C.REMOVE_GRAPH:
+            return {
+                ...state,
+                charts: removeResult(state.charts, action.id)
             }
         case C.SET_RESULT_SAVED:
             return {
