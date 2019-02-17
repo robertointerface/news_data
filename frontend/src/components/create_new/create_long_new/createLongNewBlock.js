@@ -42,9 +42,11 @@ class CreateLongNewBlock extends Component{
                             <SearchDataContainer/>
                         </div>
                     </div>
-                    <div className="col-12">
+                    <div className='col-12'>
+                        <div className='row'>
                             <DataDisplayContainer/>
                             <GraphDisplayContainer/>
+                        </div>
                     </div>
                 </div>
             </PageTemplate>

@@ -1,6 +1,7 @@
 import {GraphLineColors} from 'data/QueryMap/QueryMap'
 
 class graph {
+
     constructor(dataObject){
 
         this.Topic = dataObject.Topic.name;
@@ -30,6 +31,10 @@ class graph {
 
 
     createData(){
+        /*
+            @Func: Transform table JSON data into JSON data that can be used by chart.js library to chart the data.
+
+         */
         this.data['labels'] = [...this.SelectedTimes];
         var dataSets = this.result.map((data, i) =>{
             return {

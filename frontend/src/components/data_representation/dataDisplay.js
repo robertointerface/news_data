@@ -14,7 +14,7 @@ class DataDisplay extends Component{
     render(){
         let { resultLenght, list, onAttach, onRemove } =  this.props;
         return(
-            <div className='row'>
+            <section>
                 {(resultLenght > 0) ?
                     list.map((result, i) =>
                         <div className='col-6' key={`RES-${result.id}-${i}`}>
@@ -63,7 +63,7 @@ class DataDisplay extends Component{
                     )
                     : null
                 }
-            </div>
+            </section>
         )
     }
 }
