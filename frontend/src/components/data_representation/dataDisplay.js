@@ -14,7 +14,7 @@ class DataDisplay extends Component{
     render(){
         let { resultLenght, list, onAttach, onRemove } =  this.props;
         return(
-            <section>
+            <section className='row'>
                 {(resultLenght > 0) ?
                     list.map((result, i) =>
                         <div className='col-6' key={`RES-${result.id}-${i}`}>

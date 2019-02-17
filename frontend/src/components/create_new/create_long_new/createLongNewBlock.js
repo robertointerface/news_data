@@ -43,10 +43,8 @@ class CreateLongNewBlock extends Component{
                         </div>
                     </div>
                     <div className='col-12'>
-                        <div className='row'>
-                            <DataDisplayContainer/>
-                            <GraphDisplayContainer/>
-                        </div>
+                        <DataDisplayContainer/>
+                        <GraphDisplayContainer/>
                     </div>
                 </div>
             </PageTemplate>

@@ -11,19 +11,21 @@ class GraphDisplay extends Component{
     render(){
         var {list, onRemove} = this.props
         return(
-            <section>
+            <section className='row'>
                 {(list.length > 0) ?
                     list.map((chart, i) =>
                         <div className='col-6' key={`CHART-${chart.id}-${i}`}>
                             <div className='card'>
                                 <div className='card-header bg-primary'>
-                                    <div className='col-10'>
-                                        <p className='ColorW'>{chart.explanation}</p>
-                                    </div>
-                                    <div className='col-2'>
-                                         <a href='#' onClick={(e) => onRemove(e, chart.id)}>
-                                            <FontAwesomeIcon className='ColorW F12' icon={faTimesCircle}/>
-                                        </a>
+                                    <div className='row'>
+                                        <div className='col-10'>
+                                            <p className='ColorW'>{chart.explanation}</p>
+                                        </div>
+                                        <div className='col-2'>
+                                             <a href='#' onClick={(e) => onRemove(e, chart.id)}>
+                                                <FontAwesomeIcon className='ColorW F12' icon={faTimesCircle}/>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                                 <div className='card-body'>
