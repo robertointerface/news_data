@@ -31,15 +31,15 @@ class graph {
 
     createData(){
         this.data['labels'] = [...this.SelectedTimes];
-        var dataSets = [];
-        for(var i in this.result){
-            dataSets.push({
-                'data': this.result[i]['values'],
-                'label': this.result[i]['name'],
+        var dataSets = this.result.map((data, i) =>{
+            return {
+                'data': data['values'],
+                'label': data['name'],
                 'borderColor': GraphLineColors[i],
                 'fill': false
-            })
-        }
+            }
+        });
+
         this.data['datasets'] = dataSets;
     }
 
