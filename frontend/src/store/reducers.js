@@ -10,7 +10,8 @@ import {
 } from 'functions/Create_new/CreateNewFunctions'
 
 import {
-    removeReference
+    removeReference,
+    pushReferenceToArray
 } from 'functions/Create_new/stateManipulation'
 
 import {
@@ -102,7 +103,7 @@ export const Create_new = (state ={}, action) => {
         case C.ATTACH_REFERENCE:
             return {
                 ...state,
-                references: [...pushItemToArray(state.references, action.object)]
+                references: pushReferenceToArray(state.references, action.object)
             }
         case C.REMOVE_REFERENCE:
             return {
@@ -311,6 +312,8 @@ export const Results_management = (state={}, action) => {
             return Modify_result_management(state, action)
         case C.SET_RESULT_ATTACHED:
             return Modify_result_management(state, action)
+        case C.SET_GRAPH_ATTACHED:
+            return Modify_result_management(state, action)
         case C.REMOVE_RESULT:
             return Modify_result_management(state, action)
         case C.REMOVE_GRAPH:
@@ -345,6 +348,11 @@ const Modify_result_management = (state={}, action) => {
             return {
                 ...state,
                 results: setResultAttached(state.results, action.id)
+            }
+        case C.SET_GRAPH_ATTACHED:
+            return {
+                ...state,
+                charts: setResultAttached(state.charts, action.id)
             }
         case C.REMOVE_RESULT:
             return{

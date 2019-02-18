@@ -74,6 +74,11 @@ export const save_reference = (object) =>
         object: object
     })
 
+export const save_graph_reference = (object) =>
+    ({
+        type: C.ATTACH_GRAPH_REFERENCE,
+        object: object
+    })
 export const remove_reference = id =>
     ({
         type: C.REMOVE_REFERENCE,
@@ -191,6 +196,12 @@ export const set_result_saved = resultId =>
     ({
         type: C.SET_RESULT_SAVED,
         resultId: resultId
+    })
+
+export const set_graph_attached = resultId =>
+    ({
+        type: C.SET_GRAPH_ATTACHED,
+        id: resultId
     })
 export const remove_result = id =>
     ({

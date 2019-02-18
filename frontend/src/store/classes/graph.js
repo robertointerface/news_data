@@ -3,7 +3,6 @@ import {GraphLineColors} from 'data/QueryMap/QueryMap'
 class graph {
 
     constructor(dataObject){
-
         this.Topic = dataObject.Topic.name;
         this.Indicator = dataObject.Indicator.name;
         this.Unit = dataObject.Unit.name;

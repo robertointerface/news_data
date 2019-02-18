@@ -23,13 +23,30 @@ function getAttachedRefList( results=[] ){
         result(array): state.Create_new.references
     @Return: list of objects
  */
-    var list = [];
-    for(var result in results){
-        list.push(createAttachObject(results[result].searchObject, results[result].id))
-    }
+    var list = results.map((x, i) =>{
+        if(x.hasOwnProperty('searchObject')){
+            return createAttachObject(x.searchObject, x.id)
+        }else{
+            return createAttachGraph(x, x.id)
+        }
+    })
+
     return list;
 }
 
+function createAttachGraph (graphObject, id) {
+    var attachObject = {};
+
+    if(graphObject){
+        attachObject['name'] = graphObject.explanation;
+        attachObject['id'] = id
+    }
+    else{
+         attachObject['name'] = '';
+         attachObject['id'] = -1;
+    }
+    return attachObject;
+}
 
 function createAttachObject (searchObject, id) {
     var attachObject = {};

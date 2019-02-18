@@ -116,7 +116,7 @@ export const handle_graph_result = resultId => {
         var graphObject = new graph(graphData);
         graphObject.createData();
         var chart = {
-            'id': resultId,
+            'id': Date.now(),
             'attached': false,
             'explanation': graphObject.displayMessage,
             'type': graphObject.type,
@@ -127,14 +127,14 @@ export const handle_graph_result = resultId => {
                 type: 'alert-info'
             }
         }
-        dispatch(save_graph(chart))
+        var chart_to_save = JSON.parse(JSON.stringify(chart))
+        dispatch(save_graph(chart_to_save))
 
     }
 }
 
 const prepareGraphData = resultData => {
-   // var searchObject = {...resultData.searchObject};
-   // var resultObject = {...resultData.resultObject};
+
     var graphObject = {};
     ( {
         Sector: graphObject.Sector,

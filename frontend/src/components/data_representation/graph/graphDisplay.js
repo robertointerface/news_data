@@ -6,10 +6,9 @@ import { faTimesCircle } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {AttachDataRequest} from 'components/data_representation/attachData'
 
-class GraphDisplay extends Component{
+const GraphDisplay = ({list=[], onRemove=f=>f, onAttach=f=>f}) => {
 
-    render(){
-        var {list, onRemove, onAttach} = this.props
+
         return(
             <section className='row'>
                 {(list.length > 0) ?
@@ -30,7 +29,10 @@ class GraphDisplay extends Component{
                                 </div>
                                 <div className='card-body'>
                                     <Line data={chart.data} options={chart.options} width="400" height="400"/>
-                                    <AttachDataRequest />
+                                    <AttachDataRequest
+                                            onClick={(e) => onAttach(e, chart.id)}
+                                            attached={chart.attached}
+                                    />
                                 </div>
 
                             </div>
@@ -41,6 +43,5 @@ class GraphDisplay extends Component{
             </section>
         )
     }
-}
 
 export default GraphDisplay

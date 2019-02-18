@@ -8,9 +8,11 @@ import {
     select_unit,
     save_result,
     save_reference,
+    save_graph_reference,
     finished_requestiong,
     set_data_attached,
-    error_search_data
+    error_search_data,
+    set_graph_attached
 } from "actions/actions";
 import {history} from 'root/App.js';
 import {getDatabase} from 'functions/Current_search/SearchIterGen'
@@ -56,6 +58,25 @@ export const attach_data_reference = (id) => {
         }
         finally {
             return dispatch(save_reference(searchResults));
+        }
+    }
+}
+
+export const attach_graph_reference = (id) => {
+
+     return (dispatch, getState) => {
+        try {
+            var searchGraph = getState().Results_management.charts.find(graph => graph.id == id)
+            if(searchGraph.attached){
+                throw 'already attached'
+            }
+            dispatch(set_graph_attached(id))
+        }
+        catch (error) {
+            var searchGraph = '';
+        }
+        finally {
+            return dispatch(save_reference(searchGraph));
         }
     }
 }
@@ -163,7 +184,6 @@ var findSector = {
                 }
             },
             return(v){
-                console.log('finished iterator');
                 return{value: v, done: true};
             }
         }
