@@ -4,6 +4,11 @@ const pushResult = (list, newItem ) => {
     return [...list, newItem];
 }
 
+
+const pushGraph = (list, newItem ) => {
+    return [...list, JSON.stringify(newItem)];
+}
+
 const removeResult = (list, id) => {
 
     return list.filter(item =>  {
@@ -89,6 +94,7 @@ const setInfoMessageAtDisplay = (list=[], resultId, message) => {
 
 export {
     pushResult,
+    pushGraph,
     removeResult,
     resultSaved,
     setResultAttached,

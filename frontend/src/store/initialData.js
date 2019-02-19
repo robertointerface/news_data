@@ -73,7 +73,10 @@ export const createNewForm = {
     headline2: '',
     headline3: '',
     content: '',
-    references: [],
+    references: {
+        tables: [],
+        charts: []
+    },
 }
 
 export const newDisplay = {

@@ -7,7 +7,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {AttachDataRequest} from 'components/data_representation/attachData'
 
 const GraphDisplay = ({list=[], onRemove=f=>f, onAttach=f=>f}) => {
-
+        var chartList = list.map((chart, i) =>{
+            return JSON.parse(chart);
+        })
 
         return(
             <section className='row'>
@@ -37,6 +39,8 @@ const GraphDisplay = ({list=[], onRemove=f=>f, onAttach=f=>f}) => {
 
                             </div>
                         </div>
+
+
                     )
                     :null
                 }

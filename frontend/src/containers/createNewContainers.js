@@ -55,7 +55,6 @@ export const DataDisplayContainer = connect(
         ({
             onAttach(e, id){
                 e.preventDefault();
-                console.log('foudn id: ' + id);
                 dispatch(attach_data_reference(id))
                 dispatch(info_data_display(id, 'attached'))
             },

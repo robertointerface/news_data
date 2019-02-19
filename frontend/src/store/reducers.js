@@ -16,6 +16,7 @@ import {
 
 import {
     pushResult,
+    pushGraph,
     removeResult,
     resultSaved,
     setResultAttached,
@@ -342,7 +343,7 @@ const Modify_result_management = (state={}, action) => {
         case C.SAVE_GRAPH:
             return {
                 ...state,
-                charts: pushResult(state.charts, action.chart)
+                charts: pushGraph(state.charts, action.chart)
             }
         case C.SET_RESULT_ATTACHED:
             return {

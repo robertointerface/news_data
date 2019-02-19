@@ -127,8 +127,7 @@ export const handle_graph_result = resultId => {
                 type: 'alert-info'
             }
         }
-        var chart_to_save = JSON.parse(JSON.stringify(chart))
-        dispatch(save_graph(chart_to_save))
+        dispatch(save_graph(chart))
 
     }
 }
