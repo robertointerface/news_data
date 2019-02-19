@@ -101,10 +101,21 @@ export const Create_new = (state ={}, action) => {
         case C.HANDLE_NEW_CHANGE:
             state = handle_new_change(action.e, state);
             return state
-        case C.ATTACH_REFERENCE:
+        case C.ATTACH_TABLE:
             return {
                 ...state,
-                references: pushReferenceToArray(state.references, action.object)
+                references: {
+                    ...state.references,
+                    tables: pushReferenceToArray(state.references.tables, action.table)
+                }
+            }
+        case C.ATTACH_GRAPH:
+            return {
+                ...state,
+                references: {
+                    ...state.references,
+                    charts: pushReferenceToArray(state.references.charts, action.chart)
+                }
             }
         case C.REMOVE_REFERENCE:
             return {

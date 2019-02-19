@@ -5,6 +5,7 @@ import { faTable, faChartBar } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const DropDownMenuRemove = ({title='', list=[], onRemove=f=>f}) => {
+
     return (
         <div className="dropdown row">
             <button className="btn btn-primary dropdown-toggle" type="button" id="commonDropdown"

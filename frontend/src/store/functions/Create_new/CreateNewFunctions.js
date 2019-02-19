@@ -7,7 +7,8 @@ import {
     set_query_map,
     select_unit,
     display_table,
-    save_reference,
+    attach_table,
+    attach_graph,
     finished_requestiong,
     set_table_attached,
     error_search_data,
@@ -46,7 +47,7 @@ export const attach_data_reference = (id) => {
      */
     return (dispatch, getState) => {
         try {
-            var searchResults = getState().Results_management.results.find(item => item.id == id)
+            var searchResults = getState().Results_management.tables.find(item => item.id == id)
             if(searchResults.attached){
                 throw 'already attached'
             }
@@ -56,15 +57,20 @@ export const attach_data_reference = (id) => {
             var searchResults = '';
         }
         finally {
-            return dispatch(save_reference(searchResults));
+            return dispatch(attach_table(searchResults));
         }
     }
 }
+
+
+
 
 export const attach_graph_reference = (id) => {
 
      return (dispatch, getState) => {
         try {
+
+
             var searchGraph = getState().Results_management.charts.find(graph => graph.id == id)
             if(searchGraph.attached){
                 throw 'already attached'
@@ -75,7 +81,7 @@ export const attach_graph_reference = (id) => {
             var searchGraph = '';
         }
         finally {
-            return dispatch(save_reference(searchGraph));
+            return dispatch(attach_graph(searchGraph));
         }
     }
 }

@@ -89,7 +89,8 @@ export const GraphDisplayContainer = connect (
 export const AttachedReferencesContainer = connect(
     state =>
         ({
-            list: state.Create_new.references
+            tableList: state.Create_new.references.tables,
+            chartList: state.Create_new.references.charts
         }),
     dispatch =>
         ({
