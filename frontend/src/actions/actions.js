@@ -85,15 +85,15 @@ export const remove_reference = id =>
         id: id
     })
 
-export const set_data_attached = id =>
+export const set_table_attached = id =>
     ({
-        type: C.SET_RESULT_ATTACHED,
+        type: C.SET_TABLE_ATTACHED,
         tableId: id
     })
 
-export const unattached_result = id =>
+export const unattached_table = id =>
     ({
-        type: C.SET_RESULT_UNATTACHED,
+        type: C.SET_TABLE_UNATTACHED,
         tableId: id
     })
 
@@ -187,48 +187,48 @@ export const finished_requestiong = () =>
     ({
         type: C.FINISHED_REQUESTING
     })
-export const save_result = (table = {}) =>
+export const display_table = (table = {}) =>
     ({
-        type: C.SAVE_RESULT,
+        type: C.DISPLAY_TABLE,
         table: table
     })
-export const set_result_saved = id =>
+export const set_table_saved = id =>
     ({
-        type: C.SET_RESULT_SAVED,
+        type: C.SET_TABLE_SAVED,
         tableId: id
     })
 
-export const set_graph_attached = id =>
+export const set_chart_attached = id =>
     ({
-        type: C.SET_GRAPH_ATTACHED,
+        type: C.SET_CHART_ATTACHED,
         chartId: id
     })
-export const remove_result = id =>
+export const remove_table = id =>
     ({
-        type: C.REMOVE_RESULT,
+        type: C.REMOVE_TABLE,
         tableId: id
     })
-export const remove_graph = id =>
+export const remove_chart = id =>
     ({
-        type: C.REMOVE_GRAPH,
+        type: C.REMOVE_CHART,
         chartId: id
     })
-export const error_data_display = (id, message) =>
+export const error_table_display = (id, message) =>
     ({
-        type: C.ERROR_DATA_DISPLAY,
+        type: C.ERROR_TABLE_DISPLAY,
         tableId: id,
         message: message
     })
 
-export const info_data_display = (id, message) =>
+export const info_table_display = (id, message) =>
     ({
-        type: C.INFO_DATA_DISPLAY,
+        type: C.INFO_TABLE_DISPLAY,
         tableId: id,
         message: message
     })
 
-export const save_graph = (chart = {}) =>
+export const display_chart = (chart = {}) =>
     ({
-        type: C.SAVE_GRAPH,
+        type: C.DISPLAY_CHART,
         chart: chart
     })

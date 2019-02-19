@@ -2,12 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux'
 import {
     handle_new_change,
-    remove_result,
+    remove_table,
     remove_reference,
-    unattached_result,
+    unattached_table,
     save_reference,
-    info_data_display,
-    remove_graph
+    info_table_display,
+    remove_chart
 } from "actions/actions";
 import LongNewForm from "components/create_new/create_long_new/LongNewForm";
 import DataDisplay from "components/data_representation/dataDisplay";
@@ -56,11 +56,11 @@ export const DataDisplayContainer = connect(
             onAttach(e, id){
                 e.preventDefault();
                 dispatch(attach_data_reference(id))
-                dispatch(info_data_display(id, 'attached'))
+                dispatch(info_table_display(id, 'attached'))
             },
             onRemove(e, id){
                 e.preventDefault();
-                dispatch(remove_result(id));
+                dispatch(remove_table(id));
 
             },
 
@@ -80,7 +80,7 @@ export const GraphDisplayContainer = connect (
             },
             onRemove(e, id){
                 e.preventDefault();
-                dispatch(remove_graph(id));
+                dispatch(remove_chart(id));
             }
         })
 )(GraphDisplay)
@@ -96,8 +96,8 @@ export const AttachedReferencesContainer = connect(
             onRemove(e, resultId){
                 e.preventDefault();
                 dispatch(remove_reference(resultId));
-                dispatch(unattached_result(resultId));
-                dispatch(info_data_display(resultId, '' )) //Clean 'attached' message as is not attached anymore
+                dispatch(unattached_table(resultId));
+                dispatch(info_table_display(resultId, '' )) //Clean 'attached' message as is not attached anymore
             }
         })
 )(AttachedReferences)

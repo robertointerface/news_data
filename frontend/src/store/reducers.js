@@ -307,25 +307,25 @@ export const Modify_current_search = (state = {}, action) =>{
 
 export const Results_management = (state={}, action) => {
     switch (action.type){
-        case C.SAVE_RESULT:
+        case C.DISPLAY_TABLE:
             return Modify_result_management(state, action)
-        case C.SAVE_GRAPH:
+        case C.DISPLAY_CHART:
             return Modify_result_management(state, action)
-        case C.SET_RESULT_ATTACHED:
+        case C.SET_TABLE_ATTACHED:
             return Modify_result_management(state, action)
-        case C.SET_GRAPH_ATTACHED:
+        case C.SET_CHART_ATTACHED:
             return Modify_result_management(state, action)
-        case C.REMOVE_RESULT:
+        case C.REMOVE_TABLE:
             return Modify_result_management(state, action)
-        case C.REMOVE_GRAPH:
+        case C.REMOVE_CHART:
             return Modify_result_management(state, action)
-        case C.SET_RESULT_SAVED:
+        case C.SET_TABLE_SAVED:
             return Modify_result_management(state, action)
-        case C.SET_RESULT_UNATTACHED:
+        case C.SET_TABLE_UNATTACHED:
             return Modify_result_management(state, action)
-        case C.ERROR_DATA_DISPLAY:
+        case C.ERROR_TABLE_DISPLAY:
             return Modify_result_management(state, action)
-        case C.INFO_DATA_DISPLAY:
+        case C.INFO_TABLE_DISPLAY:
             return Modify_result_management(state, action)
         default:
             return state
@@ -334,54 +334,54 @@ export const Results_management = (state={}, action) => {
 
 const Modify_result_management = (state={}, action) => {
     switch (action.type){
-        case C.SAVE_RESULT:
+        case C.DISPLAY_TABLE:
             return {
                 ...state,
                 numberQueries: state.numberQueries + 1,
                 tables: pushResult(state.tables, action.table),
             }
-        case C.SAVE_GRAPH:
+        case C.DISPLAY_CHART:
             return {
                 ...state,
                 charts: pushGraph(state.charts, action.chart)
             }
-        case C.SET_RESULT_ATTACHED:
+        case C.SET_TABLE_ATTACHED:
             return {
                 ...state,
                 results: setResultAttached(state.tables, action.tableId)
             }
-        case C.SET_GRAPH_ATTACHED:
+        case C.SET_CHART_ATTACHED:
             return {
                 ...state,
                 charts: setResultAttached(state.charts, action.chartId)
             }
-        case C.REMOVE_RESULT:
+        case C.REMOVE_TABLE:
             return{
                 ...state,
                 numberQueries: state.numberQueries - 1,
                 tables: removeResult(state.tables, action.tableId),
             }
-        case C.REMOVE_GRAPH:
+        case C.REMOVE_CHART:
             return {
                 ...state,
                 charts: removeResult(state.charts, action.chartId)
             }
-        case C.SET_RESULT_SAVED:
+        case C.SET_TABLE_SAVED:
             return {
                 ...state,
                 tables: resultSaved(state.tables, action.tableId),
             }
-        case C.SET_RESULT_UNATTACHED:
+        case C.SET_TABLE_UNATTACHED:
             return {
                 ...state,
                 tables: setResultUnattached(state.tables, action.tableId)
             }
-        case C.ERROR_DATA_DISPLAY:
+        case C.ERROR_TABLE_DISPLAY:
             return {
                 ...state,
                 tables: setErrorMessageAtDisplay(state.tables, action.tableId, action.message)
             }
-        case C.INFO_DATA_DISPLAY:
+        case C.INFO_TABLE_DISPLAY:
             return {
                 ...state,
                 tables: setInfoMessageAtDisplay(state.tables, action.tableId, action.message)

@@ -6,13 +6,12 @@ import {
     set_units,
     set_query_map,
     select_unit,
-    save_result,
+    display_table,
     save_reference,
-    save_graph_reference,
     finished_requestiong,
-    set_data_attached,
+    set_table_attached,
     error_search_data,
-    set_graph_attached
+    set_chart_attached
 } from "actions/actions";
 import {history} from 'root/App.js';
 import {getDatabase} from 'functions/Current_search/SearchIterGen'
@@ -51,7 +50,7 @@ export const attach_data_reference = (id) => {
             if(searchResults.attached){
                 throw 'already attached'
             }
-            dispatch(set_data_attached(id))
+            dispatch(set_table_attached(id))
         }
         catch (error) {
             var searchResults = '';
@@ -70,7 +69,7 @@ export const attach_graph_reference = (id) => {
             if(searchGraph.attached){
                 throw 'already attached'
             }
-            dispatch(set_graph_attached(id))
+            dispatch(set_chart_attached(id))
         }
         catch (error) {
             var searchGraph = '';
@@ -247,7 +246,7 @@ export const handle_data_request = () => {
             dataRequestItem.createAPIRequest(),
             dataRequestItem.makeAPIcall()
                 .then(result => {
-                    return dispatch(save_result(result));
+                    return dispatch(display_table(result));
                 })
                 .then(result => dispatch(finished_requestiong()))
         ]).catch(error => {

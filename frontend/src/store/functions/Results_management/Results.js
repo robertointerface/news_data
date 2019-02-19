@@ -2,12 +2,12 @@ import download from 'downloadjs'
 import {prepareRequestData} from 'functions/Create_new/CreateNewFunctions'
 import {getDataRequest} from "functions/Create_new/CreateNewFunctions"
 import {
-    save_result,
-    set_result_saved,
+    display_table,
+    set_table_saved,
     set_flash_message,
-    error_data_display,
-    info_data_display,
-    save_graph
+    error_table_display,
+    info_table_display,
+    display_chart
 } from "root/actions/actions";
 import {getCookie} from "root/store/functions/auth/Cookies";
 import {
@@ -19,7 +19,7 @@ import {graph} from 'classes/graph'
 
 export const handle_change_unit = (resultId, unitId) => {
     return (dispatch, getState) =>{
-        var resultsMade = getState().Results_management.results;
+        var resultsMade = getState().Results_management.tables;
         var foundResult = {...resultsMade.find(item => item['id'] == resultId)};
         foundResult.searchObject.Unit = findItemInArray(unitId, foundResult.searchObject.PossibleUnitMeasure);
         var requestObject = prepareRequestData(foundResult.searchObject);
@@ -28,7 +28,7 @@ export const handle_change_unit = (resultId, unitId) => {
             dataRequestItem.createAPIRequest(),
             dataRequestItem.makeAPIcall()
                 .then(result =>{
-                    return dispatch(save_result(result));
+                    return dispatch(display_table(result));
                 })
         ])
     }
@@ -40,7 +40,7 @@ export const handle_change_unit = (resultId, unitId) => {
 export const handle_save_result_user = resultId => {
     return (dispatch, getState) => {
         var csrftoken = getCookie('csrftoken');
-        var results = getState().Results_management.results
+        var results = getState().Results_management.tables
         var resutlToSave = results.find(result => result['id'] == resultId)
         var Authorization = `JWT ${localStorage.getItem('token')}`
         if(resutlToSave){
@@ -60,14 +60,14 @@ export const handle_save_result_user = resultId => {
             })
             .then(response => {
                 if(response.status == 200){
-                    return dispatch(info_data_display(resultId, 'data saved'))
+                    return dispatch(info_table_display(resultId, 'data saved'))
                 }
                 else{
                     throw 'error saving, please try again.'
                 }
             })
             .catch(error => {
-               return dispatch(error_data_display(resultId, error))
+               return dispatch(error_table_display(resultId, error))
             })
         }
 
@@ -82,7 +82,7 @@ export const handle_excel_download = resultId => {
  */
     return (dispatch, getState) => {
         var csrftoken = getCookie('csrftoken');
-        var results = getState().Results_management.results
+        var results = getState().Results_management.tables
         var resultToExcel = results.find(result => result['id'] == resultId)
         if (resultToExcel){
              var data = {
@@ -110,7 +110,7 @@ export const handle_excel_download = resultId => {
 
 export const handle_graph_result = resultId => {
     return (dispatch, getState) => {
-        var results = getState().Results_management.results;
+        var results = getState().Results_management.tables;
         var resultToGraph = results.find(result => result['id'] == resultId);
         var graphData = prepareGraphData(resultToGraph);
         var graphObject = new graph(graphData);
@@ -127,7 +127,7 @@ export const handle_graph_result = resultId => {
                 type: 'alert-info'
             }
         }
-        dispatch(save_graph(chart))
+        dispatch(display_chart(chart))
 
     }
 }
