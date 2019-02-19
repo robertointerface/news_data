@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 import { faTimesCircle } from '@fortawesome/free-regular-svg-icons'
+import { faTable, faChartBar } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const DropDownMenuRemove = ({title='', list=[], onRemove=f=>f}) => {
@@ -20,9 +21,20 @@ export const DropDownMenuRemove = ({title='', list=[], onRemove=f=>f}) => {
                                  </a>
                             </div>
                             <div className='col-12'>
-                                <a>
-                                    {x.name}
-                                </a>
+                                <div className='row'>
+                                    <div className='col-2'>
+                                        {(x.type == 'table') ?
+                                            <FontAwesomeIcon className='F12' icon={faTable}/>:
+                                            <FontAwesomeIcon className='F12' icon={faChartBar}/>
+                                        }
+                                    </div>
+                                    <div className='col-10'>
+                                        <a>
+                                            {x.name}
+                                        </a>
+                                    </div>
+
+                                </div>
                             </div>
                         </div>
 

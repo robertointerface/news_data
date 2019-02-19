@@ -38,6 +38,7 @@ function createAttachGraph (graphObject, id) {
     var attachObject = {};
 
     if(graphObject){
+        attachObject['type'] = 'graph';
         attachObject['name'] = graphObject.explanation;
         attachObject['id'] = id
     }
@@ -52,6 +53,7 @@ function createAttachObject (searchObject, id) {
     var attachObject = {};
 
     if(searchObject){
+        attachObject['type'] = 'table';
         attachObject['name'] = searchObject.displayMessage;
         attachObject['id'] = id
     }
