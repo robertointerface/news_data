@@ -337,8 +337,8 @@ const Modify_result_management = (state={}, action) => {
         case C.SAVE_RESULT:
             return {
                 ...state,
-                numberResults: state.numberResults + 1,
-                results: pushResult(state.results, action.result),
+                numberQueries: state.numberQueries + 1,
+                tables: pushResult(state.tables, action.table),
             }
         case C.SAVE_GRAPH:
             return {
@@ -348,43 +348,43 @@ const Modify_result_management = (state={}, action) => {
         case C.SET_RESULT_ATTACHED:
             return {
                 ...state,
-                results: setResultAttached(state.results, action.id)
+                results: setResultAttached(state.tables, action.tableId)
             }
         case C.SET_GRAPH_ATTACHED:
             return {
                 ...state,
-                charts: setResultAttached(state.charts, action.id)
+                charts: setResultAttached(state.charts, action.chartId)
             }
         case C.REMOVE_RESULT:
             return{
                 ...state,
-                numberResults: state.numberResults - 1,
-                results: removeResult(state.results, action.id),
+                numberQueries: state.numberQueries - 1,
+                tables: removeResult(state.tables, action.tableId),
             }
         case C.REMOVE_GRAPH:
             return {
                 ...state,
-                charts: removeResult(state.charts, action.id)
+                charts: removeResult(state.charts, action.chartId)
             }
         case C.SET_RESULT_SAVED:
             return {
                 ...state,
-                results: resultSaved(state.results, action.resultId),
+                tables: resultSaved(state.tables, action.tableId),
             }
         case C.SET_RESULT_UNATTACHED:
             return {
                 ...state,
-                results: setResultUnattached(state.results, action.id)
+                tables: setResultUnattached(state.tables, action.tableId)
             }
         case C.ERROR_DATA_DISPLAY:
             return {
                 ...state,
-                results: setErrorMessageAtDisplay(state.results, action.id, action.message)
+                tables: setErrorMessageAtDisplay(state.tables, action.tableId, action.message)
             }
         case C.INFO_DATA_DISPLAY:
             return {
                 ...state,
-                results: setInfoMessageAtDisplay(state.results, action.id, action.message)
+                tables: setInfoMessageAtDisplay(state.tables, action.tableId, action.message)
             }
         default:
             return state

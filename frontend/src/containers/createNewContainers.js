@@ -47,8 +47,8 @@ export const CreateNewFormContainer = connect(
 export const DataDisplayContainer = connect(
     state =>
         ({
-            list: state.Results_management.results,
-            resultLenght: state.Results_management.results.length,
+            list: state.Results_management.tables,
+            resultLenght: state.Results_management.tables.length,
             //title:
         }),
     dispatch =>

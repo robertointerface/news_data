@@ -88,13 +88,13 @@ export const remove_reference = id =>
 export const set_data_attached = id =>
     ({
         type: C.SET_RESULT_ATTACHED,
-        id: id
+        tableId: id
     })
 
 export const unattached_result = id =>
     ({
         type: C.SET_RESULT_UNATTACHED,
-        id: id
+        tableId: id
     })
 
 export const select_database = (id, name) =>
@@ -187,43 +187,43 @@ export const finished_requestiong = () =>
     ({
         type: C.FINISHED_REQUESTING
     })
-export const save_result = (result = {}) =>
+export const save_result = (table = {}) =>
     ({
         type: C.SAVE_RESULT,
-        result: result
+        table: table
     })
-export const set_result_saved = resultId =>
+export const set_result_saved = id =>
     ({
         type: C.SET_RESULT_SAVED,
-        resultId: resultId
+        tableId: id
     })
 
-export const set_graph_attached = resultId =>
+export const set_graph_attached = id =>
     ({
         type: C.SET_GRAPH_ATTACHED,
-        id: resultId
+        chartId: id
     })
 export const remove_result = id =>
     ({
         type: C.REMOVE_RESULT,
-        id: id
+        tableId: id
     })
 export const remove_graph = id =>
     ({
         type: C.REMOVE_GRAPH,
-        id: id
+        chartId: id
     })
-export const error_data_display = (resultId, message) =>
+export const error_data_display = (id, message) =>
     ({
         type: C.ERROR_DATA_DISPLAY,
-        id: resultId,
+        tableId: id,
         message: message
     })
 
-export const info_data_display = (resultId, message) =>
+export const info_data_display = (id, message) =>
     ({
         type: C.INFO_DATA_DISPLAY,
-        id: resultId,
+        tableId: id,
         message: message
     })
 

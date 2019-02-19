@@ -24,7 +24,7 @@ const LongNewForm = ({title='', headline1='', headline2='', headline3='', conten
                     <PrimaryButton message={'Submit'} onClick={onSubmit}/>
                 </div>
                 <div className='col-6'>
-                    <AttachedReferencesContainer/>
+
                 </div>
             </div>
         </CardCol12>

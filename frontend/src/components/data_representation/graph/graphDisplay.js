@@ -7,14 +7,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {AttachDataRequest} from 'components/data_representation/attachData'
 
 const GraphDisplay = ({list=[], onRemove=f=>f, onAttach=f=>f}) => {
+        //As charts data is saved in string format, it is required to parse the data so it can be handle in JSON
+        //format later.
         var chartList = list.map((chart, i) =>{
             return JSON.parse(chart);
         })
 
         return(
             <section className='row'>
-                {(list.length > 0) ?
-                    list.map((chart, i) =>
+                {(chartList.length > 0) ?
+                    chartList.map((chart, i) =>
                         <div className='col-6' key={`CHART-${chart.id}-${i}`}>
                             <div className='card'>
                                 <div className='card-header bg-primary'>

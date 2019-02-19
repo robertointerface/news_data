@@ -171,7 +171,7 @@ export const RequestButtonContainer = connect(
 export const ChangeUnitMeasureContainer = connect(
     (state, props) =>
         ({
-            list: [...findChangeUnitMeasure(props.props, state.Results_management.results)],
+            list: [...findChangeUnitMeasure(props.props, state.Results_management.tables)],
             resultId: props.props
         }),
     (dispatch, props) =>

@@ -62,8 +62,8 @@ export const initialStateCurrentSearch = {
 }
 
 export const results = {
-    numberResults: 0,
-    results: [],
+    numberQueries: 0,
+    tables: [],
     charts:[]
 }
 

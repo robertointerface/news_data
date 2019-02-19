@@ -23,7 +23,7 @@ function getAttachedRefList( results=[] ){
         result(array): state.Create_new.references
     @Return: list of objects
  */
-    var list = results.map((x, i) =>{
+    var list = results.tables.map((x, i) =>{
         if(x.hasOwnProperty('searchObject')){
             return createAttachObject(x.searchObject, x.id)
         }else{
