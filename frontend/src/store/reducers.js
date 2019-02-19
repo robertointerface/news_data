@@ -114,7 +114,7 @@ export const Create_new = (state ={}, action) => {
                 ...state,
                 references: {
                     ...state.references,
-                    charts: pushReferenceToArray(state.references.charts, action.chart)
+                    charts: pushReferenceToArray(state.references.charts, JSON.stringify(action.chart))
                 }
             }
         case C.REMOVE_REFERENCE:
@@ -359,7 +359,7 @@ const Modify_result_management = (state={}, action) => {
         case C.SET_TABLE_ATTACHED:
             return {
                 ...state,
-                results: setResultAttached(state.tables, action.tableId)
+                tables: setResultAttached(state.tables, action.tableId)
             }
         case C.SET_CHART_ATTACHED:
             return {
