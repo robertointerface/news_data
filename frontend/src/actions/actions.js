@@ -68,12 +68,17 @@ export const handle_new_change = (e) =>
         e: e
     })
 
-export const save_reference = (object) =>
+export const attach_table = (table) =>
     ({
-        type: C.ATTACH_REFERENCE,
-        object: object
+        type: C.ATTACH_TABLE,
+        table: table
     })
+export const attach_graph = (chart) =>
+    ({
+        type: C.ATTACH_GRAPH,
+        table: chart
 
+    })
 export const save_graph_reference = (object) =>
     ({
         type: C.ATTACH_GRAPH_REFERENCE,
