@@ -20,6 +20,7 @@ import EurostatDatabases from "data/Eurostat/EurostatMap";
 import {EUdataRequest, OECDdataRequest, UnescoDataRequest}  from 'classes/dataRequest'
 import {getCookie} from 'functions/auth/Cookies'
 import {urls, DatabaseConstants as thirdParty} from 'constants/constants'
+import {dataRequest} from "root/store/classes/dataRequest";
 
 export const handle_new_change = (e, prevstate) => {
     /*
@@ -68,12 +69,20 @@ export const attach_data_reference = (id) => {
 
 
 export const attach_graph_reference = (id) => {
-
+    /*  When user clicks on 'attach' button for either table or chart
+        @Func:
+            1-Get charts from Results_management.charts.
+            2-Find if chart is attached already or not.
+            3-Attach graph 'attach_graph' if chart was not attached yet.
+        @Arg: id(int) time.stamp when reference was requested and is the Identification of the reference.
+        @Return: 'dispatch(attach_graph(table))', if the object is already attached, an empty object is attached
+        (nothing gets attached). Otherwise attach the table.
+     */
      return (dispatch, getState) => {
         try {
 
             var charts = getState().Results_management.charts
-            charts = charts.map(chart =>  JSON.parse(chart))
+            charts = charts.map(chart =>  JSON.parse(chart)) //charts array is composed of STRINGIFIED JSON objects and needs to be parse before it can be analyze.
             var chartToAttach = charts.find(chart => chart.id == id)
 
             if(chartToAttach.attached){
@@ -231,7 +240,11 @@ export const canMakeRequest = ( timeList, geoList ) => {
 
 
 export const getDataRequest = function (requestObject) {
-
+    /*
+        create new class depending on the provided option
+        @Args: requestObject(JSON Object)
+        @Return: New class
+     */
     switch(requestObject.ThirdPartyAPI.id){
         case thirdParty.EU:
             return new EUdataRequest(requestObject)
@@ -246,15 +259,18 @@ export const getDataRequest = function (requestObject) {
 
 export const handle_data_request = () => {
     /*
-        @Func: Use State.Current_search to create class object dataRequest
+        @Func: Use State.Current_search to create class (inheriting from dataRequest) which takes care of all the
+        necessary actions to get data from third party API such as OECD or EUROSTAT.
+        @Args: None, it uses redux state 'State.Current_search'
+        @Returns: dispatch(finished_requestiong() if successful, otherwise dispatch(error_search_data(error
      */
     return (dispatch, getState) => {
 
         var requestObject = prepareRequestData(JSON.parse(JSON.stringify(getState().Current_search)))
-        var dataRequestItem = getDataRequest(requestObject)
+        var dataRequestItem = getDataRequest(requestObject) // Get required class
         return Promise.all([
-            dataRequestItem.createAPIRequest(),
-            dataRequestItem.makeAPIcall()
+            dataRequestItem.createAPIRequest(), //create API url request (i.e https://eurostat/NCE1/2008/....)
+            dataRequestItem.makeAPIcall() //Fetch API data by 'Fetch' Get method.
                 .then(result => {
                     return dispatch(display_table(result));
                 })
@@ -268,7 +284,8 @@ export const handle_data_request = () => {
 
 export const prepareRequestData = CurrentSearch => {
     /*
-        @Func: creates an JSON object with some arguments from state.Current_search.
+        @Func: creates an JSON object with some arguments from state.Current_search, necessary to eliminate unnecessary
+        parameters that are not required to Fetch data from third party APIS and make a copy of the necessary parameters.
         @Arg:
             state.Current_search.
         @Return (object):
