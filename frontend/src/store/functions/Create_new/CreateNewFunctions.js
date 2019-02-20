@@ -41,23 +41,25 @@ export const handle_new_change = (e, prevstate) => {
 
 
 export const attach_data_reference = (id) => {
-    /*  When user clicks on 'attach reference' on button
-        @Func: Get result from Results_management.results and call save_reference if result was not attached yet.
-        @Arg: id(int) time.stamp when reference was requested.
+    /*  When user clicks on 'attach' button for either table or chart
+        @Func: Get tables from Results_management.tables and call attach_table if result was not attached yet.
+        @Arg: id(int) time.stamp when reference was requested and is the Identification of the reference.
+        @Return: 'dispatch(attach_table(table))', if the object is already attached, an empty object is attached
+        (nothing gets attached). Otherwise attach the table.
      */
     return (dispatch, getState) => {
         try {
-            var searchResults = getState().Results_management.tables.find(item => item.id == id)
-            if(searchResults.attached){
+            var table = getState().Results_management.tables.find(item => item.id == id)
+            if(table.attached){
                 throw 'already attached'
             }
             dispatch(set_table_attached(id))
         }
         catch (error) {
-            var searchResults = '';
+            var table = '';
         }
         finally {
-            return dispatch(attach_table(searchResults));
+            return dispatch(attach_table(table));
         }
     }
 }
