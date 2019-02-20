@@ -43,6 +43,19 @@ export const error_at_login = (error) =>
         error: error
     })
 
+
+export const logged_in = (userData) =>
+    ({
+        type: C.LOGGED_IN,
+        userData: userData
+
+    })
+
+/*
+ *
+ * CURRENT_SEARCH ACTIONS
+ */
+
 export const error_search_data = error =>
     ({
         type: C.ERROR_SEARCH_DATA,
@@ -55,12 +68,7 @@ export const fetching_data = () =>
         type: C.FETCHING_DATA
     })
 
-export const logged_in = (userData) =>
-    ({
-        type: C.LOGGED_IN,
-        userData: userData
 
-    })
 
 export const handle_new_change = (e) =>
     ({
@@ -128,11 +136,6 @@ export const select_topic = (id, name) =>
         name: name
     })
 
-export const select_version = version =>
-    ({
-        type: C.SELECT_VERSION,
-        version: version
-    })
 
 export const select_indicator = (id, name) =>
     ({
@@ -197,6 +200,10 @@ export const finished_requestiong = () =>
     ({
         type: C.FINISHED_REQUESTING
     })
+
+/*
+ * RESULT_MANAGEMENT ACTIONS
+ */
 export const display_table = (table = {}) =>
     ({
         type: C.DISPLAY_TABLE,
@@ -234,6 +241,13 @@ export const info_table_display = (id, message) =>
     ({
         type: C.INFO_TABLE_DISPLAY,
         tableId: id,
+        message: message
+    })
+
+export const info_chart_display = (id, message) =>
+    ({
+        type: C.INFO_CHART_DISPLAY,
+        chartId: id,
         message: message
     })
 

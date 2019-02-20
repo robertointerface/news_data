@@ -1,6 +1,7 @@
 
 
 const pushResult = (list, newItem ) => {
+
     return [...list, newItem];
 }
 
@@ -105,6 +106,23 @@ const setInfoMessageAtDisplay = (list=[], resultId, message) => {
     })
 }
 
+const setChartInfoMessageAtDisplay = (list=[], chartId, message) => {
+    var parsedList = parseList(list);
+
+    return parsedList.map((chart, i) => {
+        if(chart.id == chartId){
+            return JSON.stringify({
+                ...chart,
+                DisplayMessage: {
+                    message: message,
+                    type: 'alert-info'
+                }
+            })
+        }
+        return JSON.stringify(chart);
+    });
+
+}
 
 const parseList = (list=[]) => {
     /*
@@ -119,9 +137,9 @@ const parseList = (list=[]) => {
     catch (e) {
         return [];
     }
-
-
 }
+
+
 
 export {
     pushResult,
@@ -133,5 +151,6 @@ export {
     setResultUnattached,
     setErrorMessageAtDisplay,
     setInfoMessageAtDisplay,
+    setChartInfoMessageAtDisplay,
     parseList
 }

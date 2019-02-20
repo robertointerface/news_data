@@ -7,6 +7,7 @@ import {
     remove_chart_reference,
     unattached_table,
     info_table_display,
+    info_chart_display,
     remove_chart
 } from "actions/actions";
 import LongNewForm from "components/create_new/create_long_new/LongNewForm";
@@ -77,6 +78,7 @@ export const GraphDisplayContainer = connect (
             onAttach(e, id){
                 e.preventDefault();
                 dispatch(attach_graph_reference(id));
+                dispatch(info_chart_display(id, 'attached'))
             },
             onRemove(e, id){
                 e.preventDefault();

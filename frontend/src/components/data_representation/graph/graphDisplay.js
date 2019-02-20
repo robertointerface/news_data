@@ -5,6 +5,9 @@ import {Line} from 'react-chartjs-2';
 import { faTimesCircle } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {AttachDataRequest} from 'components/data_representation/attachData'
+import {
+    DisplayDataMessage
+} from 'containers/searchDataContainers'
 
 const GraphDisplay = ({list=[], onRemove=f=>f, onAttach=f=>f}) => {
         //As charts data is saved in string format, it is required to parse the data so it can be handle in JSON
@@ -36,6 +39,9 @@ const GraphDisplay = ({list=[], onRemove=f=>f, onAttach=f=>f}) => {
                                     <AttachDataRequest
                                             onClick={(e) => onAttach(e, chart.id)}
                                             attached={chart.attached}
+                                    />
+                                    <DisplayDataMessage message={chart.DisplayMessage.message}
+                                                        type={chart.DisplayMessage.type}
                                     />
                                 </div>
 

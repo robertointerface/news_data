@@ -24,7 +24,8 @@ import {
     setCharttAttached,
     setResultUnattached,
     setErrorMessageAtDisplay,
-    setInfoMessageAtDisplay
+    setInfoMessageAtDisplay,
+    setChartInfoMessageAtDisplay
 } from 'functions/Results_management/stateManipulation'
 
 import {
@@ -350,6 +351,8 @@ export const Results_management = (state={}, action) => {
             return Modify_result_management(state, action)
         case C.INFO_TABLE_DISPLAY:
             return Modify_result_management(state, action)
+        case C.INFO_CHART_DISPLAY:
+            return Modify_result_management(state, action)
         default:
             return state
     }
@@ -408,6 +411,11 @@ const Modify_result_management = (state={}, action) => {
             return {
                 ...state,
                 tables: setInfoMessageAtDisplay(state.tables, action.tableId, action.message)
+            }
+        case C.INFO_CHART_DISPLAY:
+            return {
+                ...state,
+                charts: setChartInfoMessageAtDisplay(state.charts, action.chartId, action.message)
             }
         default:
             return state
