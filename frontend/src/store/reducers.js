@@ -10,7 +10,8 @@ import {
 } from 'functions/Create_new/CreateNewFunctions'
 
 import {
-    removeReference,
+    removeTableReference,
+    removeChartReferences,
     pushReferenceToArray
 } from 'functions/Create_new/stateManipulation'
 
@@ -121,11 +122,21 @@ export const Create_new = (state ={}, action) => {
         case C.REMOVE_TABLE_REFERENCE:
             return {
                 ...state,
-                references: removeReference(state.references.tables, action.tableId)
+                references: {
+                    ...state.references,
+                    tables: removeTableReference(state.references.tables, action.tableId)
+                }
+            }
+        case C.REMOVE_CHART_REFERENCE:
+            return {
+                ...state,
+                references: {
+                    ...state.references,
+                    charts: removeChartReferences(state.references.charts, action.chartId)
+                }
             }
         default:
             return state
-
     }
 }
 

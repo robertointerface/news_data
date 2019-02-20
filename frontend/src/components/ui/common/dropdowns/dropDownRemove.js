@@ -34,11 +34,9 @@ export const DropDownMenuRemove = ({title='', list=[], onRemove=f=>f}) => {
                                             {x.name}
                                         </a>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
-
                     )}
                 </div>
             </div>

@@ -86,7 +86,7 @@ export const save_graph_reference = (object) =>
     })
 export const remove_table_reference = id =>
     ({
-        type: C.REMOVE_REFERENCE,
+        type: C.REMOVE_TABLE_REFERENCE,
         tableId: id
     })
 

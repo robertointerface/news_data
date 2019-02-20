@@ -107,7 +107,20 @@ const setInfoMessageAtDisplay = (list=[], resultId, message) => {
 
 
 const parseList = (list=[]) => {
-    return list.map(item =>  JSON.parse(item))
+    /*
+        @Func: convert an array of stringified JSON object into an array of JSON objects
+        (parse the stringified JSON objects inside the array)
+        @Args: List (array): array composed of Stringified JSON objects.
+        @Return: List composed of JSON objects or empty array if error.
+     */
+    try{
+        return list.map(item =>  JSON.parse(item))
+    }
+    catch (e) {
+        return [];
+    }
+
+
 }
 
 export {

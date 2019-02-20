@@ -5,8 +5,8 @@ import {parseList} from 'functions/Results_management/stateManipulation'
 
 const AttachedReferences = ({tableList=[], chartList=[], onRemove=f=>f}) => {
     var tableCleanList = cleanTable(tableList);
-    var chartCleanList = cleanCharts(parseList(chartList));
-    var cleanList = [...tableCleanList, ...chartCleanList]
+    var chartCleanList = cleanCharts(parseList(chartList)); // chartList must be parsed as is an array of STRINGIFIED JSON Objects
+    var cleanList = [...tableCleanList, ...chartCleanList] // Combine both list into one
     return (
         <DropDownMenuRemove title={'Attachments'} list={cleanList} onRemove={onRemove}/>
     )
@@ -22,11 +22,13 @@ export default AttachedReferences
 
 function cleanTable(tableList){
 /*
-    @Func: convert state.Create_new.references into a list of objects {name: searchObject.displayMessage, id: id}
+    @Func: convert state.Create_new.references.tables into a list of objects
+    {name: searchObject.displayMessage, id: id, type: 'table'}, the object is used to display information
     @Args:
-        result(array): state.Create_new.references
+        result(array): state.Create_new.references.tables
     @Return: list of objects
  */
+
     var list = tableList.map((x, i) =>{
         return {
             'type': 'table',
@@ -41,54 +43,20 @@ function cleanTable(tableList){
 
 function cleanCharts(chartList){
 /*
-    @Func: convert state.Create_new.references into a list of objects {name: searchObject.displayMessage, id: id}
+    @Func: convert state.Create_new.references.charts into a list of objects
+    {name: searchObject.displayMessage, id: id, type: 'chart'}, the object is used to display information
     @Args:
-        result(array): state.Create_new.references
+        result(array): state.Create_new.references.chart
     @Return: list of objects
  */
 
     var list = chartList.map((x, i) =>{
         return {
-            'type': 'graph',
+            'type': 'chart',
             'name': x.explanation,
             'id': x.id
         }
     })
 
     return list;
-}
-
-
-
-
-
-function createAttachGraph (graphObject, id) {
-    var attachObject = {};
-
-    if(graphObject){
-        attachObject['type'] = 'graph';
-        attachObject['name'] = graphObject.explanation;
-        attachObject['id'] = id
-    }
-    else{
-         attachObject['name'] = '';
-         attachObject['id'] = -1;
-    }
-    return attachObject;
-}
-
-function createAttachObject (searchObject, id) {
-    var attachObject = {};
-
-    if(searchObject){
-        attachObject['type'] = 'table';
-        attachObject['name'] = searchObject.displayMessage;
-        attachObject['id'] = id
-    }
-    else{
-         attachObject['name'] = '';
-         attachObject['id'] = -1;
-    }
-
-    return attachObject;
 }

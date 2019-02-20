@@ -96,7 +96,6 @@ export const AttachedReferencesContainer = connect(
         ({
             onRemove(e, type, id){
                 e.preventDefault();
-
                 switch (type){
                     case 'table':
                         return Promise.all([

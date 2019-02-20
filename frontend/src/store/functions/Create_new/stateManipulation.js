@@ -1,6 +1,6 @@
 
 
-
+import {parseList} from 'functions/Results_management/stateManipulation'
 
 
 const pushReferenceToArray = (list=[], item) => {
@@ -30,18 +30,18 @@ const pushReferenceToArray = (list=[], item) => {
 
 
 
-const removeReference = function(list=[], resultId){
+const removeTableReference = function(list=[], tableId){
 /*
-    @Func: Remove reference from state.Create_new.references given the required resultId
+    @Func: Remove table reference from state.Create_new.references.tables given the required id
     @Args:
-        List(array): state.Create_new.references
-        resultId (integer): resultId to remove
-    @Return: copy of list.
+        List(array): state.Create_new.references.tables
+        tableId (integer): object 'id' to remove
+    @Return: copy of list without the deleted table;
  */
 
-    if(list.length > 0 && Number.isInteger(resultId)){
+    if(list.length > 0 && Number.isInteger(tableId)){
         return list.filter(item => {
-            if(item['id'] == resultId){
+            if(item['id'] == tableId){
                 return false
             }else{
                 return {...item}
@@ -52,4 +52,29 @@ const removeReference = function(list=[], resultId){
 }
 
 
-export {pushReferenceToArray, removeReference}
+const removeChartReferences = function(list=[], chartId){
+    /*
+        @Func: Remove chart from state.Create_new.references.charts given the required id
+        @Args:
+            List(array): state.Create_new.references.charts, this is not an array of JSON Objects, is an array of
+            STRINGIFIED JSON objects, necessary to avoid CIRCULAR ERRORS.
+            chartId (integer): object 'id' to remove.
+        @Return: Copy of 'list' without the chart that is required to be removed
+     */
+    var parsedList = parseList(list) //parse list (convert it into a list of JSON objects).
+    if(parsedList.length > 0 && Number.isInteger(chartId)) {
+        return parsedList.filter(item => {
+            if(item['id'] == chartId){
+                return false
+            }else{
+                return JSON.stringify(item) //Objects must be stringified again to avoid CIRCULAR ERRORS.
+            }
+        })
+    }
+
+}
+
+export {
+    pushReferenceToArray,
+    removeTableReference,
+    removeChartReferences}
