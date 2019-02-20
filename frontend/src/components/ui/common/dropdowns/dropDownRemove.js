@@ -17,7 +17,7 @@ export const DropDownMenuRemove = ({title='', list=[], onRemove=f=>f}) => {
                     {list.map((x, i) =>
                         <div key={`REF-${x.id}-${i}`} className='list-group-item'>
                             <div className='offset-10 col-2'>
-                                 <a href='#' onClick={(e) => onRemove(e, x.id)}>
+                                 <a href='#' onClick={(e) => onRemove(e, x.type, x.id)}>
                                     <FontAwesomeIcon className='F12' icon={faTimesCircle}/>
                                  </a>
                             </div>

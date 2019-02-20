@@ -3,9 +3,9 @@ import { connect } from 'react-redux'
 import {
     handle_new_change,
     remove_table,
-    remove_reference,
+    remove_table_reference,
+    remove_chart_reference,
     unattached_table,
-    save_reference,
     info_table_display,
     remove_chart
 } from "actions/actions";
@@ -94,11 +94,27 @@ export const AttachedReferencesContainer = connect(
         }),
     dispatch =>
         ({
-            onRemove(e, resultId){
+            onRemove(e, type, id){
                 e.preventDefault();
-                dispatch(remove_reference(resultId));
-                dispatch(unattached_table(resultId));
-                dispatch(info_table_display(resultId, '' )) //Clean 'attached' message as is not attached anymore
-            }
+
+                switch (type){
+                    case 'table':
+                        return Promise.all([
+                            dispatch(remove_table_reference(id)),
+                            dispatch(unattached_table(id)),
+                            dispatch(info_table_display(id, '' ))
+                        ])
+                    case 'chart':
+                        return Promise.all([
+                            dispatch(remove_chart_reference(id)),
+
+                        ])
+                    default:
+
+                }
+
+            },
+
+
         })
 )(AttachedReferences)

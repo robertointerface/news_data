@@ -31,7 +31,6 @@ import {
     unSelectItems,
     setItemSelected,
     pushItemToArray,
-
     setUnitSelected,
     getTopicsBySector,
     createIndicatorUnitList,
@@ -119,10 +118,10 @@ export const Create_new = (state ={}, action) => {
                     charts: pushReferenceToArray(state.references.charts, action.chart)
                 }
             }
-        case C.REMOVE_REFERENCE:
+        case C.REMOVE_TABLE_REFERENCE:
             return {
                 ...state,
-                references: removeReference(state.references, action.id)
+                references: removeReference(state.references.tables, action.tableId)
             }
         default:
             return state
