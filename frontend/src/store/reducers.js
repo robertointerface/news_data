@@ -20,6 +20,7 @@ import {
     removeResult,
     resultSaved,
     setResultAttached,
+    setCharttAttached,
     setResultUnattached,
     setErrorMessageAtDisplay,
     setInfoMessageAtDisplay
@@ -30,6 +31,7 @@ import {
     unSelectItems,
     setItemSelected,
     pushItemToArray,
+
     setUnitSelected,
     getTopicsBySector,
     createIndicatorUnitList,
@@ -114,7 +116,7 @@ export const Create_new = (state ={}, action) => {
                 ...state,
                 references: {
                     ...state.references,
-                    charts: pushReferenceToArray(state.references.charts, JSON.stringify(action.chart))
+                    charts: pushReferenceToArray(state.references.charts, action.chart)
                 }
             }
         case C.REMOVE_REFERENCE:
@@ -364,7 +366,7 @@ const Modify_result_management = (state={}, action) => {
         case C.SET_CHART_ATTACHED:
             return {
                 ...state,
-                charts: setResultAttached(state.charts, action.chartId)
+                charts: setCharttAttached(state.charts, action.chartId)
             }
         case C.REMOVE_TABLE:
             return{

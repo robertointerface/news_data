@@ -70,18 +70,20 @@ export const attach_graph_reference = (id) => {
      return (dispatch, getState) => {
         try {
 
+            var charts = getState().Results_management.charts
+            charts = charts.map(chart =>  JSON.parse(chart))
+            var chartToAttach = charts.find(chart => chart.id == id)
 
-            var searchGraph = getState().Results_management.charts.find(graph => graph.id == id)
-            if(searchGraph.attached){
+            if(chartToAttach.attached){
                 throw 'already attached'
             }
-            dispatch(set_chart_attached(id))
+            dispatch(set_chart_attached(chartToAttach.id))
         }
         catch (error) {
-            var searchGraph = '';
+            var chartToAttach = '';
         }
         finally {
-            return dispatch(attach_graph(searchGraph));
+            return dispatch(attach_graph(JSON.stringify(chartToAttach)));
         }
     }
 }

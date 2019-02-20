@@ -76,7 +76,7 @@ export const attach_table = (table) =>
 export const attach_graph = (chart) =>
     ({
         type: C.ATTACH_GRAPH,
-        table: chart
+        chart: chart
 
     })
 export const save_graph_reference = (object) =>

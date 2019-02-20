@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {DropDownMenuRemove} from 'ui/common/dropdowns/dropDownRemove'
+import {parseList} from 'functions/Results_management/stateManipulation'
 
 const AttachedReferences = ({tableList=[], chartList=[], onRemove=f=>f}) => {
     var tableCleanList = cleanTable(tableList);
-    var chartCleanList = cleanCharts(chartList);
+    var chartCleanList = cleanCharts(parseList(chartList));
     var cleanList = [...tableCleanList, ...chartCleanList]
     return (
         <DropDownMenuRemove title={'Attachments'} list={cleanList} onRemove={onRemove}/>
@@ -45,6 +46,7 @@ function cleanCharts(chartList){
         result(array): state.Create_new.references
     @Return: list of objects
  */
+
     var list = chartList.map((x, i) =>{
         return {
             'type': 'graph',

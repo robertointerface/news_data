@@ -49,6 +49,20 @@ const setResultAttached = (list, resultId) =>{
     })
 }
 
+const setCharttAttached = (list, chartId) =>{
+    var parsedList = list.map(chart =>  JSON.parse(chart))
+
+    return parsedList.map(item =>{
+        if(item.id == chartId){
+            return JSON.stringify({
+                ...item,
+                attached: true
+            })
+        }
+        return JSON.stringify(item);
+    })
+
+}
 
 const setResultUnattached = (list=[], resultId) =>{
      return list.map(item =>{
@@ -92,13 +106,19 @@ const setInfoMessageAtDisplay = (list=[], resultId, message) => {
 }
 
 
+const parseList = (list=[]) => {
+    return list.map(item =>  JSON.parse(item))
+}
+
 export {
     pushResult,
     pushGraph,
     removeResult,
     resultSaved,
     setResultAttached,
+    setCharttAttached,
     setResultUnattached,
     setErrorMessageAtDisplay,
-    setInfoMessageAtDisplay
+    setInfoMessageAtDisplay,
+    parseList
 }

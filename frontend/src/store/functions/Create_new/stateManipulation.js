@@ -28,6 +28,8 @@ const pushReferenceToArray = (list=[], item) => {
 }
 
 
+
+
 const removeReference = function(list=[], resultId){
 /*
     @Func: Remove reference from state.Create_new.references given the required resultId
