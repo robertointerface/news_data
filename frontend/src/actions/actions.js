@@ -92,28 +92,6 @@ export const save_graph_reference = (object) =>
         type: C.ATTACH_GRAPH_REFERENCE,
         object: object
     })
-export const remove_table_reference = id =>
-    ({
-        type: C.REMOVE_TABLE_REFERENCE,
-        tableId: id
-    })
-
-export const remove_chart_reference = id =>
-    ({
-        type: C.REMOVE_CHART_REFERENCE,
-        chartId: id
-    })
-export const set_table_attached = id =>
-    ({
-        type: C.SET_TABLE_ATTACHED,
-        tableId: id
-    })
-
-export const unattached_table = id =>
-    ({
-        type: C.SET_TABLE_UNATTACHED,
-        tableId: id
-    })
 
 export const select_database = (id, name) =>
     ({
@@ -230,6 +208,35 @@ export const remove_chart = id =>
         type: C.REMOVE_CHART,
         chartId: id
     })
+
+export const remove_table_reference = id =>
+    ({
+        type: C.REMOVE_TABLE_REFERENCE,
+        tableId: id
+    })
+
+export const remove_chart_reference = id =>
+    ({
+        type: C.REMOVE_CHART_REFERENCE,
+        chartId: id
+    })
+export const set_table_attached = id =>
+    ({
+        type: C.SET_TABLE_ATTACHED,
+        tableId: id
+    })
+
+export const unattached_table = id =>
+    ({
+        type: C.SET_TABLE_UNATTACHED,
+        tableId: id
+    })
+export const unattached_chart = id =>
+    ({
+        type: C.SET_CHART_UNATTACHED,
+        chartId: id
+    })
+
 export const error_table_display = (id, message) =>
     ({
         type: C.ERROR_TABLE_DISPLAY,

@@ -6,6 +6,7 @@ import {
     remove_table_reference,
     remove_chart_reference,
     unattached_table,
+    unattached_chart,
     info_table_display,
     info_chart_display,
     remove_chart
@@ -108,7 +109,8 @@ export const AttachedReferencesContainer = connect(
                     case 'chart':
                         return Promise.all([
                             dispatch(remove_chart_reference(id)),
-
+                            dispatch(unattached_chart(id)),
+                            dispatch(info_chart_display(id, ''))
                         ])
                     default:
 

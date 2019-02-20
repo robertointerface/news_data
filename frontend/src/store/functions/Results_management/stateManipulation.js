@@ -18,7 +18,6 @@ const removeResult = (list, id) => {
         }
         return true
     })
-
 }
 
 const resultSaved = (list, resultId) =>{
@@ -37,13 +36,24 @@ const resultSaved = (list, resultId) =>{
 
 }
 
-
 const setResultAttached = (list, resultId) =>{
      return list.map(item =>{
         if(item.id == resultId){
             return {
                 ...item,
                 attached: true
+            }
+        }
+        return item;
+    })
+}
+
+const setResultUnattached = (list=[], resultId) =>{
+     return list.map(item =>{
+        if(item.id == resultId){
+            return {
+                ...item,
+                attached: false
             }
         }
         return item;
@@ -62,18 +72,18 @@ const setCharttAttached = (list, chartId) =>{
         }
         return JSON.stringify(item);
     })
-
 }
 
-const setResultUnattached = (list=[], resultId) =>{
-     return list.map(item =>{
-        if(item.id == resultId){
-            return {
+const setChartUnAttached = (list, chartId) => {
+    var parsedList = list.map(chart =>  JSON.parse(chart))
+    return parsedList.map(item => {
+        if(item.id == chartId){
+            return JSON.stringify({
                 ...item,
                 attached: false
-            }
+            })
         }
-        return item;
+        return JSON.stringify(item);
     })
 }
 
@@ -148,6 +158,7 @@ export {
     resultSaved,
     setResultAttached,
     setCharttAttached,
+    setChartUnAttached,
     setResultUnattached,
     setErrorMessageAtDisplay,
     setInfoMessageAtDisplay,

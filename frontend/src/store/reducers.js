@@ -22,6 +22,7 @@ import {
     resultSaved,
     setResultAttached,
     setCharttAttached,
+    setChartUnAttached,
     setResultUnattached,
     setErrorMessageAtDisplay,
     setInfoMessageAtDisplay,
@@ -347,6 +348,8 @@ export const Results_management = (state={}, action) => {
             return Modify_result_management(state, action)
         case C.SET_TABLE_UNATTACHED:
             return Modify_result_management(state, action)
+        case C.SET_CHART_UNATTACHED:
+            return Modify_result_management(state, action)
         case C.ERROR_TABLE_DISPLAY:
             return Modify_result_management(state, action)
         case C.INFO_TABLE_DISPLAY:
@@ -401,6 +404,11 @@ const Modify_result_management = (state={}, action) => {
             return {
                 ...state,
                 tables: setResultUnattached(state.tables, action.tableId)
+            }
+        case C.SET_CHART_UNATTACHED:
+            return{
+                ...state,
+                charts: setChartUnAttached(state.charts, action.chartId)
             }
         case C.ERROR_TABLE_DISPLAY:
             return {
