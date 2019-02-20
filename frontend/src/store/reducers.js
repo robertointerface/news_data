@@ -21,7 +21,7 @@ import {
     removeResult,
     resultSaved,
     setResultAttached,
-    setCharttAttached,
+    toogleChartAttached,
     setChartUnAttached,
     setResultUnattached,
     setErrorMessageAtDisplay,
@@ -382,7 +382,7 @@ const Modify_result_management = (state={}, action) => {
         case C.SET_CHART_ATTACHED:
             return {
                 ...state,
-                charts: setCharttAttached(state.charts, action.chartId)
+                charts: toogleChartAttached(state.charts, action.chartId)
             }
         case C.REMOVE_TABLE:
             return{
@@ -408,7 +408,7 @@ const Modify_result_management = (state={}, action) => {
         case C.SET_CHART_UNATTACHED:
             return{
                 ...state,
-                charts: setChartUnAttached(state.charts, action.chartId)
+                charts: toogleChartAttached(state.charts, action.chartId)
             }
         case C.ERROR_TABLE_DISPLAY:
             return {

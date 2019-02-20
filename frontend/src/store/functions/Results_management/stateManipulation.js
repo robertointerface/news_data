@@ -60,27 +60,15 @@ const setResultUnattached = (list=[], resultId) =>{
     })
 }
 
-const setCharttAttached = (list, chartId) =>{
+const toogleChartAttached = (list, chartId) =>{
     var parsedList = list.map(chart =>  JSON.parse(chart))
 
     return parsedList.map(item =>{
         if(item.id == chartId){
-            return JSON.stringify({
-                ...item,
-                attached: true
-            })
-        }
-        return JSON.stringify(item);
-    })
-}
 
-const setChartUnAttached = (list, chartId) => {
-    var parsedList = list.map(chart =>  JSON.parse(chart))
-    return parsedList.map(item => {
-        if(item.id == chartId){
             return JSON.stringify({
                 ...item,
-                attached: false
+                attached: !item.attached
             })
         }
         return JSON.stringify(item);
@@ -157,7 +145,7 @@ export {
     removeResult,
     resultSaved,
     setResultAttached,
-    setCharttAttached,
+    toogleChartAttached,
     setChartUnAttached,
     setResultUnattached,
     setErrorMessageAtDisplay,

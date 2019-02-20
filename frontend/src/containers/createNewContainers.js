@@ -9,7 +9,8 @@ import {
     unattached_chart,
     info_table_display,
     info_chart_display,
-    remove_chart
+    remove_chart,
+    set_chart_attached
 } from "actions/actions";
 import LongNewForm from "components/create_new/create_long_new/LongNewForm";
 import DataDisplay from "components/data_representation/dataDisplay";
