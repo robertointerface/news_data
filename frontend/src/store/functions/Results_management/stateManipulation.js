@@ -33,27 +33,15 @@ const resultSaved = (list, resultId) =>{
         }
         return item;
     })
-
 }
 
-const setResultAttached = (list, resultId) =>{
+
+const toogleTableAttached = (list, resultId) =>{
      return list.map(item =>{
         if(item.id == resultId){
             return {
                 ...item,
-                attached: true
-            }
-        }
-        return item;
-    })
-}
-
-const setResultUnattached = (list=[], resultId) =>{
-     return list.map(item =>{
-        if(item.id == resultId){
-            return {
-                ...item,
-                attached: false
+                attached: !item.attached
             }
         }
         return item;
@@ -144,10 +132,8 @@ export {
     pushGraph,
     removeResult,
     resultSaved,
-    setResultAttached,
+    toogleTableAttached,
     toogleChartAttached,
-    setChartUnAttached,
-    setResultUnattached,
     setErrorMessageAtDisplay,
     setInfoMessageAtDisplay,
     setChartInfoMessageAtDisplay,

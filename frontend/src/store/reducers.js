@@ -20,10 +20,8 @@ import {
     pushGraph,
     removeResult,
     resultSaved,
-    setResultAttached,
+    toogleTableAttached,
     toogleChartAttached,
-    setChartUnAttached,
-    setResultUnattached,
     setErrorMessageAtDisplay,
     setInfoMessageAtDisplay,
     setChartInfoMessageAtDisplay
@@ -377,7 +375,7 @@ const Modify_result_management = (state={}, action) => {
         case C.SET_TABLE_ATTACHED:
             return {
                 ...state,
-                tables: setResultAttached(state.tables, action.tableId)
+                tables: toogleTableAttached(state.tables, action.tableId)
             }
         case C.SET_CHART_ATTACHED:
             return {
@@ -403,7 +401,7 @@ const Modify_result_management = (state={}, action) => {
         case C.SET_TABLE_UNATTACHED:
             return {
                 ...state,
-                tables: setResultUnattached(state.tables, action.tableId)
+                tables: toogleTableAttached(state.tables, action.tableId)
             }
         case C.SET_CHART_UNATTACHED:
             return{
