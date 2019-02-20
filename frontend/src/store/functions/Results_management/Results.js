@@ -18,6 +18,9 @@ import {
 import {graph} from 'classes/graph'
 
 export const handle_change_unit = (resultId, unitId) => {
+    /*
+
+     */
     return (dispatch, getState) =>{
         var resultsMade = getState().Results_management.tables;
         var foundResult = {...resultsMade.find(item => item['id'] == resultId)};
@@ -38,16 +41,21 @@ export const handle_change_unit = (resultId, unitId) => {
 
 
 export const handle_save_result_user = resultId => {
+    /*
+        @Func: upon user request, 'table' data (Third party api data i.e Eurostat) is saved into users accounts so it
+        can be seen or analyze later. Data is saved in MySQL table 'UserData' in the back end.
+        @Arg: resultId(time.stamp() unix time.stamp()): data ID used to get the data form redux state.
+        @Return: Display successful message to user or error if data was not saved.
+     */
     return (dispatch, getState) => {
         var csrftoken = getCookie('csrftoken');
         var results = getState().Results_management.tables
-        var resutlToSave = results.find(result => result['id'] == resultId)
-        var Authorization = `JWT ${localStorage.getItem('token')}`
+        var resutlToSave = results.find(result => result['id'] == resultId) //find the data json object
         if(resutlToSave){
             var data = {
                 'DataToSave': resutlToSave,
                 'APIUrl': resutlToSave.searchObject.APIUrl
-            }
+            } // data to be POST to backend
             return fetch(`${urls.SAVE_DATA}`, {
                 method: 'POST',
                 mode: 'same-origin',
@@ -77,7 +85,7 @@ export const handle_save_result_user = resultId => {
 export const handle_excel_download = resultId => {
 /*
     @Func: Call API to convert specific result data (JSON format) into an excel file.
-    @Args: resultId,
+    @Arg: resultId(time.stamp() unix time.stamp()): data ID used to get the data form redux state.
     @return: Excel file to browser
  */
     return (dispatch, getState) => {
@@ -109,9 +117,14 @@ export const handle_excel_download = resultId => {
 }
 
 export const handle_graph_result = resultId => {
+    /*
+        @Func: convert JSON data into JSON data that can be used to create charts/graphs with chart.js library.
+        @Arg: resultId(time.stamp() unix time.stamp()): data ID used to get the data form redux state.
+        @return: JSON object.
+     */
     return (dispatch, getState) => {
         var results = getState().Results_management.tables;
-        var resultToGraph = results.find(result => result['id'] == resultId);
+        var resultToGraph = results.find(result => result['id'] == resultId); // Get JSON data
         var graphData = prepareGraphData(resultToGraph);
         var graphObject = new graph(graphData);
         graphObject.createData();
@@ -133,7 +146,10 @@ export const handle_graph_result = resultId => {
 }
 
 const prepareGraphData = resultData => {
-
+    /*
+        @Func: Create JSON object required to initialize 'graph'.
+        @Args (resultData): JSON Object
+     */
     var graphObject = {};
     ( {
         Sector: graphObject.Sector,

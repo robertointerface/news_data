@@ -1,7 +1,9 @@
 import {GraphLineColors} from 'data/QueryMap/QueryMap'
 
 class graph {
-
+    /*
+        Creates JSON objects that can be used to create charts/graphs with library chart.js
+     */
     constructor(dataObject){
         this.Topic = dataObject.Topic.name;
         this.Indicator = dataObject.Indicator.name;
