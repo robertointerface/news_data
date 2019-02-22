@@ -5,7 +5,6 @@ import Headline from 'ui/new_display/headline'
 import Truncate from 'react-truncate'
 
 const NewsDisplayList = ({News=[]}) => {
-    var news = News
     return (
         <div>
             {(News.length > 0) ?
@@ -19,12 +18,21 @@ const NewsDisplayList = ({News=[]}) => {
                                                         date={x.time_stamp}/>}
                                    headerClass='bg-primary'>
                              <div className='resultCardBody card-body'>
-                                 <ul>
-                                     <Headline text={x.headline1}/>
-                                     <Headline text={x.headline2}/>
-                                     <Headline text={x.headline3}/>
-                                 </ul>
+                                 <div className='row'>
+                                     <div className='col-8'>
+                                         <ul>
+                                             <Headline text={x.headline1}/>
+                                             <Headline text={x.headline2}/>
+                                             <Headline text={x.headline3}/>
+                                         </ul>
+                                     </div>
+                                     <div className='col-4'>
+
+                                     </div>
+                                  </div>
                                  <p className='newContent'>{x.content}</p>
+
+
                              </div>
                         </CardCol12>
                     )}

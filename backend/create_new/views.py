@@ -20,14 +20,13 @@ class PublishLongNew(APIView):
 
     def post(self, request, format=None):
         try:
-            request_data = request.data['newData']
+            request_data = self.request.data['newData']
             user = request.user
             data_to_save = dict({'new_title': request_data['title'],
                                  'headline1': request_data['headline1'],
                                  'headline2': request_data['headline2'],
                                  'headline3': request_data['headline3'],
                                  'content': request_data['content'],
-                                 'references': request_data['references'],
                                  'created_by': user.id})
             serializer = NewSerializer(data=data_to_save)
             if serializer.is_valid(raise_exception=True):

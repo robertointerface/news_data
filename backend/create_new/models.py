@@ -22,7 +22,7 @@ class New(models.Model):
     headline2 = models.CharField(max_length=100, null=True, blank=True)
     headline3 = models.CharField(max_length=100, null=True, blank=True)
     content = models.TextField(max_length=605, null=False)
-    references = JSONField(null=True)
+   # references = JSONField(null=True, blank=True)
     time_stamp = models.DateField(default=timezone.now)
     created_by = models.ForeignKey(User, related_name='user_created_new')
 
