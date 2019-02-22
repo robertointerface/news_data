@@ -3,6 +3,9 @@ import CardCol12 from 'ui/common/cards/CardCol12'
 import NewTitle from 'ui/new_display/title'
 import Headline from 'ui/new_display/headline'
 import Truncate from 'react-truncate'
+import { faTimesCircle } from '@fortawesome/free-regular-svg-icons'
+import { faTable, faChartBar } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const NewsDisplayList = ({News=[]}) => {
     return (
@@ -27,7 +30,14 @@ const NewsDisplayList = ({News=[]}) => {
                                          </ul>
                                      </div>
                                      <div className='col-4'>
-
+                                         <div className='row'>
+                                             <div className='col-12'>
+                                                 <FontAwesomeIcon className='F12' icon={faTable}/>{x.tables.length}
+                                             </div>
+                                             <div className='col-12'>
+                                                 <FontAwesomeIcon className='F12' icon={faChartBar}/>{x.charts.length}
+                                             </div>
+                                         </div>
                                      </div>
                                   </div>
                                  <p className='newContent'>{x.content}</p>

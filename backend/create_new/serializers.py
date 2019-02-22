@@ -10,6 +10,7 @@ if Migration:
 else:
     from backend.accounts.models import User
 
+
 class NewSerializer(serializers.ModelSerializer):
     created_by = serializers.SlugRelatedField(many=False, queryset=User.objects.all(), slug_field='username')
     class Meta:
