@@ -20,6 +20,19 @@ const removeResult = (list, id) => {
     })
 }
 
+const removeGraph = (list=[], id) => {
+    var parsedList = list.map(chart =>  JSON.parse(chart));
+
+    parsedList = parsedList.filter(item =>  {
+        if (item.id == id){
+            return false
+        }
+        return true;
+    })
+
+    return stringifyList(parsedList);
+}
+
 const resultSaved = (list, resultId) =>{
 /*
     @Func: Find result and change status 'saved' to True
@@ -125,12 +138,22 @@ const parseList = (list=[]) => {
     }
 }
 
+const stringifyList = (list=[]) => {
+
+    try{
+        return list.map(item =>  JSON.stringify(item))
+    }
+    catch (e) {
+        return []
+    }
+}
 
 
 export {
     pushResult,
     pushGraph,
     removeResult,
+    removeGraph,
     resultSaved,
     toogleTableAttached,
     toogleChartAttached,

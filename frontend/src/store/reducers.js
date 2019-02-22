@@ -24,7 +24,8 @@ import {
     toogleChartAttached,
     setErrorMessageAtDisplay,
     setInfoMessageAtDisplay,
-    setChartInfoMessageAtDisplay
+    setChartInfoMessageAtDisplay,
+    removeGraph
 } from 'functions/Results_management/stateManipulation'
 
 import {
@@ -391,7 +392,7 @@ const Modify_result_management = (state={}, action) => {
         case C.REMOVE_CHART:
             return {
                 ...state,
-                charts: removeResult(state.charts, action.chartId)
+                charts: removeGraph(state.charts, action.chartId)
             }
         case C.SET_TABLE_SAVED:
             return {
