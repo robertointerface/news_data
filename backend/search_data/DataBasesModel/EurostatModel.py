@@ -705,10 +705,11 @@ Eurostat = {
                     'HF1': 'General government',
                     'HF2': 'Voluntary health care payment schemes',
                     'HF3': 'Household out-of-pocket payment',
-                    'EUR_HAB': 'Euro per inhabitant',
-                    'PPS_HAB': 'Purchasing power standard (PPS) per inhabitant',
+
                 },
                 'units': {
+                    'EUR_HAB': 'Euro per inhabitant',
+                    'PPS_HAB': 'Purchasing power standard (PPS) per inhabitant',
                     'MIO_EUR': 'Million euro',
                     'PC_GDP': 'Percentage of gross domestic product (GDP)',
                 }

@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css'
-import {About} from "./components/main/About";
-import {Home} from "./components/main/Home";
-import Login from './components/accounts/Login'
+import {About} from "components/main/About";
+import {Home} from "components/main/Home";
+import Login from 'components/accounts/Login'
 import CreateLongNew from './components/create_new/create_long_new/createLongNewBlock'
 import createBrowserHistory from 'history/createBrowserHistory'
 export const history = createBrowserHistory()
@@ -16,9 +16,9 @@ import {
   BrowserRouter
 } from 'react-router-dom'
 
-import Accounts from "./components/accounts/accounts";
-import CreateNew from "./components/create_new/createNew"
-import NewDisplayRouter from './components/new_display/NewDisplayRouter'
+import Accounts from "components/accounts/accounts";
+import CreateNew from "components/create_new/createNew"
+import NewDisplayRouter from 'components/new_display/NewDisplayRouter'
 
 const App = () => {
     return (
