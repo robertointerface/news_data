@@ -3,7 +3,7 @@ import {Component} from 'react'
 import {getDetailNew} from "root/store/functions/Display_news/displayNewsFunctions";
 import NewCard from 'components/new_display/NewCard'
 import PageTemplate from 'components/main/PageTemplate'
-import DisplayReferences from 'components/new_display/DisplayReferences'
+import DisplayTables from 'components/new_display/DisplayTables'
 class NewDetailContainer extends Component{
     constructor(props){
         super(props)
@@ -14,7 +14,8 @@ class NewDetailContainer extends Component{
             headline2: '',
             headline3: '',
             content: '',
-            references: []
+            tables: [],
+            charts: []
         }
     }
 
@@ -26,7 +27,8 @@ class NewDetailContainer extends Component{
                  headline2: newData.headline2,
                  headline3: newData.headline3,
                  content: newData.content,
-                 references: newData.references,
+                 tables: newData.tables,
+                 charts: newData.charts,
                  created_by: newData.created_by,
                  time_stamp: newData.time_stamp
              })
@@ -34,7 +36,7 @@ class NewDetailContainer extends Component{
     }
 
     render(){
-        var {new_title, headline1, headline2, headline3, content, references} = this.state
+        var {new_title, headline1, headline2, headline3, content, tables} = this.state
         return (
             <PageTemplate>
                 {(new_title)?
@@ -47,18 +49,18 @@ class NewDetailContainer extends Component{
                                      content={content}
                             />
                         </div>
-                        {(references.length > 0) ?
+                        {(tables.length > 0) ?
                             <div className='col-12'>
-                                <DisplayReferences references={references}/>
+                                <DisplayTables tables={tables}/>
                             </div>
                             : null
                         }
+
                     </div> : null
                 }
             </PageTemplate>
         )
     }
-
 }
 
 export default NewDetailContainer
