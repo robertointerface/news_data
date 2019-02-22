@@ -27,7 +27,9 @@ class PublishLongNew(APIView):
                                  'headline2': request_data['headline2'],
                                  'headline3': request_data['headline3'],
                                  'content': request_data['content'],
-                                 'created_by': user.id})
+                                 'tables': request_data['references']['tables'],
+                                 'charts': request_data['references']['charts'],
+                                 'created_by': user.username})
             serializer = NewSerializer(data=data_to_save)
             if serializer.is_valid(raise_exception=True):
                 serializer.create(serializer.validated_data)
