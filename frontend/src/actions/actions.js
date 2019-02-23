@@ -263,3 +263,18 @@ export const display_chart = (chart = {}) =>
         type: C.DISPLAY_CHART,
         chart: chart
     })
+
+export const clean_new_state = () =>
+    ({
+        type: C.CLEAN_NEW_STATE
+    })
+
+export const clean_current_search = () =>
+    ({
+        type: C.CLEAN_CURRENT_SEARCH
+    })
+
+export const clean_result_management = () =>
+    ({
+        type: C.CLEAN_RESULT_MANAGEMENT
+    })

@@ -43,6 +43,11 @@ import {
     pushGeoToArray
 } from "functions/Current_search/stateManipulation";
 
+import {
+    createNewForm as emptyNewForm,
+    initialStateCurrentSearch as emptyCurrentSearch,
+    results as emptyResult
+} from 'root/store/initialData'
 
 import { userData as emptyUserData }  from './initialData'
 import {getTopicMap} from 'functions/Create_new/CreateNewFunctions'
@@ -136,6 +141,10 @@ export const Create_new = (state ={}, action) => {
                     charts: removeChartReferences(state.references.charts, action.chartId)
                 }
             }
+        case C.CLEAN_NEW_STATE:
+            return {
+                ...emptyNewForm
+            }
         default:
             return state
     }
@@ -174,6 +183,8 @@ export const Current_search = (state = {}, action) => {
         case C.FINISHED_REQUESTING:
             return Modify_current_search(state,action)
         case C.ERROR_SEARCH_DATA:
+            return Modify_current_search(state,action)
+        case C.CLEAN_CURRENT_SEARCH:
             return Modify_current_search(state,action)
         default:
             return state
@@ -324,6 +335,10 @@ export const Modify_current_search = (state = {}, action) =>{
                 ...state,
                 errorMessage: action.error
             }
+        case C.CLEAN_CURRENT_SEARCH:
+            return {
+                ...emptyCurrentSearch
+            }
         default :
             return state
     }
@@ -354,6 +369,8 @@ export const Results_management = (state={}, action) => {
         case C.INFO_TABLE_DISPLAY:
             return Modify_result_management(state, action)
         case C.INFO_CHART_DISPLAY:
+            return Modify_result_management(state, action)
+        case C.CLEAN_RESULT_MANAGEMENT:
             return Modify_result_management(state, action)
         default:
             return state
@@ -424,6 +441,11 @@ const Modify_result_management = (state={}, action) => {
                 ...state,
                 charts: setChartInfoMessageAtDisplay(state.charts, action.chartId, action.message)
             }
+        case C.CLEAN_RESULT_MANAGEMENT: {
+            return {
+                ...emptyResult
+            }
+        }
         default:
             return state
     }
