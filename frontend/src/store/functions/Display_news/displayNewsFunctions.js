@@ -31,6 +31,9 @@ const getNewsToDisplay = (page=1) => {
         })
 }
 
+const getHotNewsPageCount = () => {
+    var csrftoken = getCookie('csrftoken');
+}
 
 const getDetailNew = (id = 0) => {
     var csrftoken = getCookie('csrftoken'); //get saved cookie

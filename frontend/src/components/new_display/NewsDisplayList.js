@@ -7,7 +7,9 @@ import { faTimesCircle } from '@fortawesome/free-regular-svg-icons'
 import { faTable, faChartBar } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
+
 const NewsDisplayList = ({News=[]}) => {
+
     return (
         <div>
             {(News.length > 0) ?
@@ -41,13 +43,12 @@ const NewsDisplayList = ({News=[]}) => {
                                      </div>
                                   </div>
                                  <p className='newContent'>{x.content}</p>
-
-
                              </div>
                         </CardCol12>
                     )}
                 </div> : null
             }
+
         </div>
     )
 }
