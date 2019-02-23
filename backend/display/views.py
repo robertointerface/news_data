@@ -28,7 +28,9 @@ class GetNewList(APIView):
 
     def get(self, request, format=None):
         try:
-            news = NewSerializer(New.objects.all(), many=True)
+            params = request.query_params
+            page = int(params['page'])
+            news = NewSerializer(New.objects.all()[page:page+2], many=True)
             content = JSONRenderer().render(news.data)
             return Response(content, status=200, content_type=json)
         except DatabaseError:
