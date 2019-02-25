@@ -53,6 +53,7 @@ export const urls = {
     EDIT_USER_FIRST_TIME: 'http://127.0.0.1:8080/accounts/edituserfirsttime/',
     REFRESH_TOKEN: 'http://127.0.0.1:8080/accounts/token-refresh/',
     MAIN: 'http://localhost:8080/display/newslist/',
+    GET_NEWS_COUNT: 'http://localhost:8080/display/getnewscount/',
     NEW_DETAIL: 'http://localhost:8080/display/getnew/',
     DEVELOP: 'http://localhost:8080',
     MAKE_API_CALL: 'http://localhost:8080/search/makeapicall/',

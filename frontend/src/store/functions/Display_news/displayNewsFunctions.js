@@ -33,6 +33,18 @@ const getNewsToDisplay = (page=1) => {
 
 const getHotNewsPageCount = () => {
     var csrftoken = getCookie('csrftoken');
+    return fetch(`${urls.GET_NEWS_COUNT}`, {
+        method: 'GET',
+        mode: 'same-origin',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRFToken': csrftoken
+        },
+    }).then(response => {
+        return response.json()
+    }).catch(error =>{
+
+    })
 }
 
 const getDetailNew = (id = 0) => {
@@ -57,4 +69,4 @@ const getDetailNew = (id = 0) => {
         })
 }
 
-export {getNewsToDisplay, getDetailNew}
+export {getNewsToDisplay, getDetailNew, getHotNewsPageCount}

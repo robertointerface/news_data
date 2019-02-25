@@ -50,6 +50,7 @@ import {
 } from 'root/store/initialData'
 
 import { userData as emptyUserData }  from './initialData'
+
 import {getTopicMap} from 'functions/Create_new/CreateNewFunctions'
 
 export const App_status = (state = {}, action) => {
@@ -191,7 +192,7 @@ export const Current_search = (state = {}, action) => {
     }
 }
 
-export const Modify_current_search = (state = {}, action) =>{
+const Modify_current_search = (state = {}, action) =>{
     switch (action.type){
         case C.SELECT_DATABASE:
             return {
@@ -449,4 +450,8 @@ const Modify_result_management = (state={}, action) => {
         default:
             return state
     }
+}
+
+export const News_display = (state={}, action) => {
+
 }

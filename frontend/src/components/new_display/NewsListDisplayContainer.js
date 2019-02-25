@@ -3,7 +3,8 @@ import {Component} from 'react';
 import PropTypes from 'prop-types';
 import PageTemplate from 'components/main/PageTemplate'
 import {DisplayNewListContainer} from 'containers/newDisplayContainer'
-import {getNewsToDisplay} from 'functions/Display_news/displayNewsFunctions'
+import {
+    getNewsToDisplay, getHotNewsPageCount} from 'functions/Display_news/displayNewsFunctions'
 import NewsDisplayList from 'components/new_display/NewsDisplayList'
 import Pagination from 'ui/common/pagination/pagination'
 
@@ -12,21 +13,40 @@ class NewsListDisplayContainer extends Component{
     constructor(props){
         super(props )
         this.state = {
-            news: []
+            news: [],
+            totalNews: 0,
+            pages: 0,
+            newsPerPage: 2,
+            presentPage: 1
         }
         this.goToPage = this.goToPage.bind(this)
     }
 
      componentDidMount() {
          getNewsToDisplay().then(news => {
-            return this.setState({news: news})
-         }).then()
-    }
+             return this.setState({news: news})
+         }).then(gotNews =>{
+             return getHotNewsPageCount();
+         }).then(newsCount =>{
+             if(typeof newsCount != 'undefined')
+                    return this.setState({
+                        totalNews: newsCount['newsCount'],
+                        pages: Math.ceil(newsCount['newsCount']/this.state.newsPerPage) //Round number up
+                    })
+             }
+
+         ).catch(error => {
+
+         })
+     }
 
     goToPage(e, page){
         e.preventDefault();
         getNewsToDisplay(page).then(news => {
-           return this.setState({news: news})
+           return this.setState({
+               news: news,
+               presentPage: page
+           })
         })
     }
 
