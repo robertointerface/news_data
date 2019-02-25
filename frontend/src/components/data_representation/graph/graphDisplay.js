@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Component } from 'react';
-import {Line} from 'react-chartjs-2';
+import {Line, Bar} from 'react-chartjs-2';
 import { faTimesCircle } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {AttachDataRequest} from 'components/data_representation/attachData'
@@ -35,7 +35,12 @@ const GraphDisplay = ({list=[], onRemove=f=>f, onAttach=f=>f}) => {
                                     </div>
                                 </div>
                                 <div className='card-body'>
-                                    <Line data={chart.data} options={chart.options} width="400" height="400"/>
+                                    {(chart.type == 'line') ?
+                                        <Line data={chart.data} options={chart.options} width="400" height="400"/> :
+
+                                        <Bar data={chart.data} options={chart.options} width="400" height="400"/>
+                                    }
+
                                     <AttachDataRequest
                                             onClick={(e) => onAttach(e, chart.id)}
                                             attached={chart.attached}

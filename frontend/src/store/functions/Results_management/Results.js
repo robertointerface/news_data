@@ -15,7 +15,10 @@ import {
     flashFlags
 } from 'constants/constants'
 
-import {graph} from 'classes/graph'
+import {
+    lineGraph,
+    barGraph
+} from 'classes/graph'
 
 export const handle_change_unit = (resultId, unitId) => {
     /*
@@ -116,6 +119,14 @@ export const handle_excel_download = resultId => {
     }
 }
 
+
+const getGraphClass = (graphData) => {
+    if (graphData.SelectedTimes.length > 1){
+        return new lineGraph(graphData)
+    } else{
+        return new barGraph(graphData)
+    }
+}
 export const handle_graph_result = resultId => {
     /*
         @Func: convert JSON data into JSON data that can be used to create charts/graphs with chart.js library.
@@ -126,8 +137,9 @@ export const handle_graph_result = resultId => {
         var results = getState().Results_management.tables;
         var resultToGraph = results.find(result => result['id'] == resultId); // Get JSON data
         var graphData = prepareGraphData(resultToGraph);
-        var graphObject = new graph(graphData);
+        var graphObject = getGraphClass(graphData);
         graphObject.createData();
+
         var chart = {
             'id': Date.now(),
             'attached': false,
@@ -144,7 +156,6 @@ export const handle_graph_result = resultId => {
 
     }
 }
-
 const prepareGraphData = resultData => {
     /*
         @Func: Create JSON object required to initialize 'graph'.
@@ -156,6 +167,7 @@ const prepareGraphData = resultData => {
         Topic: graphObject.Topic,
         Indicator: graphObject.Indicator,
         Unit: graphObject.Unit,
+        SelectedGeo: graphObject.SelectedGeo,
         SelectedTimes: graphObject.SelectedTimes,
         displayMessage: graphObject.displayMessage
 
