@@ -7,5 +7,6 @@ import views
 
 urlpatterns = [
         url(r'^newslist/$', views.GetNewList.as_view()),
-        url(r'^getnew/$', views.GetNew.as_view())
+        url(r'^getnew/$', views.GetNew.as_view()),
+        url(r'^getnewscount/$', views.GetNewsCount.as_view())
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

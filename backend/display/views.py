@@ -37,6 +37,22 @@ class GetNewList(APIView):
             return Response(None, status=400, content_type=json)
 
 
+class GetNewsCount(APIView):
+    permission_classes = (AllowAny,)
+
+    def get(self, request, format=None):
+        try:
+            news = dict({
+                'newsCount': New.objects.count()
+            })
+        except DatabaseError:
+            news = dict({
+                'newsCount': 0
+            })
+        else:
+            return Response(news, status=200, content_type=json)
+
+
 class GetNew(APIView):
     permission_classes = (AllowAny,)
 
