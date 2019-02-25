@@ -870,19 +870,374 @@ Eurostat = {
                 }
             }
         }
+    },
+    'SC': {
+        'ilc_peps01': {
+            1: {
+                'indicators': {
+                    'TOTAL': 'From all ages',
+                    'Y_LT16': 'Less than 16 years',
+                    'Y16-24': 'From 16 to 24 years',
+                    'Y25-54': 'From 25 to 54 years',
+                    'Y_GE55': '55 years or over',
+                },
+                'units': {
+                    'PC': 'Percentage of population',
+                    'THS_PER': 'Thousand persons (Result X 1000)',
+                }
+            }
+        },
+        'ilc_peps11': {
+            1: {
+                'indicators': {
+                    'PC': 'Percentage of total population'
+                },
+                'units': {
+
+                }
+            }
+        },
+        'ilc_li01': {
+            1: {
+                'indicators': {
+                    'A1': 'Single person',
+                    'A2_2CH_LT14': 'Two adults with two children younger than 14 years',
+                },
+                'units':{
+                    'EUR': 'Euros',
+                    'PPS': 'Purchasing Power Standard'
+                }
+            }
+        },
+        'ilc_di12': {
+            1: {
+                'indicators': {
+                    'GINI_HND': 'Gini coefficient (scale from 0 to 100)'
+                },
+                'units': {
+
+                }
+            }
+        },
+        'spr_exp_sum': {
+            1: {
+                'indicators': {
+                    'SPBENEFNOREROUTE': 'Social protection benefits',
+                    'SICKDISA': 'Sickness/Health care',
+                    'UNEMPLOY': 'Unemployment',
+                    'OLDSURVIV': 'Old age and survivors',
+                    'FAM': 'Family/Children',
+                    'HOUSEEXCLU': 'Housing and Social exclusion',
+                    'ADMIN': 'Administration costs',
+                },
+                'units': {
+                    'EUR_HAB': 'Euro per inhabitant',
+                    'EUR_HAB_KP10': 'Euro per inhabitant (at constant 2010 prices)',
+                    'MIO_EUR': 'Million euro',
+                    'MEUR_KP10': 'Million euro (at constant 2010 prices)',
+                    'PC_GDP': 'Family/Percentage of gross domestic product (GDP)',
+                    'PC_BEN': 'Percentage of total benefits',
+                }
+            }
+        },
+        'spr_pns_ben': {
+            1: {
+                'indicators': {
+                    'TOTAL': 'Total pensions',
+                    'SCPOLDPEN': 'Old age pension',
+                    'SCPANTPEN': 'Anticipated old age pension',
+                    'SCPDISPEN': 'Total disability pensions',
+                    'SCPEARLYRED': 'Early retirement benefit due to reduced capacity to work',
+                    'SCPSURVPEN': 'Survivors pension',
+                    'SCPEARLYMARK': 'Early retirement benefit for labour market reasons',
+                },
+                'units': {
+                    'MIO_EUR': 'Million euro',
+                    'PC_GDP': 'Percentage of gross domestic product (GDP)',
+                    'EUR_HAB_KP10': 'Euro per inhabitant (at constant 2010 prices)',
+                }
+            }
+        },
+        'spr_exp_pens': {
+            1: {
+                'indicators': {
+                    'TOTAL': 'Total pensions',
+                    'SCPOLDPEN': 'Old age pension',
+                    'SCPANTPEN': 'Anticipated old age pension',
+                    'SCPDISPEN': 'Total disability pensions',
+                    'SCPEARLYRED': 'Early retirement benefit due to reduced capacity to work',
+                    'SCPSURVPEN': 'Survivors pension',
+                    'SCPEARLYMARK': 'Early retirement benefit for labour market reasons'
+                },
+                'units': {
+                    'MIO_EUR': 'Million euro',
+                    'PC_GDP': 'Percentage of gross domestic product (GDP)',
+                    'EUR_HAB_KP10': 'Euro per inhabitant (at constant 2010 prices)'
+                }
+            }
+        },
+        'ilc_lvho02': {
+            1: {
+                'indicators': {
+                    'OWN': 'property Owner',
+                    'OWN_L': 'Owner, with mortgage or loan',
+                    'OWN_NL': 'Owner, no outstanding mortgage or housing loan',
+                    'RENT': 'Tenant',
+                    'RENT_FR': 'Tenant, rent at reduced price or free',
+                },
+                'units': {
+                    'TOTAL': '% of Total population',
+                }
+            }
+        },
+        'ilc_iw04': {
+            1: {
+             'indicators': {
+                 'ED0-2': '% of population with Secondary education or lower degree',
+                 'ED3_4': '% of population with Upper secondary or vocational degree',
+                 'ED5-8': '% of population with University degree',
+             },
+                'units': {
+
+                }
+            }
+        }
+    },
+    'ENV&NRG': {
+        'env_ac_ainah_r2': {
+            1: {
+                'indicators': {
+                    'TOTAL': 'Total - all activities',
+                    'B': 'Mining and quarrying',
+                    'C': 'Manufacturing',
+                    'D': 'Electricity, gas, steam and air conditioning supply',
+                    'F': 'Construction',
+                    'H': 'Transportation and storage',
+                    'HH_HEAT': 'Heating/cooling activities by households',
+                    'HH_TRA': 'Transport activities by households',
+                },
+                'units': {
+                    'KG_HAB': 'Kilograms per capita',
+                    'THS_T': 'Thousand tonnes',
+                }
+            }
+        },
+        'env_ac_aeint_r2': {
+            1: {
+                'indicators': {
+                    'TOTAL': 'Total - all activities',
+                    'B': 'Mining and quarrying',
+                    'C': 'Manufacturing',
+                    'D': 'Electricity, gas, steam and air conditioning supply',
+                    'F': 'Construction',
+                    'H': 'Transportation and storage',
+
+                },
+                'units': {
+                    'KG_EUR_CP': 'Kilograms per euro (current prices)',
+                    'KG_EUR_CLV10': 'Kilograms per euro (chain linked volumes at 2010)',
+                }
+            }
+        },
+        'env_ac_tax': {
+            1: {
+                'indicators': {
+                    'ENV': 'Total environmental taxes',
+                    'NRG': 'Energy taxes',
+                    'POL': 'Pollution taxes',
+                    'RES': 'Resource taxes',
+                    'TRA': 'Transport taxes'
+                },
+                'units': {
+                    'PC_TSCO': 'Percentage of total revenues from taxes and social contributions',
+                    'PC_GDP': 'Percentage of gross domestic product (GDP)',
+                    'MIO_EUR': 'Million euro',
+                }
+            }
+        },
+        'env_ac_eptrf': {
+            1: {
+                'indicators': {
+                    'TOT_CEPA': 'Total environmental protection activities',
+                    'CEPA1': 'Protection of ambient air and climate',
+                    'CEPA2': 'Waste water management',
+                    'CEPA3': 'Waste management',
+                    'CEPA6': 'Protection of biodiversity and landscape',
+                    'CEPA8_9': 'R&D Environmental protection',
+                },
+                'units': {
+                   'MIO_EUR': 'Million euro',
+                }
+            }
+        },
+        'nrg_pc_204' :{
+            1: {
+                'indicators': {
+                    'I_TAX': 'With all taxes and levies included',
+                    'X_TAX': 'Excluding taxes and levies',
+                    'X_VAT': 'Excluding VAT and other recoverable taxes and levies',
+                },
+                'units': {
+                    'EUR': 'Euro/kWh',
+                    'PPS': 'Purchasing Power Standard per KWh',
+                }
+            }
+        },
+        'nrg_pc_204_c': {
+            1: {
+                'indicators': {
+                    'DP_ES': 'Energy and supply',
+                    'DP_NC': 'Network costs',
+                    'DP_TL': 'Taxes and levies'
+                },
+                'units': {
+                    'EUR': 'Euro/KWh',
+                    'PPS': 'Purchasing Power Standard per KWh',
+                }
+            }
+        },
+        'nrg_pc_205': {
+            1: {
+                'indicators': {
+                    '4162903': 'Band IC : 500 MWh < Consumption < 2 000 MWh',
+                    '4162904': 'Band ID : 2 000 MWh < Consumption < 20 000 MWh',
+                    '4162905': 'Band IE : 20 000 MWh < Consumption < 70 000 MWh'
+                },
+                'units': {
+                    'EUR': 'Euro/KWh'
+                }
+            },
+            2: {
+                'indicators': {
+                    '4162903': 'Band IC : 500 MWh < Consumption < 2 000 MWh',
+                    '4162904': 'Band ID : 2 000 MWh < Consumption < 20 000 MWh',
+                    '4162905': 'Band IE : 20 000 MWh < Consumption < 70 000 MWh'
+                },
+                'units': {
+                    'EUR': 'Euro/KWh'
+                }
+            }
+        }
+    },
+
+    'IT': {
+        'rd_e_gerdtot': {
+            1: {
+                'indicators': {
+                    'TOTAL': 'All sectors',
+                    'BES': 'Business enterprise sector',
+                    'GOV': 'Government sector',
+                    'HES': 'Higher education sector',
+                    'PNP': 'Private non-profit sector',
+                },
+                'units': {
+                    'EUR_HAB': 'Euro per inhabitant',
+                    'MIO_EUR': 'Million euros',
+                    'MIO_PPS': 'Million purchasing power standards (PPS)',
+                    'PC_GDP': 'Percentage of gross domestic product (GDP)'
+                }
+            }
+        },
+        'rd_e_gerdfund': {
+            1: {
+                'indicators': {
+                    'TOTAL': 'All sectors',
+                    'BES': 'Business enterprise sector',
+                    'GOV': 'Government sector',
+                    'HES': 'Higher education sector',
+                    'PNP': 'Private non-profit sector',
+                    'ABR_EC': 'Abroad - European Commission',
+                },
+                'units': {
+                    'EUR_HAB': 'Euro per inhabitant',
+                    'MIO_EUR': 'Million euros',
+                    'MIO_PPS': 'Million purchasing power standards (PPS)',
+                    'PPS_HAB_KP05': 'Purchasing power standard (PPS) per inhabitant at constant 2005 prices',
+                    'PC_GDP': 'Percentage of gross domestic product (GDP)'
+                }
+            }
+        },
+        'rd_p_persocc': {
+            1: {
+                'indicators': {
+                    'TOTAL': 'All sectors',
+                    'BES': 'Business enterprise sector',
+                    'GOV': 'Government sector',
+                    'HES': 'Higher education sector',
+                    'PNP': 'Private non-profit sector',
+                },
+                'units': {
+                    'FTE': 'Full-time',
+                    'HC': 'Head count',
+                }
+            }
+        },
+        'pat_ep_nipc': {
+            1: {
+                'indicators': {
+                    'IPC': 'total - International patent classification (IPC)',
+                    'A': 'Section A - Human necessities',
+                    'B': 'Section B - Performing operations; transporting',
+                    'C': 'Section C - Chemistry; metallurgy',
+                    'D': 'Section D - Textiles; paper',
+                    'E': 'Section E - Fixed constructions',
+                    'F': 'Section F - Mechanical engineering; lighting; heating; weapons; blasting',
+                    'G': 'Section G - Physics',
+                    'H': 'Section H - Electricity',
+                },
+                'units': {
+                    'NR': 'Number of patents',
+                    'P_MHAB': 'Patents per million inhabitants',
+                    'P_MACT': 'Patents per million of active population'
+                }
+            }
+        },
+        'htec_eco_ent2': {
+            1: {
+                'indicators': {
+                    'HTC': 'High-technology sectors (manufacturing and knowledge-intensive-sevices)',
+                    'C_HTC_M': 'Medium high-technology manufacturing',
+                    'C_LTC': 'Low-technology manufacturing',
+                    'KIS_HTC': 'Knowledge-intensive high-technology services'
+                },
+                'units': {
+                    'NR': 'Number'
+                }
+            }
+        },
+        'htec_emp_nat2': {
+            1: {
+                'indicators': {
+                    'HTC': 'High-technology sectors (high-technology manufacturing and knowledge-intensive services)',
+                    'C_HTC': 'High-technology manufacturing',
+                    'C_HTC_M': 'Medium high-technology manufacturing',
+                    'C_LTC_M': 'Medium low-technology manufacturing',
+                    'C_LTC': 'Low-technology manufacturing',
+                    'KIS_HTC': 'Knowledge-intensive high-technology services'
+                },
+                'units': {
+                    'PC_EMP': 'Percentage of total employment',
+                    'THS': 'Thousand (Result X 1000)'
+                }
+            }
+        },
+        'htec_emp_nat': {
+            1: {
+                'indicators': {
+                    'HTC': 'High-technology sectors (high-technology manufacturing and knowledge-intensive services)',
+                    'D_HTC': 'High-technology manufacturing',
+                    'D_HTC_M': 'Medium high-technology manufacturing',
+                    'D_LTC_M': 'Medium low-technology manufacturing',
+                    'D_LTC': 'Low-technology manufacturing'
+                },
+                'units': {
+                    'PC_EMP': 'Percentage of total employment',
+                    'THS': 'Thousand (Result X 1000)'
+                }
+            }
+        }
 
     }
-
-
-
-
-
-
-
-
-
-
-
 
 }  # end of eurostat
 
