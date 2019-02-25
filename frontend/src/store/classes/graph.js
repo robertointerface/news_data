@@ -79,6 +79,9 @@ class lineGraph extends graph{
                     scaleLabel:{
                         display: true,
                         labelString: this.Unit
+                    },
+                    ticks: {
+                        suggestedMin: 0
                     }
                 }]
             }
@@ -139,13 +142,24 @@ class barGraph extends graph{
             title: {
                 display: true,
                 text: `${this.Topic} (${this.Indicator})`
+            },
+            scales: {
+                yAxes:[{
+                    scaleLabel:{
+                        display: true,
+                        labelString: this.Unit,
+                    },
+                    ticks: {
+                        suggestedMin: 0
+                    }
+                }]
             }
         }
     }
 
     createData(){
         /*
-
+            Create the 'data' object with the required information to display the 'bar' chart.
          */
         this.data['labels'] = this.result.map((result, i) => {
             return result['name']
@@ -158,7 +172,6 @@ class barGraph extends graph{
                 return data['values'][0] //If is a bar it means only one result per country/geo
             }),
         }]
-
     }
 }
 
