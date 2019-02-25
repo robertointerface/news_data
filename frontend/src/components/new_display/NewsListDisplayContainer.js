@@ -17,7 +17,9 @@ class NewsListDisplayContainer extends Component{
             totalNews: 0,
             pages: 0,
             newsPerPage: 2,
-            presentPage: 1
+            presentPage: 1,
+            beginPag: [],
+            endPag: []
         }
         this.goToPage = this.goToPage.bind(this)
     }
@@ -28,11 +30,19 @@ class NewsListDisplayContainer extends Component{
          }).then(gotNews =>{
              return getHotNewsPageCount();
          }).then(newsCount =>{
-             if(typeof newsCount != 'undefined')
-                    return this.setState({
-                        totalNews: newsCount['newsCount'],
-                        pages: Math.ceil(newsCount['newsCount']/this.state.newsPerPage) //Round number up
-                    })
+                 if(typeof newsCount != 'undefined') {
+                     return Promise.all([
+                         this.setState({
+                         totalNews: newsCount['newsCount'],
+                         pages: Math.ceil(newsCount['newsCount'] / this.state.newsPerPage), //Round number up,
+
+                     }),
+                         this.setState({
+                             beginPag: [1, 2, 3],
+                             endPag: [this.state.pages - 2, this.state.pages - 1, this.state.pages]
+                         })
+                     ])
+                 }
              }
 
          ).catch(error => {
@@ -45,13 +55,13 @@ class NewsListDisplayContainer extends Component{
         getNewsToDisplay(page).then(news => {
            return this.setState({
                news: news,
-               presentPage: page
+               presentPage: page,
            })
         })
     }
 
     render(){
-        var news = this.state.news
+        var {news, beginPag, endPag} = this.state
         return(
             <PageTemplate>
                 <div className='row'>
@@ -59,7 +69,7 @@ class NewsListDisplayContainer extends Component{
                         <NewsDisplayList News={news}/>
                     </div>
                     <div className='col-12'>
-                        <Pagination begin={[1, 2, 3]} end={[4, 5, 6]} goToPage={this.goToPage}/>
+                        <Pagination begin={beginPag} end={endPag} goToPage={this.goToPage}/>
                     </div>
                 </div>
             </PageTemplate>
