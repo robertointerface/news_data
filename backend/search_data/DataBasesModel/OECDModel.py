@@ -199,7 +199,6 @@ OECD = {
         }
     },
     'GV': {
-        'REV': {
             1: {
                 'indicators': {
                     'TOTALTAX': 'Total tax revenue',
@@ -215,7 +214,6 @@ OECD = {
                     'TAXPER': 'as % of total taxation'
                 }
             }
-        }
     },
     'EMP': {
         'LFS_SEXAGE_I_R': {
@@ -390,5 +388,5 @@ OECD = {
                 'units': {}
             }
         }
-    }
+    },
 }

@@ -1192,6 +1192,26 @@ Eurostat = {
                 }
             }
         },
+        'pat_us_nipc': {
+            1: {
+                'indicators': {
+                    'IPC': 'total - International patent classification (IPC)',
+                    'A': 'Section A - Human necessities',
+                    'B': 'Section B - Performing operations; transporting',
+                    'C': 'Section C - Chemistry; metallurgy',
+                    'D': 'Section D - Textiles; paper',
+                    'E': 'Section E - Fixed constructions',
+                    'F': 'Section F - Mechanical engineering; lighting; heating; weapons; blasting',
+                    'G': 'Section G - Physics',
+                    'H': 'Section H - Electricity',
+                },
+                'units': {
+                    'NR': 'Number of patents',
+                    'P_MHAB': 'Patents per million inhabitants',
+                    'P_MACT': 'Patents per million of active population'
+                }
+            }
+        },
         'htec_eco_ent2': {
             1: {
                 'indicators': {

@@ -1621,7 +1621,7 @@ var EurostatDatabases = [
 				{
 					TopicName: "Electricity prices for non-household consumers (euro/kWh), taxes not included",
 					id: 'nrg_pc_205',
-					rev:  1,
+					rev:  2,
 					Time: {
 						Type: 'B',
 						Start: 2008,
@@ -1657,7 +1657,9 @@ var EurostatDatabases = [
                     TopicName: "Expenditure on R&D by sector",
                     id: 'rd_e_gerdtot',
                     rev:  1,
-                    Geo: 'EU',
+                     Geo: {
+						location: 'EU',
+					  },
                     UrlStructure:{
                     IndicatorName: 'sectperf',
                     UnitName: 'unit',
@@ -1673,7 +1675,9 @@ var EurostatDatabases = [
                     TopicName: "Source of funding of R&D",
                     id: 'rd_e_gerdfund',
                     rev:  1,
-                    Geo: 'EU',
+                     Geo: {
+						location: 'EU',
+					  },
                     Time: {
                     	Type: 'A',
                     	Start: 1981,
@@ -1693,7 +1697,9 @@ var EurostatDatabases = [
                         TopicName: "Total R&D personnel by sectors",
                         id: 'rd_p_persocc',
                         rev:  1,
-                        Geo: 'EU',
+                         Geo: {
+						location: 'EU',
+					  	},
                         Time: {
                         	Type: 'A',
                         	Start: 1988,
@@ -1714,7 +1720,9 @@ var EurostatDatabases = [
                     TopicName: "Patent applications to the EPO by international patent classification (IPC) sections",
                     id: 'pat_ep_nipc',
                     rev:  1,
-                    Geo: 'EU',
+                     Geo: {
+						location: 'EU',
+					  },
                     Time: {
                     	Type: 'A',
                     	Start: 1980,
@@ -1732,7 +1740,9 @@ var EurostatDatabases = [
                 TopicName: "Patents granted by the USPTO by international patent classification (IPC) sections",
                 id: 'pat_us_nipc',
                 rev:  1,
-                Geo: 'EU',
+                 Geo: {
+						location: 'EU',
+					  },
                 Time: {
                 	Type: 'A',
                 	Start: 1980,
@@ -1750,7 +1760,9 @@ var EurostatDatabases = [
                 TopicName: "Number of tech enterprises",
                 id: 'htec_eco_ent2',
                 rev:  1,
-                Geo: 'EU',
+                Geo: {
+						location: 'EU',
+					  },
                 Time: {
                 	Type: 'A',
                 	Start: 2008,
@@ -1768,7 +1780,9 @@ var EurostatDatabases = [
                 TopicName: "Employment in technology and knowledge-intensive sectors (2008-2016)",
                 id: 'htec_emp_nat2',
                 rev:  1,
-                Geo: 'EU',
+                 Geo: {
+                	location: 'EU',
+				 },
                 Time: {
                 	Type: 'A',
                 	Start: 2008,
@@ -1789,7 +1803,9 @@ var EurostatDatabases = [
                 TopicName: "Employment in technology and knowledge-intensive sectors (1994-2008)",
                 id: 'htec_emp_nat',
                 rev:  1,
-                Geo: 'EU',
+				Geo: {
+                	location: 'EU',
+				},
                 Time: {
                 	Type: 'A',
                 	Start: 1994,

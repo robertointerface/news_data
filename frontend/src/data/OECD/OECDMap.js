@@ -109,11 +109,9 @@ const OECDDatabases = [
 	                     },
 	                    UrlStructure:{
 	                    	orderOption: ['G', 'E', 'U', 'I'],
-
 	                    	IndicatorName: "ACTIVITY",
 	                		UnitName: 'MEASURE',
 	                 		DisplayMessageOrder:['Unit' , 'for', 'Indicator'],
-					 		DisplayExtra: ' for ',
 	                		extras: {
 		        				"SUBJECT" : 'I4_ANA_GVA'
 	            			}
