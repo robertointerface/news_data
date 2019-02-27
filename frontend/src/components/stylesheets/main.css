@@ -46,6 +46,9 @@ body {
 .MB1{
       margin-bottom: 1rem;
 }
+.MB0{
+     margin-bottom: 0rem;
+}
 
 .btn span.glyphicon {
 	opacity: 0;
