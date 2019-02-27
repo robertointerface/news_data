@@ -672,7 +672,7 @@ class UnescoDataRequest extends dataRequest {
         var locations = this.SelectedGeo;
         var geoPath = '';
         for(let location of locations){
-            geoPath = geoPath.concat(location, '+');
+            geoPath = geoPath.concat(location.id, '+');
         }
         geoPath = geoPath.slice(0, geoPath.length - 1)
         return geoPath
