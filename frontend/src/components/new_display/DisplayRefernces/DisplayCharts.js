@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Component} from 'react'
 import DataTitle from 'ui/search_data/dataTitle'
-import {Line} from 'react-chartjs-2';
+import {Line, Bar} from 'react-chartjs-2';
 
 class DisplayCharts extends Component{
 
@@ -29,7 +29,11 @@ class DisplayCharts extends Component{
                             </div>
                         </div>
                         <div className='card-body'>
-                            <Line data={chart.data} options={chart.options} width="400" height="400"/>
+                            {(chart.type == 'line') ?
+                                <Line data={chart.data} options={chart.options} width="400" height="400"/> :
+
+                                <Bar data={chart.data} options={chart.options} width="400" height="400"/>
+                            }
                         </div>
                     </div>
                 )}
