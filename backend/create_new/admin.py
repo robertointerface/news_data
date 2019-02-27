@@ -6,7 +6,7 @@ from .models import New
 
 
 class NewAdmin(admin.ModelAdmin):
-    list_display = ['new_title', 'created_by']
+    list_display = ['id', 'new_title', 'created_by']
 
 
 admin.site.register(New, NewAdmin)
