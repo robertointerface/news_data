@@ -529,8 +529,6 @@ class OECDdataRequest extends dataRequest {
         return finalValue
     }
 
-
-
     filterTimes(obtainedTimes){
         /*
             @Func: Verify which of the asked times where returned by the OECD API.
@@ -641,7 +639,7 @@ class KeyPostitions extends Array{
 
 }
 
-class UnescoDataRequest extends dataRequest {
+class UnescoDataRequest extends OECDdataRequest {
 
     constructor(requestObject){
         super(requestObject);
@@ -730,6 +728,72 @@ class UnescoDataRequest extends dataRequest {
             this.addPathArrayToUrl(),
         ])
     }
+
+    filterResult(){
+        /*
+            @Func: Extract the result given by OECD API and organized it with the object structured.
+                geoObject = {name: country name, values: array composed of country values. }
+            The OECD API returns two JSON Objects:
+                1- Data (only numbers organized by indices, e.g 1:0:0 = {342.45}, no legend on what data means).
+                2- Indices explanation that is used to organized data by country and time.
+         */
+        try{
+            var finalValue = []
+            var result = JSON.parse(JSON.stringify(this.result['dataSets'][0]['series'])) //get the returned OECD api result
+            var rowOrder = this.getKeyPositions(this.result['structure']['dimensions']['series']) //
+            var columnOrder = this.getTimePositions(this.result['structure']['dimensions']['observation'])
+            var expectedValuesLength = this.getExpectedNumberOfValues()
+            var receivedValuesLength = this.getRecievedNumberOfValues(rowOrder, columnOrder)
+            var recievedTimes = this.filterTimes(columnOrder);
+            var Locationindex = rowOrder.findIndex(x => (x['name'] == 'REF_AREA'))
+            for(var location in rowOrder[Locationindex].values){
+                var geoObject = {
+                    name: this.getGeoName(rowOrder[Locationindex].values[location]),
+                    values: []
+                }
+
+                var locationData = Array.from({length: rowOrder.length}, (v, i) => 0) // create array
+
+                locationData[Locationindex] = location
+                var seriesData = locationData.reduce((acc, i) => {
+                    return acc.concat(`${i}`, ':')
+                }, '')// convert locationData array into string '0:0:0:...' length of '0' is the length of
+                    // array locationData
+                seriesData = seriesData.slice(0, seriesData.length - 1)//remove last character ':'
+                var data = result[seriesData]['observations']
+                for(var time of recievedTimes){
+                    var timeIndex = columnOrder.indexOf(time)
+                    try {
+                        var value = data[timeIndex.toString()][0];
+                    } catch{
+                        var value = null
+                    } finally{
+                        geoObject.values.push(value)
+                    }
+                }
+                finalValue.push(geoObject)
+            }
+
+        } catch (error){
+
+        } finally { // if values for specific location not returned put them to '...'
+            for(var location of this.SelectedGeo){
+                var indexInResult = finalValue.findIndex(x => x['name'] == location['name'])
+                if (indexInResult < 0){
+                    var geoObject = {
+                        name: location.name,
+                        values: []
+                    }
+                    for(let time in this.SelectedTimes) {
+                        geoObject.values.push(null);
+                    }
+                    finalValue.push(geoObject)
+                }
+            }
+        }
+        return finalValue
+    }
+
 }
 
 export {dataRequest, EUdataRequest, OECDdataRequest, UnescoDataRequest}

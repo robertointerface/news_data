@@ -149,6 +149,8 @@ class MakeApiCall(APIView):
             self.verify_EU()
         elif self._api == 'OECD':
             self.verify_OECD()
+        elif self._api == 'UNESCO':
+            self.verify_UNESCO()
 
     def verify_EU(self):
         self._result = json.loads(self._result.content)
@@ -164,6 +166,13 @@ class MakeApiCall(APIView):
         except ValueError:
             raise urlfetch.Error
 
+    def verify_UNESCO(self):
+        self._result = json.loads(self._result.content)
+        try:
+            if self._result['errors']:
+                raise urlfetch.Error
+        except KeyError:
+            pass
 
 
 
