@@ -20,3 +20,8 @@
 .activePage{
     background-color:  rgba(2, 41, 104, 0.5);
 }
+
+.activeButton{
+    border: #eea236;
+    color: #007bff;
+}

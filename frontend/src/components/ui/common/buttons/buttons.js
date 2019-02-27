@@ -23,11 +23,11 @@ const PaginationButton = ({page=0, message='', onClick=f=>f, active=false}) => {
     return (
         <button
             type="button"
-            className="btn btn-primary"
+            className={'btn' + (active? ' btn-warning': ' btn-primary')}
             onClick={(e) => onClick(e, page)}>
             {(message.length > 0) ?
                 <p className='MB0'>{message}</p> :
-                <p className={'MB0' + (active? ' activePage': '')}>{page}</p>
+                <p className='MB0'>{page}</p>
             }
         </button>
     )
