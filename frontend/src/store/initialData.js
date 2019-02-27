@@ -80,11 +80,13 @@ export const createNewForm = {
 }
 
 export const newDisplay = {
-    news: [],
-
-
+    news: []
 }
 
+
+
+////////////////////////////////
+/*
 export const DataOrderObject = {
 	ThirdParty: '',
 	DataSetId:'',
@@ -102,5 +104,6 @@ export const DataOrderObject = {
 	Graph:false,
 	Table: false
 };
+*/
 
 

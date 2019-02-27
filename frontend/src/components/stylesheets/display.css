@@ -10,3 +10,18 @@
     padding-left: 0.5rem;
     padding-right: 0.5rem;
 }
+
+.etc{
+    margin-bottom: 0rem;
+    font-size: 1.6rem;
+    color: #007bff;
+}
+
+.activePage{
+    background-color:  rgba(2, 41, 104, 0.5);
+}
+
+.activeButton{
+    border: #eea236;
+    color: #007bff;
+}

@@ -2,13 +2,13 @@ import {urls} from "root/constants/constants";
 import {getCookie} from "root/store/functions/auth/Cookies";
 
 
-const getNewsToDisplay = () =>{
+const getNewsToDisplay = (page=1) => {
     /*
         @Func: fetch data from 'New' table by calling API View 'GetNews' at 'display' app in django
         @Return: parse of data returned from backend end.
      */
     var csrftoken = getCookie('csrftoken'); //get saved cookie
-    return fetch(`${urls.MAIN}`,{
+    return fetch(`${urls.MAIN}?page=${page}`,{
         method: 'GET',
         mode: 'same-origin',
         headers: {
@@ -31,6 +31,21 @@ const getNewsToDisplay = () =>{
         })
 }
 
+const getHotNewsPageCount = () => {
+    var csrftoken = getCookie('csrftoken');
+    return fetch(`${urls.GET_NEWS_COUNT}`, {
+        method: 'GET',
+        mode: 'same-origin',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRFToken': csrftoken
+        },
+    }).then(response => {
+        return response.json()
+    }).catch(error =>{
+
+    })
+}
 
 const getDetailNew = (id = 0) => {
     var csrftoken = getCookie('csrftoken'); //get saved cookie
@@ -54,4 +69,4 @@ const getDetailNew = (id = 0) => {
         })
 }
 
-export {getNewsToDisplay, getDetailNew}
+export {getNewsToDisplay, getDetailNew, getHotNewsPageCount}

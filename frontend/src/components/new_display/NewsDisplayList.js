@@ -41,13 +41,12 @@ const NewsDisplayList = ({News=[]}) => {
                                      </div>
                                   </div>
                                  <p className='newContent'>{x.content}</p>
-
-
                              </div>
                         </CardCol12>
                     )}
                 </div> : null
             }
+
         </div>
     )
 }

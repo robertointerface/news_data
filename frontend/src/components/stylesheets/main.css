@@ -39,12 +39,18 @@ body {
     font-size: 1.2rem;
 }
 
+.F16{
+    font-size: 1.6rem;
+}
 .MT1{
     margin-top: 1rem;
 }
 
 .MB1{
       margin-bottom: 1rem;
+}
+.MB0{
+     margin-bottom: 0rem;
 }
 
 .btn span.glyphicon {

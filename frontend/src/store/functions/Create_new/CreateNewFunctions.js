@@ -12,7 +12,10 @@ import {
     finished_requestiong,
     set_table_attached,
     error_search_data,
-    set_chart_attached
+    set_chart_attached,
+    clean_new_state,
+    clean_current_search,
+    clean_result_management
 } from "actions/actions";
 import {history} from 'root/App.js';
 import {getDatabase} from 'functions/Current_search/SearchIterGen'
@@ -336,8 +339,13 @@ export const handle_publish_long_new = () =>{
             body: JSON.stringify(data)
         })
         .then(response => {
-            if(response.status == 200){
+            if(response.status == 200){ ///CLEAR ALL NEW DATA
+                dispatch(clean_new_state());
+                dispatch(clean_current_search());
+                dispatch(clean_result_management());
                 history.push('/display/hot')
+
+
             }else{
                 throw 'error loading news'
             }

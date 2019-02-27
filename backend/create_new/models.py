@@ -27,6 +27,9 @@ class New(models.Model):
     time_stamp = models.DateField(default=timezone.now)
     created_by = models.ForeignKey(User, related_name='user_created_new')
 
+    class Meta:
+        ordering = ( '-time_stamp', )
+
     def __str__(self):
         class_name = type(self).__name__
         return '{class_name} {title}'.format(class_name=class_name, title=self.new_title)

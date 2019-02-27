@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from django.shortcuts import render
-
 from django.db import DatabaseError
 from rest_framework.views import APIView
 from rest_framework.permissions import AllowAny, IsAuthenticated
@@ -28,11 +27,29 @@ class GetNewList(APIView):
 
     def get(self, request, format=None):
         try:
-            news = NewSerializer(New.objects.all(), many=True)
+            params = request.query_params
+            page = int(params['page']) - 1 #is required to sub 1 as data is saved starting with 0 and not 1
+            news = NewSerializer(New.objects.all()[page*2:(page*2)+2], many=True) #load in steps of 2, if want to load in steps of 3 just change *2 for *3 and so on
             content = JSONRenderer().render(news.data)
             return Response(content, status=200, content_type=json)
         except DatabaseError:
             return Response(None, status=400, content_type=json)
+
+
+class GetNewsCount(APIView):
+    permission_classes = (AllowAny,)
+
+    def get(self, request, format=None):
+        try:
+            news = dict({
+                'newsCount': New.objects.count()
+            })
+        except DatabaseError:
+            news = dict({
+                'newsCount': 0
+            })
+        else:
+            return Response(news, status=200, content_type=json)
 
 
 class GetNew(APIView):
