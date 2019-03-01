@@ -16,7 +16,7 @@ const OECDDatabases = [
 	                   Time: {
 	                    	Type: 'A',
 	                    	Start: 1990,
-	                     	End: 2016
+	                     	End: 2017
 	                     },
 	                    UrlStructure:{
 	                    	orderOption: ['G', 'E', 'I', 'U'],
@@ -38,7 +38,7 @@ const OECDDatabases = [
 	                   Time: {
 	                    	Type: 'A',
 	                    	Start: 1990,
-	                     	End: 2016
+	                     	End: 2017
 	                     },
 	                    UrlStructure:{
 	                    	orderOption: ['G', 'E', 'I', 'U'],
@@ -105,7 +105,7 @@ const OECDDatabases = [
 	                   Time: {
 	                    	Type: 'A',
 	                    	Start: 1995,
-	                     	End: 2016
+	                     	End: 2017
 	                     },
 	                    UrlStructure:{
 	                    	orderOption: ['G', 'E', 'U', 'I'],
@@ -152,7 +152,7 @@ const OECDDatabases = [
 	                   Time: {
 	                    	Type: 'A',
 	                    	Start: 1995,
-	                     	End: 2016
+	                     	End: 2017
 	                     },
 	                    UrlStructure:{
 	                    	orderOption: ['G', 'E', 'U', 'I'],
@@ -177,7 +177,7 @@ const OECDDatabases = [
 	                   Time: {
 	                    	Type: 'A',
 	                    	Start: 1995,
-	                     	End: 2016
+	                     	End: 2017
 	                     },
 	                    UrlStructure:{
 	                    	orderOption: ['G', 'E', 'U', 'I'],
@@ -212,7 +212,7 @@ const OECDDatabases = [
 	                   Time: {
 	                    	Type: 'A',
 	                    	Start: 1985,
-	                     	End: 2017
+	                     	End: 2018
 	                     },
 	                    UrlStructure:{
 	                    	orderOption: ['I', 'G', 'E', 'U', 'TT'],
@@ -233,7 +233,7 @@ const OECDDatabases = [
 	                   Time: {
 	                    	Type: 'A',
 	                    	Start: 1985,
-	                     	End: 2017
+	                     	End: 2018
 	                     },
 	                    UrlStructure:{
 	                    	TimeType: 'A',
@@ -254,7 +254,7 @@ const OECDDatabases = [
 	                   Time: {
 	                    	Type: 'A',
 	                    	Start: 1985,
-	                     	End: 2017
+	                     	End: 2018
 	                     },
 	                    UrlStructure:{
 	                    	orderOption: ['I', 'G', 'E', 'U', 'TT'],
@@ -275,7 +275,7 @@ const OECDDatabases = [
 	                   Time: {
 	                    	Type: 'A',
 	                    	Start: 1985,
-	                     	End: 2017
+	                     	End: 2018
 	                     },
 	                    UrlStructure:{
 	                    	orderOption: ['I', 'G', 'E', 'U', 'TT'],
@@ -318,7 +318,7 @@ const OECDDatabases = [
 	                   Time: {
 	                    	Type: 'A',
 	                    	Start: 1995,
-	                     	End: 2017
+	                     	End: 2018
 	                     },
 	                    UrlStructure:{
 	                    	orderOption: ['I', 'G', 'E', 'U', 'TT'],

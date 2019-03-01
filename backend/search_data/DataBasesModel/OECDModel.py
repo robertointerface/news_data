@@ -64,7 +64,7 @@ OECD = {
                 'indicators': {
                     'A_U': 'Total (all sectors)',
                     'A': 'Agriculture, forestry and fishing',
-                    'BDE': 'Mining and utilities',
+                    'BDE': 'Mining and utilities',
                     'F': 'Construction',
                     'C': 'Manufacturing',
                     'G_I': 'Wholesale retail trade accommodation food services, transportation and storage',
@@ -73,8 +73,8 @@ OECD = {
                     'MN': 'Professional, scientific and technical activities, Administrative',
                 },
                 'units': {
-                    'GRW': 'Annual growth (percentage)',
-                    '2010Y': 'Index 2010=100'
+                    'GRW': 'annual growth',
+                    '2010Y': 'Index (2010=100)'
                 }
             },
             2: {
@@ -143,7 +143,7 @@ OECD = {
                 },
                 'units': {
                     'GY': 'Annual growth',
-                    'ST': 'index 2010=100'
+                    'ST': 'index 2015=100'
                 }
             },
             2: {
@@ -163,7 +163,7 @@ OECD = {
                 },
                 'units': {
                     'GP': 'Prices Annual growth',
-                    'ST': 'Prices Index (2010=100)'
+                    'ST': 'Prices Index (2015=100)'
                 }
             },
             4: {
