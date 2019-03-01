@@ -14,7 +14,7 @@ var EurostatDatabases = [
 		Time: {
 			Type: 'A',
 			Start: 1995,
-			End: 2017
+			End: 2018
 		},
 		UrlStructure:{
 			IndicatorName: "nace_r2",
@@ -36,7 +36,7 @@ var EurostatDatabases = [
     Time: {
         Type: 'A',
         Start: 2002,
-        End: 2016
+        End: 2017
     },
     UrlStructure:{
     IndicatorName: "indic_et",
@@ -59,7 +59,7 @@ var EurostatDatabases = [
            Time: {
             	Type: 'A',
             	Start: 2010,
-             	End: 2015
+             	End: 2016
              },
             UrlStructure:{
             	IndicatorName: "nace_r2",
@@ -82,7 +82,7 @@ var EurostatDatabases = [
            Time: {
             	Type: 'A',
             	Start: 1995,
-             	End: 2017
+             	End: 2018
              },
             UrlStructure:{
             	IndicatorName: "nace_r2",
@@ -105,7 +105,7 @@ var EurostatDatabases = [
            Time: {
             	Type: 'A',
             	Start: 2003,
-             	End: 2016
+             	End: 2017
              },
             UrlStructure:{
             	IndicatorName: "nace_r2",
@@ -116,7 +116,7 @@ var EurostatDatabases = [
     				},
     			}
        },
-       {
+   /*    {
     	   TopicName: "Exports & imports by EU Member States to UE or Non-EU countries",
            id: 'namq_10_exi',
            rev: 1,
@@ -137,7 +137,7 @@ var EurostatDatabases = [
     				"s_adj" : 'NSA',
     				},
     			}
-       },
+       },*/
        {
     	   TopicName: "Gross fixed capital formation by asset type",
            id: 'nama_10_an6',
@@ -156,7 +156,7 @@ var EurostatDatabases = [
         		DisplayMessageOrder:[ 'Indicator', 'as', 'Unit' ],
     			}
        },
-       {
+  /*     {
     	   TopicName: "Interest rates (bond yields)",
            id: 'irt_lt_mcby_q',
            rev: 1,
@@ -174,7 +174,7 @@ var EurostatDatabases = [
             	IndicatorName: "intrt",
             	DisplayMessageOrder:[ 'Indicator' ],
     			}
-       },
+       },*/
        {
     	   TopicName: "Consumption expenditure of households",
            id: 'nama_10_co3_p3',
@@ -185,7 +185,7 @@ var EurostatDatabases = [
            Time: {
             	Type: 'A',
             	Start: 1995,
-             	End: 2016
+             	End: 2017
              },
             UrlStructure:{
             	IndicatorName: "coicop",
@@ -201,7 +201,7 @@ var EurostatDatabases = [
 	  SectorName: "Principal economic indicators",
 	  id: "PIE",
         	  Topics:[
-        	    {
+/*        	    {
         	    	  TopicName: "Sentiment indicators",
         	          id: 'ei_bssi_m_r2',
         	          rev: 1,
@@ -222,7 +222,7 @@ var EurostatDatabases = [
             				"s_adj" : 'SA'
             				}
         	          }
-        	    },
+        	    },*/
         	    {
                 	TopicName:"GDP and main components (output, expenditure and income)",
                 	id:"nama_10_gdp",
@@ -230,7 +230,7 @@ var EurostatDatabases = [
                 	 Time: {
                       	Type: 'A',
                       	Start: 1990,
-                      	End: 2017
+                      	End: 2018
                       },
                      Geo: {
 						location: 'EU',
@@ -248,7 +248,7 @@ var EurostatDatabases = [
             	 Time: {
                   	Type: 'A',
                   	Start: 1995,
-                  	End: 2017
+                  	End: 2018
                   },
                     Geo: {
 						location: 'EU',
@@ -266,7 +266,7 @@ var EurostatDatabases = [
                 	 Time: {
                       	Type: 'A',
                       	Start: 1996,
-                      	End: 2016
+                      	End: 2017
                       },
 					 Geo: {
 						location: 'EU',
@@ -287,7 +287,7 @@ var EurostatDatabases = [
                   	 Time: {
                         	Type: 'A',
                         	Start: 1996,
-                        	End: 2016
+                        	End: 2017
                         },
                           Geo: {
 						location: 'EU',
@@ -309,7 +309,7 @@ var EurostatDatabases = [
                       	 Time: {
                             	Type: 'A',
                             	Start: 1996,
-                            	End: 2016
+                            	End: 2017
                             },
                               Geo: {
 						location: 'EU',
@@ -323,14 +323,14 @@ var EurostatDatabases = [
                   				}
                       	}
                         },
-                        {
+               /*         {
                           	TopicName:"Total investement in the economy",
                           	id:"nasa_10_ki",
                           	rev: 4,
                           	 Time: {
                                 	Type: 'A',
                                 	Start: 1996,
-                                	End: 2016
+                                	End: 2017
                                 },
                                 Geo: 'EU',
                           	UrlStructure:{
@@ -341,7 +341,7 @@ var EurostatDatabases = [
                       				"unit" : 'PC'
                       				}
                           	}
-                            },
+						},*/
                   {
                   	TopicName:"Consumer Prices (HICP 2015 = 100) - annual data (average index and rate of change)",
                   	id:"prc_hicp_aind",
@@ -349,7 +349,7 @@ var EurostatDatabases = [
                   	 Time: {
                         	Type: 'A',
                         	Start: 1997,
-                        	End: 2017
+                        	End: 2018
                         },
                          Geo: {
 						location: 'EU',
@@ -367,7 +367,7 @@ var EurostatDatabases = [
                      	 Time: {
                            	Type: 'A',
                            	Start: 1987,
-                           	End: 2017
+                           	End: 2018
                            },
                              Geo: {
 						location: 'EU',
@@ -395,7 +395,7 @@ var EurostatDatabases = [
                     	 Time: {
                           	Type: 'A',
                           	Start: 1987,
-                          	End: 2017
+                          	End: 2018
                           },
                             Geo: {
 								location: 'EU',
@@ -409,7 +409,7 @@ var EurostatDatabases = [
                					}
                     		}
                      },
-                     {
+             /*        {
                      	TopicName:"Unemployment (quarterly)",
                      	id:"une_rt_q",
                      	rev: 1,
@@ -433,8 +433,8 @@ var EurostatDatabases = [
                 				"s_adj" : 'SA'
                 					}
                      		}
-                      },
-
+                      },*/
+/*
                       {
                        	TopicName:"Employment rate (quarterly)",
                        	id:"lfsi_emp_q",
@@ -487,7 +487,7 @@ var EurostatDatabases = [
                       				'indic_em' : 'ACT'
                       					}
                            		}
-                            },
+                            },*/
 
                      {
                      	TopicName:"Employment by educational attainment level",
@@ -496,7 +496,7 @@ var EurostatDatabases = [
                      	Time: {
                      			Type: 'A',
                            		Start: 1998,
-                           		End: 2016
+                           		End: 2017
                           	},
                         ExtraMessage : 'From 15 to 64 years',
                          Geo: {
@@ -519,7 +519,7 @@ var EurostatDatabases = [
                     	 Time: {
                           	Type: 'A',
                           	Start: 1990,
-                          	End: 2016
+                          	End: 2017
                           },
                          Geo: {
 							location: 'EU',
@@ -527,7 +527,7 @@ var EurostatDatabases = [
                     	UrlStructure:{
                     		IndicatorName: "age",
                     		UnitName: 'unit',
-                    		DisplayMessageOrder:[ 'Unit', 'that are Temporary employees', 'Extra', ],
+                    		DisplayMessageOrder:[ 'Unit', 'that are Temporary employees', 'Indicator'],
                     		extras: {
                     			"sex" : 'T',
                     			'citizen' : 'TOTAL'
@@ -541,7 +541,7 @@ var EurostatDatabases = [
                     	 Time: {
                           	Type: 'A',
                           	Start: 1987,
-                          	End: 2016
+                          	End: 2017
                           },
                            Geo: {
 						location: 'EU',
@@ -562,7 +562,7 @@ var EurostatDatabases = [
                     	 Time: {
                           	Type: 'A',
                           	Start: 1987,
-                          	End: 2016
+                          	End: 2017
                           },
                            Geo: {
 						location: 'EU',
@@ -583,7 +583,7 @@ var EurostatDatabases = [
                     	 Time: {
                           	Type: 'A',
                           	Start: 2008,
-                          	End: 2016
+                          	End: 2017
                           },
                           Geo: {
 						location: 'EU',
@@ -630,7 +630,7 @@ var EurostatDatabases = [
                       	 Time: {
                             	Type: 'A',
                             	Start: 1996,
-                            	End: 2016
+                            	End: 2017
                             },
                           Geo: {
 						location: 'EU',
@@ -648,7 +648,7 @@ var EurostatDatabases = [
                       },
 
 	   ]},//end of empleo
-{
+		{
 		    SectorName: "Government",
 			id: "GV",
 		   	Topics:[
@@ -659,7 +659,7 @@ var EurostatDatabases = [
 		   	         Time: {
 		   	         	Type: 'A',
 		   	         	Start: 1995,
-		   	         	End: 2015
+		   	         	End: 2017
 		   	         },
 		   	         Geo: {
 						location: 'EU',
@@ -681,7 +681,7 @@ var EurostatDatabases = [
 		   	         Time: {
 		   	         	Type: 'A',
 		   	         	Start: 1995,
-		   	         	End: 2016
+		   	         	End: 2017
 		   	         },
 		   	          Geo: {
 						location: 'EU',
@@ -702,7 +702,7 @@ var EurostatDatabases = [
 		   	         Time: {
 		   	         	Type: 'A',
 		   	         	Start: 1995,
-		   	         	End: 2016
+		   	         	End: 2017
 		   	         },
 		   	          Geo: {
 						location: 'EU',
@@ -723,7 +723,7 @@ var EurostatDatabases = [
 		   	         Time: {
 		   	         	Type: 'A',
 		   	         	Start: 2015,
-		   	         	End: 2016
+		   	         	End: 2017
 		   	         },
 		   	         Geo: {
 						location: 'EU',
@@ -745,7 +745,7 @@ var EurostatDatabases = [
 		   	         Time: {
 		   	         	Type: 'A',
 		   	         	Start: 1999,
-		   	         	End: 2016
+		   	         	End: 2017
 		   	         },
 		   	          Geo: {
 						location: 'EU',
@@ -776,7 +776,7 @@ var EurostatDatabases = [
 		   	         Time: {
 		   	         	Type: 'A',
 		   	         	Start: 1998,
-		   	         	End: 2017
+		   	         	End: 2018
 		   	         },
 
 		   	          Geo: {
@@ -799,7 +799,7 @@ var EurostatDatabases = [
 		   	         Time: {
 		   	         	Type: 'A',
 		   	         	Start: 1960,
-		   	         	End: 2017
+		   	         	End: 2018
 		   	         },
 
 		   	          Geo: {
@@ -818,7 +818,7 @@ var EurostatDatabases = [
 		   	         Time: {
 		   	         	Type: 'A',
 		   	         	Start: 1990,
-		   	         	End: 2015
+		   	         	End: 2017
 		   	         },
 		   	          Geo: {
 						location: 'EU',
@@ -840,7 +840,7 @@ var EurostatDatabases = [
 		   	         Time: {
 		   	         	Type: 'A',
 		   	         	Start: 2002,
-		   	         	End: 2015
+		   	         	End: 2017
 		   	         },
 		   	          Geo: {
 						location: 'EU',
@@ -863,7 +863,7 @@ var EurostatDatabases = [
 		   	         Time: {
 		   	         	Type: 'A',
 		   	         	Start: 1975,
-		   	         	End: 2015
+		   	         	End: 2017
 		   	         },
 		   	           Geo: {
 						location: 'EU',
@@ -885,7 +885,7 @@ var EurostatDatabases = [
 		   	         Time: {
 		   	         	Type: 'A',
 		   	         	Start: 1970,
-		   	         	End: 2015
+		   	         	End: 2016
 		   	         },
 		   	          Geo: {
 						location: 'EU',
@@ -902,7 +902,7 @@ var EurostatDatabases = [
 		   	         Time: {
 		   	         	Type: 'A',
 		   	         	Start: 2008,
-		   	         	End: 2017
+		   	         	End: 2018
 		   	         },
 		   	          Geo: {
 						location: 'EU',
@@ -925,7 +925,7 @@ var EurostatDatabases = [
 		   	         Time: {
 		   	         	Type: 'A',
 		   	         	Start: 2008,
-		   	         	End: 2017
+		   	         	End: 2018
 		   	         },
 		   	          Geo: {
 						location: 'EU',
@@ -948,7 +948,7 @@ var EurostatDatabases = [
 		   	         Time: {
 		   	         	Type: 'A',
 		   	         	Start: 2008,
-		   	         	End: 2015
+		   	         	End: 2016
 		   	         },
 
 		   	          Geo: {
@@ -976,7 +976,7 @@ var EurostatDatabases = [
 		   	         Time: {
 		   	         	Type: 'A',
 		   	         	Start: 2003,
-		   	         	End: 2015
+		   	         	End: 2016
 		   	         },
 		   	          Geo: {
 						location: 'EU',
@@ -995,7 +995,7 @@ var EurostatDatabases = [
 		   	         Time: {
 		   	         	Type: 'A',
 		   	         	Start: 2004,
-		   	         	End: 2016
+		   	         	End: 2017
 		   	         },
 		   	         Geo: {
 						location: 'EU',
@@ -1020,7 +1020,7 @@ var EurostatDatabases = [
 		   	         Time: {
 		   	         	Type: 'A',
 		   	         	Start: 2004,
-		   	         	End: 2016
+		   	         	End: 2017
 		   	         },
 		   	          Geo: {
 						location: 'EU',
@@ -1043,7 +1043,7 @@ var EurostatDatabases = [
 		   	         Time: {
 		   	         	Type: 'A',
 		   	         	Start: 1986,
-		   	         	End: 2015
+		   	         	End: 2016
 		   	         },
 		   	       Geo: {
 						location: 'EU',
@@ -1064,7 +1064,7 @@ var EurostatDatabases = [
 		   	         Time: {
 		   	         	Type: 'A',
 		   	         	Start: 2000,
-		   	         	End: 2015
+		   	         	End: 2016
 		   	         },
 		   	          Geo: {
 						location: 'EU',
@@ -1111,7 +1111,7 @@ var EurostatDatabases = [
                    Time: {
                    	Type: 'A',
                    	Start: 2000,
-                   	End: 2016
+                   	End: 2017
                    },
 
                     Geo: {
@@ -1136,7 +1136,7 @@ var EurostatDatabases = [
                    Time: {
                    	Type: 'A',
                    	Start: 2013,
-                   	End: 2016
+                   	End: 2017
                    },
                      Geo: {
 						location: 'EU',
@@ -1173,7 +1173,7 @@ var EurostatDatabases = [
                    Time: {
                    	Type: 'A',
                    	Start: 2012,
-                   	End: 2014
+                   	End: 2015
                    },
                      Geo: {
 						location: 'EU',
@@ -1227,7 +1227,7 @@ var EurostatDatabases = [
                    Time: {
                    	Type: 'A',
                    	Start: 2000,
-                   	End: 2016
+                   	End: 2017
                    },
                     Geo: {
 						location: 'EU',
@@ -1251,7 +1251,7 @@ var EurostatDatabases = [
                    Time: {
                    	Type: 'A',
                    	Start: 1995,
-                   	End: 2016
+                   	End: 2017
                    },
                     Geo: {
 						location: 'EU',
@@ -1263,7 +1263,7 @@ var EurostatDatabases = [
                 	extras: {
 		   	        	 "sex" : 'T',
 		   	        	 'age': 'Y15-74',
-		   	         		}
+					}
                    }
                },
     ]
@@ -1281,7 +1281,7 @@ var EurostatDatabases = [
         Time: {
         	Type: 'A',
         	Start: 2003,
-        	End: 2016
+        	End: 2017
         },
          Geo: {
 						location: 'EU',
@@ -1305,11 +1305,11 @@ var EurostatDatabases = [
         Time: {
         	Type: 'A',
         	Start: 2003,
-        	End: 2016
+        	End: 2017
         },
          Geo: {
-						location: 'EU',
-					  },
+        	location: 'EU',
+		 },
         UrlStructure:{
         	IndicatorName: "isced11",
         	DisplayMessageOrder:[ 'Indicator', ' working & at risk of poverty'],
@@ -1322,7 +1322,7 @@ var EurostatDatabases = [
         Time: {
         	Type: 'A',
         	Start: 2003,
-        	End: 2016
+        	End: 2017
         },
           Geo: {
 						location: 'EU',
@@ -1345,7 +1345,7 @@ var EurostatDatabases = [
         Time: {
         	Type: 'A',
         	Start: 1995,
-        	End: 2016
+        	End: 2018
         },
           Geo: {
 			location: 'EU',
@@ -1364,7 +1364,7 @@ var EurostatDatabases = [
         Time: {
         	Type: 'A',
         	Start: 1995,
-        	End: 2015,
+        	End: 2016,
         },
          Geo: {
 						location: 'EU',
@@ -1383,7 +1383,7 @@ var EurostatDatabases = [
         Time: {
         	Type: 'A',
         	Start: 2006,
-        	End: 2015
+        	End: 2016
         },
          Geo: {
         	location: 'EU',
@@ -1406,7 +1406,7 @@ var EurostatDatabases = [
         Time: {
         	Type: 'A',
         	Start: 1995,
-        	End: 2015
+        	End: 2016
         },
          Geo: {
 			location: 'EU',
@@ -1428,7 +1428,7 @@ var EurostatDatabases = [
         Time: {
         	Type: 'A',
         	Start: 2007,
-        	End: 2016
+        	End: 2018
         },
          Geo: {
 						location: 'EU',

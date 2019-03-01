@@ -1332,10 +1332,7 @@ export const ModelGeo = {
                ],
 
 	EU : [
-				{
-					Countryname:'UE28',
-				    CountryCode: 'EU28'
-				},
+
 				{
 					Countryname: "Spain",
 				    CountryCode: "ES"
