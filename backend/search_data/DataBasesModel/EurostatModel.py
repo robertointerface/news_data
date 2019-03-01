@@ -687,14 +687,14 @@ Eurostat = {
                     'VG_G': 'Very good or good',
                     'FAIR': 'Fair',
                     'B_VB': 'Bad or very bad',
+                },
+                'units': {
+                    'Y_GE65': 'From 65 years or over',
                     'Y_GE16': 'From 16 years or over',
                     'Y16-24': 'From 16 to 24 years',
                     'Y25-34': 'From 25 to 34 years',
                     'Y35-44': 'From 35 to 44 years',
                     'Y45-64': 'From 45 to 64 years',
-                },
-                'units': {
-                    'Y_GE65': 'From 65 years or over',
                 }
             }
         },
@@ -952,9 +952,7 @@ Eurostat = {
                     'SCPEARLYMARK': 'Early retirement benefit for labour market reasons',
                 },
                 'units': {
-                    'MIO_EUR': 'Million euro',
-                    'PC_GDP': 'Percentage of gross domestic product (GDP)',
-                    'EUR_HAB_KP10': 'Euro per inhabitant (at constant 2010 prices)',
+                    'PERS': 'number'
                 }
             }
         },
