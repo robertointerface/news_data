@@ -318,7 +318,7 @@ const OECDDatabases = [
 	                   Time: {
 	                    	Type: 'A',
 	                    	Start: 1995,
-	                     	End: 2018
+	                     	End: 2017
 	                     },
 	                    UrlStructure:{
 	                    	orderOption: ['I', 'G', 'E', 'U', 'TT'],
@@ -405,7 +405,7 @@ const OECDDatabases = [
 	                   Time: {
 	                    	Type: 'A',
 	                    	Start: 1990,
-	                     	End: 2016
+	                     	End: 2017
 	                     },
 	                    UrlStructure:{
 	                    	orderOption: ['G', 'E', 'U', 'I'],
@@ -428,14 +428,13 @@ const OECDDatabases = [
 	                   Time: {
 	                    	Type: 'A',
 	                    	Start: 1990,
-	                     	End: 2016
+	                     	End: 2017
 	                     },
 	                    UrlStructure:{
 	                    	orderOption:['G', 'E', 'U', 'I'],
 	                    	IndicatorName: "SERIES",
 							TimeType: 'A',
 	                    	DisplayMessageOrder:['Minimum wages/' , 'Indicator'],
-
 	                    	TimeType: 'A'
 
 	            			},
@@ -451,7 +450,7 @@ const OECDDatabases = [
 	                   Time: {
 	                    	Type: 'A',
 	                    	Start: 2000,
-	                     	End: 2016
+	                     	End: 2017
 	                     },
 	                    UrlStructure:{
 	                    	orderOption: ['G', 'E', 'I', 'U', 'TT'],
@@ -500,7 +499,7 @@ const OECDDatabases = [
 	                   Time: {
 	                    	Type: 'A',
 	                    	Start: 2000,
-	                     	End: 2016
+	                     	End: 2017
 	                     },
 	                    UrlStructure:{
 	                    	orderOption: ['G', 'E', 'I', 'U', 'TT'],
@@ -536,7 +535,7 @@ const OECDDatabases = [
 	                   Time: {
 	                    	Type: 'A',
 	                    	Start: 1965,
-	                     	End: 2016
+	                     	End: 2017
 	                     },
 	                    UrlStructure:{
 	                    	orderOption: ['E', 'I', 'U', 'G'],
@@ -555,7 +554,7 @@ const OECDDatabases = [
 	               ]
 
    },
-
+/*
 
    {
 	    SectorName: "Education & social data",
@@ -825,7 +824,7 @@ const OECDDatabases = [
 	               },
 
 	               ]
-   },
+   },*/
    {
 	    SectorName: "Reseach & Development",
 	    id: 'RD',
@@ -840,7 +839,7 @@ const OECDDatabases = [
 						    Time: {
 						     	Type: 'A',
 						     	Start: 1995,
-						      	End: 2016
+						      	End: 2017
 						      },
 						     UrlStructure:{
 						     	orderOption: ['I', 'G', 'E', 'U'],
@@ -861,7 +860,7 @@ const OECDDatabases = [
 						    Time: {
 						     	Type: 'A',
 						     	Start: 1995,
-						      	End: 2016
+						      	End: 2017
 						      },
 						     UrlStructure:{
 						     	orderOption: ['I', 'G', 'E', 'U'],

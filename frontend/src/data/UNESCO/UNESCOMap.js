@@ -18,7 +18,7 @@ const UnescoDatabase = [
 				    Time: {
 				     	Type: 'A',
 				     	Start: 1975,
-				      	End: 2014
+				      	End: 2016
 				      },
 				     UrlStructure:{
 				    	orderOption: [C.TOPIC, C.INDICATOR, ['_T', '_T'] , C.GEO],
@@ -39,7 +39,7 @@ const UnescoDatabase = [
 				    Time: {
 				     	Type: 'A',
 				     	Start: 1980,
-				      	End: 2015
+				      	End: 2017
 				      },
 				     UrlStructure:{
 				    	orderOption: [C.TOPIC, C.INDICATOR, '_T', 'Y0T1', C.GEO],
@@ -49,7 +49,7 @@ const UnescoDatabase = [
 					}
 				},
 
-				{
+	/*			{
 					TopicName: "Poverty headcount ratio at $3.10 a day",
 				    id: 'PHR_USD310',
 				    rev: 1,
@@ -63,14 +63,14 @@ const UnescoDatabase = [
 				      	End: 2014
 				      },
 				     UrlStructure:{
-				    	orderOption: ['D', 'I', 'E', 'G'],
+				    	orderOption: [C.TOPIC,  C.INDICATOR, ['_T', '_T'] ,C.GEO],
 				    	IndicatorName: "UNIT_MEASURE",
 				    	DisplayMessageOrder:['Extra','Indicator'],
 				 		DisplayExtra: ' population living on less than $3.10 ',
 				 		extras: ['_T', '_T']
 
 					}
-				},
+				},*/
 
 				{
 					TopicName: "Life expectancy",
@@ -82,14 +82,13 @@ const UnescoDatabase = [
 				    Time: {
 				     	Type: 'A',
 				     	Start: 1980,
-				      	End: 2014
+				      	End: 2016
 				      },
 				     UrlStructure:{
-				    	orderOption: ['D', 'I', 'E', 'G'],
+				    	orderOption: [C.TOPIC, C.INDICATOR, ['_T', '_T'], C.GEO],
 				    	IndicatorName: "UNIT_MEASURE",
 				    	DisplayMessageOrder:['Indicator'],
 				 		DisplayExtra: '',
-				 		extras: ['_T', '_T']
 
 					}
 				},
@@ -104,15 +103,14 @@ const UnescoDatabase = [
 				    Time: {
 				     	Type: 'A',
 				     	Start: 1980,
-				      	End: 2015
+				      	End: 2017
 				      },
 				     UrlStructure:{
 
-						orderOption:['D', 'I', 'E', 'G'],
+						orderOption:[C.TOPIC, C.INDICATOR, ['_T', '_T'], C.GEO],
 						IndicatorName: "UNIT_MEASURE",
 						DisplayMessageOrder:['Extra','Indicator'],
 				 		DisplayExtra: ' Population living in rural areas ',
-				 		extras: ['_T', '_T']
 
 					}
 				},
@@ -128,15 +126,14 @@ const UnescoDatabase = [
 				    Time: {
 				     	Type: 'A',
 				     	Start: 1980,
-				      	End: 2016
+				      	End: 2017
 				      },
 				     UrlStructure:{
-				    	orderOption: ['D', 'U', 'E', 'I'],
+				    	orderOption: [C.TOPIC, C.MEASURE, '_T', C.INDICATOR, C.GEO],
 				    	IndicatorName: "AGE",
 					    UnitName: 'UNIT_MEASURE',
 					    DisplayMessageOrder:['Unit','Extra','Indicator'],
 				 		DisplayExtra: ' with ages ',
-				 		extras: ['_T']
 
 					}
 				},
@@ -150,15 +147,12 @@ const UnescoDatabase = [
 				    Time: {
 				     	Type: 'A',
 				     	Start: 1980,
-				      	End: 2015
+				      	End: 2017
 				      },
 				     UrlStructure:{
-				    	orderOption: ['D', 'U', 'E', 'I'],
+				    	orderOption: [C.TOPIC, C.INDICATOR, ['_T', '_T'], C.GEO],
 				    	IndicatorName: "UNIT_MEASURE",
-				    	DisplayMessageOrder:['Extra','Indicator'],
-				 		DisplayExtra: ' population ',
-				 		extras: ['_T', '_T']
-
+				    	DisplayMessageOrder:['population', 'Indicator'],
 					}
 				},
 
@@ -179,14 +173,12 @@ const UnescoDatabase = [
 				    Time: {
 				     	Type: 'A',
 				     	Start: 1980,
-				      	End: 2015
+				      	End: 2017
 				      },
 				     UrlStructure:{
-				    	orderOption: ['D', 'I', 'E'],
+				    	orderOption: [C.TOPIC, C.INDICATOR, ['_Z', '_Z'], C.GEO],
 				    	IndicatorName: "UNIT_MEASURE",
-				    	DisplayMessageOrder:['Extra','Indicator'],
-				 		DisplayExtra: ' GDP ',
-						 extras: ['_Z', '_Z']
+				    	DisplayMessageOrder:['GDP','Indicator'],
 
 					}
 				},
@@ -202,18 +194,16 @@ const UnescoDatabase = [
 				    Time: {
 				     	Type: 'A',
 				     	Start: 1990,
-				      	End: 2015
+				      	End: 2017
 				      },
 				     UrlStructure:{
-				    	orderOption: ['D', 'I', 'E'],
+				    	orderOption: [C.TOPIC, C.INDICATOR, ['_Z', '_Z'], C.GEO],
 				    	IndicatorName: "UNIT_MEASURE",
 				    	DisplayMessageOrder:['Extra','Indicator'],
 				 		DisplayExtra: ' GDP per capita at ',
-				 		extras: ['_Z', '_Z']
-
 					}
 				},
-				{
+			/*	{
 					TopicName: "GDP per capita, purchasing power parity",
 				    id: 'GDP_CAP_PPP',
 				    rev: 1,
@@ -224,17 +214,15 @@ const UnescoDatabase = [
 				    Time: {
 				     	Type: 'A',
 				     	Start: 1990,
-				      	End: 2015
+				      	End: 2017
 				      },
 				     UrlStructure:{
-				    	orderOption: ['D', 'I', 'E'],
+				    	orderOption: [C.TOPIC,  C.INDICATOR, ['_Z', '_Z']],
 				    	IndicatorName: "UNIT_MEASURE",
-				    	DisplayMessageOrder:['Extra','Indicator'],
-				 		DisplayExtra: ' GDP per capita in purchasing power at ',
-				 		extras: ['_Z', '_Z'],
+				    	DisplayMessageOrder:['GDP per capita in purchasing power at', 'Indicator'],
 
 					}
-				},
+				},*/
 				{
 					TopicName: "Employment rate",
 				    id: 'ILO_ETPR',
@@ -246,16 +234,13 @@ const UnescoDatabase = [
 				    Time: {
 				     	Type: 'A',
 				     	Start: 1995,
-				      	End: 2015
+				      	End: 2017
 				      },
 				     UrlStructure:{
-				    	orderOption: ['D', 'U', 'I', 'E'],
+				    	orderOption: [C.TOPIC, C.MEASURE, C.INDICATOR, 'Y_GE15', C.GEO],
 				    	UnitName: 'UNIT_MEASURE',
 				    	IndicatorName: "SEX",
-				    	DisplayMessageOrder:['Indicator', 'Unit'],
-				 		DisplayExtra: ' over 15 years (over 65 included) that are working ',
-				 		extras: ['Y_GE15']
-
+				    	DisplayMessageOrder:['Indicator', 'Unit', 'over 15 years (over 65 included) that are working'],
 					}
 				},
 
@@ -271,25 +256,21 @@ const UnescoDatabase = [
 				    Time: {
 				     	Type: 'A',
 				     	Start: 1995,
-				      	End: 2015
+				      	End: 2017
 				      },
 				     UrlStructure:{
-				   		orderOption: ['D', 'U', 'I', 'E'],
+				   		orderOption: [C.TOPIC, C.MEASURE, C.INDICATOR, ['Y_GE15'], C.GEO],
 				    	IndicatorName: "SEX",
-				    	DisplayMessageOrder:['Indicator', 'Unit'],
-				 		DisplayExtra: ' over 15 years (over 65 included) that are working or looking for employement ',
-				 		extras: ['PT', 'Y_GE15']
-
+				    	DisplayMessageOrder:['Unit', 'over 15 years (over 65 included) that are working or looking for employement'],
 					}
 				},
 
-  	               ]
+	   ]
     },
-    {
+   /* {
    	   SectorName: "Education",
    	   id: 'EDU_NON_FINANCE-Rev1',
    	   Topics:[
-
 					{
 						TopicName: "Net enrolment rate by education level",
 					    id: 'NER',
@@ -303,8 +284,8 @@ const UnescoDatabase = [
 					      	End: 2015
 					      },
 					     UrlStructure:{
-							orderOption: [C.TOPIC, C.MEASURE, C.INDICATOR, ['PT', '_T', '_T','SCH_AGE_GROUP','_T',
-								'INST_T', '_Z', '_Z', '_T' , '_T', '_T', '_Z', '_Z', 'W00', 'W00']],
+							orderOption: [C.TOPIC, C.MEASURE, C.INDICATOR, ['_T', '_T','SCH_AGE_GROUP','_T',
+								'INST_T', '_Z', '_Z', '_T' , '_T', '_T', '_Z', '_Z', '_Z', '_Z', '_Z', 'W00', 'W00','_Z' ], C.GEO],
 					        IndicatorName: "EDU_LEVEL",
 					        UnitName: 'UNIT_MEASURE',
 					        DisplayMessageOrder:['Unit' ,'Indicator' ],
@@ -416,7 +397,7 @@ const UnescoDatabase = [
 
 
    	              ]
-    },
+    },*/
     {
     	   SectorName: "Education expenditure",
     	   id: 'EDU_FINANCE-Rev1',
@@ -432,18 +413,13 @@ const UnescoDatabase = [
 					    Time: {
 					     	Type: 'A',
 					     	Start: 2000,
-					      	End: 2015
+					      	End: 2017
 					      },
 					     UrlStructure:{
-					        orderOption: 1,
-					        IndicatorPosition: 0,
-					        UnitMessurePosition: 0,
+							orderOption: [C.TOPIC, C.MEASURE, C.INDICATOR, ['_T', '_T', '_T', 'GOV', '_T', '_Z', '_Z'], C.GEO],
 					        IndicatorName: "EDU_LEVEL",
 					        UnitName: 'UNIT_MEASURE',
-					        DisplayMessageOrder:['Extra', 'Indicator', 'Unit'],
-					 		DisplayExtra: ' government expenditure on ',
-					 		extras: ['_T', '_T', '_T', 'GOV', '_T', '', '']
-
+					        DisplayMessageOrder:['government expenditure on', 'Indicator', 'Unit'],
 						}
 					},
 
@@ -454,22 +430,16 @@ const UnescoDatabase = [
 					     Geo: {
 							location: 'Unesco'
 						},
-
 					    Time: {
 					     	Type: 'A',
 					     	Start: 1998,
-					      	End: 2015
+					      	End: 2017
 					      },
 					     UrlStructure:{
-					        orderOption: 1,
-					        IndicatorPosition: 0,
-					        UnitMessurePosition: 0,
+					        orderOption: [C.TOPIC, C.MEASURE, C.INDICATOR, ['_T', '_T', '_T', 'GOV', 'FFNTP', '_Z', '_Z'], C.GEO],
 					        IndicatorName: "EDU_LEVEL",
 					        UnitName: 'UNIT_MEASURE',
-					        DisplayMessageOrder:['Extra', 'Indicator', 'Unit'],
-					 		DisplayExtra: ' government expenditure per student on ',
-					 		extras: ['_T', '_T', '_T', 'GOV', 'FFNTP', '', '']
-
+					        DisplayMessageOrder:['government expenditure per student on', 'Indicator', 'Unit'],
 						}
 					},
 
@@ -481,7 +451,6 @@ const UnescoDatabase = [
  	   SectorName: "R&D",
  	   id: 'RD-Rev1',
  	   Topics:[
-
 				{
 					TopicName: "Gross domestic expenditure on R&D ",
 				    id: 'GERD',
@@ -495,16 +464,11 @@ const UnescoDatabase = [
 				     	Start: 1998,
 				      	End: 2015
 				      },
-				     UrlStructure:{
-				        orderOption: 1,
-				        IndicatorPosition: 3,
-				        UnitMessurePosition: 0,
+				     UrlStructure: {
+				        orderOption: [C.TOPIC, C.MEASURE, ['_Z', '_Z', '_Z'], C.INDICATOR, ['_T', '_Z', '_T', '_T', '_T'] , C.GEO],
 				        IndicatorName: "RD_SECTOR",
 				        UnitName: 'UNIT_MEASURE',
-				        DisplayMessageOrder:['Indicator', 'Extra', 'Unit'],
-				 		DisplayExtra: ' expenditure on R&D ',
-				 		extras: [ '', '', '', '_T', '', '_T', '_T', '_T']
-
+				        DisplayMessageOrder:['Indicator', 'expenditure on R&D', 'Unit'],
 					}
 				},
 				{
@@ -520,18 +484,13 @@ const UnescoDatabase = [
 				      	End: 2015
 				      },
 				     UrlStructure:{
-				        orderOption: 1,
-				        IndicatorPosition: 3,
-				        UnitMessurePosition: 0,
+				        orderOption: [C.TOPIC, C.MEASURE, ['_T', '_T', '_T'], C.INDICATOR, ['_T', '_T', '_Z', '_Z', '_Z'] , C.GEO],
 				        IndicatorName: "RD_SECTOR",
 				        UnitName: 'UNIT_MEASURE',
-				        DisplayMessageOrder:['Unit' , 'Extra' ,'Indicator'],
-				 		DisplayExtra: ' on ',
-				 		extras: [ '_T', '_T', '_T', '_T', '_T', '', '', '']
+				        DisplayMessageOrder:['Unit' , 'on' ,'Indicator'],
 
 					}
 				},
-
 
  	               ]
 
@@ -539,7 +498,7 @@ const UnescoDatabase = [
 
 
 
-    {
+   /* {
    	   SectorName: "Cinema industry",
    	   id: 'FF-Rev1',
    	   Topics:[
@@ -554,20 +513,13 @@ const UnescoDatabase = [
 			    Time: {
 			     	Type: 'A',
 			     	Start: 2005,
-			      	End: 2015
+			      	End: 2017
 			      },
 			     UrlStructure:{
-			        orderOption: 1,
-			        DataBasePosition:0,
-			        UnitMessurePosition: 0,
-			        IndicatorPosition: 6,
-			        CountryPosition: 2,
+					orderOption: [C.MEASURE, C.TOPIC, C.GEO, ['_T','NAT', '_T', '_T', '_T',], C.INDICATOR, ['PROD', '_T']],
 			        IndicatorName: 'FILM_TYPE',
 			        UnitName: 'UNIT_MEASURE',
-			        DisplayMessageOrder:['Unit' , 'Indicator', 'Extra' ],
-			 		DisplayExtra: ' produced ',
-			 		extras: [ '_T','NAT', '_T', '_T', '_T',
-			 			         'PROD', '_T']
+			        DisplayMessageOrder:['Unit' , 'Indicator', 'produced' ],
 
 				}
 			},
@@ -792,7 +744,7 @@ const UnescoDatabase = [
 			},
    	               ]
     }
-
+*/
 ]
 
 export default UnescoDatabase
