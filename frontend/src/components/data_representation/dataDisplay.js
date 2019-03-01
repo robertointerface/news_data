@@ -53,9 +53,12 @@ class DataDisplay extends Component{
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div className='col-8 offset-2 MT1 MB1'>
-                                                    <ChangeUnitMeasureContainer props={result.id}/>
-                                                </div>
+                                                {(result.searchObject.PossibleUnitMeasure.length > 1) ?
+                                                    <div className='col-8 offset-2 MT1 MB1'>
+                                                        <ChangeUnitMeasureContainer props={result.id}/>
+                                                    </div> : null
+                                                }
+
                                             </div>
                                         </div>
                                 </div>
