@@ -314,21 +314,30 @@ class EUdataRequest extends dataRequest{
 
         for(var geo of this.SelectedGeo){
             //this.SelectedGeo is an array composed of objects {id: 'FR', name: 'France}
-            let geoIndex = this.getIndex('geo', geo.id);
             let geoObject = {
                 name: geo.name,
                 values: []
             }
-            let start = geoIndex * timeLength;
-            let end = start + timeLength;
-            for(let i = start; i < end; i++){
-                if(values[i]!=null) {
-                     geoObject.values.push(values[i]);
+            let geoIndex = this.getIndex('geo', geo.id);
+
+            if(typeof geoIndex != "undefined"){ //if geoIndex is not define then we have the country data, otherwise the country data was not returned needs to be filled as null
+
+                let start = geoIndex * timeLength;
+                let end = start + timeLength;
+                for(let i = start; i < end; i++){
+                    if(values[i]!=null) {
+                         geoObject.values.push(values[i]);
+                    }
+                    else{
+                        geoObject.values.push(null);
+                    }
                 }
-                else{
-                    geoObject.values.push(null);
+            }else{
+                for(var time in this.SelectedTimes){
+                    geoObject.values.push(null) //Geo/country data was not returned and it must be filled with null values
                 }
             }
+
             finalValue.push(geoObject);
 
         }
