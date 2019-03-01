@@ -45,6 +45,7 @@ class IndicatorsDict(dict): #CHANGED IT TO INHERIT FROM collections.UserDict CHA
     def get_indicators(self, sector_key, topic_key, version, default=None):
         try:
             indicators = self[sector_key][topic_key][version]['indicators']
+            indicators = {k.decode('utf8'): v.decode('utf8') for k, v in indicators.items()} #convert to unicode. this might not be required in python3 as str are unicodes and not bytes as in python2
             return indicators
         except KeyError:
             return default
@@ -52,6 +53,7 @@ class IndicatorsDict(dict): #CHANGED IT TO INHERIT FROM collections.UserDict CHA
     def get_units(self, sector_key, topic_key, version, default=None):
         try:
             units = self[sector_key][topic_key][version]['units']
+            units = {k.decode('utf8'): v.decode('utf8') for k, v in units.items()}  #convert to unicode. this might not be required in python3 as str are unicodes and not bytes as in python2
             return units
         except KeyError:
             return default
