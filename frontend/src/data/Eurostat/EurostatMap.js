@@ -1458,7 +1458,7 @@ var EurostatDatabases = [
 			Time: {
 				Type: 'A',
 				Start: 2005,
-				End: 2016
+				End: 2017
 			},
 			  Geo: {
 						location: 'EU',
@@ -1482,7 +1482,7 @@ var EurostatDatabases = [
 				Time: {
 					Type: 'A',
 					Start: 2005,
-					End: 2016
+					End: 2017
 				},
 				  Geo: {
 						location: 'EU',
@@ -1506,7 +1506,7 @@ var EurostatDatabases = [
 					Time: {
 						Type: 'A',
 						Start: 1995,
-						 End: 2016
+						 End: 2017
 					},
 					  Geo: {
 						location: 'EU',
@@ -1526,7 +1526,7 @@ var EurostatDatabases = [
 					Time: {
 						Type: 'A',
 						Start: 2006,
-						 End: 2014
+						 End: 2015
 					},
 					  Geo: {
 						location: 'EU',
@@ -1543,7 +1543,7 @@ var EurostatDatabases = [
 					},
 
 				},
-
+/*
 
 				{
 					TopicName: "Electricity prices for household consumers (euro/kWh)",
@@ -1643,7 +1643,7 @@ var EurostatDatabases = [
 					},
 
 
-				},
+				},*/
 
 
 
@@ -1668,7 +1668,7 @@ var EurostatDatabases = [
                     Time: {
                     	Type: 'A',
                     	Start: 1981,
-                    	End: 2016
+                    	End: 2017
                     },
                 },
                 {
@@ -1681,7 +1681,7 @@ var EurostatDatabases = [
                     Time: {
                     	Type: 'A',
                     	Start: 1981,
-                    	End: 2016
+                    	End: 2017
                     },
                     UrlStructure:{
                     IndicatorName :'sectfund',
@@ -1703,7 +1703,7 @@ var EurostatDatabases = [
                         Time: {
                         	Type: 'A',
                         	Start: 1988,
-                        	End: 2016
+                        	End: 2017
                         },
                         UrlStructure:{
                         IndicatorName :'sectperf',
@@ -1777,7 +1777,7 @@ var EurostatDatabases = [
             },
 
             {
-                TopicName: "Employment in technology and knowledge-intensive sectors (2008-2016)",
+                TopicName: "Employment in technology and knowledge-intensive sectors (2008-2017)",
                 id: 'htec_emp_nat2',
                 rev:  1,
                  Geo: {
@@ -1786,7 +1786,7 @@ var EurostatDatabases = [
                 Time: {
                 	Type: 'A',
                 	Start: 2008,
-                	End: 2016
+                	End: 2017
                 },
                 UrlStructure:{
                 IndicatorName :'nace_r2',
