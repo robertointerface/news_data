@@ -1,26 +1,36 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
 
+"""
+    accounts views - classes used to handle API calls to 'accounts' django app, urls specified
+    on acccounts.urls
+
+    Members:
+    # sign_up - function used to create new users (model User), function call when
+                url 'accounts/signup'
+    # edit_user_first_time - function call when user sets his username and password
+                            for the first time
+    # verify_token -
+"""
+from __future__ import unicode_literals
+import json
+import hashlib
+import random
+import django.db
 from django.contrib.auth.models import User
-from django.http import JsonResponse, HttpResponse
+from django.http import JsonResponse, RawPostDataException
+from django.db.models import ObjectDoesNotExist
 from rest_framework import permissions, status
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .serializers import UserSerializer, UserSerializerWithToken
-import json
-import hashlib
-import random
-from .models import User
-import django.db
-from django.db.models import ObjectDoesNotExist
-from django.http import RawPostDataException
+from rest_framework_jwt.settings import api_settings
 from google.oauth2 import id_token
 from google.auth.transport import requests
-from rest_framework_jwt.settings import api_settings
-###SECURITY IMPORTS
+from backend.accounts.serializers import UserSerializer, UserSerializerWithToken
+from backend.accounts.models import User
 
+# SECURITY IMPORTS
 TOKEN_INFO_URL = 'https://www.googleapis.com/oauth2/v3/tokeninfo?id_token='
 try:
     from backend.backend.settings import Migration
@@ -32,25 +42,28 @@ if Migration:
 else:
     from backend.backend.constants import Constants
     from google.appengine.api import urlfetch
-    GOOGLE_CLIENT = json.loads(open('backend/accounts/g_client_secret.json', 'r').read())['web']['client_id']
+    GOOGLE_CLIENT = json.loads(open('backend/accounts/g_client_secret.json', 'r').
+                               read())['web']['client_id']
 
 
 #@api_view(['POST'])
 @permission_classes((AllowAny, ))
 def sign_up(request):
     """
-    Sign up new user given a valid username & email (username and email are verified previously on Frontend) still they
-    are verified by SQL Model specifications.
+    Sign up new user given a valid username & email (username and email are verified
+    previously on Frontend) still they are verified by SQL Model specifications.
 
     @param
         request - http.request object with Username and email provided by the user.
 
     @return:
-        On success - Json response with 'status' 200 and confirmation message to be displayed at frontend.
-        On failure - Json response with 'status' 400 and failure message to be displayed at frontend.
+        On success - Json response with 'status' 200 and confirmation message to be displayed
+                    at frontend.
+        On failure - Json response with 'status' 400 and failure message to be displayed
+                    at frontend.
     """
     try:
-        #Convert http.request.body into Json object
+        # Convert http.request.body into Json object
         request_data = json.loads(request.body)
         username = request_data['username']
         email = request_data['email']
@@ -65,23 +78,20 @@ def sign_up(request):
         )
         response = JsonResponse({
             'status': 200,
-            'content': 'We have sent you an email, please follow the steps in order to finalize the process'
+            'content': '''We have sent you an email, please follow the steps in order
+                        to finalize the process'''
         })
     except django.db.DatabaseError:
         response = JsonResponse({
             'status': 400,
-            'content':
-                """There has been an error, please verify that your email is the correct one. 
-                If the error persists please contact us.
-                """
+            'content': '''There has been an error, please verify that your email is the correct one. 
+                        If the error persists please contact us'''
         })
     except RawPostDataException:
         response = JsonResponse({
             'status': 400,
-            'content':
-                """There has been an error, please verify that your email is the correct one. 
-                If the error persists please contact us.
-                """
+            'content': """There has been an error, please verify that your email is the correct one. 
+                If the error persists please contact us."""
         })
     finally:
         return response
@@ -92,17 +102,19 @@ def edit_user_first_time(request):
     """
     Set password for a new created User and after the user has verified its email.
     A token is provided to the user and the token is verified
-
     @param
-        request - request object with token emailed to user, password and username. Token emailed to user
-                is used to verify the user since there is no password at this stage.
+        request - request object with token emailed to user, password and username. Token emailed to
+                user is used to verify the user since there is no password at this stage.
     @return:
-        On success - JsonResponse with 'status' 200 and confirmation message to be displayed at frontend
-        On failure - JsonResponse with 'status' 400 and failure/error message to be displayed at frontend
+        On success - JsonResponse with 'status' 200 and confirmation message to be
+                    displayed at frontend
+        On failure - JsonResponse with 'status' 400 and failure/error message to be
+                    displayed at frontend
     """
     try:
         request_data = json.loads(request.body)
-        #Query user with the provided token, if token is wrong the user is not queried and error 'ObjectDoesNotExist' is raised
+        # Query user with the provided token, if token is wrong the user is not queried and error
+        # 'ObjectDoesNotExist' is raised
         user = User.objects.get(activation_key=request_data['token'])
         user.set_password(request_data['password'])
         user.username = request_data['username']
@@ -116,10 +128,8 @@ def edit_user_first_time(request):
     except ObjectDoesNotExist:
         response = JsonResponse({
             'status': 400,
-            'content':
-                """There has been an error, please verify that your email is the correct one. 
-                If the error persists please contact us.
-                """
+            'content': """There has been an error, please verify that your email is the correct one. 
+            If the error persists please contact us."""
         })
     except django.db.DatabaseError:
         response = JsonResponse({
@@ -137,9 +147,14 @@ def edit_user_first_time(request):
 def verify_token(request, token):
     """
     Email verification through Verifying token sent to user email.
-    :param request: Request object
-    :param token: Token to be verified
-    :return: JSON response.
+    @params
+        request - http.request object
+        token - token emailed to user to verify his email account, this token must match the one
+        saved on the sql database.
+
+    @return
+        On success - JsonResponse with status '200' and message to be displayed
+        On failure - JsonResponse with status '400' and message to be displayed
     """
     try:
         user = User.objects.get(activation_key=token)
@@ -156,10 +171,10 @@ def verify_token(request, token):
                 'content': """Account was already confirmed """
             })
     except django.db.DatabaseError:
-            response = JsonResponse({
-                'status': 500,
-                'content': """There was a problem """
-            })
+        response = JsonResponse({
+            'status': 500,
+            'content': """There was a problem """
+        })
     finally:
         return response
 
@@ -218,12 +233,16 @@ def google_signin(request):
     finally:
         return response
 
+
 def create_activation_key(username):
-    '''
-    Create token verification key
-    :param username: username string.
-    :return: token (activation key)
-    '''
+    """
+    create user token to be sent for email verification, use sha1 encoding with username and
+    random generated sequence of 5 characters.
+    @param
+        username - username
+    @return
+        activation_key - Token
+    """
     salt = hashlib.sha1(str(random.random())).hexdigest()[:5]
     if isinstance(username, unicode):
         usernamesalt = username.encode('utf8')
@@ -245,7 +264,6 @@ class UserList(APIView):
     Create a new user. It's called 'UserList' because normally we'd have a get
     method here too, for retrieving a list of all User objects.
     """
-
     permission_classes = (permissions.AllowAny,)
 
     def post(self, request, format=None):
