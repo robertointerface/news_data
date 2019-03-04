@@ -39,11 +39,18 @@ else:
 @permission_classes((AllowAny, ))
 def sign_up(request):
     """
-    Sign up new user given a valid username & email (username and email are verified previously on Frontend).
-    :param request: http.request object.
-    :return: Json response
+    Sign up new user given a valid username & email (username and email are verified previously on Frontend) still they
+    are verified by SQL Model specifications.
+
+    @param
+        request - http.request object with Username and email provided by the user.
+
+    @return:
+        On success - Json response with 'status' 200 and confirmation message to be displayed at frontend.
+        On failure - Json response with 'status' 400 and failure message to be displayed at frontend.
     """
     try:
+        #Convert http.request.body into Json object
         request_data = json.loads(request.body)
         username = request_data['username']
         email = request_data['email']
@@ -83,13 +90,19 @@ def sign_up(request):
 @permission_classes((AllowAny, ))
 def edit_user_first_time(request):
     """
-    Set password for a new created and emial verified user.
-    :param request: request object with token emailed to user, password and username. Token emailed to user
-    is used to verify the user since there is no password at this stage.
-    :return: JsonResponse.
+    Set password for a new created User and after the user has verified its email.
+    A token is provided to the user and the token is verified
+
+    @param
+        request - request object with token emailed to user, password and username. Token emailed to user
+                is used to verify the user since there is no password at this stage.
+    @return:
+        On success - JsonResponse with 'status' 200 and confirmation message to be displayed at frontend
+        On failure - JsonResponse with 'status' 400 and failure/error message to be displayed at frontend
     """
     try:
         request_data = json.loads(request.body)
+        #Query user with the provided token, if token is wrong the user is not queried and error 'ObjectDoesNotExist' is raised
         user = User.objects.get(activation_key=request_data['token'])
         user.set_password(request_data['password'])
         user.username = request_data['username']
