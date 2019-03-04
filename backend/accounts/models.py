@@ -29,10 +29,16 @@ class User(AbstractUser):
     def __str__(self):
         return self.username
 
+    # save, require email confirmation
+    # def save(self, *args, **kwargs):
+    #     if not self.external_auth:
+    #         if not self.email_confirmed:
+    #             self.send_verification_email()
+    #     super(User, self).save(*args, **kwargs)
+
+    # save no email confirmation required
     def save(self, *args, **kwargs):
-        if not self.external_auth:
-            if not self.email_confirmed:
-                self.send_verification_email()
+        self.email_confirmed = True
         super(User, self).save(*args, **kwargs)
 
     def send_verification_email(self):
