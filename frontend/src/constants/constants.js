@@ -55,6 +55,7 @@ export const urls = {
     MAIN: 'http://localhost:8080/display/newslist/',
     GET_NEWS_COUNT: 'http://localhost:8080/display/getnewscount/',
     NEW_DETAIL: 'http://localhost:8080/display/getnew/',
+    USER_NEWS: 'http://localhost:8080/display/usernews/',
     DEVELOP: 'http://localhost:8080',
     MAKE_API_CALL: 'http://localhost:8080/search/makeapicall/',
     GET_INDICATORS: 'http://localhost:8080/search/indicators',
