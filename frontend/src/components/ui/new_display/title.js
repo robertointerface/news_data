@@ -1,5 +1,6 @@
 import React from 'react';
-import {history} from 'root/App.js';
+
+
 const NewTitle = ({title='', id=0, author='', date=''}) => {
     return(
         <div className='row'>
@@ -16,7 +17,12 @@ const NewTitle = ({title='', id=0, author='', date=''}) => {
                 }
             </div>
             <div className='col-6'>
-                <p className='ColorW'>{author}</p>
+                <a href={'#'} onClick={(e) => {
+                    e.preventDefault();
+                    history.push(`/display/user/${author}`) }
+                }>
+                    <p className='ColorW'>{author}</p>
+                </a>
             </div>
             <div className='col-6'>
                 <p className='ColorW'>{date}</p>
