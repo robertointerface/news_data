@@ -80,5 +80,6 @@ class GetUserPublishedNews(APIView):
             user = User.objects.filter(username=username).first()
             news = NewSerializer(user.user_created_new.all(), many=True)
             content = JSONRenderer().render(news.data)
+            return Response(content, status=200, content_type=json)
         except DatabaseError:
             return Response(None, status=400, content_type=json)

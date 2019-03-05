@@ -1,6 +1,5 @@
 import React from 'react';
-
-
+import {history} from 'root/App.js';
 const NewTitle = ({title='', id=0, author='', date=''}) => {
     return(
         <div className='row'>
