@@ -20,6 +20,15 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ('username', 'email')
 
 
+class UserInfoSerializer(serializers.ModelSerializer):
+    """serializer for user public information
+
+    """
+    class Meta:
+        model = User
+        fields = ('username', 'about_me', 'location')
+
+
 class UserSerializerWithToken(serializers.ModelSerializer):
 
     token = serializers.SerializerMethodField()

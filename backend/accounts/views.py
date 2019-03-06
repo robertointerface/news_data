@@ -19,15 +19,17 @@ import django.db
 from django.contrib.auth.models import User
 from django.http import JsonResponse, RawPostDataException
 from django.db.models import ObjectDoesNotExist
+from django.db import DatabaseError
 from rest_framework import permissions, status
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
+from rest_framework.renderers import JSONRenderer
 from rest_framework.views import APIView
 from rest_framework_jwt.settings import api_settings
 from google.oauth2 import id_token
 from google.auth.transport import requests
-from backend.accounts.serializers import UserSerializer, UserSerializerWithToken
+from backend.accounts.serializers import UserSerializer, UserSerializerWithToken, UserInfoSerializer
 from backend.accounts.models import User
 
 # SECURITY IMPORTS
@@ -234,6 +236,21 @@ def google_signin(request):
         return response
 
 
+
+class UserPublicInfo(APIView):
+    permission_classes = (AllowAny,)
+
+    def get(self, request, format=None):
+        try:
+            params = request.query_params
+            username = params['username']
+            user = UserInfoSerializer(User.objects.filter(username=username).first(), many=False)
+            content = JSONRenderer().render(user.data)
+            return Response(content, status=200, content_type=json)
+        except DatabaseError:
+            # return user does not exist
+            return Response(None, status=400, content_type=json)
+
 def create_activation_key(username):
     """
     create user token to be sent for email verification, use sha1 encoding with username and
@@ -272,3 +289,5 @@ class UserList(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
