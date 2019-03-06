@@ -116,15 +116,17 @@ class GetNew(APIView):
 class GetUserPublishedNews(APIView):
     permission_classes = (AllowAny,)
 
-    def get(self, request, format=None):
+    def get(self, request, username, format=None):
         try:
             params = request.query_params
-            username = params['username']
+            username = username
+            page = int(params['page']) - 1
             user = User.objects.filter(username=username).first()
-            news = NewSerializer(user.user_created_new.all(), many=True)
+            news = NewSerializer(user.user_created_new.all()[page * 2:(page * 2) + 2], many=True)
             content = JSONRenderer().render(news.data)
             return Response(content, status=200, content_type=json)
         except DatabaseError:
             return Response(None, status=400, content_type=json)
-
+        except KeyError:
+            return Response(None, status=400, content_type=json)
 
