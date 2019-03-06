@@ -5,6 +5,7 @@ import PageTemplate from 'components/main/PageTemplate'
 import NewsDisplayList from 'components/new_display/NewsDisplayList'
 import Pagination from 'ui/common/pagination/pagination'
 import UserInfoCard from 'ui/accounts/UserDisplayInfo'
+import {getNewsToDisplay} from "root/store/functions/Display_news/displayNewsFunctions";
 
 class PublicUserContainer extends Component{
     constructor(props){
@@ -23,6 +24,7 @@ class PublicUserContainer extends Component{
             beginPag: [],
             endPag: []
         }
+        this.goToPage = this.goToPage.bind(this)
     }
 
     componentDidMount(){
@@ -53,6 +55,33 @@ class PublicUserContainer extends Component{
         })
     }
 
+    goToPage(e, page){
+        e.preventDefault();
+        getUserNews(this.username, page).then(news => {
+
+            return this.setState({
+               news: news,
+               presentPage: page,
+               beginPag: this.setBeginPagination(page, this.state.beginPag, this.state.pages),
+               endPag: [this.state.pages - 2 , this.state.pages - 1, this.state.pages]
+           })
+        })
+    }
+
+    setBeginPagination(currentPage, beginPag, lastPage){
+        switch (true){
+            case (currentPage == 1):
+                return [1, 2, 3] //This is required otherwise if user clicks button 'begin' or page '1', the page 0
+                                    // will be displayed and this creates visual and functional errors.
+            case (currentPage + 3 >= lastPage):
+                return [lastPage - 5, lastPage - 4 ,lastPage - 3]
+            case (currentPage + 3 <= lastPage):
+                return [currentPage - 1, currentPage, currentPage + 1]
+            default:
+                return [currentPage, currentPage + 1, currentPage + 2]
+        }
+    }
+
     render(){
         var {news, beginPag, endPag, presentPage} = this.state
         return (
@@ -68,7 +97,7 @@ class PublicUserContainer extends Component{
                 : null
                 }
                  <div className='col-12'>
-                     <Pagination presentPage={presentPage} begin={beginPag} end={endPag}/>
+                     <Pagination presentPage={presentPage} begin={beginPag} end={endPag} goToPage={this.goToPage}/>
                  </div>
             </PageTemplate>
         )
