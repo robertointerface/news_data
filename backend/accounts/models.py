@@ -63,5 +63,10 @@ class User(AbstractUser):
         )
 
 
+class Follow(models.Model):
+    follows = models.ForeignKey(User, related_name='user_rel_follows')
+    followed = models.ForeignKey(User, related_name='user_rel_followed')
+    time_stamp = models.DateTimeField(default=timezone.now)
+
 
 

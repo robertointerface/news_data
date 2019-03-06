@@ -29,8 +29,8 @@ from rest_framework.views import APIView
 from rest_framework_jwt.settings import api_settings
 from google.oauth2 import id_token
 from google.auth.transport import requests
-from backend.accounts.serializers import UserSerializer, UserSerializerWithToken, UserInfoSerializer
-from backend.accounts.models import User
+from .serializers import UserSerializer, UserSerializerWithToken, UserInfoSerializer
+from .models import User
 
 # SECURITY IMPORTS
 TOKEN_INFO_URL = 'https://www.googleapis.com/oauth2/v3/tokeninfo?id_token='
