@@ -11,7 +11,7 @@ if Migration:
     from search_data.serializers import UserDataSerializers
 else:
     from backend.search_data.serializers import UserDataSerializers
-
+    from backend.create_new.models import New
 
 class UserSerializer(serializers.ModelSerializer):
 
@@ -24,9 +24,15 @@ class UserInfoSerializer(serializers.ModelSerializer):
     """serializer for user public information
 
     """
+    user_created_new = serializers.SerializerMethodField()
+
     class Meta:
         model = User
-        fields = ('username', 'about_me', 'location')
+        fields = ('username', 'about_me', 'location', 'user_created_new')
+
+    def get_user_created_new(self, obj):
+        """Get only the count"""
+        return obj.user_created_new.count()
 
 
 class UserSerializerWithToken(serializers.ModelSerializer):

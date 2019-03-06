@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 import PageTemplate from 'components/main/PageTemplate'
 import {DisplayNewListContainer} from 'containers/newDisplayContainer'
 import {
-    getNewsToDisplay, getHotNewsPageCount} from 'functions/Display_news/displayNewsFunctions'
+    getNewsToDisplay,
+    getHotNewsPageCount} from 'functions/Display_news/displayNewsFunctions'
 import NewsDisplayList from 'components/new_display/NewsDisplayList'
 import Pagination from 'ui/common/pagination/pagination'
 

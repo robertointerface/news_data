@@ -1,7 +1,7 @@
 import {urls} from "root/constants/constants";
 import {getCookie} from "root/store/functions/auth/Cookies";
 
-const getUserNews = function(username=''){
+const getUserNews = function(username='', page=1){
     /*
         Calls API 'http://localhost:8080/display/usernews?username=' to get news published by the specific user.
         @param:
@@ -14,7 +14,7 @@ const getUserNews = function(username=''){
      */
     var csrftoken = getCookie('csrftoken'); //get saved cookie
     if(username){
-        return fetch(`${urls.USER_NEWS}?username=${username}`,{
+        return fetch(`${urls.USER_NEWS}${username}?page=${page}`, {
         method: 'GET',
         mode: 'same-origin',
         headers: {

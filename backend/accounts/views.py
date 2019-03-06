@@ -236,8 +236,16 @@ def google_signin(request):
         return response
 
 
-
 class UserPublicInfo(APIView):
+    """
+    API call to get user public information by providing the user 'username'
+    @param
+        username - username
+    @return
+        On success - rest_framework.response with status 200 and User public information in JSON format
+        On failure - rest_framework.response with status 400
+
+    """
     permission_classes = (AllowAny,)
 
     def get(self, request, format=None):
@@ -250,6 +258,7 @@ class UserPublicInfo(APIView):
         except DatabaseError:
             # return user does not exist
             return Response(None, status=400, content_type=json)
+
 
 def create_activation_key(username):
     """
