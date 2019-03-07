@@ -22,7 +22,7 @@ class PublicUserContainer extends Component{
                 about_me: '',
                 publishNews: 0,
                 followers: 0,
-                userNews: 0,
+                location:''
             },
             DisplayNews: {
                 news:[],
@@ -58,23 +58,21 @@ class PublicUserContainer extends Component{
             then(userNews => {
                 return Promise.all([
                     this.setState({
-                        DisplayNews:{
+                        DisplayNews: {
                             news: userNews,
-                            pages: Math.ceil(this.state.userInfo.publishNews / this.state.DisplayNews.newsPerPage),
-                        },
-                        userInfo:{
                             userNews: userNews.length,
+                            pages: Math.ceil(this.state.userInfo.publishNews / this.state.DisplayNews.newsPerPage),
                         }
                     }),
                     this.setState({
                         DisplayNews:{
+                            ...this.state.DisplayNews,
                             beginPag: [1, 2, 3],
                             endPag: [
                                 this.state.DisplayNews.pages - 2,
                                 this.state.DisplayNews.pages - 1,
                                 this.state.DisplayNews.pages]
                         }
-
                     })
                 ])
         })
