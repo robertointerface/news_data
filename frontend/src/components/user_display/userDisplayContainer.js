@@ -82,6 +82,7 @@ class PublicUserContainer extends Component{
         e.preventDefault();
         setFollow(username).then(response =>{
             this.setState({
+                ...this.state,
                 following: true
             })
         })
@@ -93,6 +94,7 @@ class PublicUserContainer extends Component{
 
             return this.setState({
                 DisplayNews:{
+                    ...this.state.DisplayNews,
                     news: news,
                     presentPage: page,
                     beginPag: this.setBeginPagination(page, this.state.DisplayNews.beginPag, this.state.DisplayNews.pages),
@@ -129,6 +131,7 @@ class PublicUserContainer extends Component{
                                   location={this.state.userInfo.location}
                                   about_me={this.state.userInfo.about_me}
                                   publishedNews={this.state.userInfo.publishNews}
+                                  following={this.state.following}
                                   canFollow = {this.state.loggedIn}
                                   onFollow={this.follow}
                     />

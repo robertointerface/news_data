@@ -27,15 +27,15 @@ class UserInfoSerializer(serializers.ModelSerializer):
 
     """
     user_created_new = serializers.SerializerMethodField()
+    user_rel_follows = serializers.PrimaryKeyRelatedField(many=True, queryset=User.objects.all())
 
     class Meta:
         model = User
-        fields = ('username', 'about_me', 'location', 'user_created_new')
+        fields = ('username', 'about_me', 'location', 'user_created_new', 'user_rel_follows')
 
     def get_user_created_new(self, obj):
         """Get only the count"""
         return obj.user_created_new.count()
-
 
 
 

@@ -11,7 +11,7 @@ const UserInfoCard = ({username='', location='', about_me='', publishedNews=0, o
                     {(canFollow) ?
                         <div>
                             {(following) ?
-                                <p>Already following</p>
+                                <p>you are following</p>
                                 : <PrimaryButton message={'follow'} onClick={(e) => onFollow(e, username)}/>
                             }
                         </div>

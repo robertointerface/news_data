@@ -252,6 +252,7 @@ class UserPublicInfo(APIView):
     def get(self, request, format=None):
         try:
             params = request.query_params
+            request_user = request.user
             username = params['username']
             user = UserInfoSerializer(User.objects.filter(username=username).first(), many=False)
             content = JSONRenderer().render(user.data)
