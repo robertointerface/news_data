@@ -1,6 +1,10 @@
 import React from 'react'
 import {Component} from 'react'
-import {getUserNews, getUserInfo} from 'functions/Display_users/displayUserFunctions'
+import {
+    getUserNews,
+    getUserInfo,
+    setFollow
+} from 'functions/Display_users/displayUserFunctions'
 import PageTemplate from 'components/main/PageTemplate'
 import NewsDisplayList from 'components/new_display/NewsDisplayList'
 import Pagination from 'ui/common/pagination/pagination'
@@ -25,6 +29,7 @@ class PublicUserContainer extends Component{
             endPag: []
         }
         this.goToPage = this.goToPage.bind(this)
+        this.follow = this.follow.bind(this)
     }
 
     componentDidMount(){
@@ -52,6 +57,13 @@ class PublicUserContainer extends Component{
                         endPag: [this.state.pages - 2, this.state.pages - 1, this.state.pages]
                     })
                 ])
+        })
+    }
+
+    follow(e, username){
+        e.preventDefault();
+        setFollow(username).then(response =>{
+
         })
     }
 
@@ -90,6 +102,8 @@ class PublicUserContainer extends Component{
                     <UserInfoCard username={this.username}
                                   location={this.state.location}
                                   about_me={this.state.about_me}
+                                  publishedNews={this.state.publishNews}
+                                  onFollow={this.follow}
                     />
                 </div>
                 {(news.length > 0) ?

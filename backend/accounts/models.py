@@ -25,6 +25,8 @@ class User(AbstractUser):
     activation_key = models.CharField(max_length=40, null=True)
     key_expires = models.DateTimeField(null=True)
     external_auth = models.BooleanField(default=False)
+    following = models.ManyToManyField('User', through='Follow',
+                                       related_name='followed', symmetrical=False)
 
     def __str__(self):
         return self.username

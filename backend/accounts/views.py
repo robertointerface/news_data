@@ -21,6 +21,7 @@ from django.http import JsonResponse, RawPostDataException
 from django.db.models import ObjectDoesNotExist
 from django.db import DatabaseError
 from rest_framework import permissions, status
+from rest_framework.serializers import ValidationError
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
@@ -29,7 +30,7 @@ from rest_framework.views import APIView
 from rest_framework_jwt.settings import api_settings
 from google.oauth2 import id_token
 from google.auth.transport import requests
-from .serializers import UserSerializer, UserSerializerWithToken, UserInfoSerializer
+from .serializers import UserSerializer, UserSerializerWithToken, UserInfoSerializer, FollowSerializer
 from .models import User
 
 # SECURITY IMPORTS
@@ -258,6 +259,27 @@ class UserPublicInfo(APIView):
         except DatabaseError:
             # return user does not exist
             return Response(None, status=400, content_type=json)
+
+
+class UserFollow(APIView):
+    permission_classes = (IsAuthenticated,)
+
+    def post(self, request, format=None):
+        try:
+            request_data = self.request.data
+            user = request.user
+            user_to_follow_name = request_data['toFollow']
+            user_to_follow = User.objects.filter(username=user_to_follow_name).first()
+            serializer = FollowSerializer(data={'follows': user.id,
+                                                'followed': user_to_follow.id})
+            if serializer.is_valid(raise_exception=True):
+                serializer.create(serializer.validated_data)
+        except ValidationError:
+            return Response(None, status=400, content_type=json)
+        except (KeyError, DatabaseError):
+            return Response(None, status=400, content_type=json)
+        else:
+            return Response(None, status=200, content_type=json)
 
 
 def create_activation_key(username):

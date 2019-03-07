@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.contrib import admin
-from .models import User
+from .models import User, Follow
 
 
 class UserAdmin(admin.ModelAdmin):
@@ -17,4 +17,9 @@ class UserAdmin(admin.ModelAdmin):
         return super(UserAdmin, self).save_model(request, obj, form, change)
 
 
+class FollowAdmin(admin.ModelAdmin):
+    list_display = ['follows', 'followed']
+
+
 admin.site.register(User, UserAdmin)
+admin.site.register(Follow, FollowAdmin)

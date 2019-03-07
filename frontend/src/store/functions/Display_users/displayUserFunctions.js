@@ -49,8 +49,7 @@ const getUserInfo = function(username=''){
             On failure - return error.
      */
     var csrftoken = getCookie('csrftoken'); //get saved cookie
-    var url = `${urls.USER_INFO}?username=${username}`
-    return fetch(url,{
+    return fetch(`${urls.USER_INFO}?username=${username}`,{
         method: 'GET',
         mode: 'same-origin',
         headers: {
@@ -71,7 +70,37 @@ const getUserInfo = function(username=''){
         .catch(error => {
 
         })
-
 }
 
-export {getUserNews, getUserInfo}
+
+const setFollow = function(toFollow=''){
+    var csrftoken = getCookie('csrftoken'); //get saved cookie
+    var userToFollow = {
+        'toFollow': toFollow
+    }
+    return fetch(`${urls.SET_FOLLOW}`,{
+        method: 'POST',
+        mode: 'same-origin',
+        headers: {
+            Authorization: `JWT ${localStorage.getItem('token')}`,
+            'Content-Type': 'application/json',
+            'X-CSRFToken': csrftoken,
+        },
+        body: JSON.stringify(userToFollow)
+    })
+        .then(response => {
+            if(response.status == 200){
+                return response.json()
+            }else{
+                throw 'error loading news'
+            }
+        })
+        .then(response =>{
+            return JSON.parse(response)
+        })
+        .catch(error => {
+
+        })
+}
+
+export {getUserNews, getUserInfo, setFollow}

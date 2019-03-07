@@ -1,7 +1,8 @@
 from rest_framework import serializers
 from rest_framework_jwt.settings import api_settings
-from .models import User
-
+from .models import User, Follow
+from django.shortcuts import get_object_or_404
+from rest_framework.serializers import ValidationError
 try:
     from backend.backend.settings import Migration
 except:
@@ -12,6 +13,7 @@ if Migration:
 else:
     from backend.search_data.serializers import UserDataSerializers
     from backend.create_new.models import New
+
 
 class UserSerializer(serializers.ModelSerializer):
 
@@ -33,6 +35,25 @@ class UserInfoSerializer(serializers.ModelSerializer):
     def get_user_created_new(self, obj):
         """Get only the count"""
         return obj.user_created_new.count()
+
+
+class FollowSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Follow
+        fields = ('follows', 'followed')
+
+    def create(self, validated_data):
+        return Follow.objects.create(**validated_data)
+
+    def validate_followed(self, value):
+        follows_id = self.initial_data['follows']
+        user = get_object_or_404(User, id=follows_id)
+        all_following = user.following.all()
+        already_following = user.following.filter(id=value.id).first()
+        if already_following is not None:
+            raise ValidationError('already following')
+        return value
 
 
 class UserSerializerWithToken(serializers.ModelSerializer):
