@@ -15,18 +15,24 @@ class PublicUserContainer extends Component{
     constructor(props){
         super(props)
         this.username = this.props.match.params.username
+        var userSaved = JSON.parse(localStorage.getItem('user'));
         this.state = {
-            about_me: '',
-            publishNews: 0,
-            followers: '',
-            location: '',
-            news: [],
-            userNews: 0,
-            pages: 0,
-            newsPerPage: 2,
-            presentPage: 1,
-            beginPag: [],
-            endPag: []
+            loggedIn: (userSaved) ? true : false,
+            userInfo :{
+                about_me: '',
+                publishNews: 0,
+                followers: 0,
+                userNews: 0,
+            },
+            DisplayNews: {
+                news:[],
+                pages: 0,
+                newsPerPage: 2,
+                presentPage: 1,
+                beginPag: [],
+                endPag: []
+            },
+            following: false,
         }
         this.goToPage = this.goToPage.bind(this)
         this.follow = this.follow.bind(this)
@@ -36,25 +42,39 @@ class PublicUserContainer extends Component{
         /*
             Get user public info and published news
          */
+
         getUserInfo(this.username).
             then(userData => {
             return this.setState({
-                about_me: userData.about_me,
-                location: userData.location,
-                publishNews: userData.user_created_new,
+                userInfo:{
+                    about_me: userData.about_me,
+                    location: userData.location,
+                    publishNews: userData.user_created_new,
+                },
+
             })
         });
         getUserNews(this.username).
             then(userNews => {
                 return Promise.all([
                     this.setState({
-                        news: userNews,
-                        userNews: userNews.length,
-                        pages: Math.ceil(this.state.publishNews / this.state.newsPerPage),
+                        DisplayNews:{
+                            news: userNews,
+                            pages: Math.ceil(this.state.userInfo.publishNews / this.state.DisplayNews.newsPerPage),
+                        },
+                        userInfo:{
+                            userNews: userNews.length,
+                        }
                     }),
                     this.setState({
-                        beginPag: [1, 2, 3],
-                        endPag: [this.state.pages - 2, this.state.pages - 1, this.state.pages]
+                        DisplayNews:{
+                            beginPag: [1, 2, 3],
+                            endPag: [
+                                this.state.DisplayNews.pages - 2,
+                                this.state.DisplayNews.pages - 1,
+                                this.state.DisplayNews.pages]
+                        }
+
                     })
                 ])
         })
@@ -63,7 +83,9 @@ class PublicUserContainer extends Component{
     follow(e, username){
         e.preventDefault();
         setFollow(username).then(response =>{
-
+            this.setState({
+                following: true
+            })
         })
     }
 
@@ -72,10 +94,16 @@ class PublicUserContainer extends Component{
         getUserNews(this.username, page).then(news => {
 
             return this.setState({
-               news: news,
-               presentPage: page,
-               beginPag: this.setBeginPagination(page, this.state.beginPag, this.state.pages),
-               endPag: [this.state.pages - 2 , this.state.pages - 1, this.state.pages]
+                DisplayNews:{
+                    news: news,
+                    presentPage: page,
+                    beginPag: this.setBeginPagination(page, this.state.DisplayNews.beginPag, this.state.DisplayNews.pages),
+                    endPag: [
+                        this.state.DisplayNews.pages - 2,
+                        this.state.DisplayNews.pages - 1,
+                        this.state.DisplayNews.pages]
+                }
+
            })
         })
     }
@@ -95,14 +123,15 @@ class PublicUserContainer extends Component{
     }
 
     render(){
-        var {news, beginPag, endPag, presentPage} = this.state
+        var {news, beginPag, endPag, presentPage} = this.state.DisplayNews
         return (
             <PageTemplate>
                 <div className='col-12'>
                     <UserInfoCard username={this.username}
-                                  location={this.state.location}
-                                  about_me={this.state.about_me}
-                                  publishedNews={this.state.publishNews}
+                                  location={this.state.userInfo.location}
+                                  about_me={this.state.userInfo.about_me}
+                                  publishedNews={this.state.userInfo.publishNews}
+                                  canFollow = {this.state.loggedIn}
                                   onFollow={this.follow}
                     />
                 </div>

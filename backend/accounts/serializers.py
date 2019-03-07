@@ -37,8 +37,12 @@ class UserInfoSerializer(serializers.ModelSerializer):
         return obj.user_created_new.count()
 
 
-class FollowSerializer(serializers.ModelSerializer):
 
+
+class FollowSerializer(serializers.ModelSerializer):
+    """
+    Serializer used to save following actions
+    """
     class Meta:
         model = Follow
         fields = ('follows', 'followed')
