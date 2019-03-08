@@ -22,15 +22,16 @@ class PublicUserContainer extends Component{
                 about_me: '',
                 publishNews: 0,
                 followers: 0,
-                location:''
+                location:'',
+
             },
             DisplayNews: {
                 news:[],
-                pages: 0,
-                newsPerPage: 2,
+                newsPerPage: 2.00,
                 presentPage: 1,
                 beginPag: [],
-                endPag: []
+                endPag: [],
+                pages: 0,
             },
             following: false,
         }
@@ -40,42 +41,74 @@ class PublicUserContainer extends Component{
 
     componentDidMount(){
         /*
-            Get user public info and published news
+            Get user public info (location, about me ...), published news in a paginated way & create pagination.
+
+                getUserInfo - Get user public information, number of created news and calculate the number of pages
+                for the pagination component.
+                getUserNews - Get user created News in a paginated way and set initial pagination arrays.
          */
 
         getUserInfo(this.username).
             then(userData => {
-            return this.setState({
-                userInfo:{
-                    about_me: userData.about_me,
-                    location: userData.location,
-                    publishNews: userData.user_created_new,
-                },
-
+                return this.setState({
+                    ...this.state,
+                    userInfo:{
+                        ...this.state.userInfo,
+                        about_me: userData.about_me,
+                        location: userData.location,
+                        publishNews:userData.user_created_new
+                    },
+                    DisplayNews:{
+                        ...this.state.DisplayNews,
+                        pages: Math.ceil(parseFloat(userData.user_created_new).toFixed(2) / this.state.DisplayNews.newsPerPage),
+                    }
+                })
+            }).then(result => {
+                    return getUserNews(this.username).
+                        then(userNews => {
+                            return this.setState({
+                                ...this.state,
+                                DisplayNews: {
+                                    ...this.state.DisplayNews,
+                                    news: userNews,
+                                    beginPag: this.setBeginPages(this.state.DisplayNews.pages),
+                                    endPag:this.setEndPages(this.state.DisplayNews.pages)
+                                }
+                            })
+                        })
             })
-        });
-        getUserNews(this.username).
-            then(userNews => {
-                return Promise.all([
-                    this.setState({
-                        DisplayNews: {
-                            news: userNews,
-                            userNews: userNews.length,
-                            pages: Math.ceil(this.state.userInfo.publishNews / this.state.DisplayNews.newsPerPage),
-                        }
-                    }),
-                    this.setState({
-                        DisplayNews:{
-                            ...this.state.DisplayNews,
-                            beginPag: [1, 2, 3],
-                            endPag: [
-                                this.state.DisplayNews.pages - 2,
-                                this.state.DisplayNews.pages - 1,
-                                this.state.DisplayNews.pages]
-                        }
-                    })
-                ])
-        })
+
+    }
+
+
+    setBeginPages(pages){
+        /*
+            Create begin pagination array
+         */
+
+        //if there is more than 7 pages, then it always initialize to 1, 2 & 3
+        if(pages >= 7 ){
+            return [1, 2, 3]
+        } else{
+            //if there is less than 7 pages there is no begin and end, all together in one block.
+            var pagesArray = []
+            for(var i=1; i <= pages; i++){
+                pagesArray.push(i);
+            }
+            return pagesArray;
+        }
+    }
+
+    setEndPages(pages){
+        var pagesArray = []
+        //if there are more than 7 pages it is required to create two pagination blocks
+        if(pages >= 7 ) {
+            for(var i=(pages-2); i <= pages; i++){
+                pagesArray.push(i);
+            }
+        }
+        //if less than 7 pages is not required to separate pagination in 2 blocks
+        return pagesArray;
     }
 
     follow(e, username){
@@ -89,37 +122,52 @@ class PublicUserContainer extends Component{
     }
 
     goToPage(e, page){
+        /*
+            Get requested news by providing a page and modify pagination accordingly
+
+                @params:
+                    e - event object.
+                    page - page number used to query the required news
+                @returns:
+
+         */
         e.preventDefault();
         getUserNews(this.username, page).then(news => {
-
             return this.setState({
                 DisplayNews:{
                     ...this.state.DisplayNews,
                     news: news,
                     presentPage: page,
-                    beginPag: this.setBeginPagination(page, this.state.DisplayNews.beginPag, this.state.DisplayNews.pages),
-                    endPag: [
-                        this.state.DisplayNews.pages - 2,
-                        this.state.DisplayNews.pages - 1,
-                        this.state.DisplayNews.pages]
+                    beginPag: this.setBeginPagination(page, this.state.DisplayNews.pages),
+                    endPag: this.setEndPages(this.state.DisplayNews.pages)
                 }
 
            })
         })
     }
 
-    setBeginPagination(currentPage, beginPag, lastPage){
-        switch (true){
-            case (currentPage == 1):
-                return [1, 2, 3] //This is required otherwise if user clicks button 'begin' or page '1', the page 0
-                                    // will be displayed and this creates visual and functional errors.
-            case (currentPage + 3 >= lastPage):
-                return [lastPage - 5, lastPage - 4 ,lastPage - 3]
-            case (currentPage + 3 <= lastPage):
-                return [currentPage - 1, currentPage, currentPage + 1]
-            default:
-                return [currentPage, currentPage + 1, currentPage + 2]
+    setBeginPagination(currentPage, lastPage){
+        /*
+            Set pagination when user navigates through the pagination
+         */
+
+        //if more than 7 pages it is required to set the two block pagination
+        if(lastPage >= 7){
+            switch (true){
+                case (currentPage == 1):
+                    return this.setBeginPages(this.state.DisplayNews.pages)
+                case (currentPage + 3 >= lastPage):
+                    return [lastPage - 5, lastPage - 4 ,lastPage - 3]
+                case (currentPage + 3 <= lastPage):
+                    return [currentPage - 1, currentPage, currentPage + 1]
+                default:
+                    return [currentPage, currentPage + 1, currentPage + 2]
+            }
+            //less than 7 pages requires only one block pagination
+        }else{
+            return this.setBeginPages(this.state.DisplayNews.pages)
         }
+
     }
 
     render(){

@@ -28,9 +28,11 @@ const Pagination = ({presentPage=1, begin=[], end=[], lastPage=0, goToPage=f=>f}
             //i.e if all pages are 1,2,3 ... 8, 9, 10  if the present page is 6 it looks confusing to display
             //5, 6, 7 ... 8, 9, 10 is better to display 5, 6, 7, 8, 9, 10
             //*/}
-            {((presentPage+2) >= end[0]) ?
-                null:
-                <p className='etc'>...</p>
+            {(end.length > 0 ) ?
+                ((presentPage + 2) >= end[0]) ?
+                    null :
+                    <p className='etc'>...</p>
+                :null
             }
 
             <div className='col-2'>
