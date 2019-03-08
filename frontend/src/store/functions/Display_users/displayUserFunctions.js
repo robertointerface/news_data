@@ -103,4 +103,42 @@ const setFollow = function(toFollow=''){
         })
 }
 
-export {getUserNews, getUserInfo, setFollow}
+
+const isFollowing = function(isFollowing=''){
+    /*
+        Check if logged in user is following another user by providing the user name 'isFollowing'
+     */
+    var csrftoken = getCookie('csrftoken')
+    if(isFollowing && localStorage.getItem('token')) {
+        return fetch(`${urls.IS_FOLLOWING}?username=${isFollowing}`, {
+            method: 'GET',
+            mode: 'same-origin',
+            headers: {
+                Authorization: `JWT ${localStorage.getItem('token')}`,
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrftoken
+            },
+        })
+            .then(response => {
+                if (response.status == 200) {
+                    return response.json()
+                } else {
+                    throw 'error loading news'
+                }
+            })
+            .then(response => {
+                return response
+            })
+            .catch(error => {
+
+            })
+    }
+}
+
+
+
+export {
+    getUserNews,
+    getUserInfo,
+    setFollow,
+    isFollowing}

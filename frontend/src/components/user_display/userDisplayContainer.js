@@ -3,7 +3,8 @@ import {Component} from 'react'
 import {
     getUserNews,
     getUserInfo,
-    setFollow
+    setFollow,
+    isFollowing
 } from 'functions/Display_users/displayUserFunctions'
 import PageTemplate from 'components/main/PageTemplate'
 import NewsDisplayList from 'components/new_display/NewsDisplayList'
@@ -47,6 +48,14 @@ class PublicUserContainer extends Component{
                 for the pagination component.
                 getUserNews - Get user created News in a paginated way and set initial pagination arrays.
          */
+
+        isFollowing(this.username)
+            .then(response => {
+                return this.setState({
+                    ...this.state,
+                    following: response['following']
+                })
+            })
 
         getUserInfo(this.username).
             then(userData => {

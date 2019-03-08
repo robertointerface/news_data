@@ -262,7 +262,10 @@ class UserPublicInfo(APIView):
             return Response(None, status=400, content_type=json)
 
 
-class UserFollow(APIView):
+class SetUserFollow(APIView):
+    """
+        A
+    """
     permission_classes = (IsAuthenticated,)
 
     def post(self, request, format=None):
@@ -281,6 +284,24 @@ class UserFollow(APIView):
             return Response(None, status=400, content_type=json)
         else:
             return Response(None, status=200, content_type=json)
+
+
+class IsFollowing(APIView):
+
+    permission_classes = (IsAuthenticated,)
+
+    def get(self, request, format=None):
+        try:
+            params = request.query_params
+            user = self.request.user
+            response = {'following': False}
+            is_following = user.user_rel_follows.filter(followed__username=params['username']).first()
+            if is_following is not None:
+                response['following'] = True
+        except (KeyError, DatabaseError):
+            return Response(None, status=400, content_type=json)
+        else:
+            return Response(response, status=200, content_type=json)
 
 
 def create_activation_key(username):

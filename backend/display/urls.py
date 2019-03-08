@@ -10,5 +10,4 @@ urlpatterns = [
         url(r'^getnewscount/$', views.GetNewsCount.as_view()),
         url(r'^usernews/(?P<username>[-\w]+)$', views.GetUserPublishedNews.as_view()),
 
-
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -54,6 +54,7 @@ export const urls = {
     REFRESH_TOKEN: 'http://127.0.0.1:8080/accounts/token-refresh/',
     USER_INFO: 'http://localhost:8080/accounts/userpublicinfo',
     SET_FOLLOW: 'http://localhost:8080/accounts/follow',
+    IS_FOLLOWING: 'http://localhost:8080/accounts/isfollowing',
     MAIN: 'http://localhost:8080/display/newslist/',
     GET_NEWS_COUNT: 'http://localhost:8080/display/getnewscount/',
     NEW_DETAIL: 'http://localhost:8080/display/getnew/',
