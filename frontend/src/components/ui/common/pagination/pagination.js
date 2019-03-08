@@ -10,13 +10,15 @@ import {faTable} from "@fortawesome/free-solid-svg-icons/index";
 const Pagination = ({presentPage=1, begin=[], end=[], lastPage=0, goToPage=f=>f})=> {
     return(
         <div className='row'>
-            <div className='col-1'>
-                <PaginationButton page={1} message={'Begin'} onClick={goToPage}/>
-            </div>
+                 <div className='col-1'>
+                    <PaginationButton page={1} message={'Begin'} onClick={goToPage}/>
+                 </div>
 
-            <a href='#' onClick={(e) => goToPage(e, presentPage - 1)} >
-                <FontAwesomeIcon className='F16' icon={faBackward}/>
-            </a>
+            {(presentPage > 1) ?
+                <a href='#' onClick={(e) => goToPage(e, presentPage - 1)} >
+                    <FontAwesomeIcon className='F16' icon={faBackward}/>
+                </a> : null
+            }
 
             <div className='col-2'>
                 {begin.map(x =>
@@ -42,9 +44,12 @@ const Pagination = ({presentPage=1, begin=[], end=[], lastPage=0, goToPage=f=>f}
                 }
             </div>
 
-            <a href='#' onClick={(e) => goToPage(e, presentPage + 1)} >
-                <FontAwesomeIcon className='F16' icon={faForward}/>
-            </a>
+            {(presentPage < lastPage)?
+                <a href='#' onClick={(e) => goToPage(e, presentPage + 1)}>
+                    <FontAwesomeIcon className='F16' icon={faForward}/>
+                </a>
+                : null
+            }
 
         </div>
     )

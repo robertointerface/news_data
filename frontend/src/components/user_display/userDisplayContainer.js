@@ -171,7 +171,7 @@ class PublicUserContainer extends Component{
     }
 
     render(){
-        var {news, beginPag, endPag, presentPage} = this.state.DisplayNews
+        var {news, beginPag, endPag, presentPage, pages} = this.state.DisplayNews
         return (
             <PageTemplate>
                 <div className='col-12'>
@@ -189,7 +189,11 @@ class PublicUserContainer extends Component{
                 : null
                 }
                  <div className='col-12'>
-                     <Pagination presentPage={presentPage} begin={beginPag} end={endPag} goToPage={this.goToPage}/>
+                     <Pagination presentPage={presentPage}
+                                 lastPage={pages}
+                                 begin={beginPag}
+                                 end={endPag}
+                                 goToPage={this.goToPage}/>
                  </div>
             </PageTemplate>
         )
