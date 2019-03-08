@@ -1,17 +1,19 @@
 import React from 'react';
 import {PrimaryButton} from 'ui/common/buttons/buttons'
-const UserInfoCard = ({username='', location='', about_me='', publishedNews=0, onFollow=f=>f, following=false, canFollow=false}) => {
+const UserInfoCard = ({username='', location='', about_me='', followers=0, publishedNews=0, onFollow=f=>f,
+                          following=false, canFollow=false}) => {
     return(
         <div className='card'>
             <div className='row'>
                 <div className='col-8'>
                     {username}
                 </div>
+
                 <div className='col-4'>
                     {(canFollow) ?
                         <div>
                             {(following) ?
-                                <p>you are following</p>
+                                <PrimaryButton message={'stop following'} onClick={(e) => onFollow(e, username)}/>
                                 : <PrimaryButton message={'follow'} onClick={(e) => onFollow(e, username)}/>
                             }
                         </div>
@@ -21,6 +23,9 @@ const UserInfoCard = ({username='', location='', about_me='', publishedNews=0, o
                 </div>
                 <div className='col-6'>
                     {location}
+                </div>
+                <div className='col-6'>
+                    {followers}
                 </div>
                  <div className='col-6'>
                     {publishedNews}

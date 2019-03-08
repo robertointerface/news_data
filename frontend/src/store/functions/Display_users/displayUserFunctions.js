@@ -136,7 +136,6 @@ const isFollowing = function(isFollowing=''){
 }
 
 
-
 export {
     getUserNews,
     getUserInfo,

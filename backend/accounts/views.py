@@ -288,9 +288,21 @@ class SetUserFollow(APIView):
 
 class IsFollowing(APIView):
 
+    """Verifies is logged in user is following another user by providing its username
+
+        Main methods:
+            get - override APIView get, verify if logged in user is following another user by providing
+            the username.
+    """
     permission_classes = (IsAuthenticated,)
 
     def get(self, request, format=None):
+        """
+
+        :param request:
+        :param format:
+        :return:
+        """
         try:
             params = request.query_params
             user = self.request.user

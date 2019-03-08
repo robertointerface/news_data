@@ -65,7 +65,8 @@ class PublicUserContainer extends Component{
                         ...this.state.userInfo,
                         about_me: userData.about_me,
                         location: userData.location,
-                        publishNews:userData.user_created_new
+                        publishNews:userData.user_created_new,
+                        followers: userData.user_rel_followed,
                     },
                     DisplayNews:{
                         ...this.state.DisplayNews,
@@ -187,6 +188,7 @@ class PublicUserContainer extends Component{
                     <UserInfoCard username={this.username}
                                   location={this.state.userInfo.location}
                                   about_me={this.state.userInfo.about_me}
+                                  followers={this.state.userInfo.followers}
                                   publishedNews={this.state.userInfo.publishNews}
                                   following={this.state.following}
                                   canFollow = {this.state.loggedIn}
