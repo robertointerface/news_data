@@ -21,7 +21,7 @@ class PublicUserContainer extends Component{
         this.username = this.props.match.params.username
         var userSaved = JSON.parse(localStorage.getItem('user'));
         this.state = {
-            error: '',
+            message: '',
             loggedIn: (userSaved) ? true : false,
             userInfo :{
                 about_me: '',
@@ -42,6 +42,7 @@ class PublicUserContainer extends Component{
         this.goToPage = this.goToPage.bind(this)
         this.follow = this.follow.bind(this)
         this.stopFollowing = this.stopFollowing.bind(this)
+        this.removeMessage = this.removeMessage.bind(this)
     }
 
     componentDidMount(){
@@ -130,13 +131,14 @@ class PublicUserContainer extends Component{
         setFollow(username).then(response => {
             this.setState({
                 ...this.state,
-                following: true
+                following: true,
+                message: response
             })
         })
             .catch(error => {
                 console.log('error ' + error);
                 this.setState({
-                    error: error
+                    message: error
                 })
             })
     }
@@ -183,6 +185,7 @@ class PublicUserContainer extends Component{
         })
     }
 
+
     setBeginPagination(currentPage, lastPage){
         /*
             Set pagination when user navigates through the pagination
@@ -207,11 +210,19 @@ class PublicUserContainer extends Component{
 
     }
 
+    removeMessage(){
+        this.setState({
+            message: ''
+        })
+    }
+
     render(){
         var {news, beginPag, endPag, presentPage, pages} = this.state.DisplayNews
         return (
             <PageTemplate>
-
+                {(this.state.message) ?
+                    <FlashMessage message={this.state.message} onClick={this.removeMessage}/> : null
+                }
                 <div className='col-12'>
                     <UserInfoCard username={this.username}
                                   location={this.state.userInfo.location}
