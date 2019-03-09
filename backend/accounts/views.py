@@ -286,6 +286,24 @@ class SetUserFollow(APIView):
             return Response(None, status=200, content_type=json)
 
 
+class SetUserUnFollow(APIView):
+
+    permission_classes = (IsAuthenticated,)
+
+    def post(self, request, format=None):
+        try:
+            request_data = self.request.data
+            user = request.user
+            user_to_unfollow = request_data['toUnFollow']
+            is_following = user.user_rel_follows.filter(followed__username=user_to_unfollow).first()
+            if is_following is not None:
+                is_following.delete()
+        except DatabaseError:
+            return Response(None, status=400, content_type=json)
+        else:
+            return Response(None, status=200, content_type=json)
+
+
 class IsFollowing(APIView):
 
     """Verifies is logged in user is following another user by providing its username

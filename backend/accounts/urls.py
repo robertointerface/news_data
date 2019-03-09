@@ -16,6 +16,7 @@ urlpatterns = [
             url(r'^googleverify', views.google_signin),
             url(r'^userpublicinfo$', views.UserPublicInfo.as_view()),
             url(r'^follow$', views.SetUserFollow.as_view()),
+            url(r'^unfollow$', views.SetUserUnFollow.as_view()),
             url(r'^isfollowing$', views.IsFollowing.as_view())
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

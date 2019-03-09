@@ -75,32 +75,66 @@ const getUserInfo = function(username=''){
 
 const setFollow = function(toFollow=''){
     var csrftoken = getCookie('csrftoken'); //get saved cookie
-    var userToFollow = {
-        'toFollow': toFollow
+    if(toFollow) {
+        var userToFollow = {
+            'toFollow': toFollow
+        }
+        return fetch(`${urls.SET_FOLLOW}`, {
+            method: 'POST',
+            mode: 'same-origin',
+            headers: {
+                Authorization: `JWT ${localStorage.getItem('token')}`,
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrftoken,
+            },
+            body: JSON.stringify(userToFollow)
+        })
+            .then(response => {
+                if (response.status == 200) {
+                    return response.json()
+                } else {
+                    throw 'problem in following'
+                }
+            })
+            .then(response => {
+                return response
+            })
+            .catch(error => {
+                throw error;
+            })
     }
-    return fetch(`${urls.SET_FOLLOW}`,{
-        method: 'POST',
-        mode: 'same-origin',
-        headers: {
-            Authorization: `JWT ${localStorage.getItem('token')}`,
-            'Content-Type': 'application/json',
-            'X-CSRFToken': csrftoken,
-        },
-        body: JSON.stringify(userToFollow)
-    })
-        .then(response => {
-            if(response.status == 200){
-                return response.json()
-            }else{
-                throw 'error loading news'
-            }
-        })
-        .then(response =>{
-            return JSON.parse(response)
-        })
-        .catch(error => {
+}
 
+const setUnFollow = function(unFollow=''){
+    var csrftoken = getCookie('csrftoken');
+    if(unFollow){
+        var userToUnFollow = {
+            'toUnFollow': unFollow
+        }
+        return fetch(`${urls.SET_UNFOLLOW}`, {
+            method: 'POST',
+            mode: 'same-origin',
+            headers: {
+                Authorization: `JWT ${localStorage.getItem('token')}`,
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrftoken,
+            },
+            body: JSON.stringify(userToUnFollow)
         })
+            .then(response => {
+                if (response.status == 200) {
+                    return response.json()
+                } else {
+                    throw 'error unfollowing user'
+                }
+            })
+            .then(response => {
+                return response
+            })
+            .catch(error => {
+                throw error
+            })
+    }
 }
 
 
@@ -140,4 +174,5 @@ export {
     getUserNews,
     getUserInfo,
     setFollow,
+    setUnFollow,
     isFollowing}

@@ -4,13 +4,16 @@ import {
     getUserNews,
     getUserInfo,
     setFollow,
+    setUnFollow,
     isFollowing
 } from 'functions/Display_users/displayUserFunctions'
 import PageTemplate from 'components/main/PageTemplate'
 import NewsDisplayList from 'components/new_display/NewsDisplayList'
 import Pagination from 'ui/common/pagination/pagination'
 import UserInfoCard from 'ui/accounts/UserDisplayInfo'
+import FlashMessage from 'components/main/Flash'
 import {getNewsToDisplay} from "root/store/functions/Display_news/displayNewsFunctions";
+
 
 class PublicUserContainer extends Component{
     constructor(props){
@@ -18,13 +21,13 @@ class PublicUserContainer extends Component{
         this.username = this.props.match.params.username
         var userSaved = JSON.parse(localStorage.getItem('user'));
         this.state = {
+            error: '',
             loggedIn: (userSaved) ? true : false,
             userInfo :{
                 about_me: '',
                 publishNews: 0,
                 followers: 0,
                 location:'',
-
             },
             DisplayNews: {
                 news:[],
@@ -38,6 +41,7 @@ class PublicUserContainer extends Component{
         }
         this.goToPage = this.goToPage.bind(this)
         this.follow = this.follow.bind(this)
+        this.stopFollowing = this.stopFollowing.bind(this)
     }
 
     componentDidMount(){
@@ -123,12 +127,35 @@ class PublicUserContainer extends Component{
 
     follow(e, username){
         e.preventDefault();
-        setFollow(username).then(response =>{
+        setFollow(username).then(response => {
             this.setState({
                 ...this.state,
                 following: true
             })
         })
+            .catch(error => {
+                console.log('error ' + error);
+                this.setState({
+                    error: error
+                })
+            })
+    }
+
+    stopFollowing(e, username){
+        e.preventDefault();
+        setUnFollow(username).then(response => {
+            if(response){
+                this.setState({
+                    ...this.state,
+                    following: false
+                })
+            }
+
+        })
+            .catch(error =>{
+                console.log('error ' + error);
+            })
+
     }
 
     goToPage(e, page){
@@ -184,6 +211,7 @@ class PublicUserContainer extends Component{
         var {news, beginPag, endPag, presentPage, pages} = this.state.DisplayNews
         return (
             <PageTemplate>
+
                 <div className='col-12'>
                     <UserInfoCard username={this.username}
                                   location={this.state.userInfo.location}
@@ -192,7 +220,7 @@ class PublicUserContainer extends Component{
                                   publishedNews={this.state.userInfo.publishNews}
                                   following={this.state.following}
                                   canFollow = {this.state.loggedIn}
-                                  onFollow={this.follow}
+                                  onFollow={(this.state.following) ? this.stopFollowing : this.follow}
                     />
                 </div>
                 {(news.length > 0) ?
