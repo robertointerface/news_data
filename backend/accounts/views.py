@@ -252,23 +252,39 @@ class UserPublicInfo(APIView):
     def get(self, request, format=None):
         try:
             params = request.query_params
-            request_user = request.user
             username = params['username']
             user = UserInfoSerializer(User.objects.filter(username=username).first(), many=False)
-            content = JSONRenderer().render(user.data)
-            return Response(content, status=200, content_type=json)
-        except DatabaseError:
-            # return user does not exist
+            if user.instance is not None:
+                content = JSONRenderer().render(user.data)
+                return Response(content, status=200, content_type=json)
+            raise ObjectDoesNotExist
+        except (DatabaseError, KeyError):
+            return Response(None, status=400, content_type=json)
+        except ObjectDoesNotExist:
             return Response(None, status=400, content_type=json)
 
 
 class SetUserFollow(APIView):
     """
-        A
+        API call used to set the logged in user to follow a specific user by providing the username
+
+        Main methods:
+            post - Override post method, create 'Follow' object in table 'accounts.Follow'
     """
     permission_classes = (IsAuthenticated,)
 
     def post(self, request, format=None):
+        """
+        Set user A follows User B at user A request.
+        @param
+            request - http.request, Post request with JWT code required for authentication  & body with
+            the username to start following.
+            format - None
+
+        @return:
+            On success - rest_framework.response.Response with status 200, no content
+            On failure - rest_framework.response.Response with status 400
+        """
         try:
             request_data = self.request.data
             user = request.user
@@ -278,19 +294,33 @@ class SetUserFollow(APIView):
                                                 'followed': user_to_follow.id})
             if serializer.is_valid(raise_exception=True):
                 serializer.create(serializer.validated_data)
-        except ValidationError:
-            return Response(None, status=400, content_type=json)
-        except (KeyError, DatabaseError):
+        except (KeyError, DatabaseError, ValidationError):
             return Response(None, status=400, content_type=json)
         else:
             return Response(None, status=200, content_type=json)
 
 
 class SetUserUnFollow(APIView):
+    """
+        API call used to un-follow a user.
 
+        Main methods:
+            post - Override post method, delete 'Follow' object in table 'accounts.Follow'
+    """
     permission_classes = (IsAuthenticated,)
 
     def post(self, request, format=None):
+        """
+        user A stops following user B at user A request.
+         @param
+            request - http.request, Post request with JWT code required for authentication & body with
+            the username to stop following.
+            format - None
+
+        @return:
+            On success - rest_framework.response.Response with status 200, no content
+            On failure - rest_framework.response.Response with status 400
+        """
         try:
             request_data = self.request.data
             user = request.user
@@ -316,10 +346,14 @@ class IsFollowing(APIView):
 
     def get(self, request, format=None):
         """
+        Verify if user A is following user B by checking 'accounts.Follow' table
+        @param
+            request - http.request, GET method
+            format - None
 
-        :param request:
-        :param format:
-        :return:
+        @return:
+            On success - rest_framework.response.Response with status 200, no content
+            On failure - rest_framework.response.Response with status 400
         """
         try:
             params = request.query_params

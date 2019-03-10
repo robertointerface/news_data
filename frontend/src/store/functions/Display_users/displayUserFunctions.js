@@ -26,14 +26,14 @@ const getUserNews = function(username='', page=1){
             if(response.status == 200){
                 return response.json()
             }else{
-                throw 'error loading news'
+                throw 'error loading user news, please refresh site or try later'
             }
         })
         .then(response =>{
             return JSON.parse(response)
         })
         .catch(error => {
-
+            throw error
         })
     }
 }
@@ -61,14 +61,14 @@ const getUserInfo = function(username=''){
             if(response.status == 200){
                 return response.json()
             }else{
-                throw 'error loading news'
+                throw 'error loading user information, please refresh ot try later.'
             }
         })
         .then(response =>{
             return JSON.parse(response)
         })
         .catch(error => {
-
+            throw error
         })
 }
 
@@ -91,13 +91,10 @@ const setFollow = function(toFollow=''){
         })
             .then(response => {
                 if (response.status == 200) {
-                    return response.json()
+                    return `You are now following ${toFollow}`
                 } else {
-                    throw 'problem in following'
+                    throw 'server error on action just requested, please refresh or try later'
                 }
-            })
-            .then(response => {
-                return response
             })
             .catch(error => {
                 throw error;
@@ -123,13 +120,10 @@ const setUnFollow = function(unFollow=''){
         })
             .then(response => {
                 if (response.status == 200) {
-                    return response.json()
+                    return `You are not following ${unFollow} anymore`
                 } else {
-                    throw 'error unfollowing user'
+                    throw 'server error on action just requested, please refresh or try later'
                 }
-            })
-            .then(response => {
-                return response
             })
             .catch(error => {
                 throw error
@@ -164,7 +158,7 @@ const isFollowing = function(isFollowing=''){
                 return response
             })
             .catch(error => {
-
+                throw error
             })
     }
 }

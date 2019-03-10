@@ -82,8 +82,8 @@ class GetNewsCount(APIView):
         @params
             None
         @returns
-            On success - New.objects.count()
-            On failure - 0
+            On success - dict with 'newsCount': New.objects.count()
+            On failure - dict with 'newsCount': 0
         """
         try:
             news = dict({
@@ -98,9 +98,22 @@ class GetNewsCount(APIView):
 
 
 class GetNew(APIView):
+    """
+    Override APIView class, request-response to call '/display/getnew'
+    """
     permission_classes = (AllowAny,)
 
     def get(self, request, format=None):
+        """
+         response to request '/display/getnew', query an object form 'create_new.New' table and returned it serialized
+
+        @params
+            request - http.request GET object with param id='new id to be queried'
+
+        @return
+            On success - rest_framework.response with status 200 & content with serialized new
+            On fail - rest_framework.response with status 400
+         """
         try:
             params = request.query_params
             new_id = params['id']
@@ -125,8 +138,9 @@ class GetUserPublishedNews(APIView):
             news = NewSerializer(user.user_created_new.all()[page * 2:(page * 2) + 2], many=True)
             content = JSONRenderer().render(news.data)
             return Response(content, status=200, content_type=json)
-        except DatabaseError:
+        except (DatabaseError, AttributeError):
             return Response(None, status=400, content_type=json)
         except KeyError:
             return Response(None, status=400, content_type=json)
 
+#class GetUserSubscriptionNews(APIView):

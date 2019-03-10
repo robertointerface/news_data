@@ -61,7 +61,17 @@ class PublicUserContainer extends Component{
                     following: response['following']
                 })
             })
+            .catch(error => {
+                return this.setState({
+                    ...this.state,
+                    following: false
+                })
+            })
 
+        /*
+            It is necessary to first get user information 'getUserInfo' and then get user news 'getUserNews'
+            in that order.
+         */
         getUserInfo(this.username).
             then(userData => {
                 return this.setState({
@@ -91,6 +101,11 @@ class PublicUserContainer extends Component{
                                 }
                             })
                         })
+            })
+            .catch(error => {
+                this.setState({
+                    message: error
+                })
             })
 
     }
@@ -136,7 +151,6 @@ class PublicUserContainer extends Component{
             })
         })
             .catch(error => {
-                console.log('error ' + error);
                 this.setState({
                     message: error
                 })
@@ -149,15 +163,16 @@ class PublicUserContainer extends Component{
             if(response){
                 this.setState({
                     ...this.state,
-                    following: false
+                    following: false,
+                    message: response
                 })
             }
-
         })
             .catch(error =>{
-                console.log('error ' + error);
+                 this.setState({
+                    message: error
+                })
             })
-
     }
 
     goToPage(e, page){
