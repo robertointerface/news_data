@@ -143,4 +143,20 @@ class GetUserPublishedNews(APIView):
         except KeyError:
             return Response(None, status=400, content_type=json)
 
-#class GetUserSubscriptionNews(APIView):
+
+class GetUserSubscriptionNews(APIView):
+    permission_classes = (IsAuthenticated,)
+
+    def get(self, request, format=None):
+        try:
+            params = request.query_params
+            page = int(params['page']) - 1
+            user = request.user
+            user_follows = user.following.all()
+            news = NewSerializer(New.objects.filter(created_by=user_follows).all()[page * 2:(page * 2) + 2], many=True)
+            content = JSONRenderer().render(news.data)
+            return Response(content, status=200, content_type=json)
+        except (DatabaseError, AttributeError):
+            return Response(None, status=400, content_type=json)
+        except KeyError:
+            return Response(None, status=400, content_type=json)

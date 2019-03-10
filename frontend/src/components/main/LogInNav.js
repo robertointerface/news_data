@@ -13,7 +13,7 @@ const LogInNav = ({ username = '' }) => {
                 </NavLink>
             </li>
             <li>
-                <NavLink to='/subscription'>
+                <NavLink to='/display/subscriptions'>
                     Subscription
                 </NavLink>
             </li>

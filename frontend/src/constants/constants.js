@@ -60,6 +60,7 @@ export const urls = {
     GET_NEWS_COUNT: 'http://localhost:8080/display/getnewscount/',
     NEW_DETAIL: 'http://localhost:8080/display/getnew/',
     USER_NEWS: 'http://localhost:8080/display/usernews/',
+    USER_SUBSCRIPTIONS: 'http://localhost:8080/display/getsubscriptions',
     DEVELOP: 'http://localhost:8080',
     MAKE_API_CALL: 'http://localhost:8080/search/makeapicall/',
     GET_INDICATORS: 'http://localhost:8080/search/indicators',
