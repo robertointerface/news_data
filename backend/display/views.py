@@ -155,7 +155,11 @@ class GetUserSubscriptionNews(APIView):
             user_follows = user.following.all()
             news = NewSerializer(New.objects.filter(created_by=user_follows).all()[page * 2:(page * 2) + 2], many=True)
             content = JSONRenderer().render(news.data)
-            return Response(content, status=200, content_type=json)
+            response = dict({
+                'newsCount': New.objects.filter(created_by=user_follows).count(),
+                'news': content
+            })
+            return Response(response, status=200, content_type=json)
         except (DatabaseError, AttributeError):
             return Response(None, status=400, content_type=json)
         except KeyError:

@@ -74,6 +74,16 @@ const getUserInfo = function(username=''){
 
 
 const setFollow = function(toFollow=''){
+     /*
+        API call to backend 'accounts/follow' Upon user request start following a user.
+
+        @params
+            toFollow(string) - username to start following
+
+        @return
+            On success - return message of successful operation
+            On failure - return message of error
+     */
     var csrftoken = getCookie('csrftoken'); //get saved cookie
     if(toFollow) {
         var userToFollow = {
@@ -103,6 +113,16 @@ const setFollow = function(toFollow=''){
 }
 
 const setUnFollow = function(unFollow=''){
+    /*
+        API call to backend 'accounts/unfollow' Upon user request stop following a user.
+
+        @params
+            unFollow(string) - username to stop following
+
+        @return
+            On success - return message of successful operation
+            On failure - return message of error
+     */
     var csrftoken = getCookie('csrftoken');
     if(unFollow){
         var userToUnFollow = {
@@ -135,6 +155,13 @@ const setUnFollow = function(unFollow=''){
 const isFollowing = function(isFollowing=''){
     /*
         Check if logged in user is following another user by providing the user name 'isFollowing'
+
+        @param
+            isFollowing(string) - username of the user to check
+
+        @return
+            On success - json object with True if following or False if not following.
+            On failure - throw error tto propagate up and be displayed to user.
      */
     var csrftoken = getCookie('csrftoken')
     if(isFollowing && localStorage.getItem('token')) {
