@@ -16,9 +16,10 @@ import {
   BrowserRouter
 } from 'react-router-dom'
 
-import Accounts from "components/accounts/accounts";
-import CreateNew from "components/create_new/createNew"
-import NewDisplayRouter from 'components/new_display/NewDisplayRouter'
+import Accounts from "components/routers/accounts";
+import CreateNew from "components/routers/createNew"
+import NewDisplayRouter from 'components/routers/NewDisplayRouter'
+import ProfileRouter from 'components/routers/ProfileRouter'
 
 const App = () => {
     return (
@@ -29,6 +30,7 @@ const App = () => {
                 <Route path="/about" component={About}/>
                 <Route path="/accounts" component={Accounts}/>
                 <Route path='/publish' component={CreateNew}/>
+                <Route path='/profile' component={ProfileRouter}/>
             </div>
          </Router>
     )
