@@ -36,5 +36,6 @@ else:
     urlpatterns.append(url(r'^downloaddata/', include('backend.download_data.urls', namespace='download_data'))),
     urlpatterns.append(url(r'^createnew/', include('backend.create_new.urls', namespace='create_new'))),
     urlpatterns.append(url(r'^display/', include('backend.display.urls', namespace='display_news'))),
+    urlpatterns.append(url(r'^profile/', include('backend.user_profile.urls', namespace='user_profile'))),
     urlpatterns.append(url(r'^$', include('backend.main.urls', namespace='main'))),
     urlpatterns.append(url(r'^(?:.*)/?$', include('backend.main.urls', namespace='main')))

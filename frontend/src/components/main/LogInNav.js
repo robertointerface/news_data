@@ -48,7 +48,7 @@ const LogInNav = ({ username = '' }) => {
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink to='/yourprofile/:user_id'>
+                        <NavLink to={`/profile/data/${username}`}>
                             <FontAwesomeIcon className='F12' icon={faTable}/>your data
                         </NavLink>
                     </li>

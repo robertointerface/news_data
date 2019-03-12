@@ -61,6 +61,7 @@ export const urls = {
     NEW_DETAIL: 'http://localhost:8080/display/getnew/',
     USER_NEWS: 'http://localhost:8080/display/usernews/',
     USER_SUBSCRIPTIONS: 'http://localhost:8080/display/getsubscriptions',
+    GET_USER_DATA: 'http://localhost:8080/profile/getuserdata',
     DEVELOP: 'http://localhost:8080',
     MAKE_API_CALL: 'http://localhost:8080/search/makeapicall/',
     GET_INDICATORS: 'http://localhost:8080/search/indicators',

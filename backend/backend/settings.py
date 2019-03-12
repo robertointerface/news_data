@@ -46,12 +46,14 @@ INSTALLED_APPS = [
 ]
 
 if Migration:
-    INSTALLED_APPS += 'accounts', 'main', 'download_data', 'search_data', 'create_new', 'display', 'django.contrib.admin',
+    INSTALLED_APPS += 'accounts', 'main', 'download_data', 'search_data', 'create_new', \
+                      'display', 'user_profile' ,'django.contrib.admin',
     jwt_response_handler = 'backend.utils.my_jwt_response_handler'
     ROOT_URLCONF = 'backend.urls'
 else:
     INSTALLED_APPS += 'backend.accounts', 'backend.main', 'backend.download_data', 'backend.search_data', \
-                      'backend.create_new', 'backend.display', 'django.contrib.admin',
+                      'backend.create_new', 'backend.display', 'backend.user_profile', \
+                      'django.contrib.admin',
     jwt_response_handler = 'backend.backend.utils.my_jwt_response_handler'
     ROOT_URLCONF = 'backend.backend.urls'
 
