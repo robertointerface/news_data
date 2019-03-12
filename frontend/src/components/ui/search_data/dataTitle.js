@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import { faTimesCircle } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 const DataTitle = ({title='', resultId=0 ,explination='', onRemove=f=>f}) => {
     return (
         <div className='row'>

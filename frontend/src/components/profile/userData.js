@@ -26,6 +26,9 @@ class ProfileUserData extends UserDisplayBase {
                 ...this.state,
                 DisplayData: {
                     ...this.state.DisplayData,
+                    //it is necessary to extract 'data' from each table in order to be displayed by 'DisplayTables'
+                    //component, otherwise is not possible and this is more efficient than creating a different
+                    //version of 'DisplayTables'.
                     data: response['tables'].map(table => {
                         return table.data
                     })

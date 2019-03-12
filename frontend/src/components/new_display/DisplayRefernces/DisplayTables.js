@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Component} from 'react'
 import Table from "components/data_representation/table";
-import DataTitle from 'ui/search_data/dataTitle'
+import TableTitle from 'ui/new_display/tableTitle'
 import DataOptions from 'components/data_representation/dataOptions/dataOptions'
 
 class DisplayTables extends Component{
@@ -22,7 +22,7 @@ class DisplayTables extends Component{
                             <div className='card'>
                                 <div className='card-header bg-primary'>
                                     <div className='col-12'>
-                                        <DataTitle
+                                        <TableTitle
                                             title={table.searchObject.Topic.name}
                                             resultId={table.id}
                                             explination={table.searchObject.displayMessage}
