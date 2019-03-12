@@ -3,6 +3,7 @@ import UserDisplayBase from 'components/user_display/baseClass'
 import PageTemplate from 'components/main/PageTemplate'
 import {getUserData} from 'functions/User_profile/userDataFunctions'
 import DisplayTables from 'components/new_display/DisplayRefernces/DisplayTables'
+import Pagination from 'ui/common/pagination/pagination'
 
 class ProfileUserData extends UserDisplayBase {
     constructor(props) {
@@ -31,21 +32,36 @@ class ProfileUserData extends UserDisplayBase {
                     //version of 'DisplayTables'.
                     data: response['tables'].map(table => {
                         return table.data
-                    })
-
+                    }),
+                    pages: Math.ceil(parseFloat(response['tableCount']).toFixed(2) / this.state.DisplayData.DataPerPage),
+                }
+            })
+        }).then(result => {
+            //Set pagination left and right block (if required)
+            return this.setState({
+                ...this.state,
+                DisplayData: {
+                    ...this.state.DisplayData,
+                    beginPag: this.setBeginPages(this.state.DisplayData.pages),
+                    endPag: this.setEndPages(this.state.DisplayData.pages),
                 }
             })
         })
             .catch(error => {
-
+                this.setState({
+                    message: error
+                })
             })
     }
 
+    goToPage(e, page){
+        e.preventDefault();
 
+    }
 
 
     render(){
-        var {data} = this.state.DisplayData
+        var {data, beginPag, endPag, presentPage, pages} = this.state.DisplayData
         return (
             <PageTemplate>
                 {(data.length > 0) ?
@@ -53,6 +69,13 @@ class ProfileUserData extends UserDisplayBase {
                         <DisplayTables tables={data}/>
                     </div> :  null
                 }
+                <div className='col-12'>
+                     <Pagination presentPage={presentPage}
+                                 lastPage={pages}
+                                 begin={beginPag}
+                                 end={endPag}
+                                 />
+                 </div>
             </PageTemplate>
         )
     }
