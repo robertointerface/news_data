@@ -23,7 +23,7 @@ class userSubscriptionContainer extends UserDisplayBase {
         this.state = {
             message: '',
             usersFollowing: 0,
-            DisplayNews: {
+            Display: {
                 news: [],
                 newsPerPage: 2.00,
                 presentPage: 1,
@@ -42,18 +42,18 @@ class userSubscriptionContainer extends UserDisplayBase {
         getUserSubscriptions().then(news =>{
             return this.setState({
                 ...this.state,
-                DisplayNews :{
+                Display :{
                     news: news['news'],
-                    pages: Math.ceil(parseFloat(news['newsCount']).toFixed(2) / this.state.DisplayNews.newsPerPage),
+                    pages: Math.ceil(parseFloat(news['newsCount']).toFixed(2) / this.state.Display.newsPerPage),
                 }
             })
         }).then(result => {
             return this.setState({
                 ...this.state,
-                DisplayNews: {
-                    ...this.state.DisplayNews,
-                    beginPag: this.setBeginPages(this.state.DisplayNews.pages),
-                    endPag: this.setEndPages(this.state.DisplayNews.pages)
+                Display: {
+                    ...this.state.Display,
+                    beginPag: this.setBeginPages(this.state.Display.pages),
+                    endPag: this.setEndPages(this.state.Display.pages)
                 }
             })
         })
@@ -77,19 +77,19 @@ class userSubscriptionContainer extends UserDisplayBase {
             .then(news => {
                 var newsToDisplay = news['news'];
                 return this.setState({
-                    DisplayNews: {
-                        ...this.state.DisplayNews,
+                    Display: {
+                        ...this.state.Display,
                         news: newsToDisplay,
                         presentPage: page,
-                        beginPag: this.setBeginPagination(page, this.state.DisplayNews.pages),
-                        endPag: this.setEndPages(this.state.DisplayNews.pages)
+                        beginPag: this.setBeginPagination(page, this.state.Display.pages),
+                        endPag: this.setEndPages(this.state.Display.pages)
                     }
                 })
         })
     }
 
     render() {
-        var {news, beginPag, endPag, presentPage, pages} = this.state.DisplayNews
+        var {news, beginPag, endPag, presentPage, pages} = this.state.Display
         return (
              <PageTemplate>
                 {(news.length > 0) ?

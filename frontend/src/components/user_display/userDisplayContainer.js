@@ -29,7 +29,7 @@ class PublicUserContainer extends UserDisplayBase{
                 followers: 0,
                 location:'',
             },
-            DisplayNews: {
+            Display: {
                 news:[],
                 newsPerPage: 2.00,
                 presentPage: 1,
@@ -83,9 +83,9 @@ class PublicUserContainer extends UserDisplayBase{
                         publishNews:userData.user_created_new,
                         followers: userData.user_rel_followed,
                     },
-                    DisplayNews:{
-                        ...this.state.DisplayNews,
-                        pages: Math.ceil(parseFloat(userData.user_created_new).toFixed(2) / this.state.DisplayNews.newsPerPage),
+                    Display:{
+                        ...this.state.Display,
+                        pages: Math.ceil(parseFloat(userData.user_created_new).toFixed(2) / this.state.Display.newsPerPage),
                     }
                 })
             }).then(result => {
@@ -93,11 +93,11 @@ class PublicUserContainer extends UserDisplayBase{
                         then(userNews => {
                             return this.setState({
                                 ...this.state,
-                                DisplayNews: {
-                                    ...this.state.DisplayNews,
+                                Display: {
+                                    ...this.state.Display,
                                     news: userNews,
-                                    beginPag: this.setBeginPages(this.state.DisplayNews.pages),
-                                    endPag:this.setEndPages(this.state.DisplayNews.pages)
+                                    beginPag: this.setBeginPages(this.state.Display.pages),
+                                    endPag:this.setEndPages(this.state.Display.pages)
                                 }
                             })
                         })
@@ -156,14 +156,13 @@ class PublicUserContainer extends UserDisplayBase{
         e.preventDefault();
         getUserNews(this.username, page).then(news => {
             return this.setState({
-                DisplayNews:{
-                    ...this.state.DisplayNews,
+                Display:{
+                    ...this.state.Display,
                     news: news,
                     presentPage: page,
-                    beginPag: this.setBeginPagination(page, this.state.DisplayNews.pages),
-                    endPag: this.setEndPages(this.state.DisplayNews.pages)
+                    beginPag: this.setBeginPagination(page, this.state.Display.pages),
+                    endPag: this.setEndPages(this.state.Display.pages)
                 }
-
            })
         })
     }
@@ -175,7 +174,7 @@ class PublicUserContainer extends UserDisplayBase{
     }
 
     render(){
-        var {news, beginPag, endPag, presentPage, pages} = this.state.DisplayNews
+        var {news, beginPag, endPag, presentPage, pages} = this.state.Display
         return (
             <PageTemplate>
                 {(this.state.message) ?

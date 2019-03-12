@@ -81,7 +81,7 @@ class UserDisplayBase extends Component {
         if(lastPage >= 7){
             switch (true){
                 case (currentPage == 1):
-                    return this.setBeginPages(this.state.DisplayNews.pages)
+                    return this.setBeginPages(lastPage)
                 case (currentPage + 3 >= lastPage):
                     return [lastPage - 5, lastPage - 4 ,lastPage - 3]
                 case (currentPage + 3 <= lastPage):
@@ -91,7 +91,7 @@ class UserDisplayBase extends Component {
             }
             //less than 7 pages requires only one block pagination
         }else{
-            return this.setBeginPages(this.state.DisplayNews.pages)
+            return this.setBeginPages(lastPage)
         }
 
     }

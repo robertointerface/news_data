@@ -10,7 +10,7 @@ class ProfileUserData extends UserDisplayBase {
         super(props)
         this.state = {
             message: '',
-            DisplayData: {
+            Display: {
                 data: [],
                 DataPerPage: 2.00,
                 presentPage: 1,
@@ -19,31 +19,32 @@ class ProfileUserData extends UserDisplayBase {
                 pages: 0
             },
         }
+        this.goToPage = this.goToPage.bind(this)
     }
 
     componentDidMount() {
         getUserData().then(response => {
             return this.setState({
                 ...this.state,
-                DisplayData: {
-                    ...this.state.DisplayData,
+                Display: {
+                    ...this.state.Display,
                     //it is necessary to extract 'data' from each table in order to be displayed by 'DisplayTables'
                     //component, otherwise is not possible and this is more efficient than creating a different
                     //version of 'DisplayTables'.
                     data: response['tables'].map(table => {
                         return table.data
                     }),
-                    pages: Math.ceil(parseFloat(response['tableCount']).toFixed(2) / this.state.DisplayData.DataPerPage),
+                    pages: Math.ceil(parseFloat(response['tableCount']).toFixed(2) / this.state.Display.DataPerPage),
                 }
             })
         }).then(result => {
             //Set pagination left and right block (if required)
             return this.setState({
                 ...this.state,
-                DisplayData: {
-                    ...this.state.DisplayData,
-                    beginPag: this.setBeginPages(this.state.DisplayData.pages),
-                    endPag: this.setEndPages(this.state.DisplayData.pages),
+                Display: {
+                    ...this.state.Display,
+                    beginPag: this.setBeginPages(this.state.Display.pages),
+                    endPag: this.setEndPages(this.state.Display.pages),
                 }
             })
         })
@@ -57,11 +58,23 @@ class ProfileUserData extends UserDisplayBase {
     goToPage(e, page){
         e.preventDefault();
 
+        getUserData(page).then(response => {
+            return this.setState({
+                Display: {
+                    ...this.state.Display,
+                    data: response['tables'].map(table => {
+                        return table.data
+                    }),
+                    presentPage: page,
+                    beginPag: this.setBeginPagination(page, this.state.Display.pages),
+                    endPag: this.setEndPages(this.state.Display.pages)
+                }
+            })
+        })
     }
 
-
     render(){
-        var {data, beginPag, endPag, presentPage, pages} = this.state.DisplayData
+        var {data, beginPag, endPag, presentPage, pages} = this.state.Display
         return (
             <PageTemplate>
                 {(data.length > 0) ?
@@ -74,7 +87,7 @@ class ProfileUserData extends UserDisplayBase {
                                  lastPage={pages}
                                  begin={beginPag}
                                  end={endPag}
-                                 />
+                                 goToPage={this.goToPage}/>
                  </div>
             </PageTemplate>
         )
