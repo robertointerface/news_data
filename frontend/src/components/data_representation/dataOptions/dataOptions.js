@@ -22,7 +22,6 @@ const DataOptions = ({resultId='', resultSaved=false}) => {
                         <VisitContainer/>
                         <GraphContainer resultId={resultId}/>
                         <ExcelDownloadContainer resultId={resultId}/>
-
                     </div>
                 </div>
             </div>
@@ -32,5 +31,6 @@ const DataOptions = ({resultId='', resultSaved=false}) => {
         </div>
     )
 }
+
 
 export default DataOptions
