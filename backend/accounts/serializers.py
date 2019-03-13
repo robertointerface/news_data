@@ -41,6 +41,14 @@ class UserInfoSerializer(serializers.ModelSerializer):
         """Get the count of users that are following you"""
         return obj.user_rel_followed.count()
 
+
+class UserPrivateInfoSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = User
+        fields = ('username', 'about_me', 'location', 'first_name', 'last_name')
+
+
 class FollowSerializer(serializers.ModelSerializer):
     """
     Serializer used to save following actions

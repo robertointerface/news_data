@@ -30,7 +30,8 @@ from rest_framework.views import APIView
 from rest_framework_jwt.settings import api_settings
 from google.oauth2 import id_token
 from google.auth.transport import requests
-from .serializers import UserSerializer, UserSerializerWithToken, UserInfoSerializer, FollowSerializer
+from .serializers import UserSerializer, UserSerializerWithToken, UserInfoSerializer,\
+    FollowSerializer, UserPrivateInfoSerializer
 from .models import User
 
 # SECURITY IMPORTS
@@ -408,3 +409,18 @@ class UserList(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+class EditUser(APIView):
+    permission_classes = (IsAuthenticated,)
+
+    def get(self, request, format=None):
+        try:
+            user = request.user
+            serialized_user = UserPrivateInfoSerializer(user, many=False)
+            if serialized_user.instance is not None:
+                content = JSONRenderer().render(serialized_user.data)
+                return Response(content, status=200, content_type=json)
+        except (DatabaseError, AttributeError):
+            return Response(None, status=400, content_type=json)
+
+    def post(self, request, format=None):
+        print 'puto'
