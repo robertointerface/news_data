@@ -95,7 +95,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'news',
         'USER': 'root',
-        'PASSWORD': 'rondog123',
+        'PASSWORD': '7h5vkadi3Fe4xpam',
         'HOST': '/Users/robertoalvarez/Desktop/virtualEnv/news_refactor/cloudsql/vcit-217004:europe-west3:practice1'
     }
 }
