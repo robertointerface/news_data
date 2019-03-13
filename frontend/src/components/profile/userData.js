@@ -92,7 +92,6 @@ class ProfileUserData extends UserDisplayBase {
             </PageTemplate>
         )
     }
-
 }
 
 export default ProfileUserData

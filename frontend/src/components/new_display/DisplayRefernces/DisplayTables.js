@@ -31,6 +31,20 @@ class DisplayTables extends Component{
         }
     }
 
+    componentDidUpdate(prevProps, prevState, snapshot){
+        /*
+            componentDidUpdate is required to re render when tables are modified
+         */
+
+        //Check if the id of the first table has change, if it has change then the tables has changed and
+        //it needs re render after re render can only happen if the state is modified.
+        if(this.props.tables[0].id !== prevProps.tables[0].id) {
+            return this.setState({
+                tables: this.props.tables
+            })
+        }
+    }
+
     render(){
         var {tables} = this.state;
         return(
