@@ -23,6 +23,14 @@ class ProfileUserData extends UserDisplayBase {
     }
 
     componentDidMount() {
+        /*
+            Fetch data from backend, fetch the user saved data (tables) in a paginated format, then
+            set parameters for the correct display of pagination.
+
+                @params - None, localstorage data is used.
+
+                @returns - Modification on component state
+         */
         getUserData().then(response => {
             return this.setState({
                 ...this.state,
@@ -38,7 +46,7 @@ class ProfileUserData extends UserDisplayBase {
                 }
             })
         }).then(result => {
-            //Set pagination left and right block (if required)
+            //Set pagination left and right block.
             return this.setState({
                 ...this.state,
                 Display: {
@@ -56,8 +64,18 @@ class ProfileUserData extends UserDisplayBase {
     }
 
     goToPage(e, page){
-        e.preventDefault();
+        /*
+            Move around pages after 'click' on pagination item.
 
+            @params
+                e - html event object
+                page(positive integer) - page number used to query the required data
+
+            @return
+                On success - Update component state with the fetch data from function 'getUserData' and
+                update pagination accordingly.
+         */
+        e.preventDefault();
         getUserData(page).then(response => {
             return this.setState({
                 Display: {
