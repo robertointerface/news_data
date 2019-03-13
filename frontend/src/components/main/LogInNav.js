@@ -58,7 +58,7 @@ const LogInNav = ({ username = '' }) => {
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink to='/yourprofile/:user_id'>
+                        <NavLink to={`/profile/edit/${username}`}>
                             <FontAwesomeIcon className='F12' icon={faUserEdit}/>edit profile
                         </NavLink>
                     </li>
