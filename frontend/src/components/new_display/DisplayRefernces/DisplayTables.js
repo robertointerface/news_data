@@ -32,7 +32,7 @@ class DisplayTables extends Component{
     }
 
     componentDidUpdate(prevProps, prevState, snapshot){
-        /*
+        /**
             componentDidUpdate is required to re render when tables are modified
          */
 

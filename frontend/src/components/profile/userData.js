@@ -23,7 +23,7 @@ class ProfileUserData extends UserDisplayBase {
     }
 
     componentDidMount() {
-        /*
+        /**
             Fetch data from backend, fetch the user saved data (tables) in a paginated format, then
             set parameters for the correct display of pagination.
 
@@ -64,7 +64,7 @@ class ProfileUserData extends UserDisplayBase {
     }
 
     goToPage(e, page){
-        /*
+        /**
             Move around pages after 'click' on pagination item.
 
             @params
