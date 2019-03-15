@@ -1,9 +1,8 @@
 import React from 'react'
 import PageTemplate from 'components/main/PageTemplate'
 import {UserInfoTextForm, UserInfoTextAreaForm} from 'ui/profile/forms'
-import {getUserPrivateData} from 'functions/User_profile/editProfileFunctions'
 import {PrimaryButton} from 'ui/common/buttons/buttons'
-
+import {history} from 'root/App.js';
 const EditUserForm = ({username='', onChange=f=>f, onSubmit=f=>f, location='', first_name='', last_name='', about_me=''}) => {
 
         return (
@@ -41,6 +40,7 @@ const EditUserForm = ({username='', onChange=f=>f, onSubmit=f=>f, location='', f
                     </div>
                     <div className='col-12'>
                         <PrimaryButton message={'save changes'} onClick={onSubmit}/>
+                        <PrimaryButton message={'change password'} onClick={e => {history.push(`/profile/changepassword`)}}/>
                     </div>
                 </div>
             </PageTemplate>

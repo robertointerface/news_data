@@ -24,6 +24,25 @@ const UserInfoTextForm = ({title='', name='', value='', onChange=f=>f}) => {
     )
 }
 
+const PasswordForm = ({title='', name='', value='', onChange=f=>f}) => {
+    return(
+        <div className='form-group row'>
+            <label className='col-12'>
+                <span>{title}</span>
+            </label>
+            <input
+                type='password'
+                name={name}
+                value={value}
+                className="form-control"
+                onChange={(e) => onChange(e)}
+                placeholder='max. 10 characters'
+                maxLength="10"
+            />
+        </div>
+    )
+}
+
 const UserInfoTextAreaForm = ({title='', name='', value='', onChange=f=>f}) => {
     return(
         <div className="form-group row">
@@ -44,6 +63,6 @@ const UserInfoTextAreaForm = ({title='', name='', value='', onChange=f=>f}) => {
         </div>
     )}
 
-export {UserInfoTextForm, UserInfoTextAreaForm}
+export {UserInfoTextForm, UserInfoTextAreaForm, PasswordForm}
 
 
