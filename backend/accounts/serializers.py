@@ -19,7 +19,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('username', 'email')
+        fields = ('username', 'email', 'first_name', 'last_name', 'location', 'about_me')
 
 
 class UserInfoSerializer(serializers.ModelSerializer):
@@ -47,6 +47,9 @@ class UserPrivateInfoSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('username', 'about_me', 'location', 'first_name', 'last_name')
+
+    def update(self, instance, validated_data):
+        instance
 
 
 class FollowSerializer(serializers.ModelSerializer):
