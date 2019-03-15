@@ -56,6 +56,7 @@ export const urls = {
     SET_FOLLOW: 'http://localhost:8080/accounts/follow',
     SET_UNFOLLOW: 'http://localhost:8080/accounts/unfollow',
     IS_FOLLOWING: 'http://localhost:8080/accounts/isfollowing',
+    EDIT_USER: 'http://localhost:8080/accounts/edituser',
     MAIN: 'http://localhost:8080/display/newslist/',
     GET_NEWS_COUNT: 'http://localhost:8080/display/getnewscount/',
     NEW_DETAIL: 'http://localhost:8080/display/getnew/',
