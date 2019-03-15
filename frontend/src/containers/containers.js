@@ -6,6 +6,7 @@ import AttachedReferences from 'components/create_new/attachedReferences'
 import LoginForm from 'components/accounts/forms/LogInForm'
 import SingUpForm from 'components/accounts/forms/SingUpForm'
 import VerifyToken from 'components/accounts/VerifyToken'
+import EditUserForm from 'components/profile/Forms/EditUser'
 
 import {
     handle_user_change,
@@ -142,7 +143,7 @@ export const SignUpContainer = connect(
                 dispatch(handle_user_change(e));
             },
 
-            onSubmit(e){LoginForm
+            onSubmit(e){
                 e.preventDefault();
                 dispatch(handle_signup());
             }
@@ -166,7 +167,27 @@ export const MainMenuContainer = connect(
         })
 )(MainMenu)
 
+export const EditUserContainer = connect(
+    state =>
+        ({
+            username: state.User_management.username,
+            location: state.User_management.location,
+            first_name: state.User_management.first_name,
+            last_name: state.User_management.last_name,
+            about_me: state.User_management.about_me
+        }),
+    dispatch =>
+        ({
+            onChange(e){
+                e.preventDefault();
+                dispatch(handle_user_change(e));
+            },
+            onSubmit(e){
+                e.preventDefault();
+            }
 
+        })
+)(EditUserForm)
 
 
 

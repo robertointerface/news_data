@@ -18,6 +18,7 @@ export const userData = {
     token: '',
     first_name: '',
     last_name: '',
+    about_me:'',
     error: '',
 }
 
