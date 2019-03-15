@@ -46,8 +46,8 @@ const initializeUserManagement = () => {
             localStorage.setItem('token', token)
         })
         .catch(error => {
-            console.log('error: ' + error)
             localStorage.clear();
+            userObject = {...userData};
         })
     }
     return userObject
