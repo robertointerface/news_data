@@ -7,6 +7,7 @@ import LoginForm from 'components/accounts/forms/LogInForm'
 import SingUpForm from 'components/accounts/forms/SingUpForm'
 import VerifyToken from 'components/accounts/VerifyToken'
 import EditUserForm from 'components/profile/EditUser'
+import {EditUserProfile} from 'functions/User_profile/editProfileFunctions'
 
 import {
     handle_user_change,
@@ -184,6 +185,7 @@ export const EditUserContainer = connect(
             },
             onSubmit(e){
                 e.preventDefault();
+                dispatch(EditUserProfile());
             }
 
         })
