@@ -35,6 +35,10 @@ const initializeUserManagement = () => {
     if(userSaved){
         userObject['username'] = userSaved['username'];
         userObject['email'] = userSaved['email'];
+        userObject['location'] = userSaved['location']
+        userObject['first_name'] = userSaved['first_name']
+        userObject['last_name'] = userSaved['last_name']
+        userObject['about_me'] = userSaved['about_me']
         userObject['logged_in'] = true;
 
         handle_refresh_token()

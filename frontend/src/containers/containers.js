@@ -6,7 +6,7 @@ import AttachedReferences from 'components/create_new/attachedReferences'
 import LoginForm from 'components/accounts/forms/LogInForm'
 import SingUpForm from 'components/accounts/forms/SingUpForm'
 import VerifyToken from 'components/accounts/VerifyToken'
-import EditUserForm from 'components/profile/Forms/EditUser'
+import EditUserForm from 'components/profile/EditUser'
 
 import {
     handle_user_change,
