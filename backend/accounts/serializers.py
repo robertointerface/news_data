@@ -3,6 +3,9 @@ from rest_framework_jwt.settings import api_settings
 from .models import User, Follow
 from django.shortcuts import get_object_or_404
 from rest_framework.serializers import ValidationError
+from django.db.models import ObjectDoesNotExist
+from django.db import DatabaseError
+
 try:
     from backend.backend.settings import Migration
 except:
@@ -49,7 +52,15 @@ class UserPrivateInfoSerializer(serializers.ModelSerializer):
         fields = ('username', 'about_me', 'location', 'first_name', 'last_name')
 
     def update(self, instance, validated_data):
-        instance
+        try:
+            instance.username = validated_data['username']
+            instance.first_name = validated_data['first_name']
+            instance.location = validated_data['location']
+            instance.last_name = validated_data['last_name']
+            instance.about_me = validated_data['about_me']
+            instance.save()
+        except (KeyError, DatabaseError):
+            raise DatabaseError
 
 
 class FollowSerializer(serializers.ModelSerializer):
