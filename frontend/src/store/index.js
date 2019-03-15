@@ -46,6 +46,10 @@ const initializeUserManagement = () => {
             localStorage.setItem('token', token)
         })
         .catch(error => {
+            /*
+                userObject must be clear as at this stage is populated with user data from a user whose token has
+                expired and user needs to log in again
+             */
             localStorage.clear();
             userObject = {...userData};
         })

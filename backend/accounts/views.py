@@ -433,7 +433,7 @@ class EditUser(APIView):
             if serializer.is_valid(raise_exception=True):
                 serializer.update(user, serializer.validated_data)
         except ValidationError:
-            return Response({'error': 'validation error'}, status=400, content_type=json)
+            return Response(None, status=400, content_type=json)
         except (DatabaseError, AttributeError, KeyError):
             return Response(None, status=400, content_type=json)
         else:

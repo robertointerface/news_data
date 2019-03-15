@@ -1,7 +1,8 @@
 import {getCookie} from "root/store/functions/auth/Cookies";
-import {urls} from "root/constants/constants";
+import {urls, flashFlags} from "root/constants/constants";
 import {onlyLettersNumbers} from "root/store/functions/auth/validation";
 import {validate} from 'functions/auth/validation'
+import {set_flash_message} from 'actions/actions'
 
 const getUserPrivateData = function(){
     var csrftoken = getCookie('csrftoken');
@@ -41,6 +42,7 @@ const EditUserProfile = () => {
         try{
             validate(username, [onlyLettersNumbers]);
             validate(first_name, [onlyLettersNumbers]);
+            validate(last_name, [onlyLettersNumbers]);
         } catch(error){
             throw error;
         }
@@ -67,11 +69,11 @@ const EditUserProfile = () => {
                     return res.json()
                 }
                 else{
-                    throw res['content']
+                    throw 'Error, please check if provided update is correct format'
                 }
             })
             .catch(error =>{
-
+                dispatch(set_flash_message(error, flashFlags.ALERT))
             })
     }
 }
