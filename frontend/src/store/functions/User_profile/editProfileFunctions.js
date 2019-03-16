@@ -1,9 +1,8 @@
 import {getCookie} from "root/store/functions/auth/Cookies";
 import {urls, flashFlags} from "root/constants/constants";
 import {onlyLettersNumbers} from "root/store/functions/auth/validation";
-import {validate} from 'functions/auth/validation'
+import {validate, passwordSame} from 'functions/auth/validation'
 import {set_flash_message} from 'actions/actions'
-
 const getUserPrivateData = function(){
     var csrftoken = getCookie('csrftoken');
     return fetch(`${urls.EDIT_USER}`, {
@@ -76,6 +75,17 @@ const EditUserProfile = () => {
                 dispatch(set_flash_message(error, flashFlags.ALERT))
             })
     }
+}
+
+const changePassword = (password='', newPassword='', confPassword='') => {
+
+    var csrftoken = getCookie('csrftoken');
+    try{
+        passwordSame(newPassword, confPassword)
+    }catch{
+       throw 'passwords do not match'
+    }
+    return fetch(`${urls.CHANGE_PASSWORD}`)
 }
 
 export {getUserPrivateData, EditUserProfile}
