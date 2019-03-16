@@ -77,7 +77,7 @@ const EditUserProfile = () => {
     }
 }
 
-const changePassword = (password='', newPassword='', confPassword='') => {
+const changePassword = (newPassword='', confPassword='') => {
 
     var csrftoken = getCookie('csrftoken');
     try{
@@ -85,7 +85,22 @@ const changePassword = (password='', newPassword='', confPassword='') => {
     }catch{
        throw 'passwords do not match'
     }
-    return fetch(`${urls.CHANGE_PASSWORD}`)
+    var passwords = {
+        password : password
+    }
+    return fetch(`${urls.CHANGE_PASSWORD}`,{
+        method: 'POST',
+        mode: 'same-origin',
+        headers: {
+            'Authorization': `JWT ${localStorage.getItem('token')}`,
+            'Content-Type': 'application/json',
+            'X-CSRFToken': csrftoken
+        },
+        body: JSON.stringify(passwords)
+    })
+        .then(response =>{
+
+        })
 }
 
-export {getUserPrivateData, EditUserProfile}
+export {getUserPrivateData, EditUserProfile, changePassword}

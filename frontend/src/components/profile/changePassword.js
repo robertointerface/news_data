@@ -5,28 +5,19 @@ import {urls, flashFlags} from "root/constants/constants";
 import {PasswordForm} from 'components/ui/profile/forms';
 import {PrimaryButton} from 'ui/common/buttons/buttons';
 import {getCookie} from "root/store/functions/auth/Cookies";
-
+import {changePassword} from 'functions/User_profile/editProfileFunctions'
 class ChangePassword extends Component {
 
     constructor(props){
         super(props);
         this.state = {
-            prevPass: '',
             newPass: '',
             ConfnewPass: '',
             message: ''
         }
-        this.onChangePrevPass = this.onChangePrevPass.bind(this);
         this.onChangeNewPass = this.onChangeNewPass.bind(this);
-    }
-
-
-    onChangePrevPass(e){
-        e.preventDefault();
-        var value = e.target.value;
-        return this.setState({
-            prevPass: value
-        })
+        this.onChangeConfNewPass = this.onChangeConfNewPass.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
     }
 
     onChangeNewPass(e){
@@ -46,7 +37,13 @@ class ChangePassword extends Component {
     }
 
     onSubmit(){
+        changePassword(this.state.prevPass, this.state.newPass, this.state.ConfnewPass)
+            .then(response => {
 
+            })
+            .catch(error => {
+                console.log('err' + error)
+            })
 
     }
 
@@ -54,12 +51,6 @@ class ChangePassword extends Component {
         return (
             <PageTemplate>
                 <div className='row'>
-                    <div className='col-6'>
-                        <PasswordForm title={'password'}
-                                      name={'prevPass'}
-                                      value={this.state.prevPass}
-                                      onChange={this.onChangePrevPass}/>
-                    </div>
                     <div className='col-6'>
                         <PasswordForm title={'new password'}
                                       name={'newPass'}
