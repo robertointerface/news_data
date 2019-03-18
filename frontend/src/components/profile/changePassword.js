@@ -37,7 +37,7 @@ class ChangePassword extends Component {
     }
 
     onSubmit(){
-        changePassword(this.state.prevPass, this.state.newPass, this.state.ConfnewPass)
+        changePassword(this.state.newPass, this.state.ConfnewPass)
             .then(response => {
 
             })

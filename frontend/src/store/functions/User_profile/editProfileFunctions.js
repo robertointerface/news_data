@@ -86,7 +86,7 @@ const changePassword = (newPassword='', confPassword='') => {
        throw 'passwords do not match'
     }
     var passwords = {
-        password : password
+        password : newPassword
     }
     return fetch(`${urls.CHANGE_PASSWORD}`,{
         method: 'POST',

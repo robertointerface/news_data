@@ -18,6 +18,7 @@ urlpatterns = [
             url(r'^follow$', views.SetUserFollow.as_view()),
             url(r'^unfollow$', views.SetUserUnFollow.as_view()),
             url(r'^isfollowing$', views.IsFollowing.as_view()),
-            url(r'^edituser$', views.EditUser.as_view())
+            url(r'^edituser$', views.EditUser.as_view()),
+            url(r'^changepassword', views.ChangePassword.as_view())
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

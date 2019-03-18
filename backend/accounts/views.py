@@ -46,6 +46,8 @@ if Migration:
 else:
     from backend.backend.constants import Constants
     from google.appengine.api import urlfetch
+    from google.appengine.api import mail
+    from google.appengine.api.mail_errors import InvalidEmailError, BadRequestError
     GOOGLE_CLIENT = json.loads(open('backend/accounts/g_client_secret.json', 'r').
                                read())['web']['client_id']
 
@@ -438,3 +440,40 @@ class EditUser(APIView):
             return Response(None, status=400, content_type=json)
         else:
             return Response(None, status=200, content_type=json)
+
+
+class ChangePassword(APIView):
+
+    permission_classes = (IsAuthenticated,)
+
+    def post(self, request, format=None):
+        try:
+            user = request.user
+            request_data = self.request.data
+            password = request_data['password']
+            user.set_password(password)
+            user.save()
+            #self._send_email(user)
+            return Response(None, status=200, content_type=json)
+        except KeyError:
+            return Response(None, status=400, content_type=json)
+
+    def _send_email(self, user):
+        subject = 'Tablenew.com verification email.'
+        email_body = """
+        Dear {username}:
+            Your password has been modified, if you did not perform this action please send an email to 
+            the tablenew team.
+            
+            regards
+            Tablenew.com team
+        """.format(username=user.username)
+        try:
+            mail.send_mail(
+                sender='robertointerface@gmail.com',
+                to=user.email,
+                subject=subject,
+                body=email_body
+            )
+        except (InvalidEmailError, BadRequestError):
+            pass
