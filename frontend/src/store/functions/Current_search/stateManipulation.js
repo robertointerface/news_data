@@ -278,6 +278,8 @@ const setProgress100 = (timeList = [], GeoList = []) => {
     }
 }
 
+
+
 export {
     markItemChecked,
     unSelectItems,

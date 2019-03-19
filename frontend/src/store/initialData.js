@@ -22,7 +22,7 @@ export const userData = {
     error: '',
 }
 
-const DataBaseSelect = [
+export const DataBaseSelect = [
 		{ name: 'EUROPE: (Economic & demographic data Eurostat)', id:'EU', select: false},
 		{ name: 'Unesco (World demographic and education data)', id: 'UNESCO', select: false},
 		{ name: 'Industrial Countries (Economic and social data from OECD countries)', id: 'OECD', select: false}

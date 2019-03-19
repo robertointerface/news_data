@@ -20,6 +20,7 @@ import Accounts from "components/routers/accounts";
 import CreateNew from "components/routers/createNew"
 import NewDisplayRouter from 'components/routers/NewDisplayRouter'
 import ProfileRouter from 'components/routers/ProfileRouter'
+import UserSearchComponent from 'components/user_search/UserSearch'
 
 const App = () => {
     return (
@@ -28,6 +29,7 @@ const App = () => {
                 <Route exact path="/" component={Home}/>
                 <Route path="/display" component={NewDisplayRouter}/>
                 <Route path="/about" component={About}/>
+                <Route path="/search" component={UserSearchComponent}/>
                 <Route path="/accounts" component={Accounts}/>
                 <Route path='/publish' component={CreateNew}/>
                 <Route path='/profile' component={ProfileRouter}/>

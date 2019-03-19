@@ -70,13 +70,6 @@ export const getSectors = {
     },
 }
 
-
-
-
-
-
-
-
 export const getTopicsArray = (thirdPartyAPI, sector) => {
     /*
         @Func:

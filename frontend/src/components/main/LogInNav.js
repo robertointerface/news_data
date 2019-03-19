@@ -27,7 +27,7 @@ const LogInNav = ({ username = '' }) => {
                 </NavLink>
             </li>
             <li>
-                <NavLink to='/searchdata'>
+                <NavLink to='/search'>
                     <FontAwesomeIcon className='F12' icon={faSearch}/> Search data
                 </NavLink>
             </li>

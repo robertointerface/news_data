@@ -23,7 +23,7 @@ const LogOutNav = (user_id = 0) => {
                 </NavLink>
             </li>
             <li>
-                <NavLink to='/'>
+                <NavLink to='/search'>
                     <FontAwesomeIcon className='F12' icon={faSearch}/> Search data
                 </NavLink>
             </li>
