@@ -29,8 +29,9 @@ import Progress from "components/search_data/progressBar";
 import {display_table, error_search_data, finished_requestiong} from "root/actions/actions";
 import GeoOptions from "components/search_data/GeoOption";
 import DataDisplayNonRedux from 'components/data_representation/dataDisplayNonRedex'
-import {pushResult} from "root/store/functions/Results_management/stateManipulation";
+import {pushResult, removeResult} from "functions/Results_management/stateManipulation";
 import {findItemInArray} from 'functions/Results_management/Results'
+
 class UserSearchComponent extends Component {
     constructor(props){
         super(props)
@@ -79,6 +80,7 @@ class UserSearchComponent extends Component {
         this.onChangeGeo = this.onChangeGeo.bind(this)
         this.onRequestingData = this.onRequestingData.bind(this)
         this.onChangeUnitMeasure = this.onChangeUnitMeasure.bind(this)
+        this.onRemoveTable = this.onRemoveTable.bind(this)
     }
 
     onSelectDatabase(e, id, name){
@@ -359,6 +361,18 @@ class UserSearchComponent extends Component {
                 })
         ])
     }
+
+    onRemoveTable(e, resultId){
+        e.preventDefault()
+        return this.setState({
+            ...this.state,
+            results:{
+                ...this.state.results,
+                numberQueries: this.state.results.numberQueries - 1,
+                tables: removeResult(this.state.results.tables, resultId),
+            }
+        })
+    }
     render(){
         var {PossibleThirdPartyAPI,
             ThirdPartyAPI,
@@ -424,7 +438,8 @@ class UserSearchComponent extends Component {
 
                     <DataDisplayNonRedux list={this.state.results.tables}
                                          resultLenght={this.state.results.tables.length}
-                                         onChangeUnit={this.onChangeUnitMeasure}/>
+                                         onChangeUnit={this.onChangeUnitMeasure}
+                                         onRemove={this.onRemoveTable}/>
 
 
                 </div>
