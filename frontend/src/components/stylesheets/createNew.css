@@ -1,0 +1,125 @@
+
+.dropdown-menu{padding: 0px;}
+.table-responsive::-webkit-scrollbar{
+	-webkit-appearance: none;
+}
+
+.table-responsive::-webkit-scrollbar:vertical {
+    width: 12px;
+}
+
+.table-responsive::-webkit-scrollbar:horizontal {
+    height: 12px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, .5);
+    border-radius: 10px;
+    border: 2px solid #ffffff;
+}
+
+.table-responsive::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+.well{background-color: #FFFFFF;}
+.GraphDiv{margin-bottom: 1rem;}
+
+.GraphResult{margin-bottom: 1rem;}
+
+.RequestReferenceButton, .ReferenceSearchButton,
+ .AttachGraph, .Graph, #InsertExternalLinkButton,
+ .SumbitNewButton{padding-top: 1rem;
+				  padding-bottom: 1rem;
+				  padding-right: 2rem;
+				  padding-left: 2rem;}
+
+
+
+@media only screen and (min-width: 770px){
+		.dropdown-menu>li>a {white-space: normal;}
+		.ReferenceSearchButton, .RequestReferenceButton{font-size: 1.6rem;}
+
+		.AttachGraph, .Graph, .GraphButton, .RereferenceSave, .GoToDataBase, .ChangeUnitMessure, #InsertExternalLinkButton{font-size: 1.4rem;}
+
+		.DatosAdjuntadosButton{font-size: 1.4rem;}
+
+		.SelectTopic, .SelectArea, .SelectIndicators,
+		.DisplayChoosenText, .ReferenceProgressBar,
+		.progressBarText, .SumbitNewButton{font-size: 1.4rem;}
+
+		.dropdown-menu>li>a.ReferenceSearchItem {padding: 1rem;}
+		.dropdown-menu>li>a.YearElement, .MonthElement {padding: 1rem;}
+		#DatosAdjuntadosList{width:100%; word-wrap: break-word;}
+		.listSelectTopic, .listSelectIndicators{width:100%;}
+		.RereferenceSave, .GoToDataBase{padding: 0.75rem;}
+		.ChangeUnitMessureDiv{margin-top: 1rem;}
+		.ChangeUnitMessure{padding: 0.75rem;}
+		.ResultExplanation{padding-top: 2rem;}
+
+}
+
+
+@media only screen and (min-width: 425px) and (max-width: 769px){
+	.dropdown-menu>li>a {white-space: normal;
+							}
+	.ReferenceSearchButton, .RequestReferenceButton,
+	.SumbitNewButton {font-size: 1.4rem;}
+
+	.AttachGraph, .Graph, .RereferenceSave, .GoToDataBase, .ChangeUnitMessure {font-size: 1.2rem;}
+	#InsertExternalLinkButton, .DatosAdjuntadosButton{font-size: 1.4rem;}
+
+	.SelectTopic, .SelectArea, .SelectIndicators,
+	.DisplayChoosenText, .ReferenceProgressBar, .progressBarText{font-size: 1.4rem;}
+
+	.dropdown-menu>li>a.ReferenceSearchItem {padding: 1.4rem;}
+
+	.dropdown-menu>li>a.YearElement, .MonthElement {padding: 1.4rem;}
+
+	.dropdown-menu>li.GeoOption {padding: 1.4rem;}
+
+	#DatosAdjuntadosList{width:100%; word-wrap: break-word;}
+
+	.ChangeUnitMessureDiv{margin-top: 1.5rem;}
+
+	.listSelectTopic, .listSelectIndicators{width:100%;}
+
+	.ChangeUnitMessure{padding: 1rem;}
+
+	.RereferenceSave, .GoToDataBase{padding: 1rem;}
+}
+
+
+@media only screen and (max-width: 424px){
+	.TryRegistering{font-size:1.4rem;}
+	.dropdown-menu>li>a {white-space: normal;}
+	.ReferenceSearchButton, .RequestReferenceButton,
+	.SumbitNewButton{font-size: 1.4rem;}
+
+	 .RereferenceSave, .GoToDataBase, .ChangeUnitMessure{font-size: 1.1rem;}
+
+	.AttachGraph, .Graph{font-size: 1.2rem;}
+	.SelectTopic, .SelectArea, .SelectIndicators,
+	.DisplayChoosenText, .progressBarText, .NewItemGroup{font-size: 1.4rem;}
+	.ReferenceSearchItem{padding: 1.6rem;}
+	#InsertExternalLinkButton, .DatosAdjuntadosButton{font-size: 1.2rem;}
+
+	.dropdown-menu>li>a.ReferenceSearchItem {padding: 1.6rem;}
+
+	.dropdown-menu>li>a.YearElement, .MonthElement {padding: 1.6rem;}
+	.dropdown-menu>li.GeoOption{padding: 1.8rem;}
+
+	#DatosAdjuntadosList{width:100%; word-wrap: break-word;}
+
+	.ChangeUnitMessureDiv{margin-top: 2rem;}
+	.listSelectTopic, .listSelectIndicators{width:100%;}
+	.ChangeUnitMessure{padding: 1rem;}
+
+	.RereferenceSave, .GoToDataBase{padding: 1rem;}
+}
+
+
+
+
+
+

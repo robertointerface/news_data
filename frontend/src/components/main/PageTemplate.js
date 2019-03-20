@@ -6,7 +6,7 @@ const PageTemplate = ({children}) =>
     <div className='page'>
         <div>
             <MainMenuContainer/>
-            <div className='container'>
+            <div className='container-fluid'>
                 {children}
             </div>
         </div>

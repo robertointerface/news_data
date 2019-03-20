@@ -32,12 +32,12 @@ class CreateLongNewBlock extends Component{
         return (
             <PageTemplate>
                 <div className='row'>
-                    <div className='col-8'>
+                    <div className='col-xl-8 col-lg-8 col-md-7 col-sm-12 col-12'>
                         <div className='row'>
                             <CreateNewFormContainer/>
                         </div>
                     </div>
-                    <div className='col-4'>
+                    <div className='col-xl-4 col-lg-4 col-md-5 col-12'>
                         <div className='row'>
                             <SearchDataContainer/>
                         </div>

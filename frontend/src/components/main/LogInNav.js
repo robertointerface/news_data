@@ -36,7 +36,7 @@ const LogInNav = ({ username = '' }) => {
                     <FontAwesomeIcon className='F12' icon={faPencilAlt}/>  publish
                 </NavLink>
             </li>
-            <li class="dropdown">
+            <li className="dropdown">
                 <a className="dropdown-toggle NavItem" data-toggle="dropdown" href="#">
                     <FontAwesomeIcon className='F12' icon={faUser}/>
                     profile<span className="caret"></span>

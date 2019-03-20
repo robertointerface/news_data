@@ -134,3 +134,21 @@ body {
     border-radius: 10px;
     background-color: #ffffff;
 }
+
+@media only screen and (min-width: 770px){
+.container{
+
+}
+
+}
+
+@media only screen and (min-width: 425px) and (max-width: 769px){
+    .container{
+        max-width: 790px;
+    }
+
+}
+
+@media only screen and (max-width: 424px){
+
+}
