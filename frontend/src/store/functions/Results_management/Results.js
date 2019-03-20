@@ -1,6 +1,7 @@
 import download from 'downloadjs'
-import {prepareRequestData} from 'functions/Create_new/CreateNewFunctions'
-import {getDataRequest} from "functions/Create_new/CreateNewFunctions"
+import {
+    prepareRequestData,
+    getDataRequest} from 'functions/Create_new/CreateNewFunctions'
 import {
     display_table,
     set_table_saved,
@@ -195,4 +196,4 @@ const findItemInArray = function (itemId, array) {
 }
 
 
-export {findItemInArray}
+export {findItemInArray, prepareGraphData, getGraphClass}

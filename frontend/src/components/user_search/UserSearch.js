@@ -29,8 +29,12 @@ import Progress from "components/search_data/progressBar";
 import {display_table, error_search_data, finished_requestiong} from "root/actions/actions";
 import GeoOptions from "components/search_data/GeoOption";
 import DataDisplayNonRedux from 'components/data_representation/dataDisplayNonRedex'
-import {pushResult, removeResult} from "functions/Results_management/stateManipulation";
-import {findItemInArray} from 'functions/Results_management/Results'
+import {pushResult, removeResult, pushGraph, removeGraph} from "functions/Results_management/stateManipulation";
+import {
+    findItemInArray,
+    prepareGraphData,
+    getGraphClass} from 'functions/Results_management/Results'
+import GraphDisplay from "components/data_representation/graph/graphDisplay"
 
 class UserSearchComponent extends Component {
     constructor(props){
@@ -81,6 +85,8 @@ class UserSearchComponent extends Component {
         this.onRequestingData = this.onRequestingData.bind(this)
         this.onChangeUnitMeasure = this.onChangeUnitMeasure.bind(this)
         this.onRemoveTable = this.onRemoveTable.bind(this)
+        this.onGraph = this.onGraph.bind(this)
+        this.onRemoveGraph =  this.onRemoveGraph.bind(this)
     }
 
     onSelectDatabase(e, id, name){
@@ -309,7 +315,6 @@ class UserSearchComponent extends Component {
         }, () => this.handle_data_request())
     }
 
-
     handle_data_request(){
         var requestObject = prepareRequestData(JSON.parse(JSON.stringify(this.state.currentSearch)))
         var dataRequestItem = getDataRequest(requestObject) // Get required class
@@ -373,6 +378,48 @@ class UserSearchComponent extends Component {
             }
         })
     }
+
+    onRemoveGraph(e, chartId){
+        e.preventDefault()
+        return this.setState({
+            ...this.state,
+            results:{
+                ...this.state.results,
+                charts: removeGraph(this.state.results.charts, chartId)
+            }
+        })
+    }
+
+    onGraph(e, resultId){
+        e.preventDefault();
+        var results = this.state.results.tables;
+        var resultToGraph = results.find(result => result['id'] == resultId); // Get JSON data
+        var graphData = prepareGraphData(resultToGraph);
+        var graphObject = getGraphClass(graphData);
+        graphObject.createData();
+
+        var chart = {
+            'id': Date.now(),
+            'attached': false,
+            'explanation': graphObject.displayMessage,
+            'type': graphObject.type,
+            'data': graphObject.data,
+            'options': graphObject.options,
+            'DisplayMessage': {
+                message: '',
+                type: 'alert-info'
+            }
+        }
+
+        return this.setState({
+            ...this.state,
+            results:{
+                ...this.state.results,
+                charts: pushGraph(this.state.results.charts, chart)
+            }
+        })
+    }
+
     render(){
         var {PossibleThirdPartyAPI,
             ThirdPartyAPI,
@@ -435,12 +482,17 @@ class UserSearchComponent extends Component {
                         <RequestButton active={requestActive} onClick={this.onRequestingData}/>
                         <Progress progressNumber={progress} />
                     </div>
-
-                    <DataDisplayNonRedux list={this.state.results.tables}
-                                         resultLenght={this.state.results.tables.length}
-                                         onChangeUnit={this.onChangeUnitMeasure}
-                                         onRemove={this.onRemoveTable}/>
-
+                    <div className='col-12'>
+                        <DataDisplayNonRedux list={this.state.results.tables}
+                                             resultLenght={this.state.results.tables.length}
+                                             onChangeUnit={this.onChangeUnitMeasure}
+                                             onRemove={this.onRemoveTable}
+                                             onGraph={this.onGraph}/>
+                    </div>
+                    <div className='col-12'>
+                        <GraphDisplay list={this.state.results.charts}
+                                      onRemove={this.onRemoveGraph}/>
+                    </div>
 
                 </div>
             </PageTemplate>

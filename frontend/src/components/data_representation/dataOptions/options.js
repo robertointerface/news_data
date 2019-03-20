@@ -13,7 +13,7 @@ const Options = ({title='', icon='', resultId='', onClick=f=>f}) =>
     </a>
 
 
-const Graph = ({title='', resultId='', onClick=f=>f}) => {
+const Graph = ({title='graph', resultId='', onClick=f=>f}) => {
     return (
         <Options title={title} resultId={resultId} icon={faChartBar} onClick={onClick}/>
     )
@@ -28,7 +28,7 @@ const GoToThirdParty = ({title='', onClick=f=>f}) => {
 
 
 
-const SaveData = ({title='', resultId='', resultSaved=false, onClick=f=>f}) => {
+const SaveData = ({title='save data', resultId='', resultSaved=false, onClick=f=>f}) => {
     return (
         <div>
             {(resultSaved) ?
@@ -42,7 +42,7 @@ const SaveData = ({title='', resultId='', resultSaved=false, onClick=f=>f}) => {
     )
 }
 
-const ExcelDownload = ({title='', resultId='', onClick=f=>f}) => {
+const ExcelDownload = ({title='download excel', resultId='', onClick=f=>f}) => {
     return (
         <Options title={title} icon={faFileExcel} resultId={resultId} onClick={onClick}/>
     )

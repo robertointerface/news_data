@@ -7,11 +7,13 @@ import {AttachDataRequest} from 'components/data_representation/attachData'
 import {
     DisplayDataMessage
 } from 'containers/searchDataContainers'
-import DataOptions from './dataOptions/dataOptions'
+import DataOptionsSearch from 'components/data_representation/dataOptions/dataOptionsSearch'
 import ChangeUnitMeasureSearch from 'components/data_representation/changeUnitMeasure/changeUniteMeasureSearch'
 class DataDisplayNonRedux extends Component{
+
+
     render(){
-        let { resultLenght, list, onRemove, onChangeUnit } =  this.props;
+        let { resultLenght, list, onRemove, onChangeUnit, onGraph } =  this.props;
         return(
             <section className='row'>
                 {(resultLenght > 0) ?
@@ -42,7 +44,9 @@ class DataDisplayNonRedux extends Component{
                                                 <div className='col-12'>
                                                     <div className='row'>
                                                         <div className='offset-1 col-5'>
-                                                            <DataOptions resultId={result.id} resultSaved={result.saved}/>
+                                                            <DataOptionsSearch resultId={result.id}
+                                                                               resultSaved={result.saved}
+                                                                               onGraph={onGraph} />
                                                         </div>
                                                     </div>
                                                 </div>
