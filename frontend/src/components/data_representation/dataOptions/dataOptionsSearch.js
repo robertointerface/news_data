@@ -9,7 +9,7 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTools } from '@fortawesome/free-solid-svg-icons'
 
-const DataOptionsSearch = ({resultId='', resultSaved=false, onGraph=f=>f, onExcel=f=>f}) => {
+const DataOptionsSearch = ({resultId='', resultSaved=false, onGraph=f=>f, onExcel=f=>f, onSave=f=>f}) => {
     return (
         <div>
             <div className="dropdown row">
@@ -19,7 +19,10 @@ const DataOptionsSearch = ({resultId='', resultSaved=false, onGraph=f=>f, onExce
                 </button>
                 <div className="dropdown-menu padding0" aria-labelledby="optionsDropdown">
                     <div className='list-group'>
-                        <SaveData resultId={resultId} resultSaved={resultSaved}/>
+                        {(localStorage.getItem('user'))?
+                            <SaveData resultId={resultId} resultSaved={resultSaved} onClick={onSave}/>
+                            :null
+                        }
                         <GoToThirdParty/>
                         <Graph resultId={resultId} onClick={onGraph}/>
                         <ExcelDownload resultId={resultId} onClick={onExcel}/>

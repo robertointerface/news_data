@@ -29,7 +29,12 @@ import Progress from "components/search_data/progressBar";
 import {display_table, error_search_data, finished_requestiong} from "root/actions/actions";
 import GeoOptions from "components/search_data/GeoOption";
 import DataDisplayNonRedux from 'components/data_representation/dataDisplayNonRedex'
-import {pushResult, removeResult, pushGraph, removeGraph} from "functions/Results_management/stateManipulation";
+import {
+    pushResult,
+    removeResult,
+    pushGraph,
+    removeGraph,
+    setInfoMessageAtDisplay} from "functions/Results_management/stateManipulation";
 import {
     findItemInArray,
     prepareGraphData,
@@ -87,6 +92,7 @@ class UserSearchComponent extends Component {
         this.onRemoveTable = this.onRemoveTable.bind(this)
         this.onGraph = this.onGraph.bind(this)
         this.onRemoveGraph =  this.onRemoveGraph.bind(this)
+        this.onMessageTable = this.onMessageTable.bind(this)
     }
 
     onSelectDatabase(e, id, name){
@@ -420,6 +426,16 @@ class UserSearchComponent extends Component {
         })
     }
 
+    onMessageTable(resultId, message){
+        return this.setState({
+            ...this.state,
+            results: {
+                ...this.state.results,
+                tables: setInfoMessageAtDisplay(this.state.results.tables, resultId, message)
+            }
+        })
+    }
+
     render(){
         var {PossibleThirdPartyAPI,
             ThirdPartyAPI,
@@ -484,10 +500,10 @@ class UserSearchComponent extends Component {
                     </div>
                     <div className='col-12'>
                         <DataDisplayNonRedux list={this.state.results.tables}
-                                             resultLenght={this.state.results.tables.length}
                                              onChangeUnit={this.onChangeUnitMeasure}
                                              onRemove={this.onRemoveTable}
-                                             onGraph={this.onGraph}/>
+                                             onGraph={this.onGraph}
+                                             onMessageTable={this.onMessageTable}/>
                     </div>
                     <div className='col-12'>
                         <GraphDisplay list={this.state.results.charts}

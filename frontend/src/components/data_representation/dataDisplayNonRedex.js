@@ -12,10 +12,12 @@ import ChangeUnitMeasureSearch from 'components/data_representation/changeUnitMe
 import {getCookie} from "root/store/functions/auth/Cookies";
 import download from "downloadjs";
 import {urls} from "root/constants/constants";
+import {error_table_display, info_table_display} from "root/actions/actions";
 class DataDisplayNonRedux extends Component{
     constructor(props){
         super(props)
         this.onExcel =  this.onExcel.bind(this)
+        this.onSave =  this.onSave.bind(this)
     }
 
     onExcel(e, resultId){
@@ -43,8 +45,46 @@ class DataDisplayNonRedux extends Component{
                 .then(blob =>{
                    return download(blob, 'tablenew_data.xls', 'application/ms-excel')
                 })
+                .catch(error =>{
+                    return this.props.onMessageTable(resultId, 'error please try later')
+                })
         }
     }
+
+    onSave(e, resultId){
+        var csrftoken = getCookie('csrftoken');
+        var results = this.props.list
+        var resutlToSave = results.find(result => result['id'] == resultId) //find the data json object
+        if(resutlToSave){
+            var data = {
+                'DataToSave': resutlToSave,
+                'APIUrl': resutlToSave.searchObject.APIUrl
+            } // data to be POST to backend
+            return fetch(`${urls.SAVE_DATA}`, {
+                method: 'POST',
+                mode: 'same-origin',
+                headers: {
+                    Authorization: `JWT ${localStorage.getItem('token')}`,
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrftoken
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
+                if(response.status == 200){
+                    return this.props.onMessageTable(resultId, 'data saved')
+                }
+                else{
+                    throw 'error saving, please try again.'
+                }
+            })
+            .catch(error => {
+                return this.props.onMessageTable(resultId, error)
+            })
+        }
+    }
+
+
     render(){
         let {list, onRemove, onChangeUnit, onGraph } =  this.props;
         return(
@@ -80,7 +120,8 @@ class DataDisplayNonRedux extends Component{
                                                             <DataOptionsSearch resultId={result.id}
                                                                                resultSaved={result.saved}
                                                                                onGraph={onGraph}
-                                                                               onExcel={this.onExcel}/>
+                                                                               onExcel={this.onExcel}
+                                                                               onSave={this.onSave}/>
                                                         </div>
                                                     </div>
                                                 </div>
