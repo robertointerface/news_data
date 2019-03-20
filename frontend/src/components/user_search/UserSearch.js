@@ -15,7 +15,6 @@ import {
     createTimeList,
     createGeoList,
     setProgress100,
-    setProgress100Comp,
     pushGeoToArray
 } from "functions/Current_search/stateManipulation";
 import {getTopicMap} from 'functions/Create_new/CreateNewFunctions'
@@ -24,12 +23,15 @@ import {urls} from "constants/constants";
 import OptionsCardTitle from 'ui/search_data/optionsCardTitle'
 import CardCol12 from 'ui/common/cards/CardCol12'
 import TimeOptions from "components/search_data/TimeOption";
-import {canMakeRequest} from "root/store/functions/Create_new/CreateNewFunctions";
+import {canMakeRequest, getDataRequest, prepareRequestData} from "functions/Create_new/CreateNewFunctions";
 import {RequestButton} from "components/search_data/RequestButton";
 import Progress from "components/search_data/progressBar";
-
+import {display_table, error_search_data, finished_requestiong} from "root/actions/actions";
+import GeoOptions from "components/search_data/GeoOption";
+import DataDisplayNonRedux from 'components/data_representation/dataDisplayNonRedex'
+import {pushResult} from "root/store/functions/Results_management/stateManipulation";
+import {findItemInArray} from 'functions/Results_management/Results'
 class UserSearchComponent extends Component {
-
     constructor(props){
         super(props)
         this.state = {
@@ -75,7 +77,10 @@ class UserSearchComponent extends Component {
         this.onSelectIndicator = this.onSelectIndicator.bind(this)
         this.onChangeTime = this.onChangeTime.bind(this)
         this.onChangeGeo = this.onChangeGeo.bind(this)
+        this.onRequestingData = this.onRequestingData.bind(this)
+        this.onChangeUnitMeasure = this.onChangeUnitMeasure.bind(this)
     }
+
     onSelectDatabase(e, id, name){
         e.preventDefault();
         this.setState({
@@ -178,8 +183,6 @@ class UserSearchComponent extends Component {
                                     ])
             })
     }
-
-
     onSelectIndicator(e, id, name){
         return this.setState({
             ...this.state,
@@ -198,8 +201,6 @@ class UserSearchComponent extends Component {
             }
         })
     }
-
-
     select_topic(id, name){
 
          return this.setState({
@@ -263,7 +264,6 @@ class UserSearchComponent extends Component {
             }
         })
    }
-
     onChangeTime(e, id){
         return this.setState({
             ...this.state,
@@ -274,7 +274,6 @@ class UserSearchComponent extends Component {
             }
         }, () => this.check_request())
     }
-
     onChangeGeo(e, id, name){
         return this.setState({
             ...this.state,
@@ -287,7 +286,6 @@ class UserSearchComponent extends Component {
 
 
     }
-
     check_request(){
         return this.setState({
             ...this.state,
@@ -299,7 +297,68 @@ class UserSearchComponent extends Component {
         })
    }
 
+    onRequestingData(){
+        return this.setState({
+            ...this.state,
+            currentSearch: {
+                ...this.state.currentSearch,
+                requestActive: true,
+            }
+        }, () => this.handle_data_request())
+    }
 
+
+    handle_data_request(){
+        var requestObject = prepareRequestData(JSON.parse(JSON.stringify(this.state.currentSearch)))
+        var dataRequestItem = getDataRequest(requestObject) // Get required class
+        return Promise.all([
+            dataRequestItem.createAPIRequest(), //create API url request (i.e https://eurostat/NCE1/2008/....)
+            dataRequestItem.makeAPIcall() //Fetch API data by 'Fetch' Get method.
+                .then(result => {
+                    this.display_table(result);
+                })
+                .then(result => this.finished_requesting())
+        ]).catch(error => {
+            console.log('error ' + error)
+        })
+    }
+
+    display_table(result){
+        return this.setState({
+            ...this.state,
+            results:{
+                ...this.state.results,
+                numberQueries: this.state.results.numberQueries + 1,
+                tables: pushResult(this.state.results.tables, result),
+            }
+        })
+    }
+
+    finished_requesting(){
+        return this.setState({
+            ...this.state,
+            currentSearch: {
+                ...this.state.currentSearch,
+                requestActive: false,
+            }
+        })
+    }
+
+    onChangeUnitMeasure(e, resultId, unitId){
+        e.preventDefault();
+        var resultsMade = this.state.results.tables;
+        var foundResult = {...resultsMade.find(item => item['id'] == resultId)};
+        foundResult.searchObject.Unit = findItemInArray(unitId, foundResult.searchObject.PossibleUnitMeasure);
+        var requestObject = prepareRequestData(foundResult.searchObject);
+        var dataRequestItem = getDataRequest(requestObject)
+        return Promise.all([
+            dataRequestItem.createAPIRequest(),
+            dataRequestItem.makeAPIcall()
+                .then(result =>{
+                    return this.display_table(result);
+                })
+        ])
+    }
     render(){
         var {PossibleThirdPartyAPI,
             ThirdPartyAPI,
@@ -349,7 +408,7 @@ class UserSearchComponent extends Component {
                                                    <TimeOptions list={Times} onChange={this.onChangeTime}/>
                                                 </div>
                                                 <div className='col-6'>
-                                                    <TimeOptions list={Geo} onChange={this.onChangeGeo}/>
+                                                    <GeoOptions list={Geo} onChange={this.onChangeGeo}/>
                                                 </div>
                                             </div>
                                         </div>
@@ -359,10 +418,13 @@ class UserSearchComponent extends Component {
                     }
 
                     <div className='col-12'>
-                        <RequestButton active={requestActive}/>
+                        <RequestButton active={requestActive} onClick={this.onRequestingData}/>
                         <Progress progressNumber={progress} />
                     </div>
 
+                    <DataDisplayNonRedux list={this.state.results.tables}
+                                         resultLenght={this.state.results.tables.length}
+                                         onChangeUnit={this.onChangeUnitMeasure}/>
 
 
                 </div>

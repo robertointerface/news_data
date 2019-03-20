@@ -195,3 +195,4 @@ const findItemInArray = function (itemId, array) {
 }
 
 
+export {findItemInArray}

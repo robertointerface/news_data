@@ -20,7 +20,7 @@ import {
     handle_data_request,
     handle_indicator_request
 } from 'functions/Create_new/CreateNewFunctions'
-import ChangeUnitMeasure from 'components/data_representation/changeUnitMeasure'
+import ChangeUnitMeasure from 'components/data_representation/changeUnitMeasure/changeUnitMeasure'
 import {
     handle_change_unit,
     handle_save_result_user,
