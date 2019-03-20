@@ -9,7 +9,7 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTools } from '@fortawesome/free-solid-svg-icons'
 
-const DataOptionsSearch = ({resultId='', resultSaved=false, onGraph=f=>f}) => {
+const DataOptionsSearch = ({resultId='', resultSaved=false, onGraph=f=>f, onExcel=f=>f}) => {
     return (
         <div>
             <div className="dropdown row">
@@ -22,7 +22,7 @@ const DataOptionsSearch = ({resultId='', resultSaved=false, onGraph=f=>f}) => {
                         <SaveData resultId={resultId} resultSaved={resultSaved}/>
                         <GoToThirdParty/>
                         <Graph resultId={resultId} onClick={onGraph}/>
-                        <ExcelDownload resultId={resultId}/>
+                        <ExcelDownload resultId={resultId} onClick={onExcel}/>
                     </div>
                 </div>
             </div>

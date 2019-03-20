@@ -9,14 +9,47 @@ import {
 } from 'containers/searchDataContainers'
 import DataOptionsSearch from 'components/data_representation/dataOptions/dataOptionsSearch'
 import ChangeUnitMeasureSearch from 'components/data_representation/changeUnitMeasure/changeUniteMeasureSearch'
+import {getCookie} from "root/store/functions/auth/Cookies";
+import download from "downloadjs";
+import {urls} from "root/constants/constants";
 class DataDisplayNonRedux extends Component{
+    constructor(props){
+        super(props)
+        this.onExcel =  this.onExcel.bind(this)
+    }
 
-
+    onExcel(e, resultId){
+        e.preventDefault()
+        var csrftoken = getCookie('csrftoken');
+        var results = this.props.list
+        var resultToExcel = results.find(result => result['id'] == resultId)
+        if (resultToExcel){
+             var data = {
+                'result': resultToExcel.resultObject.filterResult,
+                 'searchObject': resultToExcel.searchObject
+            }
+            return fetch(`${urls.DOWNLOAD_EXCEL}`, {
+                method: 'POST',
+                mode: 'same-origin',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrftoken
+                },
+                body: JSON.stringify(data)
+            })
+                .then(response => {
+                    return response.blob();
+                })
+                .then(blob =>{
+                   return download(blob, 'tablenew_data.xls', 'application/ms-excel')
+                })
+        }
+    }
     render(){
-        let { resultLenght, list, onRemove, onChangeUnit, onGraph } =  this.props;
+        let {list, onRemove, onChangeUnit, onGraph } =  this.props;
         return(
             <section className='row'>
-                {(resultLenght > 0) ?
+                {(list.length > 0) ?
                     list.map((result, i) =>
                         <div className='col-6' key={`RES-${result.id}-${i}`}>
                                 <div className='card'>
@@ -46,7 +79,8 @@ class DataDisplayNonRedux extends Component{
                                                         <div className='offset-1 col-5'>
                                                             <DataOptionsSearch resultId={result.id}
                                                                                resultSaved={result.saved}
-                                                                               onGraph={onGraph} />
+                                                                               onGraph={onGraph}
+                                                                               onExcel={this.onExcel}/>
                                                         </div>
                                                     </div>
                                                 </div>
