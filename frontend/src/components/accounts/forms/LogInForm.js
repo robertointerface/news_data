@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CardCol6 from 'ui/common/cards/CardCol6'
-
+import FlexCard from 'ui/common/cards/FlexCard'
 
 
 import {GoogleLogin} from 'react-google-login';
@@ -11,7 +10,7 @@ import {logged_in} from "../../../actions/actions";
 
 const LoginForm = ({title='Log in', onChange=f=>f, onSubmit=f=>f, username='', password='', error='', authSocial=f=>f}) => {
      return (
-            <CardCol6 title='Login form'>
+            <FlexCard title='Login form' class_name='col-md-6 col-sm-12'>
                  <GoogleLogin
                      clientId="332181169-grf1u7a8q68qrtj372d0fee283ubb9d1.apps.googleusercontent.com"
                      buttonText="Login"
@@ -19,32 +18,36 @@ const LoginForm = ({title='Log in', onChange=f=>f, onSubmit=f=>f, username='', p
                      onFailure={authSocial}
                  />
                 <form onSubmit={(e) => onSubmit(e)}>
-                    <label htmlFor='username'>Username</label>
-                    <input
-                        type='text'
-                        name='username'
-                        value={username}
-                        className="form-control"
-                        onChange={(e) => onChange(e)}
-                        placeholder = 'max. 20 characters'
-                        maxlength="20"
-                    />
-                    <label htmlFor='password'>Password</label>
-                    <input
-                        type='password'
-                        name='password'
-                        value={password}
-                        className="form-control"
-                        onChange={(e) => onChange(e)}
-                        placeholder = 'max. 10 characters'
-                        maxlength="10"
-                    />
+                    <div className="form-group">
+                        <label htmlFor='username'>Username</label>
+                        <input
+                            type='text'
+                            name='username'
+                            value={username}
+                            className="form-control"
+                            onChange={(e) => onChange(e)}
+                            placeholder = 'max. 20 characters'
+                            maxlength="20"
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor='password'>Password</label>
+                        <input
+                            type='password'
+                            name='password'
+                            value={password}
+                            className="form-control"
+                            onChange={(e) => onChange(e)}
+                            placeholder = 'max. 10 characters'
+                            maxlength="10"
+                        />
+                    </div>
                     <button type='submit' className='btn btn-primary'>
                         Log in
                     </button>
                     <p>{error}</p>
                 </form>
-             </CardCol6>
+             </FlexCard>
         )
 }
 

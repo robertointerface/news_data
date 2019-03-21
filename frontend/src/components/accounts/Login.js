@@ -9,8 +9,8 @@ const Login = ({title='Log in', onChange=f=>f, onSubmit=f=>f, username='', passw
             <div className='row'>
                 <div className='col-12'>
                     <ul className="nav nav-tabs" id='logInTab'>
-                        <li className="active nav-item">
-                            <a className='nav-link' data-toggle="tab" href="#LogIn" role="tab" aria-controls="home" aria-selected="true">
+                        <li className="nav-item">
+                            <a className='nav-link active' data-toggle="tab" href="#LogIn" role="tab" aria-controls="home" aria-selected="true">
                                 Log in
                             </a>
                         </li>

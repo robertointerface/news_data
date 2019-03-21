@@ -1,20 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CardCol6 from 'ui/common/cards/CardCol6'
+import FlexCard from 'ui/common/cards/FlexCard'
 import LoginForm from "./LogInForm";
 
 const SingUpForm = ({ title='Sign up', onChange=f=>f, onSubmit=f=>f, username='', email='' , error=''}) => {
     return (
-        <CardCol6 title='sign up form'>
+        <FlexCard title='sign up form' class_name='col-md-6 col-sm-12'>
             <form onSubmit={(e) => onSubmit(e)}>
-                <label htmlFor='username'>Username</label>
-                    <input
-                        type='text'
-                        name='username'
-                        value={username}
-                        className="form-control"
-                        onChange={(e) => onChange(e)}
-                    />
+                <div className="form-group">
+                    <label htmlFor='username'>Username</label>
+                        <input
+                            type='text'
+                            name='username'
+                            value={username}
+                            className="form-control"
+                            onChange={(e) => onChange(e)}
+                        />
+                </div>
+                <div className="form-group">
                     <label htmlFor='email'>email</label>
                     <input
                         type='email'
@@ -23,12 +26,13 @@ const SingUpForm = ({ title='Sign up', onChange=f=>f, onSubmit=f=>f, username=''
                         className="form-control"
                         onChange={(e) => onChange(e)}
                     />
+                </div>
                     <button type='submit' className='btn btn-primary'>
                         sign up
                     </button>
                  <p>{error}</p>
             </form>
-        </CardCol6>
+        </FlexCard>
     )
 }
 

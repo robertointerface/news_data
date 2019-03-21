@@ -13,7 +13,7 @@ import {
 const MainMenu = ({loggedIn = false, token = '', log_out=f=>f, flashMessage='', username=''}) => {
         return (
         <div>
-            <nav className='navbar navbar-expand-sm navbar-toggleable-sm fixed-top navbar-dark bg-primary'>
+            <nav className='navbar navbar-expand-md navbar-toggleable-md fixed-top navbar-dark bg-primary'>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#MainNavBar"
                         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
@@ -23,14 +23,14 @@ const MainMenu = ({loggedIn = false, token = '', log_out=f=>f, flashMessage='', 
                         <LogInNav username={username}/>:
                         <LogOutNav/>
                     }
-                    <ul className="navbar-nav navbar-right NavText" id="rightHeaderNav">
+                    <ul className="nav navbar-nav navbar-right NavText" id="rightHeaderNav">
                        <li>
                         {(loggedIn) ?
-                            <NavLink to='#' onClick={(e) => log_out(e)}>
-                                <FontAwesomeIcon className='F12' icon={faSignOutAlt}/> Logout
+                            <NavLink className='NavItem' to='#' onClick={(e) => log_out(e)}>
+                                <FontAwesomeIcon icon={faSignOutAlt}/> Logout
                             </NavLink> :
-                            <NavLink to='/accounts/login/'>
-                                <FontAwesomeIcon className='F12' icon={faSignInAlt}/> Log in
+                            <NavLink className='NavItem' to='/accounts/login/'>
+                                <FontAwesomeIcon icon={faSignInAlt}/> Log in
                             </NavLink>
                         }
                        </li>

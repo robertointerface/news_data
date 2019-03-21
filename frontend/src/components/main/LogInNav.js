@@ -15,51 +15,50 @@ import {
 
 const LogInNav = ({ username = '' }) => {
     return (
-        <ul className='navbar-nav mr-auto NavText'>
+        <ul className='nav navbar-nav mr-auto NavText'>
             <li>
-                <NavLink to='/display/hot'>
-                    <FontAwesomeIcon className='F12' icon={faFire}/> Hot
+                <NavLink className='NavItem' to='/display/hot'>
+                    <FontAwesomeIcon className='iconSize' icon={faFire}/> Hot
                 </NavLink>
             </li>
             <li>
-                <NavLink to='/display/subscriptions'>
-                    <FontAwesomeIcon className='F12' icon={faList}/> Subscription
+                <NavLink className='NavItem' to='/display/subscriptions'>
+                    <FontAwesomeIcon className='iconSize' icon={faList}/> Subscription
                 </NavLink>
             </li>
             <li>
-                <NavLink to='/search'>
-                    <FontAwesomeIcon className='F12' icon={faSearch}/> Search data
+                <NavLink className='NavItem' to='/search'>
+                    <FontAwesomeIcon className='iconSize' icon={faSearch}/> Search data
                 </NavLink>
             </li>
             <li>
-                <NavLink to={`/publish/longnew/${username}`}>
-                    <FontAwesomeIcon className='F12' icon={faPencilAlt}/>  publish
+                <NavLink className='NavItem' to={`/publish/longnew/${username}`}>
+                    <FontAwesomeIcon className='iconSize' icon={faPencilAlt}/>  publish
                 </NavLink>
             </li>
             <li className="dropdown">
-                <a className="dropdown-toggle NavItem" data-toggle="dropdown" href="#">
-                    <FontAwesomeIcon className='F12' icon={faUser}/>
-                    profile<span className="caret"></span>
+                <a className="dropdown-toggle NavItem dropNav" data-toggle="dropdown" href="#">
+                    <FontAwesomeIcon className='iconSize' icon={faUser}/> profile<span className="caret"></span>
                 </a>
-                <ul className="dropdown-menu ProfileOptions">
+                <ul className="dropdown-menu bg-primary ProfileOptions">
                     <li>
-                        <NavLink to='/yourprofile/:user_id'>
-                            <FontAwesomeIcon className='F12' icon={faUser}/> your profile
+                        <NavLink className='subNavItem ColorW' to='/yourprofile/:user_id'>
+                            <FontAwesomeIcon className='iconSize' icon={faUser}/> your profile
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink to={`/profile/data/${username}`}>
-                            <FontAwesomeIcon className='F12' icon={faTable}/>your data
+                        <NavLink className='subNavItem ColorW' to={`/profile/data/${username}`}>
+                            <FontAwesomeIcon className='iconSize' icon={faTable}/> your data
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink to='/yourprofile/:user_id'>
-                            <FontAwesomeIcon className='F12' icon={faList}/>your publications
+                        <NavLink className='subNavItem ColorW' to='/yourprofile/:user_id'>
+                            <FontAwesomeIcon className='iconSize' icon={faList}/> your publications
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink to={`/profile/edit/${username}`}>
-                            <FontAwesomeIcon className='F12' icon={faUserEdit}/>edit profile
+                        <NavLink className='subNavItem ColorW' to={`/profile/edit/${username}`}>
+                            <FontAwesomeIcon className='iconSize' icon={faUserEdit}/> edit profile
                         </NavLink>
                     </li>
                 </ul>
