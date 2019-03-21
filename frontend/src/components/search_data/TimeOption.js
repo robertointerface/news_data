@@ -31,7 +31,7 @@ const TimeOptions = (props) => {
         <div className={'list-group' + (props.list.length > 4 ? ' scroll_300' : '' )}>
                 {props.list.map((x, i) =>
 
-                        <FormGroup key={`${x.name}-${i}`}>
+                        <FormGroup className='TimeGroup' key={`${x.name}-${i}`}>
                             {(x.checked == false) ?
                                 <TimeInput onChange={props.onChange} checked={x.checked} name={x.name} id={x.id}/>
                                 :  <TimeInputChecked onChange={props.onChange} checked={x.checked} name={x.name} id={x.id}/>
@@ -45,7 +45,7 @@ const TimeOptions = (props) => {
 const TimeInput = (props) => {
     let {onChange, id, name} = props
     return(
-        <a href='#' onClick={(e) => onChange(e, id)}>
+        <a className='list-group-item' href='#' onClick={(e) => onChange(e, id)}>
             <Checkbox
                 key={name}
                 value={name}>{name}</Checkbox>
@@ -56,7 +56,7 @@ const TimeInput = (props) => {
 const TimeInputChecked = (props) => {
     let {onChange, id, name} = props
     return(
-         <a href='#' onClick={(e) => onChange(e, id)}>
+         <a className='list-group-item' href='#' onClick={(e) => onChange(e, id)}>
             <Checkbox
                 checked
                 key={name}

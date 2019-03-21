@@ -245,7 +245,7 @@ const Modify_current_search = (state = {}, action) =>{
                 Geo: [],
                 SelectedGeo: [],
                 queryMap: {},
-                requestActive: false,
+                requestActive: true,
                 progress: 40,
                 errorMessage: ''
             }
@@ -273,12 +273,11 @@ const Modify_current_search = (state = {}, action) =>{
                     id: action.indicator,
                     name: action.name
                 },
-                Times: unSelectItems(state.Times),
-                SelectedTimes: [],
-                Geo: unSelectItems(state.Geo),
-                SelectedGeo: [],
+               // Times: unSelectItems(state.Times),
+                //SelectedTimes: [],
+                //Geo: unSelectItems(state.Geo),
+                //SelectedGeo: [],
                 PossibleIndicators: setItemSelected(state.PossibleIndicators, action.indicator),
-                progress: 80
             }
         case C.SELECT_UNIT:
             return {
@@ -301,8 +300,8 @@ const Modify_current_search = (state = {}, action) =>{
         case C.CHECK_REQUEST:
             return {
                  ...state,
-                requestActive: canMakeRequest(state.Times, state.Geo),
-                progress: setProgress100(state.SelectedTimes, state.SelectedGeo)
+                requestActive: canMakeRequest(state.Indicator, state.Times, state.Geo),
+                progress: setProgress100(state.Indicator, state.SelectedTimes, state.SelectedGeo)
             }
         case C.SET_INDICATORS:
             return {

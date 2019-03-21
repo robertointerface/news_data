@@ -2,6 +2,7 @@ import React from 'react';
 import {Component} from 'react'
 import PropTypes from 'prop-types';
 import PageTemplate from 'components/main/PageTemplate'
+import 'components/stylesheets/createNew.css'
 
 import {
     CreateNewFormContainer,

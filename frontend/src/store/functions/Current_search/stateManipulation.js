@@ -267,11 +267,11 @@ const createGeoList = geoOption => {
 }
 
 
-const setProgress100 = (timeList = [], GeoList = []) => {
+const setProgress100 = (indicator={}, timeList = [], GeoList = []) => {
     /*
         @Func: Verify if time and geo have been selected
      */
-    if(timeList.length > 0 && GeoList.length > 0){
+    if(!(Object.keys(indicator).length === 0 && indicator.constructor === Object) && timeList.length > 0 && GeoList.length > 0){
         return 100
     } else{
         return 80

@@ -224,16 +224,15 @@ export const getSectorTopics = sector => {
 
 
 
-export const canMakeRequest = ( timeList, geoList ) => {
+export const canMakeRequest = (indicator={}, timeList=[], geoList=[] ) => {
     /*
         @Func: Verify if user has selected a minimum of one time and one geo.
         @Return: False if a minimum of 1 item is selected on timeList and geo List
             otherwise return true
      */
-    var canMakeRequest;
     var timeSelected = timeList.find(time => time['checked'] == true)
     var geoSelected = geoList.find(geo => geo['checked'] == true)
-    if(timeSelected && geoSelected){
+    if(!(Object.keys(indicator).length === 0 && indicator.constructor === Object) && timeSelected && geoSelected){
        return false
     }
     return true

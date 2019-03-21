@@ -5,7 +5,7 @@ export const RequestButton = ({active=true, onClick=f=>f}) => {
     return (
         <button
             type="button"
-            className="btn btn-primary"
+            className="btn btn-primary MT05"
             disabled={active}
             onClick={onClick}>
             Request data

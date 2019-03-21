@@ -1,5 +1,5 @@
 import React from 'react';
-import OptionsCard from './optionsCard'
+import OptionsCard from 'components//search_data/optionsCard'
 
 const SearchComponent = ({title='title', list=[], onSelect=f=>f}) => {
     return(

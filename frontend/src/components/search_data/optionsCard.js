@@ -6,7 +6,7 @@ import SelectList from 'ui/search_data/SelectList'
 const OptionsCard = ({cardTitle='options', list=[],  onSelect=f=>f}) => {
     let Title = <OptionsCardTitle title={cardTitle}/>;
     return (
-        <CardCol12 Component={Title}>
+        <CardCol12 Component={Title} headerClass={'bg-secondary ColorW'} >
             <SelectList list={list} onSelect={onSelect}/>
         </CardCol12>
     )

@@ -8,7 +8,7 @@ const GeoOptions = (props) => {
         <div className={'list-group' + (props.list.length > 4 ? ' scroll_300' : '' )}>
                 {props.list.map((x, i) =>
 
-                        <FormGroup key={`${x.name}-${i}`}>
+                        <FormGroup className='TimeGroup' key={`${x.name}-${i}`}>
                             {(x.checked == false) ?
                                 <GeoInput onChange={props.onChange} checked={x.checked} name={x.name} id={x.id}/>
                                 :  <GeoInputChecked onChange={props.onChange} checked={x.checked} name={x.name} id={x.id}/>
@@ -24,7 +24,7 @@ export default GeoOptions
 const GeoInput = (props) => {
     let {onChange, id, name} = props
     return(
-        <a href='#' onClick={(e) => onChange(e, id, name)}>
+        <a className='list-group-item' href='#' onClick={(e) => onChange(e, id, name)}>
             <Checkbox
                 key={name}
                 value={name}>{name}
@@ -36,7 +36,7 @@ const GeoInput = (props) => {
 const GeoInputChecked = (props) => {
     let {onChange, id, name} = props
     return(
-        <a href='#' onClick={(e) => onChange(e, id, name)}>
+        <a className='list-group-item' href='#' onClick={(e) => onChange(e, id, name)}>
             <Checkbox
                 checked
                 key={name}

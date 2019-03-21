@@ -30,13 +30,14 @@ const SearchBlock = props => {
                 {(Topic) ?
                     <div>
                         <IndicatorContainer/>
-                        <CardCol12 Component={OptionsCardTitle}>
+                        <CardCol12 Component={<OptionsCardTitle title={'Time and location'}/>}
+                                   headerClass={'bg-secondary ColorW'}>
                             <div className='card-body'>
                                 <div className='row'>
-                                    <div className="col-6">
+                                    <div className="col-6 colTime">
                                        <TimeContainer/>
                                     </div>
-                                    <div className='col-6'>
+                                    <div className='col-6 colTime'>
                                         <GeoContainer/>
                                     </div>
                                 </div>

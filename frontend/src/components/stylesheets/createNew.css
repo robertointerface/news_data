@@ -34,8 +34,8 @@
 				  padding-right: 2rem;
 				  padding-left: 2rem;}
 
-
-
+.colTime{padding: 0rem;}
+.TimeGroup{margin-bottom: 0rem;}
 @media only screen and (min-width: 770px){
 		.dropdown-menu>li>a {white-space: normal;}
 		.ReferenceSearchButton, .RequestReferenceButton{font-size: 1.6rem;}

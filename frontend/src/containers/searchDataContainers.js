@@ -104,6 +104,7 @@ export const IndicatorContainer = connect(
             onSelect(e, id, name){
                 e.preventDefault();
                 dispatch(select_indicator(id, name))
+                dispatch(check_request())
             }
         })
 )(SearchComponent)
