@@ -269,7 +269,15 @@ const createGeoList = geoOption => {
 
 const setProgress100 = (indicator={}, timeList = [], GeoList = []) => {
     /*
-        @Func: Verify if time and geo have been selected
+        @Func: Verify if indicator, time and geo have been selected
+        @params
+            indicator - JSON object with reducer data Results_management.Indicator
+            timelist - array with reducer data Results_management.SelectedTimes
+            GeoList - array with reducer data Results_management.SelectedGeo
+
+        @return
+            if all items selected return 100
+            otherwise return 80
      */
     if(!(Object.keys(indicator).length === 0 && indicator.constructor === Object) && timeList.length > 0 && GeoList.length > 0){
         return 100

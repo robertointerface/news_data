@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 
-const PrimaryButton = ({message='', onClick=f=>f}) => {
+const PrimaryButton = ({message='', extraClass='', onClick=f=>f}) => {
     return (
         <button
             type="button"
-            className="btn btn-primary"
+            className={"btn btn-primary " + extraClass}
             onClick={onClick}>
             {message}
         </button>

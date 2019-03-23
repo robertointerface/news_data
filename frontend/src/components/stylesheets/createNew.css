@@ -37,30 +37,50 @@
 .colTime{padding: 0rem;}
 .TimeGroup{margin-bottom: 0rem;}
 @media only screen and (min-width: 770px){
-		.dropdown-menu>li>a {white-space: normal;}
-		.ReferenceSearchButton, .RequestReferenceButton{font-size: 1.6rem;}
 
-		.AttachGraph, .Graph, .GraphButton, .RereferenceSave, .GoToDataBase, .ChangeUnitMessure, #InsertExternalLinkButton{font-size: 1.4rem;}
+	.NewForm{
+		font-size: 1.1rem;
+		font-family: bitter;
+		margin-bottom: 0rem;
+		margin-left: 0.5rem;
+		padding: 0.2rem;
+		font-weight: 600;
+	}
+	.dropdown-menu>li>a {white-space: normal;}
+	.ReferenceSearchButton, .RequestReferenceButton{font-size: 1.6rem;}
 
-		.DatosAdjuntadosButton{font-size: 1.4rem;}
+	.AttachGraph, .Graph, .GraphButton, .RereferenceSave, .GoToDataBase, .ChangeUnitMessure, #InsertExternalLinkButton{font-size: 1.4rem;}
 
-		.SelectTopic, .SelectArea, .SelectIndicators,
-		.DisplayChoosenText, .ReferenceProgressBar,
-		.progressBarText, .SumbitNewButton{font-size: 1.4rem;}
+	.DatosAdjuntadosButton{font-size: 1.4rem;}
 
-		.dropdown-menu>li>a.ReferenceSearchItem {padding: 1rem;}
-		.dropdown-menu>li>a.YearElement, .MonthElement {padding: 1rem;}
-		#DatosAdjuntadosList{width:100%; word-wrap: break-word;}
-		.listSelectTopic, .listSelectIndicators{width:100%;}
-		.RereferenceSave, .GoToDataBase{padding: 0.75rem;}
-		.ChangeUnitMessureDiv{margin-top: 1rem;}
-		.ChangeUnitMessure{padding: 0.75rem;}
-		.ResultExplanation{padding-top: 2rem;}
+	.SelectTopic, .SelectArea, .SelectIndicators,
+	.DisplayChoosenText, .ReferenceProgressBar,
+	.progressBarText, .SumbitNewButton{font-size: 1.4rem;}
+
+	.dropdown-menu>li>a.ReferenceSearchItem {padding: 1rem;}
+	.dropdown-menu>li>a.YearElement, .MonthElement {padding: 1rem;}
+	#DatosAdjuntadosList{width:100%; word-wrap: break-word;}
+	.listSelectTopic, .listSelectIndicators{width:100%;}
+	.RereferenceSave, .GoToDataBase{padding: 0.75rem;}
+	.ChangeUnitMessureDiv{margin-top: 1rem;}
+	.ChangeUnitMessure{padding: 0.75rem;}
+	.ResultExplanation{padding-top: 2rem;}
 
 }
 
 
 @media only screen and (min-width: 425px) and (max-width: 769px){
+	.NewForm{
+		font-size: 1.1rem;
+		font-family: bitter;
+		margin-bottom: 0rem;
+		margin-left: 0.5rem;
+		padding: 0.2rem;
+		font-weight: 600;
+	}
+
+
+
 	.dropdown-menu>li>a {white-space: normal;
 							}
 	.ReferenceSearchButton, .RequestReferenceButton,

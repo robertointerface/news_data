@@ -7,8 +7,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 export const DropDownMenuRemove = ({title='', list=[], onRemove=f=>f}) => {
 
     return (
-        <div className="dropdown row">
-            <button className="btn btn-primary dropdown-toggle" type="button" id="commonDropdown"
+        <div className="dropdown">
+            <button className="btn btn-primary dropdown-toggle MB05" type="button" id="commonDropdown"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 {title}
             </button>
@@ -16,11 +16,6 @@ export const DropDownMenuRemove = ({title='', list=[], onRemove=f=>f}) => {
                 <div className='list-group'>
                     {list.map((x, i) =>
                         <div key={`REF-${x.id}-${i}`} className='list-group-item'>
-                            <div className='offset-10 col-2'>
-                                 <a href='#' onClick={(e) => onRemove(e, x.type, x.id)}>
-                                    <FontAwesomeIcon className='F12' icon={faTimesCircle}/>
-                                 </a>
-                            </div>
                             <div className='col-12'>
                                 <div className='row'>
                                     <div className='col-2'>
@@ -29,12 +24,17 @@ export const DropDownMenuRemove = ({title='', list=[], onRemove=f=>f}) => {
                                             <FontAwesomeIcon className='F12' icon={faChartBar}/>
                                         }
                                     </div>
-                                    <div className='col-10'>
-                                        <a>
-                                            {x.name}
+                                    <div className='col-2 offset-8'>
+                                        <a href='#' onClick={(e) => onRemove(e, x.type, x.id)}>
+                                            <FontAwesomeIcon className='F12' icon={faTimesCircle}/>
                                         </a>
                                     </div>
                                 </div>
+                            </div>
+                            <div className='col-12'>
+                                    <a>
+                                        {x.name}
+                                    </a>
                             </div>
                         </div>
                     )}

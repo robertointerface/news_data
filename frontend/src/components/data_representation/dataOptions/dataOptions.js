@@ -11,8 +11,8 @@ import { faTools } from '@fortawesome/free-solid-svg-icons'
 const DataOptions = ({resultId='', resultSaved=false}) => {
     return (
         <div>
-            <div className="dropdown row">
-                <button className="btn btn-primary dropdown-toggle" type="button" id="optionsDropdown"
+            <div className="dropdown">
+                <button className="btn btn-primary dropdown-toggle float-right MR05" type="button" id="optionsDropdown"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <FontAwesomeIcon className='F12' icon={faTools}/>
                 </button>

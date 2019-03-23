@@ -6,7 +6,7 @@ export const NewTitleForm = ({name='', value='', onChange=f=>f}) => {
     return(
         <div className='form-group row'>
             <label className='col-12'>
-                <span className='carachLeft'>Title {characLeft}</span>
+                <p className='NewForm'>Title <span className='carachLeft'>{characLeft}</span></p>
             </label>
             <div className='col-12'>
                <input className='form-control'
@@ -14,7 +14,7 @@ export const NewTitleForm = ({name='', value='', onChange=f=>f}) => {
                        type='text'
                        name={name}
                        value={value}
-                       placeholder='Headline (max. 100 carach)'
+                       placeholder='Headline (max. 100 charac)'
                        onChange={(e) => onChange(e)}
                 />
             </div>
@@ -22,12 +22,12 @@ export const NewTitleForm = ({name='', value='', onChange=f=>f}) => {
     )
 }
 
-export const NewHeadlineForm = ({name='', value='', onChange=f=>f}) => {
+export const NewHeadlineForm = ({title='', name='', value='', onChange=f=>f}) => {
     var characLeft = (100 - value.length).toString()
     return(
         <div className="form-group row">
             <div className='col-12'>
-                <span className='carachLeft'>{characLeft}</span>
+                <p className='NewForm'>{title} <span className='carachLeft'>{characLeft}</span></p>
             </div>
             <div className='col-12'>
                 <input className='form-control'
@@ -35,7 +35,7 @@ export const NewHeadlineForm = ({name='', value='', onChange=f=>f}) => {
                        type='text'
                        name={name}
                        value={value}
-                       placeholder='Headline (max. 100 carach)'
+                       placeholder='Headline (max. 100 charac)'
                        onChange={(e) => onChange(e)}
                 />
             </div>
@@ -49,7 +49,7 @@ export const NewContentForm = ({onChange=f=>f, value='', name=''}) => {
     return(
         <div className="form-group row">
              <div className='col-12'>
-                <span className='carachLeft'>{characLeft}</span>
+                 <p className='NewForm'>Content <span className='carachLeft'>{characLeft}</span></p>
             </div>
             <div className='col-12'>
                 <textarea className='form-control'
@@ -57,7 +57,7 @@ export const NewContentForm = ({onChange=f=>f, value='', name=''}) => {
                           name={name}
                           value={value}
                           onChange={(e) => onChange(e)}
-                          placeholder='(max. 600 carach)'
+                          placeholder='(max. 600 charac)'
                           rows='20'
                           cols='50'>
                 </textarea>

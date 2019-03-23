@@ -11,7 +11,7 @@ const DataTitle = ({title='', resultId=0 ,explination='', onRemove=f=>f}) => {
                     <div className='col-10'>
                         <p className='resultTitle ColorW'>{title}</p>
                     </div>
-                    <div className='col-2'>
+                    <div className='col-1 offset-1'>
                         <a href='#' onClick={(e) => onRemove(e, resultId)}>
                             <FontAwesomeIcon className='ColorW F12' icon={faTimesCircle}/>
                         </a>

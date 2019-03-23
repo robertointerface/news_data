@@ -4,7 +4,7 @@ import { DropdownButton, MenuItem, ButtonToolbar } from 'react-bootstrap';
 
 export const DropDownMenu = ({title='', list=[], onClick=f=>f}) => {
     return (
-        <div className="dropdown row">
+        <div className="dropdown">
             <button className="btn btn-primary dropdown-toggle" type="button" id="commonDropdown"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 {title}

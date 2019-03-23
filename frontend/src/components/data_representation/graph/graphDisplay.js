@@ -20,7 +20,7 @@ const GraphDisplay = ({list=[], onRemove=f=>f, onAttach=f=>f}) => {
             <section className='row'>
                 {(chartList.length > 0) ?
                     chartList.map((chart, i) =>
-                        <div className='col-6' key={`CHART-${chart.id}-${i}`}>
+                        <div className='col-12 col-lg-6' key={`CHART-${chart.id}-${i}`}>
                             <div className='card'>
                                 <div className='card-header bg-primary'>
                                     <div className='row'>

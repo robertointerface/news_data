@@ -4,12 +4,12 @@ import {DropDownMenu} from 'ui/common/dropdowns/dropdown'
 
 const ChangeUnitMeasure = (props) => {
     return (
-        <di classname="col-12">
+        <div>
         {(props.list) ?
             <DropDownMenu title={'change unit measure'} list={props.list} onClick={props.onClick}/>
             : null
         }
-        </di>
+        </div>
     )
 }
 

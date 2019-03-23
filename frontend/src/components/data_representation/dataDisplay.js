@@ -17,8 +17,8 @@ class DataDisplay extends Component{
             <section className='row'>
                 {(resultLenght > 0) ?
                     list.map((result, i) =>
-                        <div className='col-6' key={`RES-${result.id}-${i}`}>
-                                <div className='card'>
+                        <div className='col-12 col-lg-6' key={`RES-${result.id}-${i}`}>
+                                <div className='card MB05'>
                                         <div className='card-header bg-primary'>
                                             <div className='col-12'>
                                                 <DataTitle
@@ -42,19 +42,19 @@ class DataDisplay extends Component{
                                                 </div>
                                                 <div className='col-12'>
                                                     <div className='row'>
-                                                        <div className='offset-1 col-5 '>
+                                                        <div className='col-lg-4 col-md-5 col-6'>
                                                             <AttachDataRequest
                                                                 onClick={(e) => onAttach(e, result.id)}
                                                                 attached={result.attached}
                                                             />
                                                         </div>
-                                                        <div className='offset-1 col-5'>
+                                                        <div className='col-lg-4 offset-lg-4 col-md-5 col-4 offset-2'>
                                                             <DataOptions resultId={result.id} resultSaved={result.saved}/>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 {(result.searchObject.PossibleUnitMeasure.length > 1) ?
-                                                    <div className='col-8 offset-2 MT1 MB1'>
+                                                    <div className='col-12 ML05 MT1 MB1'>
                                                         <ChangeUnitMeasureContainer props={result.id}/>
                                                     </div> : null
                                                 }
