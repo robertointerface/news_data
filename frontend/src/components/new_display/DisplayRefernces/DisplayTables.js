@@ -50,8 +50,8 @@ class DisplayTables extends Component{
         return(
             <div className='row'>
                 {tables.map((table, i) =>
-                        <div className='col-6' key={table.id}>
-                            <div className='card'>
+                        <div className='col-12 col-lg-6' key={table.id}>
+                            <div className='card MT05'>
                                 <div className='card-header bg-primary'>
                                     <div className='col-12'>
                                         <TableTitle
@@ -67,9 +67,9 @@ class DisplayTables extends Component{
                                                    rowList={table.resultObject.filterResult}
                                             />
                                         </div>
-                                        <div className='offset-1 col-3'>
+                                        <div className='col-6 col-md-3'>
                                             <div className="dropdown">
-                                                <button className="btn btn-primary dropdown-toggle" type="button" id={`optionsDropdow${i}`}
+                                                <button className="btn btn-primary dropdown-toggle ML05 MB05" type="button" id={`optionsDropdow${i}`}
                                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     <FontAwesomeIcon className='F12' icon={faTools}/>
                                                 </button>

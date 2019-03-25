@@ -6,7 +6,6 @@ import Truncate from 'react-truncate'
 import { faTimesCircle } from '@fortawesome/free-regular-svg-icons'
 import { faTable, faChartBar } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
 const NewsDisplayList = ({News=[]}) => {
     return (
         <div>
@@ -39,8 +38,14 @@ const NewsDisplayList = ({News=[]}) => {
                                              </div>
                                          </div>
                                      </div>
-                                  </div>
-                                 <p className='newContent'>{x.content}</p>
+                                 </div>
+                                 <div className='row'>
+                                     <div className='col-lg-8 col-12'>
+                                         <Truncate lines={1} ellipsis={<span>...</span>}>
+                                            <p className='newContent ML05'>{x.content}</p>
+                                         </Truncate>
+                                     </div>
+                                 </div>
                              </div>
                         </CardCol12>
                     )}

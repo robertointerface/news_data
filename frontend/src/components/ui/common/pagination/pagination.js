@@ -9,22 +9,20 @@ import {faTable} from "@fortawesome/free-solid-svg-icons/index";
 
 const Pagination = ({presentPage=1, begin=[], end=[], lastPage=0, goToPage=f=>f})=> {
     return(
-        <div className='row'>
-                 <div className='col-1'>
-                    <PaginationButton page={1} message={'Begin'} onClick={goToPage}/>
-                 </div>
+        <div>
+
+            <PaginationButton page={1} message={'Begin'} onClick={goToPage}/>
+
 
             {(presentPage > 1) ?
                 <a href='#' onClick={(e) => goToPage(e, presentPage - 1)} >
-                    <FontAwesomeIcon className='F16' icon={faBackward}/>
+                    <FontAwesomeIcon className='ButtonFont MR1' icon={faBackward}/>
                 </a> : null
             }
 
-            <div className='col-2'>
                 {begin.map(x =>
                     <PaginationButton page={x} onClick={goToPage} active={(x == presentPage) ? true: false}/>
                 )}
-            </div>
 
             {/* // if the present page is 2 pages or less from the last 3 pages, then is not required to print '...'.
             //i.e if all pages are 1,2,3 ... 8, 9, 10  if the present page is 6 it looks confusing to display
@@ -33,24 +31,21 @@ const Pagination = ({presentPage=1, begin=[], end=[], lastPage=0, goToPage=f=>f}
             {(end.length > 0 ) ?
                 ((presentPage + 2) >= end[0]) ?
                     null :
-                    <p className='etc'>...</p>
+                    <span className='etc MR1 ButtonFont'>...</span>
                 :null
             }
 
-            <div className='col-2'>
-                {end.map(x =>
-                    <PaginationButton page={x} onClick={goToPage} active={(x == presentPage) ? true: false}/>
-                    )
-                }
-            </div>
+            {end.map(x =>
+                <PaginationButton page={x} onClick={goToPage} active={(x == presentPage) ? true: false}/>
+                )
+            }
 
             {(presentPage < lastPage)?
                 <a href='#' onClick={(e) => goToPage(e, presentPage + 1)}>
-                    <FontAwesomeIcon className='F16' icon={faForward}/>
+                    <FontAwesomeIcon className='ButtonFont' icon={faForward}/>
                 </a>
                 : null
             }
-
         </div>
     )
 }

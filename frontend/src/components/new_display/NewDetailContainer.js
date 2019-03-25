@@ -6,7 +6,7 @@ import PageTemplate from 'components/main/PageTemplate'
 import DisplayTables from 'components/new_display/DisplayRefernces/DisplayTables'
 import DisplayCharts from 'components/new_display/DisplayRefernces/DisplayCharts'
 import {parseList} from 'functions/Results_management/stateManipulation'
-
+import 'components/stylesheets/display.css'
 class NewDetailContainer extends Component{
     constructor(props){
         super(props)
@@ -18,7 +18,9 @@ class NewDetailContainer extends Component{
             headline3: '',
             content: '',
             tables: [],
-            charts: []
+            charts: [],
+            created_by: '',
+            time_stamp: ''
         }
     }
 
@@ -39,19 +41,27 @@ class NewDetailContainer extends Component{
     }
 
     render(){
-        var {new_title, headline1, headline2, headline3, content, tables, charts} = this.state
+        var {new_title,
+            headline1,
+            headline2,
+            headline3,
+            content,
+            tables,
+            charts,
+            created_by,
+            time_stamp} = this.state
         return (
             <PageTemplate>
                 {(new_title)?
                     <div className='row'>
-                        <div className='col-12'>
-                            <NewCard title={new_title}
-                                     headline1={headline1}
-                                     headline2={headline2}
-                                     headline3={headline3}
-                                     content={content}
-                            />
-                        </div>
+                        <NewCard title={new_title}
+                                 headline1={headline1}
+                                 headline2={headline2}
+                                 headline3={headline3}
+                                 content={content}
+                                 author={created_by}
+                                 time_stamp={time_stamp}
+                        />
                         {(tables.length > 0) ?
                             <div className='col-12'>
                                 <DisplayTables tables={tables}/>

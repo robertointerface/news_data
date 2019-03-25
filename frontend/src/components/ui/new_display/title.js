@@ -20,11 +20,11 @@ const NewTitle = ({title='', id=0, author='', date=''}) => {
                     e.preventDefault();
                     history.push(`/display/user/${author}`) }
                 }>
-                    <p className='ColorW'>{author}</p>
+                    <p className='ColorW'>By: {author}</p>
                 </a>
             </div>
             <div className='col-6'>
-                <p className='ColorW'>{date}</p>
+                <p className='ColorW float-right'>{date}</p>
             </div>
         </div>
     )

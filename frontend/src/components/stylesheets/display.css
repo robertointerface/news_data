@@ -25,3 +25,40 @@
     border: #eea236;
     color: #007bff;
 }
+
+
+@media only screen and (min-width: 858px){
+
+    .NewContent{font-size: 1.2rem;
+				margin-top: 1.2rem;
+				line-height: 150%;}
+
+    .BulletPoints{font-size: 1.2rem;}
+}
+
+@media only screen and (min-width: 768px) and (max-width: 857px){
+
+	.NewContent{font-size: 1.2rem;
+				margin-top: 1.2rem;
+				line-height: 150%;}
+    .BulletPoints{font-size: 1.2rem;}
+
+}
+
+@media only screen and (min-width: 425px) and (max-width: 767px){
+    /*.nav>li>a.NavItem{padding: 1.5rem;}*/
+	.NewContent{font-size: 1rem;
+				margin-top: 1.2rem;
+				line-height: 150%;}
+    .BulletPoints{font-size: 1.2rem;}
+}
+
+
+@media only screen and (max-width: 424px){
+    /*.nav>li>a.NavItem{padding: 1.5rem;}*/
+    .BulletPoints{font-size: 1.1rem;}
+    .NewContent{font-size: 1rem;
+				margin-top: 1.2rem;
+				line-height: 150%;}
+
+}

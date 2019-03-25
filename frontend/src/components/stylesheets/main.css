@@ -20,16 +20,33 @@ body {
 .MB05{
     margin-bottom: 0.5rem;
 }
+.MB1{
+      margin-bottom: 1rem;
+}
 .ML05{
     margin-left: 0.5rem;
-}
 
+}
+.bgGrey{
+    background-color: gray;
+}
+.MR1{
+    margin-right: 1rem;
+}
 .MR05{
     margin-right: 0.5rem;
 }
 .MT05{
     margin-top: 0.5rem;
 }
+.MT1{
+    margin-top: 1rem;
+}
+
+
+
+
+
 .carachLeft{
     border-radius: 25%;
     background: #007bff;
@@ -55,16 +72,7 @@ body {
 .F16{
     font-size: 1.6rem;
 }
-.MT1{
-    margin-top: 1rem;
-}
 
-.MB1{
-      margin-bottom: 1rem;
-}
-.MB0{
-     margin-bottom: 0rem;
-}
 
 .btn span.glyphicon {
 	opacity: 0;
@@ -175,6 +183,8 @@ body {
 	tr{font-size: 1rem;}
      .dropNav{margin-right: 2rem;}
 
+     .ButtonFont{font-size: 1.2rem;}
+
 }
 
 @media only screen and (min-width: 425px) and (max-width: 767px){
@@ -190,7 +200,7 @@ body {
 	tr{font-size: 1rem;}
     .btn{font-size:  1.1rem;}
     .fontaweSpan{font-size: 1.2rem;}
-
+    .ButtonFont{font-size: 0.85rem;}
 }
 
 
@@ -212,5 +222,5 @@ body {
 
     .fontaweSpan{font-size: 1.2rem;}
 
-
+    .ButtonFont{font-size: 0.85rem;}
 }
