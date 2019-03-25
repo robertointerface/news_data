@@ -72,7 +72,10 @@ export const handle_save_result_user = resultId => {
             })
             .then(response => {
                 if(response.status == 200){
-                    return dispatch(info_table_display(resultId, 'data saved'))
+                    return Promise.all([
+                        dispatch(info_table_display(resultId, 'data saved')),
+                        dispatch(set_table_saved(resultId))
+                    ])
                 }
                 else{
                     throw 'error saving, please try again.'
