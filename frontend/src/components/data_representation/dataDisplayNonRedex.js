@@ -91,8 +91,8 @@ class DataDisplayNonRedux extends Component{
             <section className='row'>
                 {(list.length > 0) ?
                     list.map((result, i) =>
-                        <div className='col-6' key={`RES-${result.id}-${i}`}>
-                                <div className='card'>
+                        <div className='col-12 col-lg-6' key={`RES-${result.id}-${i}`}>
+                                <div className='card MT05'>
                                         <div className='card-header bg-primary'>
                                             <div className='col-12'>
                                                 <DataTitle
@@ -116,7 +116,7 @@ class DataDisplayNonRedux extends Component{
                                                 </div>
                                                 <div className='col-12'>
                                                     <div className='row'>
-                                                        <div className='offset-1 col-5'>
+                                                        <div className='col-lg-4 col-md-5 col-6 ML05'>
                                                             <DataOptionsSearch resultId={result.id}
                                                                                resultSaved={result.saved}
                                                                                onGraph={onGraph}
@@ -126,7 +126,7 @@ class DataDisplayNonRedux extends Component{
                                                     </div>
                                                 </div>
                                                 {(result.searchObject.PossibleUnitMeasure.length > 1) ?
-                                                    <div className='col-8 offset-2 MT1 MB1'>
+                                                    <div className='col-12 ML05 MT1 MB1'>
                                                         <ChangeUnitMeasureSearch list={result.searchObject.PossibleUnitMeasure}
                                                                            resultId={result.id}
                                                                            onClick={onChangeUnit}/>

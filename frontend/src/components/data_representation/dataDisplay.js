@@ -8,7 +8,7 @@ import {
     ChangeUnitMeasureContainer,
     DisplayDataMessage
 } from 'containers/searchDataContainers'
-import DataOptions from './dataOptions/dataOptions'
+import DataOptions from 'components/data_representation/dataOptions/dataOptions'
 
 class DataDisplay extends Component{
     render(){

@@ -25,9 +25,6 @@ const DataOptions = ({resultId='', resultSaved=false}) => {
                     </div>
                 </div>
             </div>
-            {(resultSaved) ?
-                <p>Data saved</p> : null
-            }
         </div>
     )
 }

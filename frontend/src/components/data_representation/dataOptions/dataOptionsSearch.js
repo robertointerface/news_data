@@ -12,7 +12,7 @@ import { faTools } from '@fortawesome/free-solid-svg-icons'
 const DataOptionsSearch = ({resultId='', resultSaved=false, onGraph=f=>f, onExcel=f=>f, onSave=f=>f}) => {
     return (
         <div>
-            <div className="dropdown row">
+            <div className="dropdown">
                 <button className="btn btn-primary dropdown-toggle" type="button" id="optionsDropdown"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <FontAwesomeIcon className='F12' icon={faTools}/>
