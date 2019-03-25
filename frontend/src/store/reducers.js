@@ -256,9 +256,13 @@ const Modify_current_search = (state = {}, action) =>{
                      id: action.topic,
                      name: action.name,
                  },
+                 Indicator: {},
+                 SelectedTimes: [],
+                 SelectedGeo: [],
                  PossibleTopics: setItemSelected(state.PossibleTopics, action.topic),
                  TopicMap: getTopicMap(state.ThirdPartyAPI.id, state.Sector.id, action.topic),
                  progress: 60,
+                 requestActive: true,
                  errorMessage: ''
              }
         case C.SELECT_VERSION:
