@@ -206,15 +206,11 @@ class UserSearchComponent extends Component {
                     id: id,
                     name: name
                 },
-                Times: unSelectItems(this.state.currentSearch.Times),
-                SelectedTimes: [],
-                Geo: unSelectItems(this.state.currentSearch.Geo),
-                SelectedGeo: [],
-                PossibleIndicators: setItemSelected(this.state.currentSearch.PossibleIndicators, id),
-                progress: 80
+                PossibleIndicators: setItemSelected(this.state.currentSearch.PossibleIndicators, id)
             }
-        })
+        }, () => this.check_request())
     }
+
     select_topic(id, name){
 
          return this.setState({
@@ -225,9 +221,13 @@ class UserSearchComponent extends Component {
                      id: id,
                      name: name,
                 },
+                Indicator: {},
+                SelectedTimes: [],
+                SelectedGeo: [],
                 PossibleTopics: setItemSelected(this.state.currentSearch.PossibleTopics, id),
                 TopicMap: getTopicMap(this.state.currentSearch.ThirdPartyAPI.id, this.state.currentSearch.Sector.id, id),
                 progress: 60,
+                requestActive: true,
                 errorMessage: ''
             }
         })
@@ -305,8 +305,8 @@ class UserSearchComponent extends Component {
             ...this.state,
             currentSearch: {
                 ...this.state.currentSearch,
-                requestActive: canMakeRequest(this.state.currentSearch.Times, this.state.currentSearch.Geo),
-                progress: setProgress100(this.state.currentSearch.SelectedTimes, this.state.currentSearch.SelectedGeo)
+                requestActive: canMakeRequest(this.state.currentSearch.Indicator, this.state.currentSearch.Times, this.state.currentSearch.Geo),
+                progress: setProgress100(this.state.currentSearch.Indicator, this.state.currentSearch.SelectedTimes, this.state.currentSearch.SelectedGeo)
             }
         })
    }
@@ -452,39 +452,41 @@ class UserSearchComponent extends Component {
         return(
             <PageTemplate>
                 <div className='row'>
-                    <div className='col-4'>
+                    <div className='col-xl-4 col-md-6 col-12'>
                         <SearchComponent title={'Databases'}
                                          list={PossibleThirdPartyAPI}
                                          onSelect={this.onSelectDatabase}/>
                     </div>
                     {(!(Object.keys(ThirdPartyAPI).length === 0 && ThirdPartyAPI.constructor === Object)) ?
-                        <div className='col-4'>
+                        <div className='col-lg-4 col-md-6 col-12'>
                             <SearchComponent title={'Sectors'} list={PossibleSectors} onSelect={this.onSelectSector}/>
                         </div>
                         : null
 
                     }
                     {(!(Object.keys(Sector).length === 0 && Sector.constructor === Object)) ?
-                        <div className='col-4'>
+                        <div className='col-xl-4 col-md-6 col-12'>
                             <SearchComponent title={'topics'} list={PossibleTopics} onSelect={this.onSelectTopic}/>
                         </div>
                         : null
                     }
                     {(!(Object.keys(Topic).length === 0 && Topic.constructor === Object)) ?
-                        <div className='col-4'>
+                        <div className='col-xl-4 col-md-6 col-12'>
                             <SearchComponent title={'Indicators'} list={PossibleIndicators} onSelect={this.onSelectIndicator}/>
                         </div>
                         : null
                     }
                     {(!(Object.keys(Indicator).length === 0 && Indicator.constructor === Object)) ?
-                            <div className='col-4'>
-                                    <CardCol12 Component={OptionsCardTitle}>
+                            <div className='col-xl-4 col-md-6 col-12'>
+                                     <CardCol12 Component={<OptionsCardTitle title={'Time and location'}/>}
+                                                cardClass={'MT05'}
+                                                headerClass={'bg-secondary ColorW'}>
                                         <div className='card-body'>
                                             <div className='row'>
-                                                <div className="col-6">
+                                                <div className="col-6 colTime">
                                                    <TimeOptions list={Times} onChange={this.onChangeTime}/>
                                                 </div>
-                                                <div className='col-6'>
+                                                <div className='col-6 colTime'>
                                                     <GeoOptions list={Geo} onChange={this.onChangeGeo}/>
                                                 </div>
                                             </div>
