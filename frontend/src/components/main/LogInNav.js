@@ -52,11 +52,6 @@ const LogInNav = ({ username = '' }) => {
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink className='subNavItem ColorW' to='/yourprofile/:user_id'>
-                            <FontAwesomeIcon className='iconSize' icon={faList}/> your publications
-                        </NavLink>
-                    </li>
-                    <li>
                         <NavLink className='subNavItem ColorW' to={`/profile/edit/${username}`}>
                             <FontAwesomeIcon className='iconSize' icon={faUserEdit}/> edit profile
                         </NavLink>
