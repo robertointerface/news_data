@@ -7,6 +7,7 @@ import {GoogleLogin} from 'react-google-login';
 import {getCookie} from "../../../store/functions/auth/Cookies"
 import {history} from "../../../App";
 import {logged_in} from "../../../actions/actions";
+import {PrimaryButton} from 'ui/common/buttons/buttons'
 
 const LoginForm = ({title='Log in', onChange=f=>f, onSubmit=f=>f, username='', password='', error='', authSocial=f=>f}) => {
      return (
@@ -48,6 +49,9 @@ const LoginForm = ({title='Log in', onChange=f=>f, onSubmit=f=>f, username='', p
                     </button>
                     <p>{error}</p>
                 </form>
+                <PrimaryButton message={'forgot password'}
+                               onClick={e => {history.push(`/accounts/resetpassword`)}}>
+                </PrimaryButton>
              </FlexCard>
         )
 }

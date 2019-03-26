@@ -128,7 +128,8 @@ export const LogInContainer = connect(
                         return dispatch(set_flash_message(res.error))
                     }
                 })
-            }
+            },
+
         })
 )(LoginForm)
 
