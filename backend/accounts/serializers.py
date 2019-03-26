@@ -49,11 +49,10 @@ class UserPrivateInfoSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('username', 'about_me', 'location', 'first_name', 'last_name')
+        fields = ('about_me', 'location', 'first_name', 'last_name')
 
     def update(self, instance, validated_data):
         try:
-            instance.username = validated_data['username']
             instance.first_name = validated_data['first_name']
             instance.location = validated_data['location']
             instance.last_name = validated_data['last_name']
@@ -61,6 +60,8 @@ class UserPrivateInfoSerializer(serializers.ModelSerializer):
             instance.save()
         except (KeyError, DatabaseError):
             raise DatabaseError
+
+
 
 
 class FollowSerializer(serializers.ModelSerializer):

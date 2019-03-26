@@ -428,10 +428,11 @@ class EditUser(APIView):
         try:
             user = request.user
             request_data = self.request.data
-            serializer = UserPrivateInfoSerializer(data={'username': request_data['username'],
+            serializer = UserPrivateInfoSerializer(data={
                                                          'first_name': request_data['first_name'],
                                                          'last_name': request_data['last_name'],
-                                                         'location': request_data['location']})
+                                                         'location': request_data['location'],
+                                                            'about_me': request_data['about_me']})
             if serializer.is_valid(raise_exception=True):
                 serializer.update(user, serializer.validated_data)
         except ValidationError:
@@ -439,7 +440,8 @@ class EditUser(APIView):
         except (DatabaseError, AttributeError, KeyError):
             return Response(None, status=400, content_type=json)
         else:
-            return Response(None, status=200, content_type=json)
+            data = serializer.data
+            return Response(data, status=200, content_type=json)
 
 
 class ChangePassword(APIView):
