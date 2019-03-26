@@ -365,7 +365,9 @@ class SaveData(APIView):
                                                    'savedBy': user.id})
             if serializer.is_valid(raise_exception=True):
                 serializer.create(serializer.validated_data)
-        except (DatabaseError, ValidationError):
+        except DatabaseError:
             return Response(None, status=400, content_type=json)
+        except ValidationError:
+            return Response(None, status=200, content_type=json)
         else:
             return Response(None, status=200, content_type=json)
