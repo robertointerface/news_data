@@ -13,7 +13,8 @@ import {
     handle_user_change,
     logged_in,
     error_at_login,
-    remove_flash_message
+    remove_flash_message,
+    set_flash_message
 } from 'actions/actions'
 
 import {
@@ -116,13 +117,15 @@ export const LogInContainer = connect(
                 })
                 .then(res =>{
                     console.log('reply:' + JSON.stringify(res));
-                    if (res['status'] == 200){
-                        localStorage.setItem('token', res.token);
-                        dispatch(logged_in())
-                        history.push('/about')
-                    }
-                    else{
+                    if (res.status == 200){
+                        return Promise.all([
+                            localStorage.setItem('token', res.token),
+                            dispatch(logged_in(res.user)),
+                            history.push('/about'),
+                        ])
 
+                    } else{
+                        return dispatch(set_flash_message(res.error))
                     }
                 })
             }

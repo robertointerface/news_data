@@ -12,10 +12,11 @@ const LoginForm = ({title='Log in', onChange=f=>f, onSubmit=f=>f, username='', p
      return (
             <FlexCard title='Login form' class_name='col-md-6 col-sm-12'>
                  <GoogleLogin
-                     clientId="332181169-grf1u7a8q68qrtj372d0fee283ubb9d1.apps.googleusercontent.com"
+                     clientId="332181169-nh611t2t7293ki0mnujonmafjcviiga8.apps.googleusercontent.com"
                      buttonText="Login"
                      onSuccess={authSocial}
                      onFailure={authSocial}
+                     cookiePolicy={'single_host_origin'}
                  />
                 <form onSubmit={(e) => onSubmit(e)}>
                     <div className="form-group">

@@ -188,9 +188,14 @@ def verify_token(request, token):
 @permission_classes((AllowAny, ))
 def google_signin(request):
     """
+    Create user account or log in with GoogleLogin from 'react-google-login''
 
-    :param request:
-    :return:
+    @param
+        request - http.request object with token from google.
+
+    @return
+        On success - JsonResponse with status '200' and generated JWT
+        On failure - JsonResponse with status '400' and message to be displayed
     """
     try:
         request_data = json.loads(request.body)
@@ -210,9 +215,9 @@ def google_signin(request):
             raise ValueError("Token's client ID does not match app's.")
         username = result['name']
         email = result['email']
-        user = User.objects.get(email=email)
+        user = User.objects.filter(email=email).first()
         if user is None:
-            User.objects.create(
+            user = User.objects.create(
                 username=username,
                 email=email,
                 external_auth=True
@@ -236,6 +241,8 @@ def google_signin(request):
             'status': 500,
             'error': 'error in database'
         })
+    except ObjectDoesNotExist:
+        return Response(None, status=400, content_type=json)
     finally:
         return response
 
