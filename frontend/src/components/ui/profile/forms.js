@@ -9,7 +9,7 @@ const UserInfoTextForm = ({title='', name='', value='', onChange=f=>f}) => {
     return(
         <div className='form-group row'>
             <label className='col-12'>
-                <span>{title}</span>
+                <span className='formTitle colorBlue bold'>{title}</span>
             </label>
             <div className='col-12'>
                <input className='form-control'
@@ -28,7 +28,7 @@ const PasswordForm = ({title='', name='', value='', onChange=f=>f}) => {
     return(
         <div className='form-group row'>
             <label className='col-12'>
-                <span>{title}</span>
+                <span className='formTitle colorBlue bold'>{title}</span>
             </label>
             <input
                 type='password'
@@ -47,7 +47,7 @@ const UserInfoTextAreaForm = ({title='', name='', value='', onChange=f=>f}) => {
     return(
         <div className="form-group row">
             <label className='col-12'>
-                <span>{title}</span>
+                <span className='formTitle colorBlue bold'>{title}</span>
             </label>
             <div className='col-12'>
                 <textarea className='form-control'
