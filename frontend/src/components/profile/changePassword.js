@@ -6,6 +6,8 @@ import {PasswordForm} from 'components/ui/profile/forms';
 import {PrimaryButton} from 'ui/common/buttons/buttons';
 import {getCookie} from "root/store/functions/auth/Cookies";
 import {changePassword} from 'functions/User_profile/editProfileFunctions'
+import FlashMessage from 'components/main/Flash'
+
 class ChangePassword extends Component {
 
     constructor(props){
@@ -39,31 +41,37 @@ class ChangePassword extends Component {
     onSubmit(){
         changePassword(this.state.newPass, this.state.ConfnewPass)
             .then(response => {
-
+                    return this.setState({
+                        message: response,
+                    })
             })
             .catch(error => {
-                console.log('err' + error)
+                return this.setState({
+                        message: error,
+                })
             })
-
     }
 
     render(){
         return (
             <PageTemplate>
+                {(this.state.message)?
+                    <FlashMessage message={this.state.message}/> : null
+                }
                 <div className='row'>
-                    <div className='col-6'>
+                    <div className='col-lg-6 col-12'>
                         <PasswordForm title={'new password'}
                                       name={'newPass'}
                                       value={this.state.newPass}
                                       onChange={this.onChangeNewPass}/>
                     </div>
-                    <div className='col-6'>
+                    <div className='col-lg-6 col-12'>
                         <PasswordForm title={'confirm new password'}
                                       name={'ConfnewPass'}
                                       value={this.state.ConfnewPass}
                                       onChange={this.onChangeConfNewPass}/>
                     </div>
-                    <div className='col-6'>
+                    <div className='col-12'>
                         <PrimaryButton message={'save changes'} onClick={this.onSubmit}/>
                     </div>
                 </div>

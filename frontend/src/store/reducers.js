@@ -99,6 +99,15 @@ export const User_management = (state = {}, action) => {
             }
         case C.REMOVE_USER_DATA:
             return { ...emptyUserData}
+        
+        case C.UPDATE_USER_DATA:
+            return {
+                ...state,
+                first_name: action.userData['first_name'],
+                last_name: action.userData['last_name'],
+                location: action.userData['location'],
+                about_me: action.userData['about_me']
+            }    
         case C.ERROR_LOGIN:
             return {
                 ...state,

@@ -78,7 +78,7 @@ export const handle_save_result_user = resultId => {
                     ])
                 }
                 else{
-                    throw 'error saving, please try again.'
+                    throw 'error saving data please try later'
                 }
             })
             .catch(error => {

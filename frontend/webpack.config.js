@@ -55,6 +55,7 @@ module.exports = {
             'ui': path.resolve(__dirname, 'src/components/ui/'),
             'data': path.resolve(__dirname, 'src/data/'),
             'classes': path.resolve(__dirname, 'src/store/classes'),
+            'styles': path.resolve(__dirname, 'src/components/stylesheets'),
         }
     },
   plugins: [

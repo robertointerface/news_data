@@ -2,7 +2,9 @@ import {getCookie} from "root/store/functions/auth/Cookies";
 import {urls, flashFlags} from "root/constants/constants";
 import {onlyLettersNumbers} from "root/store/functions/auth/validation";
 import {validate, passwordSame} from 'functions/auth/validation'
-import {set_flash_message} from 'actions/actions'
+import {set_flash_message, update_user_data} from 'actions/actions'
+import {history} from "root/App";
+
 const getUserPrivateData = function(){
     var csrftoken = getCookie('csrftoken');
     return fetch(`${urls.EDIT_USER}`, {
@@ -71,6 +73,14 @@ const EditUserProfile = () => {
                     throw 'Error, please check if provided update is correct format'
                 }
             })
+            .then(res =>{
+                return Promise.all([
+                    dispatch(update_user_data(res)),
+                    dispatch(set_flash_message('updated correctly', flashFlags.INFO)),
+                    history.push('/about')
+                ]);
+
+            })
             .catch(error =>{
                 dispatch(set_flash_message(error, flashFlags.ALERT))
             })
@@ -99,7 +109,14 @@ const changePassword = (newPassword='', confPassword='') => {
         body: JSON.stringify(passwords)
     })
         .then(response =>{
-
+            if(response.status == 200){
+                return 'password changed correctly'
+            }else{
+                throw 'error changing password please try later'
+            }
+        })
+        .catch(error =>{
+            throw error
         })
 }
 

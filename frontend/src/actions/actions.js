@@ -51,6 +51,11 @@ export const logged_in = (userData) =>
 
     })
 
+export const update_user_data = (userData) =>
+    ({
+        type: C.UPDATE_USER_DATA,
+        userData: userData
+    })
 /*
  *
  * CURRENT_SEARCH ACTIONS
