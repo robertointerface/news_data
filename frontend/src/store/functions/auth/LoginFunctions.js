@@ -14,7 +14,7 @@ import {
     validate,
     onlyLettersNumbers,
     passwordSame
-} from './validation'
+} from 'functions/auth/validation'
 import {urls} from 'constants/constants'
 
 export const handle_edit_first_time = (token) => {

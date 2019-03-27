@@ -30,7 +30,7 @@ const LogOutNav = (user_id = 0) => {
                 </NavLink>
             </li>
             <li>
-                <NavLink className='NavItem' to="/">
+                <NavLink className='NavItem' to="/whoarewe">
                     <FontAwesomeIcon className='iconSize' icon={faUsers}/> About Us
                 </NavLink>
             </li>
