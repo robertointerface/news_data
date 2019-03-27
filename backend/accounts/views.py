@@ -15,6 +15,7 @@ from __future__ import unicode_literals
 import json
 import hashlib
 import random
+import string
 import django.db
 from django.contrib.auth.models import User
 from django.http import JsonResponse, RawPostDataException
@@ -245,6 +246,84 @@ def google_signin(request):
         return Response(None, status=400, content_type=json)
     finally:
         return response
+
+
+class ResetPassword(APIView):
+    """
+    Resets use password to a random generated password fo 6 characters.
+
+    Main methods:
+        post - Overwrite APIView post method, create a random password and save it for a specific user located
+        by email.
+        _send_email - Send email to user with the generated password.
+    """
+    permission_classes = (permissions.AllowAny,)
+
+    def post(self, request, format=None):
+        """
+        Recieve email, locate user with that email, generate password and email to that user.
+
+        @param
+            request - http.request with 'email' on its body
+
+        @return
+            On success - JsonResponse with status 200 and success message plus email sent to user with new password
+            On Failure - JsonResponse with status 400 with failure message
+        """
+        try:
+            request_data = self.request.data
+            email = request_data['email']
+            user = User.objects.get(email=email)
+            new_password = ''.join(random.choice(string.ascii_uppercase + string.digits) for x in range(6))
+            user.set_password(new_password)
+            self._send_email(user, new_password)
+            # save after email has been sent, otherwise the password is set and nobody know what it is.
+            user.save()
+            return Response('a new password has been sent to the provided email, please use it to log in.',
+                            status=200,
+                            content_type=json)
+        except ObjectDoesNotExist:
+            return Response('Invalid provided email, we do not have an account with that email',
+                            status=400,
+                            content_type=json)
+        except ValueError:
+            return Response('Operation could not be completed please try again later',
+                            status=400,
+                            content_type=json)
+
+    def _send_email(self, user, new_password):
+        """
+        Send email to specific user with new password.
+
+        @param
+            user - User model object
+            new_password - string of random generated 6 characters
+
+        @return
+            On Success - None
+            On Failure - Raise ValueError to propagate.
+        """
+        try:
+            subject = 'Tablenew.com reset password.'
+            email_body = """
+                    Dear {username}:
+                        Your new requested password is the following, please contact us if you have not requested
+                        this password.
+    
+                        {new_password}
+    
+                        regards.
+                        Tablenew.com team
+    
+                    """.format(username=user.username, new_password=new_password)
+            mail.send_mail(
+                sender='robertointerface@gmail.com',
+                to=user.email,
+                subject=subject,
+                body=email_body
+            )
+        except (InvalidEmailError, BadRequestError):
+            raise ValueError
 
 
 class UserPublicInfo(APIView):
