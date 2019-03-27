@@ -185,6 +185,40 @@ export const handle_refresh_token = () =>{
 }
 
 
+export const handle_reset_password = (email='') => {
+    /**
+     Call API '/accounts/resetpassword' by fetch post request and passing email in the request body.
+
+     @params
+        email - email provided by the user.
+
+     @return
+        On Success - response content
+
+     */
+    var csrftoken = getCookie('csrftoken');
+    var data = {
+        'email': email,
+    }
+    return fetch(`${urls.RESET_PASSWORD}`, {
+        method: 'POST',
+        headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrftoken
+        },
+        body: JSON.stringify(data)
+    })
+        .then(response => {
+            return response.json()
+        })
+        .then(response =>{
+            return response
+        })
+        .catch(error => {
+            throw error
+        })
+}
+
 export const handle_logout = () => {
     /*
         Log out user by removing JWT (token) from localstorage and redirecting to main site.

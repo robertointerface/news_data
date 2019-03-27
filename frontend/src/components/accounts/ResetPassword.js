@@ -2,6 +2,7 @@ import React from 'react'
 import PageTemplate from 'components/main/PageTemplate'
 import {Component} from 'react'
 import FlashMessage from 'components/main/Flash'
+import {handle_reset_password} from 'functions/auth/LoginFunctions'
 class ResetPassword extends Component{
 
     constructor(props){
@@ -21,8 +22,19 @@ class ResetPassword extends Component{
     }
 
     onSubmit(e){
-
+        e.preventDefault();
+        handle_reset_password(this.state.email).then(response => {
+            return this.setState({
+                message: response
+            })
+        })
+            .catch(error => {
+                 return this.setState({
+                    message: error
+                 })
+            })
     }
+
     render(){
         return(
             <PageTemplate>
