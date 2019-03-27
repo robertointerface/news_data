@@ -53,6 +53,7 @@ export const urls = {
     SIGN_UP: 'http://127.0.0.1:8080/accounts/signup/',
     EDIT_USER_FIRST_TIME: 'http://127.0.0.1:8080/accounts/edituserfirsttime/',
     REFRESH_TOKEN: 'http://127.0.0.1:8080/accounts/token-refresh/',
+    RESET_PASSWORD: 'http://localhost:8080/accounts/APIresetpassword',
     USER_INFO: 'http://localhost:8080/accounts/userpublicinfo',
     SET_FOLLOW: 'http://localhost:8080/accounts/follow',
     SET_UNFOLLOW: 'http://localhost:8080/accounts/unfollow',
