@@ -5,9 +5,10 @@ import PageTemplate from 'components/main/PageTemplate'
 import {getUserPrivateInfo} from 'functions/Display_users/displayUserPrivateInfo'
 import UserInfoCard from 'components/user_display/user_private_info/UserInfoCard'
 import {getUserNews} from 'functions/Display_users/displayUserFunctions'
+import NewsDisplayList from 'components/new_display/NewsDisplayList'
+import Pagination from 'ui/common/pagination/pagination'
 
 class PrivateUserContainer extends UserDisplayBase{
-
     constructor(props){
         super(props)
         this.username = this.props.match.params.username
@@ -70,18 +71,28 @@ class PrivateUserContainer extends UserDisplayBase{
     render(){
         return(
             <PageTemplate>
-                <UserInfoCard about_me={this.state.userInfo.about_me}
+                <UserInfoCard username={this.username}
+                              about_me={this.state.userInfo.about_me}
                               publishNews={this.state.userInfo.publishNews}
                               followers={this.state.userInfo.followers}
                               location={this.state.userInfo.location}
                               following={this.state.userInfo.following}
                               savedData={this.state.userInfo.savedData}/>
-
+                {(this.state.Display.news.length > 0) ?
+                    <NewsDisplayList News={this.state.Display.news}/>
+                : null
+                }
+                 <div className='col-12'>
+                     <Pagination presentPage={this.state.Display.presentPage}
+                                 lastPage={this.state.Display.pages}
+                                 begin={this.state.Display.beginPag}
+                                 end={this.state.Display.endPag}
+                     />
+                 </div>
 
             </PageTemplate>
         )
     }
-
 }
 
 
