@@ -31,6 +31,7 @@ class PrivateUserContainer extends UserDisplayBase{
                 pages: 0,
             },
         }
+        this.goToPage = this.goToPage.bind(this)
     }
     componentDidMount(){
         getUserPrivateInfo().then(response =>{
@@ -68,6 +69,21 @@ class PrivateUserContainer extends UserDisplayBase{
         })
     }
 
+    goToPage(e, page) {
+        e.preventDefault();
+        getUserNews(this.username, page).then(news => {
+            return this.setState({
+                Display:{
+                    ...this.state.Display,
+                    news: news,
+                    presentPage: page,
+                    beginPag: this.setBeginPagination(page, this.state.Display.pages),
+                    endPag: this.setEndPages(this.state.Display.pages)
+                }
+           })
+        })
+    }
+
     render(){
         return(
             <PageTemplate>
@@ -87,9 +103,8 @@ class PrivateUserContainer extends UserDisplayBase{
                                  lastPage={this.state.Display.pages}
                                  begin={this.state.Display.beginPag}
                                  end={this.state.Display.endPag}
-                     />
+                                 goToPage={this.goToPage}/>
                  </div>
-
             </PageTemplate>
         )
     }
