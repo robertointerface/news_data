@@ -18,8 +18,8 @@ const getUserPrivateInfo = () => {
                     return response.json();
                 }
             })
-            .then(response =>{
-
+            .then(response => {
+                 return JSON.parse(response)
             })
             .catch(error => {
 
