@@ -50,6 +50,7 @@ class UserPrivateInfoSerializer(serializers.ModelSerializer):
     user_rel_followed = serializers.SerializerMethodField()
     user_rel_follows = serializers.SerializerMethodField()
     user_saved_data = serializers.SerializerMethodField()
+    user_created_new = serializers.SerializerMethodField()
 
     class Meta:
         model = User
@@ -71,6 +72,9 @@ class UserPrivateInfoSerializer(serializers.ModelSerializer):
             instance.save()
         except (KeyError, DatabaseError):
             raise DatabaseError
+
+    def get_user_created_new(self, obj):
+        return obj.user_created_new.count()
 
     def get_user_rel_followed(self, obj):
         return obj.user_rel_followed.count()
