@@ -29,8 +29,12 @@ class User(AbstractUser):
                                        related_name='followed', symmetrical=False)
 
     def __str__(self):
-        return self.username
+        class_name = type(self).__name__
+        return '{class_name} {title}'.format(class_name=class_name, title=self.username)
 
+    def __repr__(self):
+        class_name = type(self).__name__
+        return '{class_name} {title}'.format(class_name=class_name, title=self.username)
     # save, require email confirmation
     # def save(self, *args, **kwargs):
     #     if not self.external_auth:
@@ -70,5 +74,5 @@ class Follow(models.Model):
     followed = models.ForeignKey(User, related_name='user_rel_followed')
     time_stamp = models.DateTimeField(default=timezone.now)
 
-
-
+    def __str__(self):
+        return self.time_stamp
