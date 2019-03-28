@@ -4,7 +4,6 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.utils import timezone
 
-
 try:
     from backend.backend.settings import Migration
 except ImportError:

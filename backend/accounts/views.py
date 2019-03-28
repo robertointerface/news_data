@@ -353,6 +353,33 @@ class UserPublicInfo(APIView):
             return Response(None, status=400, content_type=json)
 
 
+class UserPrivateInfo(APIView):
+    """
+    API call to get user private information (information only available to the user itself), authentication required.
+
+    @param
+        request - http.request object
+
+    @return
+        On success - rest_framework.response with status 200 and User private (UserPrivateInfoSerializer)
+        information in JSON format.
+        On failure - rest_framework.response with status 400
+    """
+    permission_classes = (IsAuthenticated,)
+
+    def get(self, request, format=None):
+        try:
+            user = request.user
+            user_info = UserPrivateInfoSerializer(user, many=False)
+            if user_info.instance is not None:
+                content = JSONRenderer().render(user_info.data)
+                return Response(content, status=200, content_type=json)
+        except (DatabaseError, KeyError):
+            return Response(None, status=400, content_type=json)
+        except ObjectDoesNotExist:
+            return Response(None, status=400, content_type=json)
+
+
 class SetUserFollow(APIView):
     """
         API call used to set the logged in user to follow a specific user by providing the username

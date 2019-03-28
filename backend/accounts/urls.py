@@ -15,6 +15,7 @@ urlpatterns = [
             url(r'^edituserfirsttime/', views.edit_user_first_time),
             url(r'^googleverify', views.google_signin),
             url(r'^userpublicinfo$', views.UserPublicInfo.as_view()),
+            url(r'^userprivateinfo$', views.UserPrivateInfo.as_view()),
             url(r'^follow$', views.SetUserFollow.as_view()),
             url(r'^unfollow$', views.SetUserUnFollow.as_view()),
             url(r'^isfollowing$', views.IsFollowing.as_view()),

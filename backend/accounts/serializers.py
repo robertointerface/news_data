@@ -47,9 +47,20 @@ class UserInfoSerializer(serializers.ModelSerializer):
 
 class UserPrivateInfoSerializer(serializers.ModelSerializer):
 
+    user_rel_followed = serializers.SerializerMethodField()
+    user_rel_follows = serializers.SerializerMethodField()
+    user_saved_data = serializers.SerializerMethodField()
+
     class Meta:
         model = User
-        fields = ('about_me', 'location', 'first_name', 'last_name')
+        fields = ('about_me',
+                  'location',
+                  'first_name',
+                  'last_name',
+                  'user_rel_followed',
+                  'user_rel_follows',
+                  'user_created_new',
+                  'user_saved_data')
 
     def update(self, instance, validated_data):
         try:
@@ -61,7 +72,14 @@ class UserPrivateInfoSerializer(serializers.ModelSerializer):
         except (KeyError, DatabaseError):
             raise DatabaseError
 
+    def get_user_rel_followed(self, obj):
+        return obj.user_rel_followed.count()
 
+    def get_user_rel_follows(self, obj):
+        return obj.user_rel_follows.count()
+
+    def get_user_saved_data(self, obj):
+        return obj.user_saved_data.count()
 
 
 class FollowSerializer(serializers.ModelSerializer):
