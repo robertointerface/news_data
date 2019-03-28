@@ -22,7 +22,7 @@ const NewsDisplayList = ({News=[]}) => {
                              <div className='resultCardBody card-body'>
                                  <div className='row'>
                                      <div className='col-8'>
-                                         <ul>
+                                         <ul class="list-unstyled">
                                              <Headline text={x.headline1}/>
                                              <Headline text={x.headline2}/>
                                              <Headline text={x.headline3}/>
