@@ -36,10 +36,10 @@ class PrivateUserContainer extends UserDisplayBase{
     }
 
     render(){
-
+        var {username} = this.state
         return(
             <PageTemplate>
-
+                <p>{username}</p>
             </PageTemplate>
         )
     }

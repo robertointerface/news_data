@@ -42,7 +42,7 @@ const LogInNav = ({ username = '' }) => {
                 </a>
                 <ul className="dropdown-menu bg-primary ProfileOptions">
                     <li>
-                        <NavLink className='subNavItem ColorW' to='/yourprofile/:user_id'>
+                        <NavLink className='subNavItem ColorW' to={`/profile/yourprofile/${username}`}>
                             <FontAwesomeIcon className='iconSize' icon={faUser}/> your profile
                         </NavLink>
                     </li>

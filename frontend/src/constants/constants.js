@@ -55,6 +55,7 @@ export const urls = {
     REFRESH_TOKEN: 'http://127.0.0.1:8080/accounts/token-refresh/',
     RESET_PASSWORD: 'http://localhost:8080/accounts/APIresetpassword',
     USER_INFO: 'http://localhost:8080/accounts/userpublicinfo',
+    USER_PRIVATE_INFO: 'http://localhost:8080/accounts/userprivateinfo',
     SET_FOLLOW: 'http://localhost:8080/accounts/follow',
     SET_UNFOLLOW: 'http://localhost:8080/accounts/unfollow',
     IS_FOLLOWING: 'http://localhost:8080/accounts/isfollowing',

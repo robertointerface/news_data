@@ -2,8 +2,8 @@ import React from 'react';
 import { Route } from 'react-router-dom'
 import NewsListDisplayContainer from "root/components/new_display/NewsListDisplayContainer";
 import NewDetailContainer from "root/components/new_display/NewDetailContainer";
-import PublicUserContainer from 'components/user_display/userDisplayContainer'
-import userSubscriptionContainer from 'components/user_display/userSubscriptionContainer'
+import PublicUserContainer from 'components/user_display/user_public_info/userDisplayContainer'
+import userSubscriptionContainer from 'components/user_display/user_public_info/userSubscriptionContainer'
 
 const NewDisplayRouter = ({match}) =>
     <section>

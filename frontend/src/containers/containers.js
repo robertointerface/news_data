@@ -77,7 +77,7 @@ export const LogInContainer = connect(
     state =>
         ({
             title: 'Log in form',
-            email: state.User_management.email,
+            username: state.User_management.username,
             password: state.User_management.password,
             error: state.User_management.error,
         }),
