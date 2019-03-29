@@ -42,7 +42,10 @@ class User(AbstractUser):
     #     super(User, self).save(*args, **kwargs)
 
     # save no email confirmation required
+
+    # used in development to avoid email verification and fake users can be created
     def save(self, *args, **kwargs):
+
         self.email_confirmed = True
         super(User, self).save(*args, **kwargs)
 

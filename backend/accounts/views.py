@@ -1,15 +1,31 @@
 # -*- coding: utf-8 -*-
 
 """
-    accounts views - classes used to handle API calls to 'accounts' django app, urls specified
-    on acccounts.urls
+    accounts views - classes and functions used to handle API calls to 'accounts' django app,
+    urls specified on acccounts.urls
 
     Members:
     # sign_up - function used to create new users (model User), function call when
                 url 'accounts/signup'
     # edit_user_first_time - function call when user sets his username and password
                             for the first time
-    # verify_token -
+    # verify_token - API call to verify token emailed to user, email verification process.
+    # google_signin - API call to sign in by google email, integration of 'react-google-login'
+    with backend.
+    # ResetPassword - API call to reset user password and email him the new password.
+    # UserPublicInfo - API call to get user public information by only providing the user name,
+    no authentication required.
+    # UserPrivateInfo - API call to get user private information, authentication required and
+     information is only available to the user himself.
+    # SetUserFollow - API call to create row on table 'Follow', set user A follows user B.
+    # SetUserUnFollow - API call to delete row on table 'Follow', set user A STOPS FOLLOWING user B.
+    # IsFollowing - API call to check if User A is following User B already.
+    # create_activation_key - function called by 'sign_up' function, creates a token that is
+    saved on the User Model 'activation_key'.
+    # EditUser - API call used to update 'User' Model fields.
+    # current_user - Determine the current user by their token, and return their data
+    # EditUser - API call used to update db.model 'User'
+    # ChangePassword - API call to update field 'password' on db.model 'User' upon user request.
 """
 from __future__ import unicode_literals
 import json
@@ -45,7 +61,7 @@ except ImportError:
 if Migration:
     from backend.constants import Constants
 else:
-    from backend.backend.constants import Constants
+
     from google.appengine.api import urlfetch
     from google.appengine.api import mail
     from google.appengine.api.mail_errors import InvalidEmailError, BadRequestError
@@ -75,9 +91,6 @@ def sign_up(request):
         username = request_data['username']
         email = request_data['email']
         activation_token = create_activation_key(username)
-        fields = {'username': username,
-                  'email': email,
-                  'activation_key': activation_token}
         User.objects.create(
             username=username,
             email=email,
@@ -189,7 +202,7 @@ def verify_token(request, token):
 @permission_classes((AllowAny, ))
 def google_signin(request):
     """
-    Create user account or log in with GoogleLogin from 'react-google-login''
+    Create user account or log in with GoogleLogin from 'react-google-login'
 
     @param
         request - http.request object with token from google.
@@ -250,24 +263,26 @@ def google_signin(request):
 
 class ResetPassword(APIView):
     """
-    Resets use password to a random generated password fo 6 characters.
+    Resets user password to a random generated password of 6 characters.
 
     Main methods:
-        post - Overwrite APIView post method, create a random password and save it for a specific user located
-        by email.
+        post - Overwrite APIView post method, create a random password and save it for a specific
+        user located by email.
         _send_email - Send email to user with the generated password.
     """
     permission_classes = (permissions.AllowAny,)
 
     def post(self, request, format=None):
         """
-        Recieve email, locate user with that email, generate password and email to that user.
+        Get email address provided by the user, locate user with that email, generate password
+        and email password to that user.
 
         @param
             request - http.request with 'email' on its body
 
         @return
-            On success - JsonResponse with status 200 and success message plus email sent to user with new password
+            On success - JsonResponse with status 200 and success message plus email sent
+            to user with new password
             On Failure - JsonResponse with status 400 with failure message
         """
         try:
@@ -277,9 +292,11 @@ class ResetPassword(APIView):
             new_password = ''.join(random.choice(string.ascii_uppercase + string.digits) for x in range(6))
             user.set_password(new_password)
             self._send_email(user, new_password)
-            # save after email has been sent, otherwise the password is set and nobody know what it is.
+            # save after email has been sent, otherwise the password is set and nobody know what
+            # it is.
             user.save()
-            return Response('a new password has been sent to the provided email, please use it to log in.',
+            return Response("""a new password has been sent to the provided email, please use it to'
+                             log in.""",
                             status=200,
                             content_type=json)
         except ObjectDoesNotExist:
@@ -332,7 +349,8 @@ class UserPublicInfo(APIView):
     @param
         username - username
     @return
-        On success - rest_framework.response with status 200 and User public information in JSON format
+        On success - rest_framework.response with status 200 and User public information
+                    in JSON format
         On failure - rest_framework.response with status 400
 
     """
@@ -355,14 +373,15 @@ class UserPublicInfo(APIView):
 
 class UserPrivateInfo(APIView):
     """
-    API call to get user private information (information only available to the user itself), authentication required.
+    API call to get user private information (information only available to the user itself),
+    authentication required.
 
     @param
         request - http.request object
 
     @return
-        On success - rest_framework.response with status 200 and User private (UserPrivateInfoSerializer)
-        information in JSON format.
+        On success - rest_framework.response with status 200 and User private
+        (UserPrivateInfoSerializer) information in JSON format.
         On failure - rest_framework.response with status 400
     """
     permission_classes = (IsAuthenticated,)
@@ -393,8 +412,8 @@ class SetUserFollow(APIView):
         """
         Set user A follows User B at user A request.
         @param
-            request - http.request, Post request with JWT code required for authentication  & body with
-            the username to start following.
+            request - http.request, Post request with JWT code required for authentication
+            & body with the username to start following.
             format - None
 
         @return:
@@ -429,8 +448,8 @@ class SetUserUnFollow(APIView):
         """
         user A stops following user B at user A request.
          @param
-            request - http.request, Post request with JWT code required for authentication & body with
-            the username to stop following.
+            request - http.request, Post request with JWT code required for authentication
+            & body with the username to stop following.
             format - None
 
         @return:
@@ -455,8 +474,8 @@ class IsFollowing(APIView):
     """Verifies is logged in user is following another user by providing its username
 
         Main methods:
-            get - override APIView get, verify if logged in user is following another user by providing
-            the username.
+            get - override APIView get, verify if logged in user is following another user
+            by providing the username.
     """
     permission_classes = (IsAuthenticated,)
 
@@ -525,9 +544,25 @@ class UserList(APIView):
 
 
 class EditUser(APIView):
+    """
+    API call used to edit user fields, authentication required.
+
+    Main methods:
+        Post - Overwrite APIView Post method for HTTP.REQUEST POST.
+        Get - Overwrite APIView Post method for HTTP.REQUEST GET.
+
+    """
     permission_classes = (IsAuthenticated,)
 
     def get(self, request, format=None):
+        """Get data from fields that user can update
+
+        @Params
+            request - http.request object with user object.
+        @return
+            On Success - Response with status 200 and user field's data that can be updated.
+            On Failure - Response with status 400 and no content.
+        """
         try:
             user = request.user
             serialized_user = UserPrivateInfoSerializer(user, many=False)
@@ -538,14 +573,23 @@ class EditUser(APIView):
             return Response(None, status=400, content_type=json)
 
     def post(self, request, format=None):
+        """Receive user fields to update and use serializer 'UserPrivateInfoSerializer'
+        to update the required fields.
+
+        @params:
+            request - http.request object with body containing the fields to be updated.
+
+        @return:
+            On success - Response with status 200 and updated data.
+            On Failure - Response with status 400 and no content.
+        """
         try:
             user = request.user
             request_data = self.request.data
-            serializer = UserPrivateInfoSerializer(data={
-                                                         'first_name': request_data['first_name'],
+            serializer = UserPrivateInfoSerializer(data={'first_name': request_data['first_name'],
                                                          'last_name': request_data['last_name'],
                                                          'location': request_data['location'],
-                                                            'about_me': request_data['about_me']})
+                                                         'about_me': request_data['about_me']})
             if serializer.is_valid(raise_exception=True):
                 serializer.update(user, serializer.validated_data)
         except ValidationError:
@@ -559,21 +603,48 @@ class EditUser(APIView):
 
 class ChangePassword(APIView):
 
+    """
+    API call used to change user password upon user request. Authentication required.
+
+    Main methods:
+        Post -
+    """
     permission_classes = (IsAuthenticated,)
 
     def post(self, request, format=None):
+        """
+        Update user password upon user request and user providing the new password
+
+        @param
+            request - http.request object with body containing the new password
+
+        @return
+            On success - Response with status 200.
+            On failure - Response with status 400.
+        """
         try:
             user = request.user
             request_data = self.request.data
             password = request_data['password']
+            # use model set_password to encrypt the password
             user.set_password(password)
             user.save()
-            #self._send_email(user)
+            # self._send_email(user)
             return Response(None, status=200, content_type=json)
-        except KeyError:
+        except (KeyError, ValueError):
             return Response(None, status=400, content_type=json)
 
     def _send_email(self, user):
+        """
+        Send email to user informing him/her that password has been modified.
+
+        @param
+            user - User object
+
+        @return
+            On success - None
+            On failure - Raise ValueError to propagate error up.
+        """
         subject = 'Tablenew.com verification email.'
         email_body = """
         Dear {username}:
@@ -591,4 +662,4 @@ class ChangePassword(APIView):
                 body=email_body
             )
         except (InvalidEmailError, BadRequestError):
-            pass
+            raise ValueError
