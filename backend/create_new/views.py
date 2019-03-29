@@ -1,24 +1,43 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
+"""
+    create_new views - classes used to handle API calls to 'create_new' django app,
+    urls specified on create_new.urls
 
-from django.shortcuts import render
-from rest_framework.permissions import AllowAny, IsAuthenticated
-from rest_framework.decorators import api_view, permission_classes
-from rest_framework.views import APIView
-from rest_framework.serializers import ValidationError
+    Members:
+    # PublishLongNew - Class used to create rows on table 'New'
+
+"""
+
+from __future__ import unicode_literals
 import json
-from parser import ParserError
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.parsers import ParseError
-from .serializers import NewSerializer
-from django.http import JsonResponse
+from rest_framework.views import APIView
+from rest_framework.serializers import ValidationError
 from django.db import DatabaseError
+from .serializers import NewSerializer
 
 
 class PublishLongNew(APIView):
+    """
+    Class dedicated to API call 'createnew/publishlongnew', authentication required.
+    Method
+        post - Create 'New' model object.
+
+    """
     permission_classes = (IsAuthenticated, )
 
     def post(self, request, format=None):
+        """
+        Save New created by user.
+
+        @param
+            request - http.request object with 'New' data in the body
+        @return:
+            On success - Response with status=200
+            on Failure -  Response with status=400
+        """
         try:
             request_data = self.request.data['newData']
             user = request.user

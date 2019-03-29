@@ -1,5 +1,11 @@
+"""
+    create_new serializers - Serializers class used for the creating, retrieval, update and  delete of
+    objects on tables in 'create_new.models'
+"""
+
 from rest_framework import serializers
 from .models import New
+
 try:
     from backend.backend.settings import Migration
 except:
@@ -12,7 +18,11 @@ else:
 
 
 class NewSerializer(serializers.ModelSerializer):
+    """
+    'New model serializer'
+    """
     created_by = serializers.SlugRelatedField(many=False, queryset=User.objects.all(), slug_field='username')
+
     class Meta:
         model = New
         fields = '__all__'

@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-from django.shortcuts import render
 import json
-from rest_framework.permissions import AllowAny, IsAuthenticated
-from rest_framework.views import APIView
-from django.db import DatabaseError
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.renderers import JSONRenderer
+from rest_framework.views import APIView
+from django.db import DatabaseError
+
 try:
     from backend.backend.settings import Migration
 except:
