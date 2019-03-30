@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 
 export const NewTitleForm = ({name='', value='', onChange=f=>f}) => {
     var characLeft = (100 - value.length).toString()
@@ -20,6 +20,11 @@ export const NewTitleForm = ({name='', value='', onChange=f=>f}) => {
             </div>
         </div>
     )
+}
+NewTitleForm.propTypes = {
+    name: PropTypes.string,
+    value: PropTypes.string,
+    onChange: PropTypes.func
 }
 
 export const NewHeadlineForm = ({title='', name='', value='', onChange=f=>f}) => {
@@ -43,6 +48,12 @@ export const NewHeadlineForm = ({title='', name='', value='', onChange=f=>f}) =>
     )
 }
 
+NewHeadlineForm.propTypes = {
+    title: PropTypes.string,
+    name: PropTypes.string,
+    value: PropTypes.string,
+    onChange: PropTypes.func
+}
 
 export const NewContentForm = ({onChange=f=>f, value='', name=''}) => {
     var characLeft = (600 - value.length).toString()
@@ -66,3 +77,8 @@ export const NewContentForm = ({onChange=f=>f, value='', name=''}) => {
     )
 }
 
+NewContentForm.propTypes = {
+    name: PropTypes.string,
+    value: PropTypes.string,
+    onChange: PropTypes.func
+}

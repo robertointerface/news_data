@@ -1,9 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {Component} from 'react'
 import Table from "components/data_representation/table";
 import TableTitle from 'ui/new_display/tableTitle'
-import DataOptions from 'components/data_representation/dataOptions/dataOptions'
 import {faTools} from "@fortawesome/free-solid-svg-icons/index";
 import {ExcelDownload, GoToThirdParty} from 'components/data_representation/dataOptions/options'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

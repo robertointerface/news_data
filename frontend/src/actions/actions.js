@@ -1,3 +1,8 @@
+
+/**
+ * Actions to be performed by Redux.
+
+ */
 import React from 'react';
 import { ActionsConstants as C } from 'constants/constants'
 
@@ -56,7 +61,7 @@ export const update_user_data = (userData) =>
         type: C.UPDATE_USER_DATA,
         userData: userData
     })
-/*
+/**
  *
  * CURRENT_SEARCH ACTIONS
  */
@@ -184,7 +189,7 @@ export const finished_requestiong = () =>
         type: C.FINISHED_REQUESTING
     })
 
-/*
+/**
  * RESULT_MANAGEMENT ACTIONS
  */
 export const display_table = (table = {}) =>

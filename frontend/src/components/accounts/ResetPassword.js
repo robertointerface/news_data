@@ -3,6 +3,10 @@ import PageTemplate from 'components/main/PageTemplate'
 import {Component} from 'react'
 import FlashMessage from 'components/main/Flash'
 import {handle_reset_password} from 'functions/auth/LoginFunctions'
+
+/**
+ * R
+ */
 class ResetPassword extends Component{
 
     constructor(props){

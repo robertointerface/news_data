@@ -1,11 +1,8 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {
-    faGlobeEurope,
-} from '@fortawesome/free-solid-svg-icons'
+import PropTypes from 'prop-types';
+import {NewTitleForm} from "root/components/ui/create_new/forms";
 
 const UserInfoTextForm = ({title='', name='', value='', onChange=f=>f}) => {
-
     return(
         <div className='form-group row'>
             <label className='col-12'>
@@ -22,6 +19,13 @@ const UserInfoTextForm = ({title='', name='', value='', onChange=f=>f}) => {
             </div>
         </div>
     )
+}
+
+UserInfoTextForm.propTypes = {
+    title: PropTypes.string,
+    name: PropTypes.string,
+    value: PropTypes.string,
+    onChange: PropTypes.func
 }
 
 const PasswordForm = ({title='', name='', value='', onChange=f=>f}) => {
@@ -43,6 +47,13 @@ const PasswordForm = ({title='', name='', value='', onChange=f=>f}) => {
     )
 }
 
+PasswordForm.propTypes = {
+    title: PropTypes.string,
+    name: PropTypes.string,
+    value: PropTypes.string,
+    onChange: PropTypes.func
+}
+
 const UserInfoTextAreaForm = ({title='', name='', value='', onChange=f=>f}) => {
     return(
         <div className="form-group row">
@@ -62,6 +73,13 @@ const UserInfoTextAreaForm = ({title='', name='', value='', onChange=f=>f}) => {
             </div>
         </div>
     )}
+
+UserInfoTextAreaForm.propTypes = {
+    title: PropTypes.string,
+    name: PropTypes.string,
+    value: PropTypes.string,
+    onChange: PropTypes.func
+}
 
 export {UserInfoTextForm, UserInfoTextAreaForm, PasswordForm}
 

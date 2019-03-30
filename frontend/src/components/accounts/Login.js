@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CardCol6 from 'ui/common/cards/CardCol6'
-import PageTemplate from 'components/main/PageTemplate'
 import { SignUpContainer, LogInContainer} from 'containers/containers'
-const Login = ({title='Log in', onChange=f=>f, onSubmit=f=>f, username='', password=''}) => {
+const Login = () => {
      return (
 
             <div className='row'>
@@ -36,7 +34,10 @@ const Login = ({title='Log in', onChange=f=>f, onSubmit=f=>f, username='', passw
 
 Login.propTypes = {
     title: PropTypes.string,
-    onChange: PropTypes.func
+    username: PropTypes.string,
+    password: PropTypes.string,
+    onChange: PropTypes.func,
+    onSubmit: PropTypes.func,
 }
 
 export default Login

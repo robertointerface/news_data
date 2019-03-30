@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 export const Tablebody = ({list=[]}) => {
     return (
         <tbody>
@@ -17,4 +17,7 @@ export const Tablebody = ({list=[]}) => {
     )
 }
 
+Tablebody.propTypes = {
+    list: PropTypes.array,
+}
 export default Tablebody

@@ -17,4 +17,10 @@ const TableTitle = ({title='', explination=''}) => {
         </div>
     )
 }
+
+TableTitle.propTypes = {
+    title: PropTypes.string,
+    explination: PropTypes.string
+}
+
 export default TableTitle

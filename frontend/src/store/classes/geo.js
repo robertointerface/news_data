@@ -2,7 +2,7 @@ import {ModelGeo} from 'data/Geo/Geo'
 
 
 export class Geo {
-/*
+/**
     @Class: Creates a list of geo locations (countries) depending on the given option. List is used to
     create HTML checkbox or select lists.
     @Input (string): Give a geo option that will match the object keys 'ModelGeo from 'data/Geo/Geo'
@@ -31,7 +31,7 @@ export class Geo {
 }
 
 export class OECDGeo {
-/*
+/**
     @Class: Creates a list of geo locations (countries) depending on the given option. List is used to
     create HTML checkbox or select lists.
     @Input (string): Give a geo option that will match the object keys 'ModelGeo from 'data/Geo/Geo'

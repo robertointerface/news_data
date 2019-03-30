@@ -13,6 +13,7 @@ import {getCookie} from "root/store/functions/auth/Cookies";
 import download from "downloadjs";
 import {urls} from "root/constants/constants";
 import {error_table_display, info_table_display} from "root/actions/actions";
+
 class DataDisplayNonRedux extends Component{
     constructor(props){
         super(props)

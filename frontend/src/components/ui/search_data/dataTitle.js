@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { faTimesCircle } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-const DataTitle = ({title='', resultId=0 ,explination='', onRemove=f=>f}) => {
+const DataTitle = ({title='', resultId=0, explination='', onRemove=f=>f}) => {
     return (
         <div className='row'>
             <div className='col-12'>
@@ -23,5 +23,13 @@ const DataTitle = ({title='', resultId=0 ,explination='', onRemove=f=>f}) => {
             </div>
         </div>
     )
+}
+
+DataTitle.propTypes = {
+    title: PropTypes.string,
+    resultId: PropTypes.number,
+    explination: PropTypes.string,
+    onRemove: PropTypes.func
+
 }
 export default DataTitle

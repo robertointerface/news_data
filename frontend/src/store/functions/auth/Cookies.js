@@ -1,7 +1,7 @@
 import jQuery from "jquery";
 
 export function getCookie(name) {
-    /*
+    /**
         @Func: Get Cookie passed by server, requests to server will not work without a cookie.
         @Arg:
             name: name of the cookie

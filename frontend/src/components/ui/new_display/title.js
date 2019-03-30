@@ -1,5 +1,7 @@
 import React from 'react';
 import {history} from 'root/App.js';
+import PropTypes from 'prop-types';
+
 const NewTitle = ({title='', id=0, author='', date=''}) => {
     return(
         <div className='row'>
@@ -28,6 +30,13 @@ const NewTitle = ({title='', id=0, author='', date=''}) => {
             </div>
         </div>
     )
+}
+
+NewTitle.propTypes = {
+    title: PropTypes.string,
+    id: PropTypes.number,
+    author: PropTypes.string,
+    date: PropTypes.string
 }
 
 export default NewTitle

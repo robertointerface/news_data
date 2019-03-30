@@ -1,5 +1,8 @@
 import React from 'react';
 import {PrimaryButton} from 'ui/common/buttons/buttons'
+import PropTypes from 'prop-types';
+import Login from "root/components/accounts/Login";
+
 const UserInfoCard = ({username='', location='', about_me='', followers=0, publishedNews=0, onFollow=f=>f,
                           following=false, canFollow=false}) => {
     return(
@@ -36,6 +39,17 @@ const UserInfoCard = ({username='', location='', about_me='', followers=0, publi
             </div>
         </div>
     )
+}
+
+Login.propTypes = {
+    username: PropTypes.string,
+    location: PropTypes.string,
+    about_me: PropTypes.string,
+    followers: PropTypes.number,
+    publishedNews: PropTypes.number,
+    onFollow: PropTypes.func,
+    following: PropTypes.bool,
+    canFollow: PropTypes.bool
 }
 
 export default UserInfoCard

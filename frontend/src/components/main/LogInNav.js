@@ -12,7 +12,6 @@ import {
     faSearch,
     faPencilAlt
 } from '@fortawesome/free-solid-svg-icons'
-
 const LogInNav = ({ username = '' }) => {
     return (
         <ul className='nav navbar-nav mr-auto NavText'>
@@ -62,4 +61,9 @@ const LogInNav = ({ username = '' }) => {
         </ul>
     )
 }
+
+LogInNav.propTypes = {
+    username: PropTypes.string,
+}
+
 export default LogInNav

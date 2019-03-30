@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types'
-import { DropdownButton, MenuItem, ButtonToolbar } from 'react-bootstrap';
 
 export const DropDownMenu = ({title='', list=[], onClick=f=>f}) => {
     return (
@@ -20,4 +19,11 @@ export const DropDownMenu = ({title='', list=[], onClick=f=>f}) => {
             </div>
         </div>
     )
+}
+
+
+DropDownMenu.propTypes = {
+    title: PropTypes.string,
+    list: PropTypes.array,
+    onClick: PropTypes.func
 }

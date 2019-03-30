@@ -1,11 +1,11 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 import PageTemplate from 'components/main/PageTemplate'
 import {UserInfoTextForm, UserInfoTextAreaForm} from 'ui/profile/forms'
 import {PrimaryButton} from 'ui/common/buttons/buttons'
 import {history} from 'root/App.js';
 import 'components/stylesheets/profile.css'
 const EditUserForm = ({username='', onChange=f=>f, onSubmit=f=>f, location='', first_name='', last_name='', about_me=''}) => {
-
         return (
             <PageTemplate>
                 <div className='row'>
@@ -42,4 +42,13 @@ const EditUserForm = ({username='', onChange=f=>f, onSubmit=f=>f, location='', f
         )
     }
 
+EditUserForm.propTypes = {
+    username: PropTypes.string,
+    onChange: PropTypes.func,
+    onSubmit: PropTypes.func,
+    location: PropTypes.string,
+    first_name: PropTypes.string,
+    last_name: PropTypes.string,
+    about_me: PropTypes.string
+}
 export default EditUserForm

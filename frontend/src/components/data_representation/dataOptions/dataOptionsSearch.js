@@ -8,7 +8,7 @@ import {
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTools } from '@fortawesome/free-solid-svg-icons'
-
+import PropTypes from 'prop-types';
 const DataOptionsSearch = ({resultId='', resultSaved=false, onGraph=f=>f, onExcel=f=>f, onSave=f=>f}) => {
     return (
         <div>
@@ -36,5 +36,11 @@ const DataOptionsSearch = ({resultId='', resultSaved=false, onGraph=f=>f, onExce
     )
 }
 
-
+DataOptionsSearch.propTypes = {
+    resultId: PropTypes.string,
+    resultSaved: PropTypes.bool,
+    onGraph: PropTypes.func,
+    onExcel: PropTypes.func,
+    onSave: PropTypes.func
+}
 export default DataOptionsSearch

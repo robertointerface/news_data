@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types'
-import { DropdownButton, MenuItem, ButtonToolbar } from 'react-bootstrap';
 
 export const DropDownMenuSearch = ({title='', list=[], resultId='', onClick=f=>f}) => {
     return (
@@ -20,4 +19,11 @@ export const DropDownMenuSearch = ({title='', list=[], resultId='', onClick=f=>f
             </div>
         </div>
     )
+}
+
+DropDownMenuSearch.prototype = {
+    title: PropTypes.string,
+    list: PropTypes.array,
+    resultId: PropTypes.string,
+    onClick: PropTypes.func
 }

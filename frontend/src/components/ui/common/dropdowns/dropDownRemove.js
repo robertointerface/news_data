@@ -43,3 +43,9 @@ export const DropDownMenuRemove = ({title='', list=[], onRemove=f=>f}) => {
         </div>
     )
 }
+
+DropDownMenuRemove.propTypes = {
+    title: PropTypes.string,
+    list: PropTypes.array,
+    onRemove: PropTypes.func
+}

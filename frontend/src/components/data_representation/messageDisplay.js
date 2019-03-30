@@ -1,7 +1,6 @@
-
 import React from 'react';
-
-const MessageDisplay = ({message='', type}) => {
+import PropTypes from 'prop-types';
+const MessageDisplay = ({message='', type=''}) => {
     var typeClass = "alert " + type
     return(
         <div>
@@ -14,4 +13,8 @@ const MessageDisplay = ({message='', type}) => {
     )
 }
 
+MessageDisplay.propTypes = {
+    message: PropTypes.string,
+    type: PropTypes.string
+}
 export default MessageDisplay

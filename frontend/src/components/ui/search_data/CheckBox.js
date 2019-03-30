@@ -1,7 +1,6 @@
 import React from 'react';
 import { Component } from 'react'
 
-
 class CheckBox extends Component {
 
     constructor(props){

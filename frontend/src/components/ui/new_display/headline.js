@@ -1,6 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faDotCircle} from "@fortawesome/free-solid-svg-icons/index";
+import PropTypes from 'prop-types';
 const Headline = ({text=''}) => {
     return(
         <li>
@@ -10,4 +11,7 @@ const Headline = ({text=''}) => {
     )
 }
 
+Headline.propTypes = {
+    text: PropTypes.string
+}
 export default Headline

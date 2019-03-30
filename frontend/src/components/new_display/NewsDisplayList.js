@@ -3,7 +3,7 @@ import CardCol12 from 'ui/common/cards/CardCol12'
 import NewTitle from 'ui/new_display/title'
 import Headline from 'ui/new_display/headline'
 import Truncate from 'react-truncate'
-import { faTimesCircle } from '@fortawesome/free-regular-svg-icons'
+import PropTypes from 'prop-types';
 import { faTable, faChartBar } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 const NewsDisplayList = ({News=[]}) => {
@@ -55,4 +55,9 @@ const NewsDisplayList = ({News=[]}) => {
         </div>
     )
 }
+
+NewsDisplayList.propTypes = {
+    News: PropTypes.array
+}
+
 export default NewsDisplayList

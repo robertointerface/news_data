@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 const FlashMessage = ({ type='MESSAGE', message='' , onClick=f=>f}) => {
 
     return (
@@ -20,4 +20,9 @@ const FlashMessage = ({ type='MESSAGE', message='' , onClick=f=>f}) => {
     )
 }
 
+FlashMessage.propTypes = {
+    type: PropTypes.string,
+    message: PropTypes.string,
+    onClick: PropTypes.func
+}
 export default FlashMessage

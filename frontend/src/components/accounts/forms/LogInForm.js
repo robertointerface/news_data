@@ -9,6 +9,20 @@ import {history} from "../../../App";
 import {logged_in} from "../../../actions/actions";
 import {PrimaryButton} from 'ui/common/buttons/buttons'
 
+/**
+ * Login form
+ * @param
+ *  title - Title of the form
+ *  onChange - (function) handle on change on any of the forms
+ *  onSubmit - (function) on submit procedure of the form
+ *  username - (string) username written in the form
+ *  password - (password) written in the form
+ *  error - (string) errors returned by backend servers.
+ *  authSocial - auth social function (sign in with social google or facebook)
+ * @returns
+ *  - Form
+ *
+ */
 const LoginForm = ({title='Log in', onChange=f=>f, onSubmit=f=>f, username='', password='', error='', authSocial=f=>f}) => {
      return (
             <FlexCard title='Login form' class_name='col-md-6 col-sm-12'>

@@ -1,7 +1,6 @@
 import React from 'react'
-import {Component} from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
+import PropTypes from 'prop-types';
 const InfoCardItem = ({fontIcon, text=''}) => {
 
     return (
@@ -11,4 +10,7 @@ const InfoCardItem = ({fontIcon, text=''}) => {
     )
 }
 
+InfoCardItem.PropTypes = {
+    text: PropTypes.string,
+}
 export default InfoCardItem

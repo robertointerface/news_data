@@ -7,8 +7,15 @@ import {SearchConstants as C} from 'constants/constants'
 import {error_search_data} from "root/actions/actions";
 
 class dataRequest {
-
+    /**
+     * Base class used to request and filter data from external API such as Eurostat or OECD
+     * @param requestObject - JSON object with necessary detail to call the API, get the required data and
+     * analyze it correctly.
+     * Main methods:
+     *
+     */
     constructor(requestObject){
+        /** */
         this.ThirdPartyAPI = requestObject.ThirdPartyAPI;
         this.Sector = requestObject.Sector;
         this.Topic = this.filterTopic(requestObject.Topic);
@@ -35,24 +42,27 @@ class dataRequest {
 
     filterTopic(topic){
 
-        /*
-            @Func: Topic.id is in the form 'topic-rev', in order to make an API query the Topic.id needs to be in
-            form 'topic' since the 'rev' is for internal uses purpose, if this is not performed the API query will be
+        /**
+            @Func: Topic.id is in the form 'topic-rev' (i.e EKI-1 ), in order to make an API query the Topic.id needs to be in
+            form 'topic' (i.e EKI) since the 'rev' is for internal uses purpose, if this is not performed the API query will be
             wrong and data can not be queried.
+            @params:
+                topic - (string)
          */
         return {...topic, id: topic.id.split('-')[0]}
 
     }
 
     createDisplayMessage(){
-        /*
+        /**
             @Fun: create short message that explains in a short sentence the data result.
             @return (string): composed message
          */
         var displayMessage = '';
         var orderArray = this.queryMap.DisplayMessageOrder;
-        for (var item of orderArray){ //iterate over array DisplayMessageOrder to find out the order the message should
-                                        //be displayed.
+        /**iterate over array DisplayMessageOrder to find out the order the message should
+         be displayed.*/
+        for (var item of orderArray){
             if (this[item]){
                 displayMessage = displayMessage.concat(this[item].name, ' ');
             }
@@ -64,7 +74,7 @@ class dataRequest {
     }
 
     getObjectFromArray(array, objectKey){
-
+    /** */
         var foundItem = array.find(item => item['id'] == objectKey);
         if (foundItem){
             return foundItem.name;
@@ -76,8 +86,13 @@ class dataRequest {
 
 
     makeAPIcall(){
-        /*
-            @Func: Make API call to get data. Call server and pass the composed url.
+        /**
+         * @Func: Make third party API call to get data. Call backend API '/search/makeapicall/' passing
+         * the composed url. Backend calls the third party API and returns response
+         *
+         * @return:
+         * On success - Third party response
+         * On failure - throw error for user display
 
          */
         var csrftoken = getCookie('csrftoken');
@@ -114,11 +129,14 @@ class dataRequest {
     }
 
     createSaveObject(){
-        /*
-            @Func: Create object with filtered result obtained from API call and details of made request.
-            Data is saved so the user has the possibility of saving the data.
-            Details of made request is saved so user can request the same data in different format.
+        /**
+            @Func: Create JSON object with filtered result obtained from third party API call
+            and details of made request.
+            Data is saved as a redux state so further data manipulation can be done.
+            Details of request is saved so user can request the same data in different format.
          */
+
+        /**copy parameters for this.*/
         var searchObject = {};
         ({
             ThirdPartyAPI: searchObject.ThirdPartyAPI,
@@ -133,7 +151,8 @@ class dataRequest {
             queryMap: searchObject.queryMap,
             requestDate: searchObject.requestDate,
             displayMessage: searchObject.displayMessage,
-        } = this) //copy parameters for this.
+        } = this)
+
 
         var filterResult = [...this.filterResult()]
         var resultObject = {
@@ -161,7 +180,7 @@ class dataRequest {
          */
     }
     urlOptionsIter () {
-        /*
+        /**
             @Iter: Iterate through a given array and create objects with the syntax:
                 obj = {
                     name: this.name,
@@ -182,9 +201,9 @@ class dataRequest {
                          },
                          next() {
                              if (item < arrayLenght) {
-                                 //this.array migt be an array composed of objects or composed of strings/integers
-                                 //if is an array of objects {id: 'FR', name: 'France'} CurrentValue.name is the object id
-                                 //if is an array of string/integers, CurrentValue.name is the array item
+                                 /**this.array migt be an array composed of objects or composed of strings/integers
+                                 if is an array of objects {id: 'FR', name: 'France'} CurrentValue.name is the object id
+                                 if is an array of string/integers, CurrentValue.name is the array item*/
                                  if(typeof _this.array[item] == 'object'){
                                      var CurrentValue = {
                                          name: _this.name,
@@ -215,9 +234,9 @@ class dataRequest {
     }
 
     addToPathArray(item, name='') {
-        /*
-            @Func: Create objects with syntax: { name: name, value: item}.
-            if item is Array type, it iterates through the array by using urlOptionsIter() to create an object for
+        /**
+            @Func: Create objects with syntax: {name: name, value: item}.
+            If item is Array type, it iterates through the array by using urlOptionsIter() to create an object for
             each value in the array.
             @Args:
                 item (string, array or object).
@@ -252,6 +271,9 @@ class dataRequest {
     }
 
     addPathArrayToUrl(){
+        /**
+         * Iterate over array of objects this.pathArray and combine them together.
+         * */
         if(this.pathArray){
             for(let i of this.pathArray){
                 let pathParameter = '';
@@ -264,14 +286,17 @@ class dataRequest {
 
 
 class EUdataRequest extends dataRequest{
-
+    /**
+     * Class extending from 'dataRequest', used to request data to third party
+     * 'Eurostat' https://ec.europa.eu/eurostat
+     * */
     constructor(requestObject) {
         super(requestObject)
     }
     createAPIRequest(){
-        /*
+        /**
             @Func: Create API Request url.
-            @Return true if successful.
+            @Return Promise with create .
          */
         return Promise.all([
             this.createPath(),
@@ -285,7 +310,7 @@ class EUdataRequest extends dataRequest{
     }
 
     createPath(){
-        /*
+        /**
             @Func: Create Array of objects with syntax { name: "", value: "" }, each object represent a parameter that
              is used to create a Url path with syntax name=value.
          */
@@ -299,8 +324,9 @@ class EUdataRequest extends dataRequest{
     }
 
     filterResult(){
-        /*
-            @Func: Organize given API result in format {name: GeoLocation (i.e UK), values: [](Array of values ordered chronologically)}
+        /**
+            @Func: Organize given API result in format {name: GeoLocation (i.e UK), values: []
+            (Array of values ordered chronologically)}
             @Return: (array of objects): each object is geoObject.
          */
         var timeLength = this.SelectedTimes.length;
@@ -313,14 +339,16 @@ class EUdataRequest extends dataRequest{
         }
 
         for(var geo of this.SelectedGeo){
-            //this.SelectedGeo is an array composed of objects {id: 'FR', name: 'France}
+            /**this.SelectedGeo is an array composed of objects {id: 'FR', name: 'France}*/
             let geoObject = {
                 name: geo.name,
                 values: []
             }
             let geoIndex = this.getIndex('geo', geo.id);
-
-            if(typeof geoIndex != "undefined"){ //if geoIndex is not define then we have the country data, otherwise the country data was not returned needs to be filled as null
+            /**if geoIndex is not define then we have the country data, otherwise the country data
+             * was not returned needs to be filled as null
+             * */
+            if(typeof geoIndex != "undefined"){ //
 
                 let start = geoIndex * timeLength;
                 let end = start + timeLength;
@@ -334,18 +362,17 @@ class EUdataRequest extends dataRequest{
                 }
             }else{
                 for(var time in this.SelectedTimes){
-                    geoObject.values.push(null) //Geo/country data was not returned and it must be filled with null values
+                    /**Geo/country data was not returned and it must be filled with null values*/
+                    geoObject.values.push(null)
                 }
             }
-
             finalValue.push(geoObject);
-
         }
         return finalValue;
     }
 
     getIndex(type, name){
-        //var lavelObject = this.result['dimension'].parameter['category']['label'];
+        /**Get the index of data*/
         var indexObject = this.result['dimension'][type]['category']['index'];
         var index = indexObject[name]
         return index;
@@ -353,7 +380,10 @@ class EUdataRequest extends dataRequest{
 }
 
 class OECDdataRequest extends dataRequest {
-
+    /**
+     * Class extends for dataRequest, used to request and analyze data from third party API
+     * OECD 'http://www.oecd.org'
+     * */
     constructor(requestObject) {
         super(requestObject)
         this.TimeType = this.queryMap.TimeType
@@ -368,7 +398,7 @@ class OECDdataRequest extends dataRequest {
     }
 
     createTimeOptions(){
-        /*
+        /**
             @Fun: Get minimum and maximum years from this.SelectedTimes and add them to pathArray
          */
         var minYear = Math.min(...this.SelectedTimes)
@@ -378,10 +408,12 @@ class OECDdataRequest extends dataRequest {
     }
 
     createGeoOptions(){
-        /*
-            @Func: Create string composed of a concatenation of this.SelectedGeo array in order to create a API request
-            with the required locations.
+        /**
+         @Func: Create string composed of a concatenation of this.SelectedGeo array in
+         order to create a API request with the required locations.
+         @return - concatenated array.
          */
+
         var locations = this.SelectedGeo;
         var geoPath = '';
         for(let location of locations){
@@ -392,8 +424,14 @@ class OECDdataRequest extends dataRequest {
     }
 
     addToPath(itemToAdd){
+        /**
+         *Provided a variable of type string, array or JSON object add it accordingly
+         * @type {string}
+         */
         var pathItem = ''
-        if ((Array.isArray(itemToAdd)) || (typeof itemToAdd === 'string') || (typeof itemToAdd == 'object' && itemToAdd != null)) {
+        if ((Array.isArray(itemToAdd)) ||
+            (typeof itemToAdd === 'string') ||
+            (typeof itemToAdd == 'object' && itemToAdd != null)) {
             if (Array.isArray(itemToAdd)) {
                 for (let y of itemToAdd) {
                     pathItem = pathItem.concat('.', y);
@@ -422,6 +460,9 @@ class OECDdataRequest extends dataRequest {
     }
 
     createPath() {
+        /**
+         *
+         * */
         var order = this.queryMap.orderOption;
         var path = '';
         for (let item of order) {

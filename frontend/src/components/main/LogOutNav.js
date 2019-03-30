@@ -42,4 +42,8 @@ const LogOutNav = (user_id = 0) => {
         </ul>
     )
 }
+
+LogOutNav.PropTypes = {
+    user_id: PropTypes.number
+}
 export default LogOutNav

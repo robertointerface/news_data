@@ -18,4 +18,7 @@ const TableHeader = ({list = []}) => {
     )
 }
 
+TableHeader.propTypes = {
+    list: PropTypes.array,
+}
 export default TableHeader

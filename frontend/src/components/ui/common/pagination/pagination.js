@@ -1,11 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 import {PaginationButton} from 'ui/common/buttons/buttons'
-import {Etc} from 'ui/common/pagination/etc'
 import { faForward, faBackward } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faTable} from "@fortawesome/free-solid-svg-icons/index";
-
 
 const Pagination = ({presentPage=1, begin=[], end=[], lastPage=0, goToPage=f=>f})=> {
     return(
@@ -48,6 +45,14 @@ const Pagination = ({presentPage=1, begin=[], end=[], lastPage=0, goToPage=f=>f}
             }
         </div>
     )
+}
+
+Pagination.propTypes = {
+    presentPage: PropTypes.number,
+    begin: PropTypes.array,
+    end: PropTypes.array,
+    lastPage: PropTypes.number,
+    goToPage: PropTypes.func
 }
 
 export default Pagination

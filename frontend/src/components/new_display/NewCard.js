@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Component } from 'react';
 import CardCol12 from 'ui/common/cards/CardCol12'
 import NewTitle from 'ui/new_display/title'
 import Headline from 'ui/new_display/headline'
@@ -18,6 +17,15 @@ const NewCard = ({title='', headline1='', headline2='', headline3='', content=''
              </div>
         </CardCol12>
     )
+}
+NewCard.propTypes = {
+    title: PropTypes.string,
+    headline1: PropTypes.string,
+    headline2: PropTypes.string,
+    headline3: PropTypes.string,
+    content: PropTypes.string,
+    author: PropTypes.string,
+    time_stamp: PropTypes.string
 }
 
 export default NewCard

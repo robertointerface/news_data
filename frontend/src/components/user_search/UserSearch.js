@@ -41,6 +41,10 @@ import {
     getGraphClass} from 'functions/Results_management/Results'
 import GraphDisplay from "components/data_representation/graph/graphDisplay"
 
+/**
+ * React
+ */
+
 class UserSearchComponent extends Component {
     constructor(props){
         super(props)

@@ -46,7 +46,11 @@ const MainMenu = ({loggedIn = false, token = '', log_out=f=>f, flashMessage='', 
 }
 
 MainMenu.propTypes = {
-    loggedIn: PropTypes.bool
+    loggedIn: PropTypes.bool,
+    token: PropTypes.string,
+    log_out: PropTypes.func,
+    flashMessage: PropTypes.string,
+    username: PropTypes.string
 }
 
 export default MainMenu

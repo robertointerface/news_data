@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 const ErrorMessage = ({message=''}) =>{
     return(
         <div className="alert alert-danger" role="alert">
@@ -8,4 +8,8 @@ const ErrorMessage = ({message=''}) =>{
     )
 }
 
+
+ErrorMessage.propTypes = {
+    message: PropTypes.string,
+}
 export default ErrorMessage

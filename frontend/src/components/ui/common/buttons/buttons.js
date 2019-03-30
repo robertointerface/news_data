@@ -33,4 +33,12 @@ const PaginationButton = ({page=0, message='', onClick=f=>f, active=false}) => {
     )
 }
 
+
+PaginationButton.propTypes = {
+    page: PropTypes.number,
+    message: PropTypes.string,
+    active: PropTypes.bool,
+    onClick: PropTypes.func
+}
+
 export {PaginationButton, PrimaryButton}

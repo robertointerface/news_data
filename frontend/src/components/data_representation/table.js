@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import TableHeader from './tableHeader'
-import Tablebody from './tableBody'
+import TableHeader from 'components/data_representation/tableHeader'
+import Tablebody from 'components/data_representation/tableBody'
 const Table = ({ columnList = [], rowList = [] }) => {
     var test = columnList;
     return(
@@ -12,6 +12,11 @@ const Table = ({ columnList = [], rowList = [] }) => {
             </table>
         </div>
     )
+}
+
+Table.propTypes = {
+    columnList: PropTypes.array,
+    rowList: PropTypes.array
 }
 
 export default Table

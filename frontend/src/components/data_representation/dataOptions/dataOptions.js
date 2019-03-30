@@ -5,6 +5,7 @@ import {
     GraphContainer,
     ExcelDownloadContainer
 } from 'containers/searchDataContainers'
+import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTools } from '@fortawesome/free-solid-svg-icons'
 
@@ -29,5 +30,9 @@ const DataOptions = ({resultId='', resultSaved=false}) => {
     )
 }
 
+DataOptions.propTypes = {
+    resultId: PropTypes.string,
+    resultSaved: PropTypes.bool
+}
 
 export default DataOptions

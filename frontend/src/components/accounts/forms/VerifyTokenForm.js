@@ -78,9 +78,21 @@ const VerifyTokenForm =
                 placeholder='max. 20 characters'
                 maxLength="20"
             />
-
         </form>
     </CardCol6>
 
+
+VerifyTokenForm.prototype = {
+    title: PropTypes.string,
+    onChange: PropTypes.func,
+    onSubmit: PropTypes.func,
+    username: PropTypes.string,
+    password: PropTypes.string,
+    passwordRepeat: PropTypes.string,
+    last_name: PropTypes.string,
+    first_name: PropTypes.string,
+    location: PropTypes.string,
+    error: PropTypes.string,
+}
 
 export default VerifyTokenForm
