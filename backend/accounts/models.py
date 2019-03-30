@@ -35,19 +35,20 @@ class User(AbstractUser):
         class_name = type(self).__name__
         return '{class_name} {title}'.format(class_name=class_name, title=self.username)
     # save, require email confirmation
-    # def save(self, *args, **kwargs):
-    #     if not self.external_auth:
-    #         if not self.email_confirmed:
-    #             self.send_verification_email()
-    #     super(User, self).save(*args, **kwargs)
+
+    def save(self, *args, **kwargs):
+        if not self.external_auth:
+            if not self.email_confirmed:
+                self.send_verification_email()
+        super(User, self).save(*args, **kwargs)
 
     # save no email confirmation required
 
     # used in development to avoid email verification and fake users can be created
-    def save(self, *args, **kwargs):
-
-        self.email_confirmed = True
-        super(User, self).save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #
+    #     self.email_confirmed = True
+    #     super(User, self).save(*args, **kwargs)
 
     def send_verification_email(self):
         link = '{}/{}'.format(Constants['verify_Account'], self.activation_key)

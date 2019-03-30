@@ -69,9 +69,7 @@ else:
                                read())['web']['client_id']
 
 
-#@api_view(['POST'])
-@permission_classes((AllowAny, ))
-def sign_up(request):
+class SignUp(APIView):
     """
     Sign up new user given a valid username & email (username and email are verified
     previously on Frontend) still they are verified by SQL Model specifications.
@@ -85,36 +83,39 @@ def sign_up(request):
         On failure - Json response with 'status' 400 and failure message to be displayed
                     at frontend.
     """
-    try:
-        # Convert http.request.body into Json object
-        request_data = json.loads(request.body)
-        username = request_data['username']
-        email = request_data['email']
-        activation_token = create_activation_key(username)
-        User.objects.create(
-            username=username,
-            email=email,
-            activation_key=activation_token
-        )
-        response = JsonResponse({
-            'status': 200,
-            'content': '''We have sent you an email, please follow the steps in order
-                        to finalize the process'''
-        })
-    except django.db.DatabaseError:
-        response = JsonResponse({
-            'status': 400,
-            'content': '''There has been an error, please verify that your email is the correct one. 
-                        If the error persists please contact us'''
-        })
-    except RawPostDataException:
-        response = JsonResponse({
-            'status': 400,
-            'content': """There has been an error, please verify that your email is the correct one. 
-                If the error persists please contact us."""
-        })
-    finally:
-        return response
+    permission_classes = (AllowAny,)
+
+    def post(self, request, format=None):
+        try:
+            # Convert http.request.body into Json object
+            request_data = self.request.data
+            username = request_data['username']
+            email = request_data['email']
+            activation_token = create_activation_key(username)
+            User.objects.create(
+                username=username,
+                email=email,
+                activation_key=activation_token
+            )
+            response = JsonResponse({
+                'status': 200,
+                'content': '''We have sent you an email, please follow the steps in order
+                            to finalize the process'''
+            })
+        except django.db.DatabaseError as error:
+            response = JsonResponse({
+                'status': 400,
+                'content': '''There has been an error, please verify that your email is the correct one. 
+                            If the error persists please contact us'''
+            })
+        except RawPostDataException:
+            response = JsonResponse({
+                'status': 400,
+                'content': """There has been an error, please verify that your email is the correct one. 
+                    If the error persists please contact us."""
+            })
+        finally:
+            return response
 
 
 @permission_classes((AllowAny, ))
@@ -194,6 +195,11 @@ def verify_token(request, token):
         response = JsonResponse({
             'status': 500,
             'content': """There was a problem """
+        })
+    except ObjectDoesNotExist:
+        response = JsonResponse({
+            'status': 500,
+            'content': """wrong verification token """
         })
     finally:
         return response
