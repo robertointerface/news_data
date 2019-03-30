@@ -26,7 +26,7 @@ import {
 
 import {history} from "root/App";
 import {getCookie} from "functions/auth/Cookies";
-
+import {verifyToken} from 'functions/auth/LoginFunctions'
 export const FlashContainer = connect(
     state =>
         ({
@@ -48,9 +48,10 @@ export const FlashContainer = connect(
 )*/
 
 export const VerifyTokenFormContainer = connect(
-    state =>
+    (state, props) =>
         ({
             username: state.User_management.username,
+            token: props.match.params.token,
             loggedIn : state.User_management.logged_in,
             password: state.User_management.password,
             passwordRepeat: state.User_management.passwordRepeat,

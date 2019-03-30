@@ -50,7 +50,7 @@ export const ActionsConstants = {
 }
 export const urls = {
     LOG_IN: 'http://127.0.0.1:8080/accounts/token-auth/',
-    SIGN_UP: 'http://127.0.0.1:8080/accounts/signup/',
+    SIGN_UP: 'http://localhost:8080/accounts/signup/',
     EDIT_USER_FIRST_TIME: 'http://127.0.0.1:8080/accounts/edituserfirsttime/',
     REFRESH_TOKEN: 'http://127.0.0.1:8080/accounts/token-refresh/',
     RESET_PASSWORD: 'http://localhost:8080/accounts/APIresetpassword',

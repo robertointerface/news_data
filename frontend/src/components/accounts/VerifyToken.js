@@ -1,23 +1,53 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Component } from 'react'
-import {getCookie} from "functions/auth/Cookies";
-import {VerifyTokenFormContainer} from 'containers/containers'
 import CardCol6 from 'ui/common/cards/CardCol6'
+import {verifyToken} from 'functions/auth/LoginFunctions'
+import FlashMessage from 'components/main/Flash'
 
 class VerifyToken extends Component {
     constructor(props){
         super(props)
-        this.token = this.props.match.params.token;
-        this.verified = verifyToken(this.token, this.props.onLogIn);
+        this.token = this.props.token;
         this.onChange = this.props.onChange;
         this.onSubmit = this.props.onSubmit;
+        this.state = {
+            verified: false,
+            message: ''
+        }
+        this.removeMessage = this.removeMessage.bind(this)
+    }
+
+    componentDidMount(){
+        /**
+         * Call verify token and display either successful verification or error
+         */
+        verifyToken(this.token, this.props.onLogIn).then(result => {
+            return this.setState({
+                verified: result,
+                message: 'please complete the following fields to finish registration'
+            })
+        })
+            .catch(error => {
+                return this.setState({
+                    message: error
+                })
+            })
+    }
+
+    removeMessage(){
+        return this.setState({
+            message: ''
+        })
     }
     render (){
-        let { loggedIn, username, password, passwordRepeat} = this.props
+        let {verified, message} = this.state
+        let {username, password, passwordRepeat} = this.props
         return (
             <div>
-                {(loggedIn) ?
+                {(message) ?
+                    <FlashMessage message={message} onClick={this.removeMessage}/> : null
+                }
+                {(verified) ?
                     <CardCol6>
                         <form onSubmit={(e) => this.onSubmit(e, this.token)}>
                             <label htmlFor='username'>Username</label>
@@ -62,35 +92,4 @@ class VerifyToken extends Component {
     }
 }
 
-
 export default VerifyToken
-
-const verifyToken = function ( token, dispatchLogIn ){
-
-    console.log('token: ' + token);
-    var csrftoken = getCookie('csrftoken');
-
-    return fetch(`http://127.0.0.1:8080/accounts/verifyusertoken/${token}/`, {
-    method: 'POST',
-    mode: 'same-origin',
-    headers: {
-            'Content-Type': 'application/json',
-            'X-CSRFToken': csrftoken
-    },
-    })
-    .then(res => {
-        return res.json()
-    })
-    .then(res => {
-        if (res.status == 200) {
-            return dispatchLogIn();
-        }
-        else{
-            throw 'error';
-        }
-    })
-    .catch(error => {
-        console.log('error');
-    })
-
-}

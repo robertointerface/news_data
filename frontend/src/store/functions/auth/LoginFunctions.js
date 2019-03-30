@@ -5,11 +5,9 @@ import {
     remove_user_data,
     set_flash_message
 } from 'actions/actions'
-
 import {flashFlags} from 'constants/constants'
 import {history} from 'root/App.js';
 import {getCookie} from "./Cookies";
-
 import {
     validate,
     onlyLettersNumbers,
@@ -18,6 +16,17 @@ import {
 import {urls} from 'constants/constants'
 
 export const handle_edit_first_time = (token) => {
+    /**
+     * @func: User needs to set a password right after email account has been verified by user.
+     *Password and username get validated and sent to backend where they will be saved.
+     *
+     * @Params
+     * token - Token sent to user email for email account verification.
+     *
+     * @return
+     * On success - redirect user to login site where he can log ing
+     * On Failure - display error message
+     */
     return (dispatch, getState) => {
         var { username } = getState().User_management;
         var { password } = getState().User_management;
@@ -229,5 +238,43 @@ export const handle_logout = () => {
         dispatch(remove_user_data())
         history.push('/about')
     }
+}
+
+
+export const verifyToken = function ( token ){
+    /**
+     *@Func: API call to verify if token is the one sent to user.
+     *
+     * @params
+     * token - (string) token to be verified
+     *
+     * @return
+     * On success - return true
+     * On Failure - throw error with explanation.
+     *
+     */
+    var csrftoken = getCookie('csrftoken');
+    return fetch(`http://127.0.0.1:8080/accounts/verifyusertoken/${token}/`, {
+    method: 'POST',
+    mode: 'same-origin',
+    headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': csrftoken
+    },
+    })
+    .then(res => {
+        return res.json()
+    })
+    .then(res => {
+        if (res.status == 200) {
+            return true;
+        }
+        else{
+            throw res.content;
+        }
+    })
+    .catch(error => {
+        throw error
+    })
 }
 
