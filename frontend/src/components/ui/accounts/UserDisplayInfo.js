@@ -2,9 +2,21 @@ import React from 'react';
 import {PrimaryButton} from 'ui/common/buttons/buttons'
 import PropTypes from 'prop-types';
 import Login from "root/components/accounts/Login";
-
+import InfoCardItem from 'components/user_display/user_private_info/InfoCardItem'
+import {
+    faAddressCard,
+    faNewspaper,
+    faTable,
+    faUsers,
+    faGlobeEurope,
+} from '@fortawesome/free-solid-svg-icons'
 const UserInfoCard = ({username='', location='', about_me='', followers=0, publishedNews=0, onFollow=f=>f,
                           following=false, canFollow=false}) => {
+    /** get username from local storage (user currecntly logged in) to verify it the user
+     * that will be displayed is not the same as the one logged in, if is the same user then
+     * no option of 'follow' is given as one can not follow himself*/
+    var userSaved = JSON.parse(localStorage.getItem('user'));
+    var localUser = userSaved['username']
     return(
         <div className='card'>
             <div className='row'>
@@ -12,7 +24,8 @@ const UserInfoCard = ({username='', location='', about_me='', followers=0, publi
                     {username}
                 </div>
 
-                <div className='col-4'>
+                {(localUser != username)?
+                    <div className='col-4'>
                     {(canFollow) ?
                         <div>
                             {(following) ?
@@ -23,7 +36,9 @@ const UserInfoCard = ({username='', location='', about_me='', followers=0, publi
                         :
                         <p>Need to login to follow</p>
                     }
-                </div>
+                    </div> : null
+                }
+
                 <div className='col-6'>
                     {location}
                 </div>
