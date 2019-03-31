@@ -1,7 +1,7 @@
 
 
 export const onlyLettersNumbers = (value='') => {
-    /*
+    /**
         @Func: Validate if string is only formed by letters and numbers.
         @Input:
             value ('string').
@@ -20,7 +20,7 @@ export const maxLenght = (value = '', maxLenght) => {
 }
 
 export const isEmail = (email) => {
-    /*
+    /**
         @Func: validate if string is email by regex.
         @input:
             email (string).
@@ -44,7 +44,7 @@ export const passwordSame = (password='', passwordRepeat= '') => {
 }
 
 export const validate = (value='', validators=[]) => {
-    /*
+    /**
         @Func: validate a string by providing the validators.
         @Input:
             Value (string): Value to validate.

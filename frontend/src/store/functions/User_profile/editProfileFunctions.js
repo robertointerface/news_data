@@ -6,6 +6,14 @@ import {set_flash_message, update_user_data} from 'actions/actions'
 import {history} from "root/App";
 
 const getUserPrivateData = function(){
+    /**
+     * Call API '/accounts/edituser' to fetch user private data so user can edit if requested
+     *Authentication required.
+     *
+     * @return
+     * On success - user data (first_name, last_name, location, about_me)
+     * on failure - throw error to be displayed to user.
+     */
     var csrftoken = getCookie('csrftoken');
     return fetch(`${urls.EDIT_USER}`, {
         method: 'GET',
@@ -34,6 +42,10 @@ const getUserPrivateData = function(){
 
 const EditUserProfile = () => {
 
+    /**
+     * Call API '/accounts/edituser' with POST method to modify user fields in backend.
+     *
+     */
     return (dispatch, getState) => {
         var username = getState().User_management.username;
         var location = getState().User_management.location;

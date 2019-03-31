@@ -3,7 +3,7 @@ import {getCookie} from "root/store/functions/auth/Cookies";
 
 
 const getUserSubscriptions = function (page=1){
-    /*
+    /**
         API call to backend to get news created by users that logged in user is following (subscription format).
 
         @params

@@ -4,6 +4,17 @@ import download from "downloadjs";
 
 
 const getUserData = function(page=1){
+    /**
+     * Call API '/profile/getuserdata' to fetch data saved by the user, data is fetched in a
+     * paginated way.
+     *
+     * @params
+     * page - (int) use the page number to fetch data in a paginated way.
+     *
+     * @return
+     * On success - JSON object with loaded data.
+     * On failure - throw error
+     */
     var csrftoken = getCookie('csrftoken'); //get saved cookie
     return fetch(`${urls.GET_USER_DATA}?page=${page}`, {
         method: 'GET',
@@ -32,8 +43,6 @@ const getUserData = function(page=1){
         })
 
 }
-
-
 
 const excel_download = data => {
     /**

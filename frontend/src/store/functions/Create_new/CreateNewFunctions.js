@@ -26,7 +26,7 @@ import {urls, DatabaseConstants as thirdParty} from 'constants/constants'
 import {dataRequest} from "root/store/classes/dataRequest";
 
 export const handle_new_change = (e, prevstate) => {
-    /*
+    /**
         @Func: Get change (keyboard interrupt) in New Form and update the state.
         @Arg:
             e: Input that was changed
@@ -45,7 +45,7 @@ export const handle_new_change = (e, prevstate) => {
 
 
 export const attach_data_reference = (id) => {
-    /*  When user clicks on 'attach' button for either table or chart
+    /** Performed when user clicks on 'attach' button for either table or chart.
         @Func: Get tables from Results_management.tables and call attach_table if result was not attached yet.
         @Arg: id(int) time.stamp when reference was requested and is the Identification of the reference.
         @Return: 'dispatch(attach_table(table))', if the object is already attached, an empty object is attached
@@ -71,7 +71,7 @@ export const attach_data_reference = (id) => {
 
 
 export const attach_graph_reference = (id) => {
-    /*  When user clicks on 'attach' button for either table or chart
+    /** performed When user clicks on 'attach' button for either table or chart
         @Func:
             1-Get charts from Results_management.charts.
             2-Find if chart is attached already or not.
@@ -102,7 +102,7 @@ export const attach_graph_reference = (id) => {
 }
 
 export const getTopicMap = (thirdPartyAPI, sectorId, topicId) => {
-    /*
+    /**
         @func: Given a sector id and Topic id, it finds the corresponding queryOptions object and returns it.
         @Args: SectorId (string), topiId (string).
         @Returns: queryOptions Object.
@@ -125,7 +125,7 @@ export const getTopicMap = (thirdPartyAPI, sectorId, topicId) => {
 }
 
 export const handle_indicator_request = (topicId='', topicName='') => {
-    /*
+    /**
         @Func: Request indicators and unit measures to server by providing a specific sector & topic.
         @Arg:
             topicId (string): Selected topic id.
@@ -354,63 +354,3 @@ export const handle_publish_long_new = () =>{
             })
     }
 }
-
-
-
-
-/////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////// POSSIBLE DELETE ///////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////
-/*export const getSectorTopics = sector => {
-    for (let i of EurostatDatabases){
-        if (i.code == sector){
-            let topics = createDisplayArrayForTopics(i['DataBases'])
-            return topics;
-        }
-    }
-}*/
-/*
-export const getDataBaseInfo = (sector, databaseCode) => {
-    for (let i in EurostatDatabases) {
-        if (EurostatDatabases[i].code == sector) {
-            for (let k in EurostatDatabases[i].DataBases) {
-                if (EurostatDatabases[i].DataBases[k].code === databaseCode) {
-                    return EurostatDatabases[i].DataBases[k]
-                }
-            }
-        }
-    }
-}*/
-
-
-/*export const getSectorsByDatabase = database => {
-    switch (database){
-        case(DatabaseConstants.EU):
-            return getSectors(EurostatDatabases)
-        default:
-            return []
-    }
-}*/
-/*export const pushGeo = (list, newItem) => {
-    var clickedGeo = list.find(time => time['id'] == newItem);
-    clickedGeo.checked = true;
-    clickedGeo.name += 'mod';
-    return list;
-}*/
-/*
-
-
-const getSectors = list => {
-    var sectorArray = []
-    try {
-        for (let i in list) {
-            sectorArray.push({name: list[i].SubTopicName, code: list[i].code})
-        }
-    }
-    catch (e) {
-        sectorArray = []
-    }
-    finally {
-        return sectorArray
-    }
-}*/

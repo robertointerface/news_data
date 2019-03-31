@@ -82,7 +82,7 @@ export const handle_user_change = (e, prevstate) => {
 }
 
 export const handle_signup = () => {
-    /*
+    /**
         Send new user username and email to backend in order to create a new user.
      */
     return (dispatch, getState) => {
@@ -121,8 +121,11 @@ export const handle_signup = () => {
 }
 
 export const handle_login = () => {
-    /*
-        Log In user by verifying user name and password
+    /**
+        @Func: Log In user by verifying user name and password
+        @Return
+            On success - logged in user and redirect to main site
+            On failure - display error
      */
     return (dispatch, getState) => {
         var username = getState().User_management.username;
@@ -164,7 +167,7 @@ export const handle_login = () => {
 };
 
 export const handle_refresh_token = () =>{
-    /*
+    /**
         @Func: Refresh JWT Token.
 
      */
@@ -229,7 +232,7 @@ export const handle_reset_password = (email='') => {
 }
 
 export const handle_logout = () => {
-    /*
+    /**
         Log out user by removing JWT (token) from localstorage and redirecting to main site.
      */
     return (dispatch) => {

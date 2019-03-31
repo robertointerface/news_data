@@ -22,8 +22,13 @@ import {
 } from 'classes/graph'
 
 export const handle_change_unit = (resultId, unitId) => {
-    /*
+    /**
+        Function called when user changes unit measure in a table of data.
+        @Params
+            resultId - Id to find json object on redux state 'Results_management.tables'
+            unitId - New unit measure to make new query
 
+        @return call Display_table with obtained result.
      */
     return (dispatch, getState) =>{
         var resultsMade = getState().Results_management.tables;
@@ -42,10 +47,8 @@ export const handle_change_unit = (resultId, unitId) => {
 
 }
 
-
-
 export const handle_save_result_user = resultId => {
-    /*
+    /**
         @Func: upon user request, 'table' data (Third party api data i.e Eurostat) is saved into users accounts so it
         can be seen or analyze later. Data is saved in MySQL table 'UserData' in the back end.
         @Arg: resultId(time.stamp() unix time.stamp()): data ID used to get the data form redux state.
@@ -90,7 +93,7 @@ export const handle_save_result_user = resultId => {
 }
 
 export const handle_excel_download = resultId => {
-/*
+/**
     @Func: Call API to convert specific result data (JSON format) into an excel file.
     @Arg: resultId(time.stamp() unix time.stamp()): data ID used to get the data form redux state.
     @return: Excel file to browser
@@ -123,16 +126,22 @@ export const handle_excel_download = resultId => {
     }
 }
 
-
 const getGraphClass = (graphData) => {
+    /**
+     * Decide which type of graph to display (line or bar)
+     *
+     * X axis is dedicated to time (ie 1997, 1998 ..) if selected times is more than 1, the line graph
+     * is required, otherwise bar graph
+     */
     if (graphData.SelectedTimes.length > 1){
         return new lineGraph(graphData)
     } else{
         return new barGraph(graphData)
     }
 }
+
 export const handle_graph_result = resultId => {
-    /*
+    /**
         @Func: convert JSON data into JSON data that can be used to create charts/graphs with chart.js library.
         @Arg: resultId(time.stamp() unix time.stamp()): data ID used to get the data form redux state.
         @return: JSON object.
@@ -160,10 +169,12 @@ export const handle_graph_result = resultId => {
 
     }
 }
+
 const prepareGraphData = resultData => {
-    /*
+    /**
         @Func: Create JSON object required to initialize 'graph'.
         @Args (resultData): JSON Object
+        @return JSON object that is used to create a graph.
      */
     var graphObject = {};
     ( {
@@ -184,14 +195,15 @@ const prepareGraphData = resultData => {
     return graphObject;
 }
 
-
 const findItemInArray = function (itemId, array) {
-
+    /**
+     * Given an array of json objects, find the item with an specific 'id'
+     *
+     */
     try {
         var foundItem = array.find(item => item['id'] == itemId)
     }
     catch(error){
-
     }
     finally{
         return foundItem;

@@ -2,7 +2,7 @@ import {urls} from "root/constants/constants";
 import {getCookie} from "root/store/functions/auth/Cookies";
 
 const getUserNews = function(username='', page=1){
-    /*
+    /**
         Calls API 'http://localhost:8080/display/usernews?username=' to get news published by the specific user.
         @param:
             username - Username whose news should be queried.
@@ -39,7 +39,7 @@ const getUserNews = function(username='', page=1){
 }
 
 const getUserInfo = function(username=''){
-    /*
+    /**
         Calls API 'http://localhost:8080/accounts/userpublicinfo?username=' to get user public information.
         @param:
             username - Username whose information should be queried.
@@ -74,7 +74,7 @@ const getUserInfo = function(username=''){
 
 
 const setFollow = function(toFollow=''){
-     /*
+     /**
         API call to backend 'accounts/follow' Upon user request start following a user.
 
         @params
@@ -113,7 +113,7 @@ const setFollow = function(toFollow=''){
 }
 
 const setUnFollow = function(unFollow=''){
-    /*
+    /**
         API call to backend 'accounts/unfollow' Upon user request stop following a user.
 
         @params
@@ -153,7 +153,7 @@ const setUnFollow = function(unFollow=''){
 
 
 const isFollowing = function(isFollowing=''){
-    /*
+    /**
         Check if logged in user is following another user by providing the user name 'isFollowing'
 
         @param
