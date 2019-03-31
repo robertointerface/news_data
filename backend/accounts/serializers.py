@@ -46,25 +46,10 @@ class UserInfoSerializer(serializers.ModelSerializer):
         return obj.user_rel_followed.count()
 
 
-class UserPrivateInfoSerializer(serializers.ModelSerializer):
-    """
-    Serializer use for the fields modifications on 'User', authentication required to access.
-    """
-    user_rel_followed = serializers.SerializerMethodField()
-    user_rel_follows = serializers.SerializerMethodField()
-    user_saved_data = serializers.SerializerMethodField()
-    user_created_new = serializers.SerializerMethodField()
-
+class UserEdit(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('about_me',
-                  'location',
-                  'first_name',
-                  'last_name',
-                  'user_rel_followed',
-                  'user_rel_follows',
-                  'user_created_new',
-                  'user_saved_data')
+        fields = ('about_me', 'location', 'first_name', 'last_name')
 
     def update(self, instance, validated_data):
         """
@@ -85,6 +70,27 @@ class UserPrivateInfoSerializer(serializers.ModelSerializer):
         except (KeyError, DatabaseError):
             raise DatabaseError
 
+
+class UserPrivateInfoSerializer(serializers.ModelSerializer):
+    """
+    Serializer use for the fields modifications on 'User', authentication required to access.
+    """
+    user_rel_followed = serializers.SerializerMethodField()
+    user_rel_follows = serializers.SerializerMethodField()
+    user_saved_data = serializers.SerializerMethodField()
+    user_created_new = serializers.SerializerMethodField()
+
+    class Meta:
+        model = User
+        fields = ('about_me',
+                  'location',
+                  'first_name',
+                  'last_name',
+                  'user_rel_followed',
+                  'user_rel_follows',
+                  'user_created_new',
+                  'user_saved_data')
+
     def get_user_created_new(self, obj):
         """Get the count of news """
         return obj.user_created_new.count()
@@ -100,6 +106,8 @@ class UserPrivateInfoSerializer(serializers.ModelSerializer):
     def get_user_saved_data(self, obj):
         """Get the count of user_saved_data """
         return obj.user_saved_data.count()
+
+
 
 
 class FollowSerializer(serializers.ModelSerializer):

@@ -48,7 +48,7 @@ from rest_framework_jwt.settings import api_settings
 from google.oauth2 import id_token
 from google.auth.transport import requests
 from .serializers import UserSerializer, UserSerializerWithToken, UserInfoSerializer,\
-    FollowSerializer, UserPrivateInfoSerializer
+    FollowSerializer, UserPrivateInfoSerializer, UserEdit
 from .models import User
 
 # SECURITY IMPORTS
@@ -571,7 +571,7 @@ class EditUser(APIView):
         """
         try:
             user = request.user
-            serialized_user = UserPrivateInfoSerializer(user, many=False)
+            serialized_user = UserEdit(user, many=False)
             if serialized_user.instance is not None:
                 content = JSONRenderer().render(serialized_user.data)
                 return Response(content, status=200, content_type=json)
@@ -592,7 +592,7 @@ class EditUser(APIView):
         try:
             user = request.user
             request_data = self.request.data
-            serializer = UserPrivateInfoSerializer(data={'first_name': request_data['first_name'],
+            serializer = UserEdit(data={'first_name': request_data['first_name'],
                                                          'last_name': request_data['last_name'],
                                                          'location': request_data['location'],
                                                          'about_me': request_data['about_me']})
