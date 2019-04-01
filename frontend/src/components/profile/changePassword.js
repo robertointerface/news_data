@@ -7,6 +7,7 @@ import {PrimaryButton} from 'ui/common/buttons/buttons';
 import {getCookie} from "root/store/functions/auth/Cookies";
 import {changePassword} from 'functions/User_profile/editProfileFunctions'
 import FlashMessage from 'components/main/Flash'
+import {PrimaryButtonDis} from 'ui/common/buttons/buttons'
 
 class ChangePassword extends Component {
 
@@ -19,12 +20,13 @@ class ChangePassword extends Component {
         this.state = {
             newPass: '',
             ConfnewPass: '',
-            message: ''
+            message: '',
+            fetching: false
         }
         this.onChangeNewPass = this.onChangeNewPass.bind(this);
         this.onChangeConfNewPass = this.onChangeConfNewPass.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
-
+        this.onFetching = this.onFetching.bind(this);
     }
 
     onChangeNewPass(e){
@@ -43,6 +45,11 @@ class ChangePassword extends Component {
             ConfnewPass: value
         })
     }
+    onFetching(){
+        return this.setState({
+            fetching: true
+        })
+    }
 
     onSubmit(){
         /**
@@ -56,20 +63,24 @@ class ChangePassword extends Component {
          *
          */
         try{
+            this.onFetching();
             changePassword(this.state.newPass, this.state.ConfnewPass)
             .then(response => {
                     return this.setState({
                         message: response,
+                        fetching: false
                     })
             })
             .catch(error => {
                 return this.setState({
-                        message: error,
+                    message: error,
+                    fetching: false
                 })
             })
         } catch (error) {
             return this.setState({
                         message: error,
+                        fetching: false
                 })
         }
 
@@ -105,7 +116,11 @@ class ChangePassword extends Component {
                 </div>
                 <div className='row'>
                     <div className='col-12'>
+                        {(this.state.fetching)?
+                        <PrimaryButtonDis message={'saving...'}/>
+                        :
                         <PrimaryButton message={'save changes'} onClick={this.onSubmit}/>
+                        }
                     </div>
                 </div>
             </PageTemplate>

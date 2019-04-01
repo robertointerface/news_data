@@ -9,7 +9,7 @@ import {
     select_time,
     check_request,
     requesting_data,
-    finished_requestiong
+    app_fetching
 } from "actions/actions";
 import SearchComponent from "components/search_data/SearchComponent";
 import {RequestButton} from "components/search_data/RequestButton";
@@ -156,14 +156,15 @@ export const ProgressContainer = connect(
 export const RequestButtonContainer = connect(
     state =>
         ({
+            fetching: state.App_status.isFetching,
             active: state.Current_search.requestActive
         }),
     dispatch =>
         ({
             onClick(e){
                 e.preventDefault()
-                dispatch(requesting_data())
-                dispatch(handle_data_request())
+                    dispatch(app_fetching(true))
+                    dispatch(handle_data_request())
 
             }
         })

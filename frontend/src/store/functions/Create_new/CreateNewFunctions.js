@@ -15,7 +15,8 @@ import {
     set_chart_attached,
     clean_new_state,
     clean_current_search,
-    clean_result_management
+    clean_result_management,
+    app_fetching
 } from "actions/actions";
 import {history} from 'root/App.js';
 import {getDatabase} from 'functions/Current_search/SearchIterGen'
@@ -275,7 +276,10 @@ export const handle_data_request = () => {
                 .then(result => {
                     return dispatch(display_table(result));
                 })
-                .then(result => dispatch(finished_requestiong()))
+                .then(result => {
+                    dispatch(app_fetching(false));
+                    dispatch(finished_requestiong())
+                })
         ]).catch(error => {
             return dispatch(error_search_data(error))
         })
@@ -342,15 +346,14 @@ export const handle_publish_long_new = () =>{
                 dispatch(clean_new_state());
                 dispatch(clean_current_search());
                 dispatch(clean_result_management());
+                dispatch(app_fetching(false));
                 history.push('/display/hot')
-
-
             }else{
                 throw 'error loading news'
             }
         })
             .catch(error =>{
-
+                 dispatch(app_fetching(false));
             })
     }
 }

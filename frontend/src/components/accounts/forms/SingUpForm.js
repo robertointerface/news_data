@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import FlexCard from 'ui/common/cards/FlexCard'
 import LoginForm from "./LogInForm";
-
-const SingUpForm = ({ title='Sign up', onChange=f=>f, onSubmit=f=>f, username='', email='' , error=''}) => {
+import {PrimaryButtonDis} from 'ui/common/buttons/buttons'
+const SingUpForm = ({ title='Sign up', fetching = false,
+                        onChange=f=>f, onSubmit=f=>f, username='', email='' , error=''}) => {
     return (
         <FlexCard title='sign up form' class_name='col-md-6 col-sm-12'>
             <form onSubmit={(e) => onSubmit(e)}>
@@ -27,9 +28,13 @@ const SingUpForm = ({ title='Sign up', onChange=f=>f, onSubmit=f=>f, username=''
                         onChange={(e) => onChange(e)}
                     />
                 </div>
-                    <button type='submit' className='btn btn-primary'>
-                        sign up
-                    </button>
+                {(fetching)?
+                        <PrimaryButtonDis message={'Signing...'}/>
+                        :
+                        <button type='submit' className='btn btn-primary'>
+                            sign up
+                        </button>
+                }
                  <p>{error}</p>
             </form>
         </FlexCard>

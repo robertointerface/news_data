@@ -66,6 +66,11 @@ export const App_status = (state = {}, action) => {
                 ...state,
                 flash: ''
             }
+        case C.APP_FETCHING:
+            return {
+                ...state,
+                isFetching: action.fetching
+            }
         default:
             return state
     }

@@ -7,7 +7,7 @@ import {GoogleLogin} from 'react-google-login';
 import {getCookie} from "../../../store/functions/auth/Cookies"
 import {history} from "../../../App";
 import {logged_in} from "../../../actions/actions";
-import {PrimaryButton} from 'ui/common/buttons/buttons'
+import {PrimaryButton, PrimaryButtonDis} from 'ui/common/buttons/buttons'
 
 /**
  * Login form
@@ -23,7 +23,8 @@ import {PrimaryButton} from 'ui/common/buttons/buttons'
  *  - Form
  *
  */
-const LoginForm = ({title='Log in', onChange=f=>f, onSubmit=f=>f, username='', password='', error='', authSocial=f=>f}) => {
+const LoginForm = ({title='Log in', fetching = false,
+                       onChange=f=>f, onSubmit=f=>f, username='', password='', error='', authSocial=f=>f}) => {
      return (
             <FlexCard title='Login form' class_name='col-md-6 col-sm-12'>
                  <GoogleLogin
@@ -58,9 +59,13 @@ const LoginForm = ({title='Log in', onChange=f=>f, onSubmit=f=>f, username='', p
                             maxlength="10"
                         />
                     </div>
-                    <button type='submit' className='btn btn-primary'>
-                        Log in
-                    </button>
+                    {(fetching)?
+                        <PrimaryButtonDis message={'Login...'}/>
+                        :
+                        <button type='submit' className='btn btn-primary'>
+                            Log in
+                        </button>
+                    }
                     <p>{error}</p>
                 </form>
                 <PrimaryButton message={'forgot password'}

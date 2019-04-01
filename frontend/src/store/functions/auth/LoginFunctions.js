@@ -3,7 +3,8 @@ import {
     fetching_data,
     logged_in,
     remove_user_data,
-    set_flash_message
+    set_flash_message,
+    app_fetching
 } from 'actions/actions'
 import {flashFlags} from 'constants/constants'
 import {history} from 'root/App.js';
@@ -161,7 +162,8 @@ export const handle_login = () => {
             history.push('/about')
         })
         .catch(error => {
-           dispatch(error_at_login(error));
+            dispatch(app_fetching(false));
+            dispatch(error_at_login(error));
         })
     }
 };

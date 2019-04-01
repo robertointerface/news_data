@@ -17,7 +17,16 @@ PrimaryButton.propTypes = {
     onClick: PropTypes.func
 }
 
-
+const PrimaryButtonDis = ({message='', extraClass=''}) =>{
+    return (
+        <button
+            type="button"
+            className={"btn btn-primary " + extraClass}
+            disabled={'true'}>
+            {message}
+        </button>
+    )
+}
 
 const PaginationButton = ({page=0, message='', onClick=f=>f, active=false}) => {
     return (
@@ -41,4 +50,4 @@ PaginationButton.propTypes = {
     onClick: PropTypes.func
 }
 
-export {PaginationButton, PrimaryButton}
+export {PaginationButton, PrimaryButton, PrimaryButtonDis}

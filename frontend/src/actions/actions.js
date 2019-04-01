@@ -19,7 +19,11 @@ export const set_flash_message = ( message, message_type ) =>
         message_type: message_type
 
     })
-
+export const app_fetching = (fetching) =>
+    ({
+        type: C.APP_FETCHING,
+        fetching: fetching
+    })
 export const remove_flash_message = () =>
     ({
         type: C.REMOVE_FLASH_MESSAGE

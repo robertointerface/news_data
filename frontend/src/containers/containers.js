@@ -14,7 +14,8 @@ import {
     logged_in,
     error_at_login,
     remove_flash_message,
-    set_flash_message
+    set_flash_message,
+    app_fetching
 } from 'actions/actions'
 
 import {
@@ -77,6 +78,7 @@ export const VerifyTokenFormContainer = connect(
 export const LogInContainer = connect(
     state =>
         ({
+            fetching: state.App_status.isFetching,
             title: 'Log in form',
             username: state.User_management.username,
             password: state.User_management.password,
@@ -91,6 +93,7 @@ export const LogInContainer = connect(
             onSubmit(e){
                 e.preventDefault();
                 try{
+                    dispatch(app_fetching(true));
                     dispatch(handle_login());
                 }
                 catch(error){
@@ -137,6 +140,7 @@ export const LogInContainer = connect(
 export const SignUpContainer = connect(
     state =>
         ({
+            fetching: state.App_status.isFetching,
             title: 'Sign up form',
             username: state.User_management.username,
             email: state.User_management.email,
@@ -151,6 +155,7 @@ export const SignUpContainer = connect(
 
             onSubmit(e){
                 e.preventDefault();
+                dispatch(app_fetching());
                 dispatch(handle_signup());
             }
         })

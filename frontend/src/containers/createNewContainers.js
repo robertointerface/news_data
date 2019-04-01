@@ -22,10 +22,12 @@ import {
 } from 'functions/Create_new/CreateNewFunctions'
 
 import AttachedReferences from "root/components/create_new/attachedReferences";
+import {app_fetching} from "root/actions/actions";
 
 export const CreateNewFormContainer = connect(
     state =>
         ({
+            fetching: state.App_status.isFetching,
             title: state.Create_new.title,
             headline1: state.Create_new.headline1,
             headline2: state.Create_new.headline2,
@@ -40,9 +42,9 @@ export const CreateNewFormContainer = connect(
             },
             onSubmit(e){
                 e.preventDefault();
-                dispatch(handle_publish_long_new());
+                    dispatch(app_fetching(true));
+                    dispatch(handle_publish_long_new());
             }
-
         })
 )(LongNewForm)
 
