@@ -6,8 +6,8 @@ import InfoCardItem from 'components/user_display/user_private_info/InfoCardItem
 import {
     faAddressCard,
     faNewspaper,
-    faTable,
     faUsers,
+    faUser,
     faGlobeEurope,
 } from '@fortawesome/free-solid-svg-icons'
 const UserInfoCard = ({username='', location='', about_me='', followers=0, publishedNews=0, onFollow=f=>f,
@@ -18,14 +18,11 @@ const UserInfoCard = ({username='', location='', about_me='', followers=0, publi
     var userSaved = JSON.parse(localStorage.getItem('user'));
     var localUser = userSaved['username']
     return(
-        <div className='card'>
+        <div className='card MB1'>
             <div className='row'>
-                <div className='col-8'>
-                    {username}
-                </div>
-
+                <InfoCardItem fontIcon={faUser} text={`User: ${username}`}/>
                 {(localUser != username)?
-                    <div className='col-4'>
+                    <div className='col-6'>
                     {(canFollow) ?
                         <div>
                             {(following) ?
@@ -38,19 +35,10 @@ const UserInfoCard = ({username='', location='', about_me='', followers=0, publi
                     }
                     </div> : null
                 }
-
-                <div className='col-6'>
-                    {location}
-                </div>
-                <div className='col-6'>
-                    {followers}
-                </div>
-                 <div className='col-6'>
-                    {publishedNews}
-                </div>
-                 <div className='col-12'>
-                    {about_me}
-                </div>
+                <InfoCardItem fontIcon={faGlobeEurope} text={`Location: ${location}`}/>
+                <InfoCardItem fontIcon={faUsers} text={`Followers: ${followers}`}/>
+                <InfoCardItem fontIcon={faNewspaper} text={`Published news: ${publishedNews}`}/>
+                <InfoCardItem fontIcon={faAddressCard} text={`About ${username}: ${about_me}`}/>
             </div>
         </div>
     )

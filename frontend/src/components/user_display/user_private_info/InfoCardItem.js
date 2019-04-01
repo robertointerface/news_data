@@ -5,7 +5,7 @@ const InfoCardItem = ({fontIcon, text=''}) => {
 
     return (
         <div className='col-12 col-md-6'>
-            <span className='MB05'><FontAwesomeIcon className='iconSize' icon={fontIcon}/> {text}</span>
+            <span className='MB05 MT1'><FontAwesomeIcon className='iconSize' icon={fontIcon}/> {text}</span>
         </div>
     )
 }
