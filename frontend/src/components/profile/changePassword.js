@@ -10,6 +10,10 @@ import FlashMessage from 'components/main/Flash'
 
 class ChangePassword extends Component {
 
+    /**
+     * Change password upon user request.
+     *
+     */
     constructor(props){
         super(props);
         this.state = {
@@ -20,9 +24,11 @@ class ChangePassword extends Component {
         this.onChangeNewPass = this.onChangeNewPass.bind(this);
         this.onChangeConfNewPass = this.onChangeConfNewPass.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
+
     }
 
     onChangeNewPass(e){
+
         e.preventDefault();
         var value = e.target.value;
         return this.setState({
@@ -39,7 +45,18 @@ class ChangePassword extends Component {
     }
 
     onSubmit(){
-        changePassword(this.state.newPass, this.state.ConfnewPass)
+        /**
+         * Validate if the passwords are the same and call the API 'accounts/changepassword' to
+         * change password in the database.
+         *
+         * return
+         * on success - Message indicating success will be displayed
+         * on failure - If passwords do no match or error in the backend, error message will be
+         * displayed to user.
+         *
+         */
+        try{
+            changePassword(this.state.newPass, this.state.ConfnewPass)
             .then(response => {
                     return this.setState({
                         message: response,
@@ -50,6 +67,18 @@ class ChangePassword extends Component {
                         message: error,
                 })
             })
+        } catch (error) {
+            return this.setState({
+                        message: error,
+                })
+        }
+
+    }
+
+    removeMessage(){
+        return this.setState({
+            message: ''
+        })
     }
 
     render(){
@@ -65,12 +94,16 @@ class ChangePassword extends Component {
                                       value={this.state.newPass}
                                       onChange={this.onChangeNewPass}/>
                     </div>
+                </div>
+                <div className='row'>
                     <div className='col-lg-6 col-12'>
                         <PasswordForm title={'confirm new password'}
                                       name={'ConfnewPass'}
                                       value={this.state.ConfnewPass}
                                       onChange={this.onChangeConfNewPass}/>
                     </div>
+                </div>
+                <div className='row'>
                     <div className='col-12'>
                         <PrimaryButton message={'save changes'} onClick={this.onSubmit}/>
                     </div>

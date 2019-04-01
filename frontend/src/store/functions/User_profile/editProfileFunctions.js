@@ -97,12 +97,23 @@ const EditUserProfile = () => {
 }
 
 const changePassword = (newPassword='', confPassword='') => {
-
+    /**
+     * Call API 'accounts/changepassword' to modify user password after password
+     * validation is performed.
+     *
+     * @params
+     * newPassword - new password to be set
+     * confPassword - new password confirm and must be the same as 'newPassword'
+     *
+     * @return
+     * on Success - return success message to be displayed.
+     * on Failure - return error message to be displayed.
+     */
     var csrftoken = getCookie('csrftoken');
     try{
         passwordSame(newPassword, confPassword)
-    }catch{
-       throw 'passwords do not match'
+    }catch (error){
+       throw error
     }
     var passwords = {
         password : newPassword
