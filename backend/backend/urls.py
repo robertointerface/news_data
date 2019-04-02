@@ -37,5 +37,6 @@ else:
     urlpatterns.append(url(r'^createnew/', include('backend.create_new.urls', namespace='create_new'))),
     urlpatterns.append(url(r'^display/', include('backend.display.urls', namespace='display_news'))),
     urlpatterns.append(url(r'^profile/', include('backend.user_profile.urls', namespace='user_profile'))),
+    urlpatterns.append(url(r'^cronjobs/', include('backend.cron_jobs.urls', namespace='cron_jobs'))),
     urlpatterns.append(url(r'^$', include('backend.main.urls', namespace='main'))),
     urlpatterns.append(url(r'^(?:.*)/?$', include('backend.main.urls', namespace='main')))

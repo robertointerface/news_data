@@ -47,12 +47,12 @@ INSTALLED_APPS = [
 
 if Migration:
     INSTALLED_APPS += 'accounts', 'main', 'download_data', 'search_data', 'create_new', \
-                      'display', 'user_profile' ,'django.contrib.admin',
+                      'display', 'user_profile', 'cron_jobs', 'django.contrib.admin',
     jwt_response_handler = 'backend.utils.my_jwt_response_handler'
     ROOT_URLCONF = 'backend.urls'
 else:
     INSTALLED_APPS += 'backend.accounts', 'backend.main', 'backend.download_data', 'backend.search_data', \
-                      'backend.create_new', 'backend.display', 'backend.user_profile', \
+                      'backend.create_new', 'backend.display', 'backend.user_profile', 'backend.cron_jobs', \
                       'django.contrib.admin',
     jwt_response_handler = 'backend.backend.utils.my_jwt_response_handler'
     ROOT_URLCONF = 'backend.backend.urls'
@@ -100,7 +100,11 @@ DATABASES = {
     }
 }
 
-
+# CACHES = {
+#     'default': {
+#         'BACKEND': 'gae_backends.memcache.MemcacheCache',
+#     }
+# }
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
 

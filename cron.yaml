@@ -1,0 +1,9 @@
+cron:
+
+- description: set news on cache
+  url: /cronjobs/setnewscache
+  schedule: every 5 minutes
+  retry_parameters:
+    min_backoff_seconds: 2
+    max_doublings: 3
+    job_retry_limit: 3
