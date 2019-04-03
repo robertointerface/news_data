@@ -17,6 +17,7 @@ from rest_framework.views import APIView
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.renderers import JSONRenderer
+from google.appengine.api import memcache
 try:
     from backend.backend.settings import Migration
 except ImportError:
@@ -55,13 +56,19 @@ class GetNewList(APIView):
             params = request.query_params
             # is required to sub 1 as data is saved starting with 0 and not 1
             page = int(params['page']) - 1
-            # load in steps of 2, if want to load in steps of 3 just change *2 for *3 and so on
-            news = NewSerializer(New.objects.all()[page*2:(page*2)+2], many=True)
-            content = JSONRenderer().render(news.data)
+            # Try to get from cache first, if not load from SQL
+            content = self._get_from_cache(page)
+            if content is None:
+                # load in steps of 2, if want to load in steps of 3 just change *2 for *3 and so on
+                news = NewSerializer(New.objects.all()[page*2:(page*2)+2], many=True)
+                content = JSONRenderer().render(news.data)
             return Response(content, status=200, content_type=json)
         except DatabaseError:
             return Response(None, status=400, content_type=json)
 
+    def _get_from_cache(self, page):
+        """Get news from cache if possible"""
+        return memcache.get(key='news-cache-{page}'.format(page=page))
 
 class GetNewsCount(APIView):
     """

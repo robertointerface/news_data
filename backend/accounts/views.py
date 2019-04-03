@@ -47,6 +47,7 @@ from rest_framework.views import APIView
 from rest_framework_jwt.settings import api_settings
 from google.oauth2 import id_token
 from google.auth.transport import requests
+from google.appengine.api import memcache
 from .serializers import UserSerializer, UserSerializerWithToken, UserInfoSerializer,\
     FollowSerializer, UserPrivateInfoSerializer, UserEdit
 from .models import User
@@ -362,19 +363,48 @@ class UserPublicInfo(APIView):
     """
     permission_classes = (AllowAny,)
 
+    permission_classes = (AllowAny,)
+
     def get(self, request, format=None):
         try:
             params = request.query_params
             username = params['username']
-            user = UserInfoSerializer(User.objects.filter(username=username).first(), many=False)
-            if user.instance is not None:
-                content = JSONRenderer().render(user.data)
-                return Response(content, status=200, content_type=json)
-            raise ObjectDoesNotExist
+            user_info = self._get_cache(username)
+            if user_info is None:
+                user_info = self._set_cache(username)
+            return Response(user_info, status=200, content_type=json)
         except (DatabaseError, KeyError):
             return Response(None, status=400, content_type=json)
         except ObjectDoesNotExist:
             return Response(None, status=400, content_type=json)
+
+    def _get_cache(self, username):
+        """
+        Get user public information from cache if possible
+        @ param
+            username - Username used to set the cache key where information might be located.
+        @return
+            On success - user information
+            On failure - None
+        """
+        return memcache.get(key='user-public-info-{username}'.format(username=username))
+
+    def _set_cache(self, username):
+        """
+        Save user information (JSON decode object) on cache
+        @ param
+            username - Username used to set the cache key where information will be located.
+        @return
+            on Success - returned user information (JSON decode object)
+            on failure - raise 'ObjectDoesNotExist'
+        """
+        user = UserInfoSerializer(User.objects.filter(username=username).first(), many=False)
+        if user.instance is not None:
+            content = JSONRenderer().render(user.data)
+            memcache.add(key='user-public-info-{username}'.format(username=username),
+                         value=content, time=(3600 * 6))
+            return content
+        raise ObjectDoesNotExist
 
 
 class UserPrivateInfo(APIView):

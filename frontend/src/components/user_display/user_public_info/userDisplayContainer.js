@@ -46,15 +46,16 @@ class PublicUserContainer extends UserDisplayBase{
     }
 
     componentDidMount(){
-        /*
+        /**
             Get user public info (location, about me ...), published news in a paginated way & create pagination.
 
                 getUserInfo - Get user public information, number of created news and calculate the number of pages
                 for the pagination component.
                 getUserNews - Get user created News in a paginated way and set initial pagination arrays.
          */
-
-        isFollowing(this.username)
+        if(this.state.loggedIn){
+            /** Only if user is logged in, it can be verified if is following or not*/
+            isFollowing(this.username)
             .then(response => {
                 return this.setState({
                     ...this.state,
@@ -67,8 +68,10 @@ class PublicUserContainer extends UserDisplayBase{
                     following: false
                 })
             })
+        }
 
-        /*
+
+        /**
             It is necessary to first get user information 'getUserInfo' and then get user news 'getUserNews'
             in that order.
          */

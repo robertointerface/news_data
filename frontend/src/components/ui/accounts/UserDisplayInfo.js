@@ -15,8 +15,9 @@ const UserInfoCard = ({username='', location='', about_me='', followers=0, publi
     /** get username from local storage (user currecntly logged in) to verify it the user
      * that will be displayed is not the same as the one logged in, if is the same user then
      * no option of 'follow' is given as one can not follow himself*/
-    var userSaved = JSON.parse(localStorage.getItem('user'));
-    var localUser = userSaved['username']
+
+    //var userSaved = JSON.parse(localStorage.getItem('user'));
+    var localUser = username
     return(
         <div className='card MB1'>
             <div className='row'>

@@ -42,8 +42,8 @@ export const CreateNewFormContainer = connect(
             },
             onSubmit(e){
                 e.preventDefault();
-                    dispatch(app_fetching(true));
-                    dispatch(handle_publish_long_new());
+                dispatch(app_fetching(true));
+                dispatch(handle_publish_long_new());
             }
         })
 )(LongNewForm)

@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-from django.shortcuts import render
 from google.appengine.api import memcache
 from rest_framework.renderers import JSONRenderer
 from django.http import HttpResponse

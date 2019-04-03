@@ -159,6 +159,7 @@ export const handle_login = () => {
             localStorage.setItem('token', json.token);
             localStorage.setItem('user', JSON.stringify(json['user']));
             dispatch(logged_in(json['user']))
+            dispatch(app_fetching(false));
             history.push('/about')
         })
         .catch(error => {
