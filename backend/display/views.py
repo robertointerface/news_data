@@ -123,13 +123,24 @@ class GetNew(APIView):
         try:
             params = request.query_params
             new_id = params['id']
-            new = NewSerializer(New.objects.filter(id=new_id).first(), many=False)
-            content = JSONRenderer().render(new.data)
+            content = self._get_cache(new_id)
+            if content is None:
+                content = self._set_cache(new_id)
             return Response(content, status=200, content_type=json)
         except DatabaseError:
             return Response(None, status=400, content_type=json)
         except ValueError:
             return Response(None, status=400, content_type=json)
+
+    def _get_cache(self, new_id):
+        return memcache.get(key='new-{new_id}'.format(new_id=new_id))
+
+    def _set_cache(self, new_id):
+        new = NewSerializer(New.objects.filter(id=new_id).first(), many=False)
+        content = JSONRenderer().render(new.data)
+        memcache.add(key='new-{new_id}'.format(new_id=new_id),
+                     value=content, time=(3600 * 6))
+        return content
 
 
 class GetUserPublishedNews(APIView):
@@ -153,14 +164,25 @@ class GetUserPublishedNews(APIView):
         try:
             params = request.query_params
             page = int(params['page']) - 1
-            user = User.objects.filter(username=username).first()
-            news = NewSerializer(user.user_created_new.all()[page * 2:(page * 2) + 2], many=True)
-            content = JSONRenderer().render(news.data)
+            content = self._get_cache(username=username, page=page)
+            if content is None:
+                content = self._set_cache(username=username, page=page)
             return Response(content, status=200, content_type=json)
         except (DatabaseError, AttributeError):
             return Response(None, status=400, content_type=json)
         except KeyError:
             return Response(None, status=400, content_type=json)
+
+    def _get_cache(self, username, page):
+        return memcache.get(key='news-{username}-{page}'.format(username=username, page=page))
+
+    def _set_cache(self, username, page):
+        user = User.objects.filter(username=username).first()
+        news = NewSerializer(user.user_created_new.all()[page * 2:(page * 2) + 2], many=True)
+        content = JSONRenderer().render(news.data)
+        memcache.add(key='news-{username}-{page}'.format(username=username, page=page),
+                     value=content, time=(3600 * 6))
+        return content
 
 
 class GetUserSubscriptionNews(APIView):

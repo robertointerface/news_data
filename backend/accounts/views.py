@@ -363,8 +363,6 @@ class UserPublicInfo(APIView):
     """
     permission_classes = (AllowAny,)
 
-    permission_classes = (AllowAny,)
-
     def get(self, request, format=None):
         try:
             params = request.query_params
