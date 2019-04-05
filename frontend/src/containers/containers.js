@@ -28,6 +28,7 @@ import {
 import {history} from "root/App";
 import {getCookie} from "functions/auth/Cookies";
 import {verifyToken} from 'functions/auth/LoginFunctions'
+
 export const FlashContainer = connect(
     state =>
         ({
@@ -51,6 +52,7 @@ export const FlashContainer = connect(
 export const VerifyTokenFormContainer = connect(
     (state, props) =>
         ({
+            fetching: state.App_status.isFetching,
             username: state.User_management.username,
             token: props.match.params.token,
             loggedIn : state.User_management.logged_in,
@@ -70,6 +72,7 @@ export const VerifyTokenFormContainer = connect(
             },
             onSubmit(e, token){
                 e.preventDefault();
+                dispatch(app_fetching(true));
                 dispatch(handle_edit_first_time(token));
             }
         })
@@ -155,7 +158,7 @@ export const SignUpContainer = connect(
 
             onSubmit(e){
                 e.preventDefault();
-                dispatch(app_fetching());
+                dispatch(app_fetching(true));
                 dispatch(handle_signup());
             }
         })

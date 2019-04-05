@@ -59,14 +59,20 @@ export const handle_edit_first_time = (token) => {
         })
         .then(res => {
             if(res.status == 200){
-                return dispatch(handle_login());
+                return Promise.all([
+                    dispatch(app_fetching(false)),
+                    dispatch(handle_login())
+                ])
             }
             else{
                 throw res['content']
             }
         })
         .catch(error => {
-            return dispatch(set_flash_message(error, flashFlags.ERROR ))
+            return Promise.all([
+                 dispatch(app_fetching(false)),
+                 dispatch(set_flash_message(error, flashFlags.ERROR ))
+             ])
         })
     }
 }
@@ -109,14 +115,21 @@ export const handle_signup = () => {
         .then(res => {
             console.log('returned: ' + JSON.stringify(res));
             if(res.status == 200){
-                return dispatch(set_flash_message(res['content'], flashFlags.MESSAGE ))
+                return Promise.all([
+                    dispatch(app_fetching(false)),
+                    dispatch(set_flash_message(res['content'], flashFlags.MESSAGE ))
+                ])
             }
             else{
                 throw res['content']
             }
         })
         .catch(err => {
-             return dispatch(set_flash_message(err, flashFlags.ERROR ))
+
+             return Promise.all([
+                 dispatch(app_fetching(false)),
+                 dispatch(set_flash_message(err, flashFlags.ERROR ))
+             ])
         })
     }
 }

@@ -3,24 +3,40 @@ import { Component } from 'react'
 import CardCol6 from 'ui/common/cards/CardCol6'
 import {verifyToken} from 'functions/auth/LoginFunctions'
 import FlashMessage from 'components/main/Flash'
-
+import {PrimaryButtonDis} from 'ui/common/buttons/buttons'
 class VerifyToken extends Component {
     constructor(props){
         super(props)
         this.token = this.props.token;
         this.onChange = this.props.onChange;
         this.onSubmit = this.props.onSubmit;
+
         this.state = {
             verified: false,
             message: ''
         }
         this.removeMessage = this.removeMessage.bind(this)
+        //this.onFetching = this.onFetching.bind(this)
+        //this.onStopFetching = this.onStopFetching.bind(this)
     }
+
+/*    onFetching(){
+        return this.setState({
+            fetching: true
+        })
+    }
+
+    onStopFetching(){
+        return this.setState({
+            fetching: false
+        })
+    }*/
 
     componentDidMount(){
         /**
          * Call verify token and display either successful verification or error
          */
+
         verifyToken(this.token, this.props.onLogIn).then(result => {
             return this.setState({
                 verified: result,
@@ -41,7 +57,7 @@ class VerifyToken extends Component {
     }
     render (){
         let {verified, message} = this.state
-        let {username, password, passwordRepeat} = this.props
+        let {username, password, passwordRepeat, fetching} = this.props
         return (
             <div>
                 {(message) ?
@@ -80,9 +96,13 @@ class VerifyToken extends Component {
                                 onChange={(e) => this.onChange(e)}
                                 maxLength="20"
                             />
-                            <button type='submit' className='btn btn-primary'>
-                                Save
-                            </button>
+                            {(fetching)?
+                                 <PrimaryButtonDis message={'saving...'}/>
+                                :
+                                <button type='submit' className='btn btn-primary'>
+                                    Save
+                                </button>
+                            }
                         </form>
                     </CardCol6>
                     : null
