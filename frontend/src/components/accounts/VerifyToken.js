@@ -16,21 +16,8 @@ class VerifyToken extends Component {
             message: ''
         }
         this.removeMessage = this.removeMessage.bind(this)
-        //this.onFetching = this.onFetching.bind(this)
-        //this.onStopFetching = this.onStopFetching.bind(this)
-    }
 
-/*    onFetching(){
-        return this.setState({
-            fetching: true
-        })
     }
-
-    onStopFetching(){
-        return this.setState({
-            fetching: false
-        })
-    }*/
 
     componentDidMount(){
         /**
