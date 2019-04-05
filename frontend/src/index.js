@@ -9,8 +9,6 @@ import { store } from './store/index'
 import App from './App'
 import { Provider } from 'react-redux'
 
-
-
 window.store = store
 window.React = React
 const render = () =>

@@ -40,17 +40,17 @@ const LogInNav = ({ username = '' }) => {
                     <FontAwesomeIcon className='iconSize' icon={faUser}/> profile<span className="caret"></span>
                 </a>
                 <ul className="dropdown-menu bg-primary ProfileOptions">
-                    <li>
+                    <li className='subLi'>
                         <NavLink className='subNavItem ColorW' to={`/profile/yourprofile/${username}`}>
                             <FontAwesomeIcon className='iconSize' icon={faUser}/> your profile
                         </NavLink>
                     </li>
-                    <li>
+                    <li className='subLi'>
                         <NavLink className='subNavItem ColorW' to={`/profile/data/${username}`}>
                             <FontAwesomeIcon className='iconSize' icon={faTable}/> your data
                         </NavLink>
                     </li>
-                    <li>
+                    <li className='subLi'>
                         <NavLink className='subNavItem ColorW' to={`/profile/edit/${username}`}>
                             <FontAwesomeIcon className='iconSize' icon={faUserEdit}/> edit profile
                         </NavLink>

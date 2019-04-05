@@ -13,6 +13,7 @@ import {
     RequestButtonContainer
 } from 'containers/searchDataContainers'
 import ErrorSearchData from 'components/search_data/Error'
+import 'components/stylesheets/search.css';
 
 import OptionsCardTitle from 'ui/search_data/optionsCardTitle'
 
@@ -31,7 +32,7 @@ const SearchBlock = props => {
                     <div>
                         <IndicatorContainer/>
                         <CardCol12 Component={<OptionsCardTitle title={'Time and location'}/>}
-                                   headerClass={'bg-secondary ColorW'}>
+                                   headerClass={'bg-secondary ColorW SearchTitle'}>
                             <div className='card-body'>
                                 <div className='row'>
                                     <div className="col-6 colTime">

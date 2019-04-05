@@ -24,7 +24,7 @@ export default GeoOptions
 const GeoInput = (props) => {
     let {onChange, id, name} = props
     return(
-        <a className='list-group-item' href='#' onClick={(e) => onChange(e, id, name)}>
+        <a className='list-group-item selectP' href='#' onClick={(e) => onChange(e, id, name)}>
             <Checkbox
                 key={name}
                 value={name}>{name}
@@ -36,7 +36,7 @@ const GeoInput = (props) => {
 const GeoInputChecked = (props) => {
     let {onChange, id, name} = props
     return(
-        <a className='list-group-item' href='#' onClick={(e) => onChange(e, id, name)}>
+        <a className='list-group-item selectP' href='#' onClick={(e) => onChange(e, id, name)}>
             <Checkbox
                 checked
                 key={name}

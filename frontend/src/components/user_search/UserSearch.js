@@ -40,7 +40,7 @@ import {
     prepareGraphData,
     getGraphClass} from 'functions/Results_management/Results'
 import GraphDisplay from "components/data_representation/graph/graphDisplay"
-
+import {Row, Col } from 'react-bootstrap/es'
 /**
  * React
  */
@@ -202,6 +202,7 @@ class UserSearchComponent extends Component {
             })
     }
     onSelectIndicator(e, id, name){
+        e.preventDefault();
         return this.setState({
             ...this.state,
             currentSearch: {
@@ -283,6 +284,7 @@ class UserSearchComponent extends Component {
         })
    }
     onChangeTime(e, id){
+        e.preventDefault();
         return this.setState({
             ...this.state,
             currentSearch: {
@@ -293,6 +295,7 @@ class UserSearchComponent extends Component {
         }, () => this.check_request())
     }
     onChangeGeo(e, id, name){
+        e.preventDefault();
         return this.setState({
             ...this.state,
             currentSearch: {
@@ -455,23 +458,23 @@ class UserSearchComponent extends Component {
             progress} = this.state.currentSearch
         return(
             <PageTemplate>
-                <div className='row'>
-                    <div className='col-xl-4 col-md-6 col-12'>
+                <Row>
+                    <Col lg={4} xl={4} md={6} sm={12} xs={12}>
                         <SearchComponent title={'Databases'}
                                          list={PossibleThirdPartyAPI}
                                          onSelect={this.onSelectDatabase}/>
-                    </div>
+                    </Col>
                     {(!(Object.keys(ThirdPartyAPI).length === 0 && ThirdPartyAPI.constructor === Object)) ?
-                        <div className='col-lg-4 col-md-6 col-12'>
+                        <Col lg={4} xl={4} md={6} sm={12} xs={12}>
                             <SearchComponent title={'Sectors'} list={PossibleSectors} onSelect={this.onSelectSector}/>
-                        </div>
+                        </Col>
                         : null
 
                     }
                     {(!(Object.keys(Sector).length === 0 && Sector.constructor === Object)) ?
-                        <div className='col-xl-4 col-md-6 col-12'>
+                        <Col lg={4} xl={4} md={6} sm={12} xs={12}>
                             <SearchComponent title={'topics'} list={PossibleTopics} onSelect={this.onSelectTopic}/>
-                        </div>
+                        </Col>
                         : null
                     }
                     {(!(Object.keys(Topic).length === 0 && Topic.constructor === Object)) ?
@@ -484,7 +487,7 @@ class UserSearchComponent extends Component {
                             <div className='col-xl-4 col-md-6 col-12'>
                                      <CardCol12 Component={<OptionsCardTitle title={'Time and location'}/>}
                                                 cardClass={'MT05'}
-                                                headerClass={'bg-secondary ColorW'}>
+                                                headerClass={'bg-secondary ColorW SearchTitle'}>
                                         <div className='card-body'>
                                             <div className='row'>
                                                 <div className="col-6 colTime">
@@ -516,7 +519,7 @@ class UserSearchComponent extends Component {
                                       onRemove={this.onRemoveGraph}/>
                     </div>
 
-                </div>
+                </Row>
             </PageTemplate>
         )
     }

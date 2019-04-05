@@ -45,7 +45,7 @@ const TimeOptions = (props) => {
 const TimeInput = (props) => {
     let {onChange, id, name} = props
     return(
-        <a className='list-group-item' href='#' onClick={(e) => onChange(e, id)}>
+        <a className='list-group-item selectP' href='#' onClick={(e) => onChange(e, id)}>
             <Checkbox
                 key={name}
                 value={name}>{name}</Checkbox>
@@ -56,7 +56,7 @@ const TimeInput = (props) => {
 const TimeInputChecked = (props) => {
     let {onChange, id, name} = props
     return(
-         <a className='list-group-item' href='#' onClick={(e) => onChange(e, id)}>
+         <a className='list-group-item selectP' href='#' onClick={(e) => onChange(e, id)}>
             <Checkbox
                 checked
                 key={name}

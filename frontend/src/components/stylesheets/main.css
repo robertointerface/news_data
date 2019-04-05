@@ -163,6 +163,7 @@ body {
 
 @media only screen and (min-width: 858px){
     .dropdown-menu>li>a.subNavItem{padding-left: 0.8rem;}
+    .dropdown-menu>li.subLi{padding: 0.4rem;}
     .nav{font-size:  1.4rem;}
     .fontaweSpan{font-size:  1.4rem;}
     .nav>li>a{padding-right: 0.5rem;
@@ -170,13 +171,15 @@ body {
     p{font-size: 1.1rem;}
     tr{font-size: 1rem;}
     .dropNav{margin-right: 2rem;}
+    .selectP{font-size: 1.2rem;}
 
 }
 
 @media only screen and (min-width: 768px) and (max-width: 857px){
     .nav{font-size:  1.1rem;}
     .fontaweSpan{font-size: 1.1rem;}
-   .dropdown-menu>li>a.subNavItem{padding-left: 0.8rem;}
+    .dropdown-menu>li>a.subNavItem{padding-left: 0.8rem;}
+    .dropdown-menu>li.subLi{padding: 0.6rem;}
     .nav>li>a{padding-right: 0.5rem;
 				padding-left:0.5rem;}
 
@@ -189,13 +192,16 @@ body {
 
      .ButtonFont{font-size: 1.2rem;}
 
+    .selectP{font-size: 1.4rem;}
 }
 
 @media only screen and (min-width: 425px) and (max-width: 767px){
     /*.nav>li>a.NavItem{padding: 1.5rem;}*/
-    .nav>li>a.NavItem{margin-top: 1rem;}
+    .nav>li>a.NavItem{padding-left: 1rem;}
+    .nav>li{margin-top:0.5rem; }
     .dropdown-menu>li>a.subNavItem{padding: 1rem;}
 	.open .dropdown-menu>li>a.subNavItem{padding: 1.5rem;}
+    .dropdown-menu>li.subLi{padding: 0.6rem; font-size: 1.2rem;}
     .nav{font-size:  1.4rem;}
 
     .mr-auto{margin-right: 3rem;}
@@ -205,15 +211,18 @@ body {
     .btn{font-size:  1.1rem;}
     .fontaweSpan{font-size: 1.2rem;}
     .ButtonFont{font-size: 0.85rem;}
+     .selectP{font-size: 1.8rem;}
 }
 
 
 @media only screen and (max-width: 424px){
-    /*.nav>li>a.NavItem{padding: 1.5rem;}*/
-    .nav>li>a.NavItem{margin-top: 1rem;}
+    .nav>li>a.NavItem{padding-left: 1rem;}
+    .nav>li{margin-top:0.5rem; }
     .dropdown-menu>li>a.subNavItem{padding: 1.5rem;}
     .open .dropdown-menu>li>a.subNavItem{padding: 1.5rem;
 											margin-right:0.5rem;}
+    .dropdown-menu>li.subLi{padding: 0.6rem;
+                            font-size: 1.2rem;}
     .nav{font-size:  1.4rem;
 		 margin-top: 2rem;}
 
@@ -227,4 +236,5 @@ body {
     .fontaweSpan{font-size: 1.2rem;}
 
     .ButtonFont{font-size: 0.85rem;}
+    .selectP{font-size: 2rem;}
 }

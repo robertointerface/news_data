@@ -8,7 +8,7 @@ export const RequestButton = ({active=true, fetching=false, onClick=f=>f}) => {
                 <PrimaryButtonDis message={'Requesting...'} extraClass={'MT05'}/>
             :
                 <button
-                    type="button"
+                    type="button RequestButton"
                     className="btn btn-primary MT05"
                     disabled={active}
                     onClick={onClick}>
