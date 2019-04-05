@@ -176,8 +176,11 @@ export const handle_login = () => {
             history.push('/about')
         })
         .catch(error => {
-            dispatch(app_fetching(false));
-            dispatch(error_at_login(error));
+            return Promise.all([
+                dispatch(app_fetching(false)),
+                dispatch(error_at_login(error))
+            ])
+
         })
     }
 };

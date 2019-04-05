@@ -100,6 +100,7 @@ export const LogInContainer = connect(
                     dispatch(handle_login());
                 }
                 catch(error){
+                    dispatch(app_fetching(false));
                     dispatch(error_at_login(error));
                 }
             },
