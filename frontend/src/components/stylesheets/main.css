@@ -172,6 +172,12 @@ body {
     tr{font-size: 1rem;}
     .dropNav{margin-right: 2rem;}
     .selectP{font-size: 1.2rem;}
+    .PagButton{
+        font-size: 1.2rem;
+        padding-right: 1rem;
+        padding-left: 1rem;
+        margin-right: 1rem;
+    }
 
 }
 
@@ -188,11 +194,16 @@ body {
 	p{font-size: 1.1rem;}
 
 	tr{font-size: 1rem;}
-     .dropNav{margin-right: 2rem;}
-
-     .ButtonFont{font-size: 1.2rem;}
-
+    .dropNav{margin-right: 2rem;}
+    .ButtonFont{font-size: 1.2rem;}
     .selectP{font-size: 1.4rem;}
+
+    .PagButton{
+        font-size: 1.2rem;
+        padding-right: 1rem;
+        padding-left: 1rem;
+        margin-right: 1rem;
+    }
 }
 
 @media only screen and (min-width: 425px) and (max-width: 767px){
@@ -211,7 +222,13 @@ body {
     .btn{font-size:  1.1rem;}
     .fontaweSpan{font-size: 1.2rem;}
     .ButtonFont{font-size: 0.85rem;}
-     .selectP{font-size: 1.8rem;}
+    .selectP{font-size: 1.8rem;}
+    .PagButton{
+        font-size: 1.2rem;
+        padding-right: 1rem;
+        padding-left: 1rem;
+        margin-right: 1rem;
+    }
 }
 
 
@@ -237,4 +254,10 @@ body {
 
     .ButtonFont{font-size: 0.85rem;}
     .selectP{font-size: 2rem;}
+    .PagButton{
+        font-size: 1.2rem;
+        padding-right: 1rem;
+        padding-left: 1rem;
+        margin-right: 1rem;
+    }
 }

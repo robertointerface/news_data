@@ -32,7 +32,7 @@ const PaginationButton = ({page=0, message='', onClick=f=>f, active=false}) => {
     return (
         <button
             type="button"
-            className={'btn MR1' + (active? ' btn-warning': ' btn-primary')}
+            className={'btn PagButton' + (active? ' btn-warning': ' btn-primary')}
             onClick={(e) => onClick(e, page)}>
             {(message.length > 0) ?
                 <p className='MB0 ButtonFont'>{message}</p> :

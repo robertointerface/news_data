@@ -97,13 +97,13 @@ class NewsListDisplayContainer extends Component{
                     <div className='col-12'>
                         <NewsDisplayList News={news}/>
                     </div>
-                    <div className='col-12 col-lg-6 col-md-8 offset-lg-3 offset-md-2'>
-                        <Pagination presentPage={presentPage}
+                </div>
+                <div className='container'>
+                    <Pagination presentPage={presentPage}
                                     lastPage={this.state.pages}
                                     begin={beginPag}
                                     end={endPag}
                                     goToPage={this.goToPage}/>
-                    </div>
                 </div>
             </PageTemplate>
         )
