@@ -95,6 +95,11 @@ export const handle_signup = () => {
     return (dispatch, getState) => {
         var username = getState().User_management.username;
         var email = getState().User_management.email;
+        try{
+            validate(username, [onlyLettersNumbers]);
+        }catch(error){
+            throw error
+        }
         var data = {
                 'username': username,
                 'email': email,

@@ -158,9 +158,16 @@ export const SignUpContainer = connect(
             },
 
             onSubmit(e){
-                e.preventDefault();
-                dispatch(app_fetching(true));
-                dispatch(handle_signup());
+                 e.preventDefault();
+                 try{
+                    dispatch(app_fetching(true));
+                    dispatch(handle_signup());
+                 } catch(error){
+                    dispatch(app_fetching(false));
+                    dispatch(error_at_login(error));
+                 }
+
+
             }
         })
 )(SingUpForm)
@@ -189,7 +196,8 @@ export const EditUserContainer = connect(
             location: state.User_management.location,
             first_name: state.User_management.first_name,
             last_name: state.User_management.last_name,
-            about_me: state.User_management.about_me
+            about_me: state.User_management.about_me,
+
         }),
     dispatch =>
         ({
