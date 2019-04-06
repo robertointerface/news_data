@@ -77,5 +77,9 @@ class Follow(models.Model):
     followed = models.ForeignKey(User, related_name='user_rel_followed')
     time_stamp = models.DateTimeField(default=timezone.now)
 
-    def __str__(self):
-        return self.time_stamp
+    # def __str__(self):
+    #     return self.time_stamp
+    #
+    # def __repr__(self):
+    #     class_name = type(self).__name__
+    #     return '{class_name}'.format(class_name=class_name)
