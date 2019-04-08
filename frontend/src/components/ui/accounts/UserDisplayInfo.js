@@ -30,9 +30,9 @@ const UserInfoCard = ({username='', location='', about_me='', followers=0, publi
             <div className='row'>
                 <InfoCardItem fontIcon={faUser} text={`User: ${username}`}/>
                 {((localUser) && (localUser != username))?
-                        <div className='col-6'>
+                        <div className='col-12 col-md-6 PT05 PL1'>
                         {(canFollow) ?
-                            <div>
+                            <div className='text-center'>
                                 {(following) ?
                                     <PrimaryButton message={'stop following'} onClick={(e) => onFollow(e, username)}/>
                                     : <PrimaryButton message={'follow'} onClick={(e) => onFollow(e, username)}/>

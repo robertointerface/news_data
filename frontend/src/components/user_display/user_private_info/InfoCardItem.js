@@ -4,8 +4,10 @@ import PropTypes from 'prop-types';
 const InfoCardItem = ({fontIcon, text=''}) => {
 
     return (
-        <div className='col-12 col-md-6'>
-            <span className='MB05 MT1'><FontAwesomeIcon className='iconSize' icon={fontIcon}/> {text}</span>
+        <div className='col-12 col-md-6 PT1 PL1'>
+            <div className='text-center '>
+                <span className='MB05 MT1 userInfo'><FontAwesomeIcon className='iconSize colorBlue' icon={fontIcon}/> {text}</span>
+            </div>
         </div>
     )
 }

@@ -34,6 +34,7 @@
 				line-height: 150%;}
 
     .BulletPoints{font-size: 1.2rem;}
+    .userInfo{font-size: 1.2rem;}
 }
 
 @media only screen and (min-width: 768px) and (max-width: 857px){
@@ -42,7 +43,7 @@
 				margin-top: 1.2rem;
 				line-height: 150%;}
     .BulletPoints{font-size: 1.2rem;}
-
+    .userInfo{font-size: 1.2rem;}
 }
 
 @media only screen and (min-width: 425px) and (max-width: 767px){
@@ -51,6 +52,7 @@
 				margin-top: 1.2rem;
 				line-height: 150%;}
     .BulletPoints{font-size: 1.2rem;}
+    .userInfo{font-size: 1rem;}
 }
 
 
@@ -60,5 +62,6 @@
     .NewContent{font-size: 1rem;
 				margin-top: 1.2rem;
 				line-height: 150%;}
+    .userInfo{font-size: 1rem;}
 
 }
