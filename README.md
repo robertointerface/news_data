@@ -6,8 +6,8 @@ create an account free of charge. Registered users can save and downlaod the dat
 
 
 Built With
--Python 2.7.
--Django/Django Rest framework.
+#-Python 2.7.
+#-Django/Django Rest framework.
 -React-Redux.
 -Bootstrap.
 -Deployed in Google App engine.
