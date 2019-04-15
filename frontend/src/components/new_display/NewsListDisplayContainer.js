@@ -17,7 +17,7 @@ class NewsListDisplayContainer extends Component{
             news: [],
             totalNews: 0,
             pages: 0,
-            newsPerPage: 2,
+            newsPerPage: 3,
             presentPage: 1,
             beginPag: [],
             endPag: []

@@ -25,7 +25,7 @@ class userSubscriptionContainer extends UserDisplayBase {
             usersFollowing: 0,
             Display: {
                 news: [],
-                newsPerPage: 2.00,
+                newsPerPage: 3.00,
                 presentPage: 1,
                 beginPag: [],
                 endPag: [],

@@ -60,7 +60,7 @@ class GetNewList(APIView):
             content = self._get_from_cache(page)
             if content is None:
                 # load in steps of 2, if want to load in steps of 3 just change *2 for *3 and so on
-                news = NewSerializer(New.objects.all()[page*2:(page*2)+2], many=True)
+                news = NewSerializer(New.objects.all()[page*3:(page*3)+3], many=True)
                 content = JSONRenderer().render(news.data)
             return Response(content, status=200, content_type=json)
         except DatabaseError:
@@ -201,7 +201,7 @@ class GetUserSubscriptionNews(APIView):
             user = request.user
             user_follows = user.following.all()
             news = NewSerializer(New.objects.filter(created_by__in=user_follows).
-                                 all()[page * 2:(page * 2) + 2], many=True)
+                                 all()[page * 3:(page * 3) + 3], many=True)
             content = JSONRenderer().render(news.data)
             response = dict({
                 'newsCount': New.objects.filter(created_by__in=user_follows).count(),

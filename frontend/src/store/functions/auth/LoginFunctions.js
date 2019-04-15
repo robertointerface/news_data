@@ -146,6 +146,8 @@ export const handle_login = () => {
             On success - logged in user and redirect to main site
             On failure - display error
      */
+
+
     return (dispatch, getState) => {
         var username = getState().User_management.username;
         var password = getState().User_management.password;
